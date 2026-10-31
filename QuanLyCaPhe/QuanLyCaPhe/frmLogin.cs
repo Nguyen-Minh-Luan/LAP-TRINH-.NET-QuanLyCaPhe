@@ -33,6 +33,5 @@ public partial class frmLogin : Form
 
     private void btnLogin_Click(object sender, EventArgs e)
     {
-        throw new System.NotImplementedException();
     }
 }
