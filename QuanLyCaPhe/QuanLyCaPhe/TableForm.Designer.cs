@@ -54,7 +54,29 @@ partial class TableForm
         button12 = new System.Windows.Forms.Button();
         button10 = new System.Windows.Forms.Button();
         tabPage2 = new System.Windows.Forms.TabPage();
+        flpTang2 = new System.Windows.Forms.FlowLayoutPanel();
+        button4 = new System.Windows.Forms.Button();
+        button8 = new System.Windows.Forms.Button();
+        button11 = new System.Windows.Forms.Button();
+        button27 = new System.Windows.Forms.Button();
+        button28 = new System.Windows.Forms.Button();
+        button30 = new System.Windows.Forms.Button();
+        button29 = new System.Windows.Forms.Button();
+        button31 = new System.Windows.Forms.Button();
+        button32 = new System.Windows.Forms.Button();
+        button33 = new System.Windows.Forms.Button();
+        button34 = new System.Windows.Forms.Button();
+        button35 = new System.Windows.Forms.Button();
+        button36 = new System.Windows.Forms.Button();
+        button37 = new System.Windows.Forms.Button();
+        button38 = new System.Windows.Forms.Button();
+        button39 = new System.Windows.Forms.Button();
+        button40 = new System.Windows.Forms.Button();
+        button41 = new System.Windows.Forms.Button();
+        button42 = new System.Windows.Forms.Button();
+        button43 = new System.Windows.Forms.Button();
         tabPage3 = new System.Windows.Forms.TabPage();
+        panel4 = new System.Windows.Forms.Panel();
         menuStrip1 = new System.Windows.Forms.MenuStrip();
         quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         nướcUốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,10 +86,32 @@ partial class TableForm
         button1 = new System.Windows.Forms.Button();
         button2 = new System.Windows.Forms.Button();
         button3 = new System.Windows.Forms.Button();
+        groupBox1 = new System.Windows.Forms.GroupBox();
+        flpSanThuong = new System.Windows.Forms.FlowLayoutPanel();
+        label3 = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
+        label1 = new System.Windows.Forms.Label();
+        panel2 = new System.Windows.Forms.Panel();
+        panel1 = new System.Windows.Forms.Panel();
+        button44 = new System.Windows.Forms.Button();
+        button45 = new System.Windows.Forms.Button();
+        button46 = new System.Windows.Forms.Button();
+        button47 = new System.Windows.Forms.Button();
+        button48 = new System.Windows.Forms.Button();
+        button49 = new System.Windows.Forms.Button();
+        button50 = new System.Windows.Forms.Button();
+        button51 = new System.Windows.Forms.Button();
+        button52 = new System.Windows.Forms.Button();
+        button53 = new System.Windows.Forms.Button();
         tabControl1.SuspendLayout();
         tabPage1.SuspendLayout();
         flpTang1.SuspendLayout();
+        tabPage2.SuspendLayout();
+        flpTang2.SuspendLayout();
+        tabPage3.SuspendLayout();
+        panel4.SuspendLayout();
         menuStrip1.SuspendLayout();
+        groupBox1.SuspendLayout();
         SuspendLayout();
         // 
         // tabControl1
@@ -165,7 +209,7 @@ partial class TableForm
         // 
         // button9
         // 
-        button9.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button9.BackColor = System.Drawing.Color.LightSteelBlue;
         button9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         button9.Image = ((System.Drawing.Image)resources.GetObject("button9.Image"));
         button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -179,7 +223,7 @@ partial class TableForm
         // 
         // button26
         // 
-        button26.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button26.BackColor = System.Drawing.Color.LightSteelBlue;
         button26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         button26.Image = ((System.Drawing.Image)resources.GetObject("button26.Image"));
         button26.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -403,6 +447,7 @@ partial class TableForm
         // 
         // tabPage2
         // 
+        tabPage2.Controls.Add(flpTang2);
         tabPage2.Location = new System.Drawing.Point(4, 24);
         tabPage2.Name = "tabPage2";
         tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -411,8 +456,319 @@ partial class TableForm
         tabPage2.Text = "Tầng 2";
         tabPage2.UseVisualStyleBackColor = true;
         // 
+        // flpTang2
+        // 
+        flpTang2.AutoScroll = true;
+        flpTang2.Controls.Add(button4);
+        flpTang2.Controls.Add(button8);
+        flpTang2.Controls.Add(button11);
+        flpTang2.Controls.Add(button27);
+        flpTang2.Controls.Add(button28);
+        flpTang2.Controls.Add(button30);
+        flpTang2.Controls.Add(button29);
+        flpTang2.Controls.Add(button31);
+        flpTang2.Controls.Add(button32);
+        flpTang2.Controls.Add(button33);
+        flpTang2.Controls.Add(button34);
+        flpTang2.Controls.Add(button35);
+        flpTang2.Controls.Add(button36);
+        flpTang2.Controls.Add(button37);
+        flpTang2.Controls.Add(button38);
+        flpTang2.Controls.Add(button39);
+        flpTang2.Controls.Add(button40);
+        flpTang2.Controls.Add(button41);
+        flpTang2.Controls.Add(button42);
+        flpTang2.Controls.Add(button43);
+        flpTang2.Dock = System.Windows.Forms.DockStyle.Fill;
+        flpTang2.Location = new System.Drawing.Point(3, 3);
+        flpTang2.Name = "flpTang2";
+        flpTang2.Size = new System.Drawing.Size(628, 365);
+        flpTang2.TabIndex = 0;
+        flpTang2.Paint += FlpTang2Paint;
+        // 
+        // button4
+        // 
+        button4.BackColor = System.Drawing.Color.RosyBrown;
+        button4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button4.Image = ((System.Drawing.Image)resources.GetObject("button4.Image"));
+        button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button4.Location = new System.Drawing.Point(3, 3);
+        button4.Name = "button4";
+        button4.Size = new System.Drawing.Size(112, 87);
+        button4.TabIndex = 41;
+        button4.Text = "Bàn 1";
+        button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button4.UseVisualStyleBackColor = false;
+        // 
+        // button8
+        // 
+        button8.BackColor = System.Drawing.Color.RosyBrown;
+        button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button8.Image = ((System.Drawing.Image)resources.GetObject("button8.Image"));
+        button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button8.Location = new System.Drawing.Point(121, 3);
+        button8.Name = "button8";
+        button8.Size = new System.Drawing.Size(112, 87);
+        button8.TabIndex = 60;
+        button8.Text = "Bàn 2";
+        button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button8.UseVisualStyleBackColor = false;
+        // 
+        // button11
+        // 
+        button11.BackColor = System.Drawing.Color.RosyBrown;
+        button11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button11.Image = ((System.Drawing.Image)resources.GetObject("button11.Image"));
+        button11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button11.Location = new System.Drawing.Point(239, 3);
+        button11.Name = "button11";
+        button11.Size = new System.Drawing.Size(112, 87);
+        button11.TabIndex = 59;
+        button11.Text = "Bàn 3";
+        button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button11.UseVisualStyleBackColor = false;
+        // 
+        // button27
+        // 
+        button27.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button27.Image = ((System.Drawing.Image)resources.GetObject("button27.Image"));
+        button27.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button27.Location = new System.Drawing.Point(357, 3);
+        button27.Name = "button27";
+        button27.Size = new System.Drawing.Size(112, 87);
+        button27.TabIndex = 61;
+        button27.Text = "Bàn 4";
+        button27.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button27.UseVisualStyleBackColor = false;
+        // 
+        // button28
+        // 
+        button28.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button28.Image = ((System.Drawing.Image)resources.GetObject("button28.Image"));
+        button28.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button28.Location = new System.Drawing.Point(475, 3);
+        button28.Name = "button28";
+        button28.Size = new System.Drawing.Size(112, 87);
+        button28.TabIndex = 62;
+        button28.Text = "Bàn 5";
+        button28.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button28.UseVisualStyleBackColor = false;
+        // 
+        // button30
+        // 
+        button30.BackColor = System.Drawing.Color.RosyBrown;
+        button30.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button30.Image = ((System.Drawing.Image)resources.GetObject("button30.Image"));
+        button30.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button30.Location = new System.Drawing.Point(3, 96);
+        button30.Name = "button30";
+        button30.Size = new System.Drawing.Size(112, 87);
+        button30.TabIndex = 76;
+        button30.Text = "Bàn 7";
+        button30.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button30.UseVisualStyleBackColor = false;
+        // 
+        // button29
+        // 
+        button29.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button29.Image = ((System.Drawing.Image)resources.GetObject("button29.Image"));
+        button29.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button29.Location = new System.Drawing.Point(121, 96);
+        button29.Name = "button29";
+        button29.Size = new System.Drawing.Size(112, 87);
+        button29.TabIndex = 77;
+        button29.Text = "Bàn 6";
+        button29.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button29.UseVisualStyleBackColor = false;
+        // 
+        // button31
+        // 
+        button31.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button31.Image = ((System.Drawing.Image)resources.GetObject("button31.Image"));
+        button31.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button31.Location = new System.Drawing.Point(239, 96);
+        button31.Name = "button31";
+        button31.Size = new System.Drawing.Size(112, 87);
+        button31.TabIndex = 75;
+        button31.Text = "Bàn 8";
+        button31.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button31.UseVisualStyleBackColor = false;
+        // 
+        // button32
+        // 
+        button32.BackColor = System.Drawing.Color.RosyBrown;
+        button32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button32.Image = ((System.Drawing.Image)resources.GetObject("button32.Image"));
+        button32.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button32.Location = new System.Drawing.Point(357, 96);
+        button32.Name = "button32";
+        button32.Size = new System.Drawing.Size(112, 87);
+        button32.TabIndex = 74;
+        button32.Text = "Bàn 9";
+        button32.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button32.UseVisualStyleBackColor = false;
+        // 
+        // button33
+        // 
+        button33.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button33.Image = ((System.Drawing.Image)resources.GetObject("button33.Image"));
+        button33.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button33.Location = new System.Drawing.Point(475, 96);
+        button33.Name = "button33";
+        button33.Size = new System.Drawing.Size(112, 87);
+        button33.TabIndex = 73;
+        button33.Text = "Bàn 10";
+        button33.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button33.UseVisualStyleBackColor = false;
+        // 
+        // button34
+        // 
+        button34.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button34.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button34.Image = ((System.Drawing.Image)resources.GetObject("button34.Image"));
+        button34.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button34.Location = new System.Drawing.Point(3, 189);
+        button34.Name = "button34";
+        button34.Size = new System.Drawing.Size(112, 87);
+        button34.TabIndex = 72;
+        button34.Text = "Bàn 11";
+        button34.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button34.UseVisualStyleBackColor = false;
+        // 
+        // button35
+        // 
+        button35.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button35.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button35.Image = ((System.Drawing.Image)resources.GetObject("button35.Image"));
+        button35.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button35.Location = new System.Drawing.Point(121, 189);
+        button35.Name = "button35";
+        button35.Size = new System.Drawing.Size(112, 87);
+        button35.TabIndex = 71;
+        button35.Text = "Bàn 12";
+        button35.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button35.UseVisualStyleBackColor = false;
+        // 
+        // button36
+        // 
+        button36.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button36.Image = ((System.Drawing.Image)resources.GetObject("button36.Image"));
+        button36.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button36.Location = new System.Drawing.Point(239, 189);
+        button36.Name = "button36";
+        button36.Size = new System.Drawing.Size(112, 87);
+        button36.TabIndex = 70;
+        button36.Text = "Bàn 13";
+        button36.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button36.UseVisualStyleBackColor = false;
+        // 
+        // button37
+        // 
+        button37.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button37.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button37.Image = ((System.Drawing.Image)resources.GetObject("button37.Image"));
+        button37.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button37.Location = new System.Drawing.Point(357, 189);
+        button37.Name = "button37";
+        button37.Size = new System.Drawing.Size(112, 87);
+        button37.TabIndex = 69;
+        button37.Text = "Bàn 14";
+        button37.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button37.UseVisualStyleBackColor = false;
+        // 
+        // button38
+        // 
+        button38.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button38.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button38.Image = ((System.Drawing.Image)resources.GetObject("button38.Image"));
+        button38.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button38.Location = new System.Drawing.Point(475, 189);
+        button38.Name = "button38";
+        button38.Size = new System.Drawing.Size(112, 87);
+        button38.TabIndex = 68;
+        button38.Text = "Bàn 15";
+        button38.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button38.UseVisualStyleBackColor = false;
+        // 
+        // button39
+        // 
+        button39.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button39.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button39.Image = ((System.Drawing.Image)resources.GetObject("button39.Image"));
+        button39.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button39.Location = new System.Drawing.Point(3, 282);
+        button39.Name = "button39";
+        button39.Size = new System.Drawing.Size(112, 87);
+        button39.TabIndex = 67;
+        button39.Text = "Bàn 16";
+        button39.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button39.UseVisualStyleBackColor = false;
+        // 
+        // button40
+        // 
+        button40.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button40.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button40.Image = ((System.Drawing.Image)resources.GetObject("button40.Image"));
+        button40.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button40.Location = new System.Drawing.Point(121, 282);
+        button40.Name = "button40";
+        button40.Size = new System.Drawing.Size(112, 87);
+        button40.TabIndex = 66;
+        button40.Text = "Bàn 17";
+        button40.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button40.UseVisualStyleBackColor = false;
+        // 
+        // button41
+        // 
+        button41.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button41.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button41.Image = ((System.Drawing.Image)resources.GetObject("button41.Image"));
+        button41.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button41.Location = new System.Drawing.Point(239, 282);
+        button41.Name = "button41";
+        button41.Size = new System.Drawing.Size(112, 87);
+        button41.TabIndex = 65;
+        button41.Text = "Bàn 18";
+        button41.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button41.UseVisualStyleBackColor = false;
+        // 
+        // button42
+        // 
+        button42.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button42.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button42.Image = ((System.Drawing.Image)resources.GetObject("button42.Image"));
+        button42.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button42.Location = new System.Drawing.Point(357, 282);
+        button42.Name = "button42";
+        button42.Size = new System.Drawing.Size(112, 87);
+        button42.TabIndex = 64;
+        button42.Text = "Bàn 19";
+        button42.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button42.UseVisualStyleBackColor = false;
+        // 
+        // button43
+        // 
+        button43.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button43.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button43.Image = ((System.Drawing.Image)resources.GetObject("button43.Image"));
+        button43.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button43.Location = new System.Drawing.Point(475, 282);
+        button43.Name = "button43";
+        button43.Size = new System.Drawing.Size(112, 87);
+        button43.TabIndex = 63;
+        button43.Text = "Bàn 20";
+        button43.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button43.UseVisualStyleBackColor = false;
+        // 
         // tabPage3
         // 
+        tabPage3.Controls.Add(panel4);
         tabPage3.Location = new System.Drawing.Point(4, 24);
         tabPage3.Name = "tabPage3";
         tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -420,6 +776,25 @@ partial class TableForm
         tabPage3.TabIndex = 5;
         tabPage3.Text = "Sân Thượng";
         tabPage3.UseVisualStyleBackColor = true;
+        // 
+        // panel4
+        // 
+        panel4.AutoScroll = true;
+        panel4.Controls.Add(button44);
+        panel4.Controls.Add(button45);
+        panel4.Controls.Add(button46);
+        panel4.Controls.Add(button47);
+        panel4.Controls.Add(button48);
+        panel4.Controls.Add(button49);
+        panel4.Controls.Add(button50);
+        panel4.Controls.Add(button51);
+        panel4.Controls.Add(button52);
+        panel4.Controls.Add(button53);
+        panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+        panel4.Location = new System.Drawing.Point(3, 3);
+        panel4.Name = "panel4";
+        panel4.Size = new System.Drawing.Size(628, 365);
+        panel4.TabIndex = 0;
         // 
         // menuStrip1
         // 
@@ -499,11 +874,228 @@ partial class TableForm
         button3.Text = "Gộp bàn";
         button3.UseVisualStyleBackColor = false;
         // 
+        // groupBox1
+        // 
+        groupBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
+        groupBox1.Controls.Add(flpSanThuong);
+        groupBox1.Controls.Add(label3);
+        groupBox1.Controls.Add(label2);
+        groupBox1.Controls.Add(label1);
+        groupBox1.Controls.Add(panel2);
+        groupBox1.Controls.Add(panel1);
+        groupBox1.Location = new System.Drawing.Point(667, 182);
+        groupBox1.Name = "groupBox1";
+        groupBox1.Size = new System.Drawing.Size(121, 102);
+        groupBox1.TabIndex = 5;
+        groupBox1.TabStop = false;
+        groupBox1.Text = "Trạng thái";
+        groupBox1.Enter += groupBox1_Enter;
+        // 
+        // flpSanThuong
+        // 
+        flpSanThuong.BackColor = System.Drawing.Color.LightSteelBlue;
+        flpSanThuong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        flpSanThuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        flpSanThuong.Location = new System.Drawing.Point(9, 73);
+        flpSanThuong.Name = "flpSanThuong";
+        flpSanThuong.Size = new System.Drawing.Size(27, 19);
+        flpSanThuong.TabIndex = 2;
+        // 
+        // label3
+        // 
+        label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label3.Location = new System.Drawing.Point(38, 73);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(77, 19);
+        label3.TabIndex = 4;
+        label3.Text = ": Bàn gộp";
+        label3.Click += label3_Click;
+        // 
+        // label2
+        // 
+        label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label2.Location = new System.Drawing.Point(38, 48);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(77, 19);
+        label2.TabIndex = 3;
+        label2.Text = ": Còn trống";
+        // 
+        // label1
+        // 
+        label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label1.Location = new System.Drawing.Point(38, 23);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(77, 19);
+        label1.TabIndex = 2;
+        label1.Text = ": Hết chỗ";
+        // 
+        // panel2
+        // 
+        panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+        panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        panel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        panel2.Location = new System.Drawing.Point(9, 48);
+        panel2.Name = "panel2";
+        panel2.Size = new System.Drawing.Size(27, 19);
+        panel2.TabIndex = 1;
+        // 
+        // panel1
+        // 
+        panel1.BackColor = System.Drawing.Color.RosyBrown;
+        panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        panel1.Location = new System.Drawing.Point(9, 23);
+        panel1.Name = "panel1";
+        panel1.Size = new System.Drawing.Size(27, 19);
+        panel1.TabIndex = 0;
+        panel1.Paint += panel1_Paint;
+        // 
+        // button44
+        // 
+        button44.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button44.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button44.Image = ((System.Drawing.Image)resources.GetObject("button44.Image"));
+        button44.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button44.Location = new System.Drawing.Point(3, 3);
+        button44.Name = "button44";
+        button44.Size = new System.Drawing.Size(112, 87);
+        button44.TabIndex = 61;
+        button44.Text = "Bàn 1";
+        button44.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button44.UseVisualStyleBackColor = false;
+        // 
+        // button45
+        // 
+        button45.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button45.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button45.Image = ((System.Drawing.Image)resources.GetObject("button45.Image"));
+        button45.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button45.Location = new System.Drawing.Point(121, 3);
+        button45.Name = "button45";
+        button45.Size = new System.Drawing.Size(112, 87);
+        button45.TabIndex = 60;
+        button45.Text = "Bàn 2";
+        button45.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button45.UseVisualStyleBackColor = false;
+        // 
+        // button46
+        // 
+        button46.BackColor = System.Drawing.Color.RosyBrown;
+        button46.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button46.Image = ((System.Drawing.Image)resources.GetObject("button46.Image"));
+        button46.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button46.Location = new System.Drawing.Point(239, 3);
+        button46.Name = "button46";
+        button46.Size = new System.Drawing.Size(112, 87);
+        button46.TabIndex = 59;
+        button46.Text = "Bàn 3";
+        button46.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button46.UseVisualStyleBackColor = false;
+        // 
+        // button47
+        // 
+        button47.BackColor = System.Drawing.Color.LightSteelBlue;
+        button47.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button47.Image = ((System.Drawing.Image)resources.GetObject("button47.Image"));
+        button47.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button47.Location = new System.Drawing.Point(357, 3);
+        button47.Name = "button47";
+        button47.Size = new System.Drawing.Size(112, 87);
+        button47.TabIndex = 62;
+        button47.Text = "Bàn 4";
+        button47.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button47.UseVisualStyleBackColor = false;
+        // 
+        // button48
+        // 
+        button48.BackColor = System.Drawing.Color.LightSteelBlue;
+        button48.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button48.Image = ((System.Drawing.Image)resources.GetObject("button48.Image"));
+        button48.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button48.Location = new System.Drawing.Point(475, 3);
+        button48.Name = "button48";
+        button48.Size = new System.Drawing.Size(112, 87);
+        button48.TabIndex = 78;
+        button48.Text = "Bàn 5";
+        button48.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button48.UseVisualStyleBackColor = false;
+        // 
+        // button49
+        // 
+        button49.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button49.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button49.Image = ((System.Drawing.Image)resources.GetObject("button49.Image"));
+        button49.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button49.Location = new System.Drawing.Point(3, 96);
+        button49.Name = "button49";
+        button49.Size = new System.Drawing.Size(112, 87);
+        button49.TabIndex = 77;
+        button49.Text = "Bàn 6";
+        button49.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button49.UseVisualStyleBackColor = false;
+        // 
+        // button50
+        // 
+        button50.BackColor = System.Drawing.Color.RosyBrown;
+        button50.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button50.Image = ((System.Drawing.Image)resources.GetObject("button50.Image"));
+        button50.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button50.Location = new System.Drawing.Point(121, 96);
+        button50.Name = "button50";
+        button50.Size = new System.Drawing.Size(112, 87);
+        button50.TabIndex = 76;
+        button50.Text = "Bàn 7";
+        button50.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button50.UseVisualStyleBackColor = false;
+        // 
+        // button51
+        // 
+        button51.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button51.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button51.Image = ((System.Drawing.Image)resources.GetObject("button51.Image"));
+        button51.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button51.Location = new System.Drawing.Point(239, 96);
+        button51.Name = "button51";
+        button51.Size = new System.Drawing.Size(112, 87);
+        button51.TabIndex = 75;
+        button51.Text = "Bàn 8";
+        button51.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button51.UseVisualStyleBackColor = false;
+        // 
+        // button52
+        // 
+        button52.BackColor = System.Drawing.Color.RosyBrown;
+        button52.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button52.Image = ((System.Drawing.Image)resources.GetObject("button52.Image"));
+        button52.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button52.Location = new System.Drawing.Point(357, 96);
+        button52.Name = "button52";
+        button52.Size = new System.Drawing.Size(112, 87);
+        button52.TabIndex = 74;
+        button52.Text = "Bàn 9";
+        button52.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button52.UseVisualStyleBackColor = false;
+        // 
+        // button53
+        // 
+        button53.BackColor = System.Drawing.Color.DarkSeaGreen;
+        button53.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button53.Image = ((System.Drawing.Image)resources.GetObject("button53.Image"));
+        button53.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+        button53.Location = new System.Drawing.Point(475, 96);
+        button53.Name = "button53";
+        button53.Size = new System.Drawing.Size(112, 87);
+        button53.TabIndex = 73;
+        button53.Text = "Bàn 10";
+        button53.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        button53.UseVisualStyleBackColor = false;
+        // 
         // TableForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(groupBox1);
         Controls.Add(button3);
         Controls.Add(button2);
         Controls.Add(button1);
@@ -515,11 +1107,65 @@ partial class TableForm
         tabControl1.ResumeLayout(false);
         tabPage1.ResumeLayout(false);
         flpTang1.ResumeLayout(false);
+        tabPage2.ResumeLayout(false);
+        flpTang2.ResumeLayout(false);
+        tabPage3.ResumeLayout(false);
+        panel4.ResumeLayout(false);
         menuStrip1.ResumeLayout(false);
         menuStrip1.PerformLayout();
+        groupBox1.ResumeLayout(false);
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.Button button44;
+    private System.Windows.Forms.Button button45;
+    private System.Windows.Forms.Button button46;
+    private System.Windows.Forms.Button button47;
+    private System.Windows.Forms.Button button48;
+    private System.Windows.Forms.Button button49;
+    private System.Windows.Forms.Button button50;
+    private System.Windows.Forms.Button button51;
+    private System.Windows.Forms.Button button52;
+    private System.Windows.Forms.Button button53;
+
+    private System.Windows.Forms.Panel panel4;
+
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.FlowLayoutPanel flpSanThuong;
+
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Label label2;
+
+    private System.Windows.Forms.Panel panel2;
+
+    private System.Windows.Forms.Panel panel1;
+
+    private System.Windows.Forms.GroupBox groupBox1;
+
+    private System.Windows.Forms.Button button29;
+    private System.Windows.Forms.Button button30;
+    private System.Windows.Forms.Button button31;
+    private System.Windows.Forms.Button button32;
+    private System.Windows.Forms.Button button33;
+    private System.Windows.Forms.Button button34;
+    private System.Windows.Forms.Button button35;
+    private System.Windows.Forms.Button button36;
+    private System.Windows.Forms.Button button37;
+    private System.Windows.Forms.Button button38;
+    private System.Windows.Forms.Button button39;
+    private System.Windows.Forms.Button button40;
+    private System.Windows.Forms.Button button41;
+    private System.Windows.Forms.Button button42;
+    private System.Windows.Forms.Button button43;
+
+    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Button button8;
+    private System.Windows.Forms.Button button11;
+    private System.Windows.Forms.Button button27;
+    private System.Windows.Forms.Button button28;
+
+    private System.Windows.Forms.FlowLayoutPanel flpTang2;
 
     private System.Windows.Forms.Button button24;
     private System.Windows.Forms.Button button25;
