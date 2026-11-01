@@ -12,3 +12,4 @@ D:\QuanLyCaPhe\QuanLyCaPhe\QuanLyCaPhe\obj\Debug\net10.0-windows\refint\QuanLyCa
 D:\QuanLyCaPhe\QuanLyCaPhe\QuanLyCaPhe\obj\Debug\net10.0-windows\QuanLyCaPhe.pdb
 D:\QuanLyCaPhe\QuanLyCaPhe\QuanLyCaPhe\obj\Debug\net10.0-windows\QuanLyCaPhe.genruntimeconfig.cache
 D:\QuanLyCaPhe\QuanLyCaPhe\QuanLyCaPhe\obj\Debug\net10.0-windows\ref\QuanLyCaPhe.dll
+D:\QuanLyCaPhe\QuanLyCaPhe\QuanLyCaPhe\obj\Debug\net10.0-windows\QuanLyCaPhe.sourcelink.json
