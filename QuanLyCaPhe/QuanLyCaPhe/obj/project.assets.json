@@ -8,19 +8,19 @@
     "net10.0-windows": []
   },
   "packageFolders": {
-    "C:\\Users\\Dell\\.nuget\\packages\\": {}
+    "C:\\Users\\luatd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
+      "projectUniqueName": "D:\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
       "projectName": "QuanLyCaPhe",
-      "projectPath": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
-      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\obj\\",
+      "projectPath": "D:\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
+      "packagesPath": "C:\\Users\\luatd\\.nuget\\packages\\",
+      "outputPath": "D:\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\luatd\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0-windows"
@@ -70,7 +70,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Dell\\.dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Users\\luatd\\.dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
