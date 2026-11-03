@@ -9,10 +9,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Update="frmLogin.cs">
+      <Compile Update="View\frmTableDetail.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="frmLichSuHoaDon.cs">
+      <Compile Update="View\frmLogin.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="View\frmLichSuHoaDon.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="View\Form1.cs">
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>
