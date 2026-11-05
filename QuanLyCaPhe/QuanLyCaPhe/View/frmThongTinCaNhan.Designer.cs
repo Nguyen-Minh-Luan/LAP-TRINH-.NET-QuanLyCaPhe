@@ -34,6 +34,11 @@ partial class frmThongTinCaNhan
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongTinCaNhan));
         menuStrip1 = new System.Windows.Forms.MenuStrip();
         panel1 = new System.Windows.Forms.Panel();
+        panel8 = new System.Windows.Forms.Panel();
+        label14 = new System.Windows.Forms.Label();
+        label13 = new System.Windows.Forms.Label();
+        pictureBox6 = new System.Windows.Forms.PictureBox();
+        pictureBox5 = new System.Windows.Forms.PictureBox();
         button2 = new System.Windows.Forms.Button();
         pictureBox4 = new System.Windows.Forms.PictureBox();
         panel7 = new System.Windows.Forms.Panel();
@@ -52,10 +57,16 @@ partial class frmThongTinCaNhan
         pictureBox1 = new System.Windows.Forms.PictureBox();
         label1 = new System.Windows.Forms.Label();
         panel2 = new System.Windows.Forms.Panel();
+        dataGridView1 = new System.Windows.Forms.DataGridView();
+        datework = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        enddate = new System.Windows.Forms.DataGridViewTextBoxColumn();
         panel5 = new System.Windows.Forms.Panel();
         pictureBox2 = new System.Windows.Forms.PictureBox();
         label2 = new System.Windows.Forms.Label();
         panel3 = new System.Windows.Forms.Panel();
+        button3 = new System.Windows.Forms.Button();
         textBox6 = new System.Windows.Forms.TextBox();
         label12 = new System.Windows.Forms.Label();
         textBox5 = new System.Windows.Forms.TextBox();
@@ -65,13 +76,16 @@ partial class frmThongTinCaNhan
         panel6 = new System.Windows.Forms.Panel();
         pictureBox3 = new System.Windows.Forms.PictureBox();
         label3 = new System.Windows.Forms.Label();
-        button3 = new System.Windows.Forms.Button();
         panel1.SuspendLayout();
+        panel8.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
         panel7.SuspendLayout();
         panel4.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         panel2.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
         panel5.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         panel3.SuspendLayout();
@@ -84,13 +98,14 @@ partial class frmThongTinCaNhan
         menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
         menuStrip1.Location = new System.Drawing.Point(0, 0);
         menuStrip1.Name = "menuStrip1";
-        menuStrip1.Size = new System.Drawing.Size(971, 24);
+        menuStrip1.Size = new System.Drawing.Size(1159, 24);
         menuStrip1.TabIndex = 0;
         menuStrip1.Text = "menuStrip1";
         // 
         // panel1
         // 
         panel1.BackColor = System.Drawing.Color.Silver;
+        panel1.Controls.Add(panel8);
         panel1.Controls.Add(button2);
         panel1.Controls.Add(pictureBox4);
         panel1.Controls.Add(panel7);
@@ -109,6 +124,56 @@ partial class frmThongTinCaNhan
         panel1.Size = new System.Drawing.Size(467, 557);
         panel1.TabIndex = 1;
         // 
+        // panel8
+        // 
+        panel8.BackColor = System.Drawing.Color.Moccasin;
+        panel8.Controls.Add(label14);
+        panel8.Controls.Add(label13);
+        panel8.Controls.Add(pictureBox6);
+        panel8.Controls.Add(pictureBox5);
+        panel8.Location = new System.Drawing.Point(221, 196);
+        panel8.Name = "panel8";
+        panel8.Size = new System.Drawing.Size(228, 61);
+        panel8.TabIndex = 13;
+        // 
+        // label14
+        // 
+        label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label14.Location = new System.Drawing.Point(93, 36);
+        label14.Name = "label14";
+        label14.Size = new System.Drawing.Size(133, 22);
+        label14.TabIndex = 3;
+        label14.Text = "17:00:25";
+        // 
+        // label13
+        // 
+        label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label13.Location = new System.Drawing.Point(92, 3);
+        label13.Name = "label13";
+        label13.Size = new System.Drawing.Size(133, 22);
+        label13.TabIndex = 2;
+        label13.Text = "05/11/2026";
+        // 
+        // pictureBox6
+        // 
+        pictureBox6.Image = ((System.Drawing.Image)resources.GetObject("pictureBox6.Image"));
+        pictureBox6.Location = new System.Drawing.Point(15, 36);
+        pictureBox6.Name = "pictureBox6";
+        pictureBox6.Size = new System.Drawing.Size(23, 22);
+        pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+        pictureBox6.TabIndex = 1;
+        pictureBox6.TabStop = false;
+        // 
+        // pictureBox5
+        // 
+        pictureBox5.Image = ((System.Drawing.Image)resources.GetObject("pictureBox5.Image"));
+        pictureBox5.Location = new System.Drawing.Point(15, 3);
+        pictureBox5.Name = "pictureBox5";
+        pictureBox5.Size = new System.Drawing.Size(23, 22);
+        pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+        pictureBox5.TabIndex = 0;
+        pictureBox5.TabStop = false;
+        // 
         // button2
         // 
         button2.BackColor = System.Drawing.Color.DarkGreen;
@@ -116,7 +181,7 @@ partial class frmThongTinCaNhan
         button2.FlatAppearance.BorderSize = 2;
         button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         button2.ForeColor = System.Drawing.Color.White;
-        button2.Location = new System.Drawing.Point(19, 221);
+        button2.Location = new System.Drawing.Point(19, 196);
         button2.Name = "button2";
         button2.Size = new System.Drawing.Size(153, 34);
         button2.TabIndex = 12;
@@ -125,7 +190,7 @@ partial class frmThongTinCaNhan
         // 
         // pictureBox4
         // 
-        pictureBox4.Location = new System.Drawing.Point(20, 83);
+        pictureBox4.Location = new System.Drawing.Point(20, 58);
         pictureBox4.Name = "pictureBox4";
         pictureBox4.Size = new System.Drawing.Size(152, 132);
         pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -137,7 +202,7 @@ partial class frmThongTinCaNhan
         panel7.BackColor = System.Drawing.Color.Moccasin;
         panel7.Controls.Add(label9);
         panel7.Controls.Add(label8);
-        panel7.Location = new System.Drawing.Point(220, 87);
+        panel7.Location = new System.Drawing.Point(220, 58);
         panel7.Name = "panel7";
         panel7.Size = new System.Drawing.Size(230, 128);
         panel7.TabIndex = 10;
@@ -258,9 +323,9 @@ partial class frmThongTinCaNhan
         // pictureBox1
         // 
         pictureBox1.Image = ((System.Drawing.Image)resources.GetObject("pictureBox1.Image"));
-        pictureBox1.Location = new System.Drawing.Point(46, 6);
+        pictureBox1.Location = new System.Drawing.Point(91, 3);
         pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new System.Drawing.Size(63, 46);
+        pictureBox1.Size = new System.Drawing.Size(63, 43);
         pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         pictureBox1.TabIndex = 1;
         pictureBox1.TabStop = false;
@@ -269,37 +334,82 @@ partial class frmThongTinCaNhan
         // 
         label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label1.ForeColor = System.Drawing.Color.White;
-        label1.Location = new System.Drawing.Point(130, 6);
+        label1.Location = new System.Drawing.Point(160, 6);
         label1.Name = "label1";
-        label1.Size = new System.Drawing.Size(272, 46);
+        label1.Size = new System.Drawing.Size(272, 37);
         label1.TabIndex = 1;
         label1.Text = "Thông tin cá nhân";
         // 
         // panel2
         // 
         panel2.BackColor = System.Drawing.Color.Silver;
-        panel2.Controls.Add(panel5);
+        panel2.Controls.Add(dataGridView1);
         panel2.Location = new System.Drawing.Point(485, 42);
         panel2.Name = "panel2";
-        panel2.Size = new System.Drawing.Size(474, 241);
+        panel2.Size = new System.Drawing.Size(664, 241);
         panel2.TabIndex = 2;
+        // 
+        // dataGridView1
+        // 
+        dataGridView1.BackgroundColor = System.Drawing.Color.White;
+        dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { datework, shift, startdate, enddate });
+        dataGridView1.Location = new System.Drawing.Point(0, 58);
+        dataGridView1.Name = "dataGridView1";
+        dataGridView1.RowHeadersWidth = 62;
+        dataGridView1.Size = new System.Drawing.Size(661, 183);
+        dataGridView1.TabIndex = 2;
+        dataGridView1.Text = "dataGridView1";
+        dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+        // 
+        // datework
+        // 
+        datework.HeaderText = "Ngày làm";
+        datework.MinimumWidth = 8;
+        datework.Name = "datework";
+        datework.ReadOnly = true;
+        datework.Width = 150;
+        // 
+        // shift
+        // 
+        shift.HeaderText = "Ca làm";
+        shift.MinimumWidth = 8;
+        shift.Name = "shift";
+        shift.ReadOnly = true;
+        shift.Width = 150;
+        // 
+        // startdate
+        // 
+        startdate.HeaderText = "Giờ bắt đầu";
+        startdate.MinimumWidth = 8;
+        startdate.Name = "startdate";
+        startdate.ReadOnly = true;
+        startdate.Width = 150;
+        // 
+        // enddate
+        // 
+        enddate.HeaderText = "Giờ kết thúc";
+        enddate.MinimumWidth = 8;
+        enddate.Name = "enddate";
+        enddate.ReadOnly = true;
+        enddate.Width = 150;
         // 
         // panel5
         // 
         panel5.BackColor = System.Drawing.Color.Brown;
         panel5.Controls.Add(pictureBox2);
         panel5.Controls.Add(label2);
-        panel5.Location = new System.Drawing.Point(0, 0);
+        panel5.Location = new System.Drawing.Point(485, 42);
         panel5.Name = "panel5";
-        panel5.Size = new System.Drawing.Size(474, 52);
+        panel5.Size = new System.Drawing.Size(664, 52);
         panel5.TabIndex = 1;
         // 
         // pictureBox2
         // 
         pictureBox2.Image = ((System.Drawing.Image)resources.GetObject("pictureBox2.Image"));
-        pictureBox2.Location = new System.Drawing.Point(59, 6);
+        pictureBox2.Location = new System.Drawing.Point(203, 6);
         pictureBox2.Name = "pictureBox2";
-        pictureBox2.Size = new System.Drawing.Size(48, 46);
+        pictureBox2.Size = new System.Drawing.Size(42, 43);
         pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         pictureBox2.TabIndex = 1;
         pictureBox2.TabStop = false;
@@ -308,9 +418,9 @@ partial class frmThongTinCaNhan
         // 
         label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label2.ForeColor = System.Drawing.Color.White;
-        label2.Location = new System.Drawing.Point(136, 6);
+        label2.Location = new System.Drawing.Point(263, 6);
         label2.Name = "label2";
-        label2.Size = new System.Drawing.Size(298, 46);
+        label2.Size = new System.Drawing.Size(298, 37);
         label2.TabIndex = 2;
         label2.Text = "Lịch làm việc cá nhân";
         // 
@@ -326,14 +436,30 @@ partial class frmThongTinCaNhan
         panel3.Controls.Add(label10);
         panel3.Location = new System.Drawing.Point(485, 300);
         panel3.Name = "panel3";
-        panel3.Size = new System.Drawing.Size(474, 299);
+        panel3.Size = new System.Drawing.Size(661, 299);
         panel3.TabIndex = 3;
+        // 
+        // button3
+        // 
+        button3.BackColor = System.Drawing.Color.DarkRed;
+        button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+        button3.FlatAppearance.BorderSize = 0;
+        button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)0)), ((int)((byte)0)));
+        button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)64)), ((int)((byte)0)));
+        button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button3.ForeColor = System.Drawing.Color.White;
+        button3.Location = new System.Drawing.Point(203, 233);
+        button3.Name = "button3";
+        button3.Size = new System.Drawing.Size(305, 53);
+        button3.TabIndex = 13;
+        button3.Text = "Cập nhật mật khẩu";
+        button3.UseVisualStyleBackColor = false;
         // 
         // textBox6
         // 
-        textBox6.Location = new System.Drawing.Point(191, 171);
+        textBox6.Location = new System.Drawing.Point(273, 171);
         textBox6.Name = "textBox6";
-        textBox6.Size = new System.Drawing.Size(280, 31);
+        textBox6.Size = new System.Drawing.Size(364, 31);
         textBox6.TabIndex = 17;
         // 
         // label12
@@ -347,9 +473,9 @@ partial class frmThongTinCaNhan
         // 
         // textBox5
         // 
-        textBox5.Location = new System.Drawing.Point(191, 119);
+        textBox5.Location = new System.Drawing.Point(273, 119);
         textBox5.Name = "textBox5";
-        textBox5.Size = new System.Drawing.Size(280, 31);
+        textBox5.Size = new System.Drawing.Size(364, 31);
         textBox5.TabIndex = 15;
         // 
         // label11
@@ -363,9 +489,9 @@ partial class frmThongTinCaNhan
         // 
         // textBox4
         // 
-        textBox4.Location = new System.Drawing.Point(191, 65);
+        textBox4.Location = new System.Drawing.Point(273, 65);
         textBox4.Name = "textBox4";
-        textBox4.Size = new System.Drawing.Size(280, 31);
+        textBox4.Size = new System.Drawing.Size(364, 31);
         textBox4.TabIndex = 13;
         // 
         // label10
@@ -384,15 +510,15 @@ partial class frmThongTinCaNhan
         panel6.Controls.Add(label3);
         panel6.Location = new System.Drawing.Point(485, 300);
         panel6.Name = "panel6";
-        panel6.Size = new System.Drawing.Size(474, 49);
+        panel6.Size = new System.Drawing.Size(661, 49);
         panel6.TabIndex = 2;
         // 
         // pictureBox3
         // 
         pictureBox3.Image = ((System.Drawing.Image)resources.GetObject("pictureBox3.Image"));
-        pictureBox3.Location = new System.Drawing.Point(69, 3);
+        pictureBox3.Location = new System.Drawing.Point(203, 0);
         pictureBox3.Name = "pictureBox3";
-        pictureBox3.Size = new System.Drawing.Size(48, 46);
+        pictureBox3.Size = new System.Drawing.Size(47, 43);
         pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         pictureBox3.TabIndex = 3;
         pictureBox3.TabStop = false;
@@ -401,34 +527,20 @@ partial class frmThongTinCaNhan
         // 
         label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label3.ForeColor = System.Drawing.Color.White;
-        label3.Location = new System.Drawing.Point(136, 3);
+        label3.Location = new System.Drawing.Point(263, 4);
         label3.Name = "label3";
-        label3.Size = new System.Drawing.Size(204, 46);
+        label3.Size = new System.Drawing.Size(204, 45);
         label3.TabIndex = 3;
         label3.Text = "Đổi mật khẩu";
-        // 
-        // button3
-        // 
-        button3.BackColor = System.Drawing.Color.DarkRed;
-        button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-        button3.FlatAppearance.BorderSize = 0;
-        button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)0)), ((int)((byte)0)));
-        button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)64)), ((int)((byte)0)));
-        button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button3.ForeColor = System.Drawing.Color.White;
-        button3.Location = new System.Drawing.Point(92, 233);
-        button3.Name = "button3";
-        button3.Size = new System.Drawing.Size(305, 53);
-        button3.TabIndex = 13;
-        button3.Text = "Đổi ";
-        button3.UseVisualStyleBackColor = false;
+        label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
         // 
         // frmThongTinCaNhan
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(971, 611);
+        ClientSize = new System.Drawing.Size(1159, 611);
         Controls.Add(panel6);
+        Controls.Add(panel5);
         Controls.Add(panel3);
         Controls.Add(panel2);
         Controls.Add(panel1);
@@ -437,11 +549,15 @@ partial class frmThongTinCaNhan
         Text = "Thông tin cá nhân";
         panel1.ResumeLayout(false);
         panel1.PerformLayout();
+        panel8.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
         panel7.ResumeLayout(false);
         panel4.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         panel2.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
         panel5.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
         panel3.ResumeLayout(false);
@@ -451,6 +567,21 @@ partial class frmThongTinCaNhan
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.DataGridViewTextBoxColumn datework;
+    private System.Windows.Forms.DataGridViewTextBoxColumn shift;
+    private System.Windows.Forms.DataGridViewTextBoxColumn startdate;
+    private System.Windows.Forms.DataGridViewTextBoxColumn enddate;
+
+    private System.Windows.Forms.DataGridView dataGridView1;
+
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.Label label14;
+
+    private System.Windows.Forms.PictureBox pictureBox5;
+    private System.Windows.Forms.PictureBox pictureBox6;
+
+    private System.Windows.Forms.Panel panel8;
 
     private System.Windows.Forms.Button button3;
 
