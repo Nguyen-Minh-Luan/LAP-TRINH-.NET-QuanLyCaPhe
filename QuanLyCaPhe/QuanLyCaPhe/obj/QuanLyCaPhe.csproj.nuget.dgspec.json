@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LAPTRINH.NET-QuanLyCaPhe\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj": {}
+    "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj": {}
   },
   "projects": {
-    "D:\\LAPTRINH.NET-QuanLyCaPhe\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj": {
+    "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LAPTRINH.NET-QuanLyCaPhe\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
+        "projectUniqueName": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
         "projectName": "QuanLyCaPhe",
-        "projectPath": "D:\\LAPTRINH.NET-QuanLyCaPhe\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\LAPTRINH.NET-QuanLyCaPhe\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\obj\\",
+        "projectPath": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0-windows"
@@ -64,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\ADMIN\\.dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Users\\Dell\\.dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
