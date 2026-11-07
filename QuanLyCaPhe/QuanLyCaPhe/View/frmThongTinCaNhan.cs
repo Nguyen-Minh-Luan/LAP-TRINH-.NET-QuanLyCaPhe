@@ -14,4 +14,9 @@ public partial class frmThongTinCaNhan : Form
     {
         throw new System.NotImplementedException();
     }
+
+    private void pictureBox1_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }
