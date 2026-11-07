@@ -6,11 +6,14 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		System.Windows.Forms.DataVisualization|Any CPU = System.Windows.Forms.DataVisualization|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5C4071C1-BE3F-493C-893D-74CD222B169B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C4071C1-BE3F-493C-893D-74CD222B169B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C4071C1-BE3F-493C-893D-74CD222B169B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C4071C1-BE3F-493C-893D-74CD222B169B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C4071C1-BE3F-493C-893D-74CD222B169B}.System.Windows.Forms.DataVisualization|Any CPU.ActiveCfg = System.Windows.Forms.DataVisualization|Any CPU
+		{5C4071C1-BE3F-493C-893D-74CD222B169B}.System.Windows.Forms.DataVisualization|Any CPU.Build.0 = System.Windows.Forms.DataVisualization|Any CPU
 	EndGlobalSection
 EndGlobal
