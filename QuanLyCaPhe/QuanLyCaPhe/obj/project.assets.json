@@ -8,24 +8,26 @@
     "net10.0-windows": []
   },
   "packageFolders": {
-    "C:\\Users\\Dell\\.nuget\\packages\\": {}
+    "C:\\Users\\mphuc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
+      "projectUniqueName": "D:\\MyFolder\\MyAppProject\\CSharpProject\\ProjectCK\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
       "projectName": "QuanLyCaPhe",
-      "projectPath": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
-      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\SOn\\.net\\LAP-TRINH-.NET-QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe\\obj\\",
+      "projectPath": "D:\\MyFolder\\MyAppProject\\CSharpProject\\ProjectCK\\QuanLyCaPhe\\QuanLyCaPhe\\QuanLyCaPhe.csproj",
+      "packagesPath": "C:\\Users\\mphuc\\.nuget\\packages\\",
+      "outputPath": "D:\\MyFolder\\MyAppProject\\CSharpProject\\ProjectCK\\QuanLyCaPhe\\QuanLyCaPhe\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mphuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0-windows"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -70,7 +72,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Dell\\.dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
