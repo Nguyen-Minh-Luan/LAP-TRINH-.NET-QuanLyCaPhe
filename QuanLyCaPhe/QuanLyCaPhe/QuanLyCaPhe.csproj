@@ -29,6 +29,9 @@
       <Compile Update="View\frmThongKeMonBanChay.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="View\frmQuanLyNhanVien.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>
