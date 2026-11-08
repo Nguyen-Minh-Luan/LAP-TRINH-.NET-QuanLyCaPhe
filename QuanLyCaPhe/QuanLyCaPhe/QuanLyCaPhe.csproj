@@ -32,7 +32,11 @@
       <Compile Update="View\frmQuanLyNhanVien.cs">
         <SubType>Form</SubType>
       </Compile>
+<<<<<<< HEAD
       <Compile Update="View\frmQuanLyCaLam.cs">
+=======
+      <Compile Update="View\popupChuyenBan.cs">
+>>>>>>> d58ff0a (giao dien chuyen ban)
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>

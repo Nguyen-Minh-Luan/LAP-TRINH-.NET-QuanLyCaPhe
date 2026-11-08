@@ -1,3 +1,5 @@
+using QuanLyCaPhe.View;
+
 namespace QuanLyCaPhe;
 
 static class Program
@@ -12,6 +14,6 @@ static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
         /*Application.Run(new Form1());*/
-        Application.Run(new frmTable());
+        Application.Run(new popupChuyenBan());
     }
 }
