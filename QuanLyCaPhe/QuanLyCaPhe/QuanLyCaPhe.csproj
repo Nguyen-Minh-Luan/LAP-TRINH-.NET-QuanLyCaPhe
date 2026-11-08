@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
@@ -32,11 +32,13 @@
       <Compile Update="View\frmQuanLyNhanVien.cs">
         <SubType>Form</SubType>
       </Compile>
-<<<<<<< HEAD
       <Compile Update="View\frmQuanLyCaLam.cs">
-=======
+      <SubType>Form</SubType>
+      </Compile>
       <Compile Update="View\popupChuyenBan.cs">
->>>>>>> d58ff0a (giao dien chuyen ban)
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="View\popupGopBan.cs">
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>
