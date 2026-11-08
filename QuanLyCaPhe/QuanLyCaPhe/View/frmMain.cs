@@ -16,4 +16,24 @@ public partial class frmMain : Form
     {
         throw new System.NotImplementedException();
     }
+
+    private void nhânSựToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void label4_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void label10_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }
