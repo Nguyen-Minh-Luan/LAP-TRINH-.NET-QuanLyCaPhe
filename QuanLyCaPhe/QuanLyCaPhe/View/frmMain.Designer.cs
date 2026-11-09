@@ -54,11 +54,18 @@ partial class frmMain
         panel5 = new System.Windows.Forms.Panel();
         panel4 = new System.Windows.Forms.Panel();
         label2 = new System.Windows.Forms.Label();
+        label11 = new System.Windows.Forms.Label();
+        label12 = new System.Windows.Forms.Label();
+        button2 = new System.Windows.Forms.Button();
+        button3 = new System.Windows.Forms.Button();
+        button4 = new System.Windows.Forms.Button();
+        button5 = new System.Windows.Forms.Button();
         menuStrip1.SuspendLayout();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         panel2.SuspendLayout();
         panel3.SuspendLayout();
+        panel5.SuspendLayout();
         panel4.SuspendLayout();
         SuspendLayout();
         // 
@@ -206,7 +213,7 @@ partial class frmMain
         // 
         // pictureBox1
         // 
-        pictureBox1.Location = new System.Drawing.Point(99, 58);
+        pictureBox1.Location = new System.Drawing.Point(94, 73);
         pictureBox1.Name = "pictureBox1";
         pictureBox1.Size = new System.Drawing.Size(161, 139);
         pictureBox1.TabIndex = 1;
@@ -225,7 +232,7 @@ partial class frmMain
         // 
         label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-        label1.Location = new System.Drawing.Point(120, 0);
+        label1.Location = new System.Drawing.Point(94, 0);
         label1.Name = "label1";
         label1.Size = new System.Drawing.Size(158, 52);
         label1.TabIndex = 0;
@@ -244,6 +251,12 @@ partial class frmMain
         // panel5
         // 
         panel5.BackColor = System.Drawing.Color.White;
+        panel5.Controls.Add(button5);
+        panel5.Controls.Add(button4);
+        panel5.Controls.Add(button3);
+        panel5.Controls.Add(button2);
+        panel5.Controls.Add(label12);
+        panel5.Controls.Add(label11);
         panel5.Location = new System.Drawing.Point(13, 58);
         panel5.Name = "panel5";
         panel5.Size = new System.Drawing.Size(534, 396);
@@ -262,11 +275,79 @@ partial class frmMain
         // 
         label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-        label2.Location = new System.Drawing.Point(180, 0);
+        label2.Location = new System.Drawing.Point(175, 0);
         label2.Name = "label2";
         label2.Size = new System.Drawing.Size(255, 49);
         label2.TabIndex = 0;
         label2.Text = "Khu vực làm việc";
+        // 
+        // label11
+        // 
+        label11.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label11.ForeColor = System.Drawing.Color.Brown;
+        label11.Location = new System.Drawing.Point(88, 15);
+        label11.Name = "label11";
+        label11.Size = new System.Drawing.Size(373, 38);
+        label11.TabIndex = 0;
+        label11.Text = "Chào mừng Nguyễn Văn A";
+        // 
+        // label12
+        // 
+        label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label12.Location = new System.Drawing.Point(90, 64);
+        label12.Name = "label12";
+        label12.Size = new System.Drawing.Size(370, 56);
+        label12.TabIndex = 1;
+        label12.Text = "Chọn chức năng ở thanh menu hoặc các ô dưới để bắt đầu";
+        label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+        // 
+        // button2
+        // 
+        button2.BackColor = System.Drawing.Color.DarkRed;
+        button2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button2.ForeColor = System.Drawing.Color.White;
+        button2.Location = new System.Drawing.Point(35, 139);
+        button2.Name = "button2";
+        button2.Size = new System.Drawing.Size(214, 73);
+        button2.TabIndex = 2;
+        button2.Text = "Sơ đồ bàn và Order";
+        button2.UseVisualStyleBackColor = false;
+        // 
+        // button3
+        // 
+        button3.BackColor = System.Drawing.Color.DarkRed;
+        button3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button3.ForeColor = System.Drawing.Color.White;
+        button3.Location = new System.Drawing.Point(299, 139);
+        button3.Name = "button3";
+        button3.Size = new System.Drawing.Size(208, 73);
+        button3.TabIndex = 3;
+        button3.Text = "Đặt bàn trước";
+        button3.UseVisualStyleBackColor = false;
+        // 
+        // button4
+        // 
+        button4.BackColor = System.Drawing.Color.DarkRed;
+        button4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button4.ForeColor = System.Drawing.Color.White;
+        button4.Location = new System.Drawing.Point(35, 278);
+        button4.Name = "button4";
+        button4.Size = new System.Drawing.Size(214, 73);
+        button4.TabIndex = 4;
+        button4.Text = "Lịch sử hoá đơn";
+        button4.UseVisualStyleBackColor = false;
+        // 
+        // button5
+        // 
+        button5.BackColor = System.Drawing.Color.DarkRed;
+        button5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button5.ForeColor = System.Drawing.Color.White;
+        button5.Location = new System.Drawing.Point(299, 278);
+        button5.Name = "button5";
+        button5.Size = new System.Drawing.Size(208, 73);
+        button5.TabIndex = 5;
+        button5.Text = "Thống kê doanh thu";
+        button5.UseVisualStyleBackColor = false;
         // 
         // frmMain
         // 
@@ -286,10 +367,20 @@ partial class frmMain
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         panel2.ResumeLayout(false);
         panel3.ResumeLayout(false);
+        panel5.ResumeLayout(false);
         panel4.ResumeLayout(false);
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button button3;
+    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Button button5;
+
+    private System.Windows.Forms.Label label12;
+
+    private System.Windows.Forms.Label label11;
 
     private System.Windows.Forms.Button button1;
 
