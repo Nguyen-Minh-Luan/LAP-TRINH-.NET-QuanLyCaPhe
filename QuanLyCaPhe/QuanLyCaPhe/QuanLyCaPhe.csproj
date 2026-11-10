@@ -41,6 +41,9 @@
       <Compile Update="View\popupGopBan.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="View\frmQuanLyDanhMuc.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>
