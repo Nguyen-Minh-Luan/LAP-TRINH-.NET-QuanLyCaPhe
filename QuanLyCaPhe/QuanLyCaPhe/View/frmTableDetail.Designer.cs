@@ -282,6 +282,7 @@ partial class frmTableDetail
         this.btnThanhToan.TabIndex = 5;
         this.btnThanhToan.Text = "Thanh toán";
         this.btnThanhToan.UseVisualStyleBackColor = false;
+        this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
         // 
         // btnQuayLai
         // 

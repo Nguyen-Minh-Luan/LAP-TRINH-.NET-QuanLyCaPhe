@@ -11,4 +11,10 @@ public partial class frmTableDetail : Form
     {
         throw new System.NotImplementedException();
     }
+
+    private void btnThanhToan_Click(object sender, EventArgs e)
+    {
+        frmThanhToan thanhToanForm = new frmThanhToan();
+        thanhToanForm.ShowDialog();
+    }
 }

@@ -44,6 +44,12 @@
       <Compile Update="View\frmPhanCongCaLam.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="View\frmThanhToan.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="View\frmLichSuChuyenBan.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>
