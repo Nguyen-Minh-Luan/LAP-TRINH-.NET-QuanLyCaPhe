@@ -36,6 +36,7 @@ partial class frmThongTinCaNhan
         quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         thứcUốngMónĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         lịchSửHoáĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         panel1 = new System.Windows.Forms.Panel();
         panel8 = new System.Windows.Forms.Panel();
@@ -80,7 +81,6 @@ partial class frmThongTinCaNhan
         panel6 = new System.Windows.Forms.Panel();
         pictureBox3 = new System.Windows.Forms.PictureBox();
         label3 = new System.Windows.Forms.Label();
-        thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         panel1.SuspendLayout();
         panel8.SuspendLayout();
@@ -127,6 +127,12 @@ partial class frmThongTinCaNhan
         lịchSửHoáĐơnToolStripMenuItem.Name = "lịchSửHoáĐơnToolStripMenuItem";
         lịchSửHoáĐơnToolStripMenuItem.Size = new System.Drawing.Size(277, 34);
         lịchSửHoáĐơnToolStripMenuItem.Text = "Lịch sử hoá đơn";
+        // 
+        // thốngKêDoanhThuToolStripMenuItem
+        // 
+        thốngKêDoanhThuToolStripMenuItem.Name = "thốngKêDoanhThuToolStripMenuItem";
+        thốngKêDoanhThuToolStripMenuItem.Size = new System.Drawing.Size(277, 34);
+        thốngKêDoanhThuToolStripMenuItem.Text = "Thống kê doanh thu";
         // 
         // profileToolStripMenuItem
         // 
@@ -567,12 +573,6 @@ partial class frmThongTinCaNhan
         label3.TabIndex = 3;
         label3.Text = "Đổi mật khẩu";
         label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-        // 
-        // thốngKêDoanhThuToolStripMenuItem
-        // 
-        thốngKêDoanhThuToolStripMenuItem.Name = "thốngKêDoanhThuToolStripMenuItem";
-        thốngKêDoanhThuToolStripMenuItem.Size = new System.Drawing.Size(277, 34);
-        thốngKêDoanhThuToolStripMenuItem.Text = "Thống kê doanh thu";
         // 
         // frmThongTinCaNhan
         // 
