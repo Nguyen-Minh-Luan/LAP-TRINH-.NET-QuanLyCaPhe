@@ -27,30 +27,6 @@ public partial class frmLichSuChuyenBan : Form
         // Mặc định lọc 7 ngày gần nhất
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
-
-        // Danh sách bàn lọc
-        cboBan.Items.Clear();
-        cboBan.Items.Add("-- Tất cả bàn --");
-        cboBan.Items.Add("Bàn 01 (Tầng 1)");
-        cboBan.Items.Add("Bàn 02 (Tầng 1)");
-        cboBan.Items.Add("Bàn 03 (Tầng 1)");
-        cboBan.Items.Add("Bàn 04 (Tầng 1)");
-        cboBan.Items.Add("Bàn 05 (Tầng 1)");
-        cboBan.Items.Add("Bàn 06 (Tầng 2)");
-        cboBan.Items.Add("Bàn 07 (Tầng 2)");
-        cboBan.Items.Add("Bàn 08 (Tầng 2)");
-        cboBan.Items.Add("Bàn 09 (Sân vườn)");
-        cboBan.Items.Add("Bàn 10 (Sân vườn)");
-        cboBan.SelectedIndex = 0;
-
-        // Danh sách nhân viên lọc
-        cboNhanVien.Items.Clear();
-        cboNhanVien.Items.Add("-- Tất cả nhân viên --");
-        cboNhanVien.Items.Add("Admin");
-        cboNhanVien.Items.Add("Trần Thị Mai Anh");
-        cboNhanVien.Items.Add("Nguyễn Văn Tuấn");
-        cboNhanVien.Items.Add("Lê Thị Hương");
-        cboNhanVien.SelectedIndex = 0;
     }
 
     private void KhoiTaoDuLieuMau()
@@ -126,7 +102,7 @@ public partial class frmLichSuChuyenBan : Form
                 stt++,
                 item.MaChuyen,
                 item.BanNguon,
-                "➜",
+                "->",
                 item.BanDich,
                 item.ThoiGian.ToString("dd/MM/yyyy HH:mm"),
                 item.NhanVien,
@@ -136,8 +112,6 @@ public partial class frmLichSuChuyenBan : Form
 
             dgvLichSuChuyenBan.Rows[rowIndex].Tag = item;
         }
-
-        lblTongLuotChuyen.Text = $"Tổng số lượt chuyển bàn: {danhSach.Count} lượt";
     }
 
     private void btnTraCuu_Click(object sender, EventArgs e)
@@ -151,8 +125,6 @@ public partial class frmLichSuChuyenBan : Form
             return;
         }
 
-        string banDuocChon = cboBan.SelectedIndex > 0 ? cboBan.SelectedItem.ToString()! : string.Empty;
-        string nhanVienDuocChon = cboNhanVien.SelectedIndex > 0 ? cboNhanVien.SelectedItem.ToString()! : string.Empty;
         string tuKhoa = txtTimKiem.Text.Trim().ToLower();
 
         var ketQua = _danhSachGoc.Where(item =>
@@ -161,32 +133,16 @@ public partial class frmLichSuChuyenBan : Form
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
 
-            // Lọc theo bàn
-            if (!string.IsNullOrEmpty(banDuocChon))
-            {
-                if (!item.BanNguon.Equals(banDuocChon, StringComparison.OrdinalIgnoreCase) &&
-                    !item.BanDich.Equals(banDuocChon, StringComparison.OrdinalIgnoreCase))
-                {
-                    return false;
-                }
-            }
-
-            // Lọc theo nhân viên
-            if (!string.IsNullOrEmpty(nhanVienDuocChon))
-            {
-                if (!item.NhanVien.Equals(nhanVienDuocChon, StringComparison.OrdinalIgnoreCase))
-                    return false;
-            }
-
-            // Lọc theo từ khóa
+            // Lọc theo từ khóa (tìm theo mã chuyển, bàn chuyển đi, bàn chuyển đến, nhân viên, ghi chú)
             if (!string.IsNullOrEmpty(tuKhoa))
             {
                 bool matchMa = item.MaChuyen.ToLower().Contains(tuKhoa);
-                bool matchGhiChu = item.GhiChu.ToLower().Contains(tuKhoa);
                 bool matchBanNguon = item.BanNguon.ToLower().Contains(tuKhoa);
                 bool matchBanDich = item.BanDich.ToLower().Contains(tuKhoa);
+                bool matchNhanVien = item.NhanVien.ToLower().Contains(tuKhoa);
+                bool matchGhiChu = item.GhiChu.ToLower().Contains(tuKhoa);
 
-                if (!matchMa && !matchGhiChu && !matchBanNguon && !matchBanDich)
+                if (!matchMa && !matchBanNguon && !matchBanDich && !matchNhanVien && !matchGhiChu)
                     return false;
             }
 
@@ -200,8 +156,6 @@ public partial class frmLichSuChuyenBan : Form
     {
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
-        cboBan.SelectedIndex = 0;
-        cboNhanVien.SelectedIndex = 0;
         txtTimKiem.Clear();
 
         HienThiDanhSach(_danhSachGoc);
