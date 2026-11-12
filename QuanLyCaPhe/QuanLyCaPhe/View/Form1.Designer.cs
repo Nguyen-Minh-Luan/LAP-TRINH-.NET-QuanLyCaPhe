@@ -1,4 +1,4 @@
-﻿namespace QuanLyCaPhe;
+namespace QuanLyCaPhe;
 
 partial class Form1
 {
@@ -32,6 +32,7 @@ partial class Form1
         components = new System.ComponentModel.Container();
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "Form1";
     }
 
