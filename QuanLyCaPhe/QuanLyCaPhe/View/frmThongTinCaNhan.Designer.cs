@@ -586,6 +586,7 @@ partial class frmThongTinCaNhan
         Controls.Add(panel1);
         Controls.Add(menuStrip1);
         MainMenuStrip = menuStrip1;
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Thông tin cá nhân";
         menuStrip1.ResumeLayout(false);
         menuStrip1.PerformLayout();
