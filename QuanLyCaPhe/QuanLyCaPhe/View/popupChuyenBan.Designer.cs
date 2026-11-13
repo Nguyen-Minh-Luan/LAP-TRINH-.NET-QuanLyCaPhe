@@ -208,7 +208,7 @@ partial class popupChuyenBan
         MinimizeBox = false;
         Name = "popupChuyenBan";
         ShowInTaskbar = false;
-        StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Chuyển Bàn";
         panelHeader.ResumeLayout(false);
         panelContent.ResumeLayout(false);

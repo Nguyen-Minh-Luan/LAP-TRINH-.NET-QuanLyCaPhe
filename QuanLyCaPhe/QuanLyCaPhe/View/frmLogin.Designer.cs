@@ -196,6 +196,7 @@ public partial class frmLogin
         Controls.Add(lblPassword);
         Controls.Add(lblLogin);
         Controls.Add(txtName);
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Đăng nhập";
         Load += frmLogin_Load;
         ((System.ComponentModel.ISupportInitialize)pictureLogin).EndInit();

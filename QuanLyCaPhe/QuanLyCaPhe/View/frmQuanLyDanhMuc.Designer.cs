@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace QuanLyCaPhe.View;
 
@@ -266,6 +266,7 @@ partial class frmQuanLyDanhMuc
         Controls.Add(panel1);
         Controls.Add(menuStrip1);
         MainMenuStrip = menuStrip1;
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Quản lý danh mục";
         menuStrip1.ResumeLayout(false);
         menuStrip1.PerformLayout();

@@ -304,7 +304,7 @@ partial class frmTableDetail
         this.Controls.Add(this.pnlMenu);
         this.Controls.Add(this.menuStrip1);
         this.MainMenuStrip = this.menuStrip1;
-        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         this.Text = "Chi Tiết Đặt Bàn & Gọi Món";
         this.menuStrip1.ResumeLayout(false);
         this.menuStrip1.PerformLayout();

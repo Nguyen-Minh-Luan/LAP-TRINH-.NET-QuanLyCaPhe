@@ -358,8 +358,8 @@ partial class frmMain
         Controls.Add(panel3);
         Controls.Add(panel1);
         Controls.Add(menuStrip1);
-        Location = new System.Drawing.Point(22, 22);
         MainMenuStrip = menuStrip1;
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Trang chủ";
         menuStrip1.ResumeLayout(false);
         menuStrip1.PerformLayout();
