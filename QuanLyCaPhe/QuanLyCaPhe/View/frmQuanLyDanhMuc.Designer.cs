@@ -38,24 +38,33 @@ partial class frmQuanLyDanhMuc
         thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         panel1 = new System.Windows.Forms.Panel();
-        panel2 = new System.Windows.Forms.Panel();
-        label1 = new System.Windows.Forms.Label();
-        label2 = new System.Windows.Forms.Label();
-        label3 = new System.Windows.Forms.Label();
-        textBox1 = new System.Windows.Forms.TextBox();
-        label4 = new System.Windows.Forms.Label();
-        textBox2 = new System.Windows.Forms.TextBox();
-        label5 = new System.Windows.Forms.Label();
-        textBox3 = new System.Windows.Forms.TextBox();
-        panel3 = new System.Windows.Forms.Panel();
-        button1 = new System.Windows.Forms.Button();
-        button2 = new System.Windows.Forms.Button();
-        button3 = new System.Windows.Forms.Button();
         button4 = new System.Windows.Forms.Button();
-        button5 = new System.Windows.Forms.Button();
+        button3 = new System.Windows.Forms.Button();
+        button2 = new System.Windows.Forms.Button();
+        button1 = new System.Windows.Forms.Button();
+        textBox3 = new System.Windows.Forms.TextBox();
+        label5 = new System.Windows.Forms.Label();
+        textBox2 = new System.Windows.Forms.TextBox();
+        label4 = new System.Windows.Forms.Label();
+        textBox1 = new System.Windows.Forms.TextBox();
+        label3 = new System.Windows.Forms.Label();
+        label1 = new System.Windows.Forms.Label();
+        panel2 = new System.Windows.Forms.Panel();
+        panel3 = new System.Windows.Forms.Panel();
+        label2 = new System.Windows.Forms.Label();
+        label6 = new System.Windows.Forms.Label();
+        textBox4 = new System.Windows.Forms.TextBox();
+        button6 = new System.Windows.Forms.Button();
+        dataGridView1 = new System.Windows.Forms.DataGridView();
+        idItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        nameItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        descItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        statusItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
         menuStrip1.SuspendLayout();
         panel1.SuspendLayout();
         panel2.SuspendLayout();
+        panel3.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
         SuspendLayout();
         // 
         // menuStrip1
@@ -101,7 +110,6 @@ partial class frmQuanLyDanhMuc
         // panel1
         // 
         panel1.BackColor = System.Drawing.Color.LightGray;
-        panel1.Controls.Add(button5);
         panel1.Controls.Add(button4);
         panel1.Controls.Add(button3);
         panel1.Controls.Add(button2);
@@ -118,15 +126,104 @@ partial class frmQuanLyDanhMuc
         panel1.Size = new System.Drawing.Size(386, 538);
         panel1.TabIndex = 1;
         // 
-        // panel2
+        // button4
         // 
-        panel2.BackColor = System.Drawing.Color.LightGray;
-        panel2.Controls.Add(panel3);
-        panel2.Controls.Add(label2);
-        panel2.Location = new System.Drawing.Point(424, 47);
-        panel2.Name = "panel2";
-        panel2.Size = new System.Drawing.Size(672, 538);
-        panel2.TabIndex = 2;
+        button4.BackColor = System.Drawing.Color.Firebrick;
+        button4.ForeColor = System.Drawing.Color.White;
+        button4.Location = new System.Drawing.Point(241, 458);
+        button4.Name = "button4";
+        button4.Size = new System.Drawing.Size(135, 48);
+        button4.TabIndex = 10;
+        button4.Text = "Lưu";
+        button4.UseVisualStyleBackColor = false;
+        // 
+        // button3
+        // 
+        button3.BackColor = System.Drawing.Color.Firebrick;
+        button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button3.ForeColor = System.Drawing.Color.White;
+        button3.Location = new System.Drawing.Point(8, 458);
+        button3.Name = "button3";
+        button3.Size = new System.Drawing.Size(135, 48);
+        button3.TabIndex = 9;
+        button3.Text = "Xoá";
+        button3.UseVisualStyleBackColor = false;
+        // 
+        // button2
+        // 
+        button2.BackColor = System.Drawing.Color.Firebrick;
+        button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button2.ForeColor = System.Drawing.Color.White;
+        button2.Location = new System.Drawing.Point(241, 380);
+        button2.Name = "button2";
+        button2.Size = new System.Drawing.Size(135, 48);
+        button2.TabIndex = 8;
+        button2.Text = "Sửa";
+        button2.UseVisualStyleBackColor = false;
+        // 
+        // button1
+        // 
+        button1.BackColor = System.Drawing.Color.Firebrick;
+        button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button1.ForeColor = System.Drawing.Color.White;
+        button1.Location = new System.Drawing.Point(8, 380);
+        button1.Name = "button1";
+        button1.Size = new System.Drawing.Size(135, 48);
+        button1.TabIndex = 7;
+        button1.Text = "Thêm";
+        button1.UseVisualStyleBackColor = false;
+        // 
+        // textBox3
+        // 
+        textBox3.Location = new System.Drawing.Point(17, 236);
+        textBox3.Multiline = true;
+        textBox3.Name = "textBox3";
+        textBox3.Size = new System.Drawing.Size(359, 101);
+        textBox3.TabIndex = 6;
+        // 
+        // label5
+        // 
+        label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label5.Location = new System.Drawing.Point(3, 202);
+        label5.Name = "label5";
+        label5.Size = new System.Drawing.Size(135, 31);
+        label5.TabIndex = 5;
+        label5.Text = "Mô tả :";
+        label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBox2
+        // 
+        textBox2.Location = new System.Drawing.Point(144, 153);
+        textBox2.Name = "textBox2";
+        textBox2.Size = new System.Drawing.Size(232, 31);
+        textBox2.TabIndex = 4;
+        // 
+        // label4
+        // 
+        label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label4.Location = new System.Drawing.Point(0, 153);
+        label4.Name = "label4";
+        label4.Size = new System.Drawing.Size(143, 31);
+        label4.TabIndex = 3;
+        label4.Text = "Tên danh mục :";
+        label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        // 
+        // textBox1
+        // 
+        textBox1.Location = new System.Drawing.Point(144, 100);
+        textBox1.Name = "textBox1";
+        textBox1.Size = new System.Drawing.Size(232, 31);
+        textBox1.TabIndex = 2;
+        // 
+        // label3
+        // 
+        label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label3.Location = new System.Drawing.Point(3, 100);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(135, 31);
+        label3.TabIndex = 1;
+        label3.Text = "Mã danh mục :";
+        label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
         // label1
         // 
@@ -140,6 +237,28 @@ partial class frmQuanLyDanhMuc
         label1.Text = "Thông tin";
         label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
+        // panel2
+        // 
+        panel2.BackColor = System.Drawing.Color.LightGray;
+        panel2.Controls.Add(panel3);
+        panel2.Controls.Add(label2);
+        panel2.Location = new System.Drawing.Point(424, 47);
+        panel2.Name = "panel2";
+        panel2.Size = new System.Drawing.Size(672, 538);
+        panel2.TabIndex = 2;
+        // 
+        // panel3
+        // 
+        panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+        panel3.Controls.Add(dataGridView1);
+        panel3.Controls.Add(button6);
+        panel3.Controls.Add(textBox4);
+        panel3.Controls.Add(label6);
+        panel3.Location = new System.Drawing.Point(0, 75);
+        panel3.Name = "panel3";
+        panel3.Size = new System.Drawing.Size(672, 463);
+        panel3.TabIndex = 2;
+        // 
         // label2
         // 
         label2.BackColor = System.Drawing.Color.Brown;
@@ -152,110 +271,74 @@ partial class frmQuanLyDanhMuc
         label2.Text = "Danh sách danh mục";
         label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
-        // label3
+        // label6
         // 
-        label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label3.Location = new System.Drawing.Point(3, 100);
-        label3.Name = "label3";
-        label3.Size = new System.Drawing.Size(135, 31);
-        label3.TabIndex = 1;
-        label3.Text = "Mã danh mục :";
-        label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        label6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label6.Location = new System.Drawing.Point(12, 19);
+        label6.Name = "label6";
+        label6.Size = new System.Drawing.Size(123, 31);
+        label6.TabIndex = 0;
+        label6.Text = "Tìm kiếm:";
         // 
-        // textBox1
+        // textBox4
         // 
-        textBox1.Location = new System.Drawing.Point(144, 100);
-        textBox1.Name = "textBox1";
-        textBox1.Size = new System.Drawing.Size(239, 31);
-        textBox1.TabIndex = 2;
+        textBox4.Location = new System.Drawing.Point(150, 19);
+        textBox4.Name = "textBox4";
+        textBox4.Size = new System.Drawing.Size(386, 31);
+        textBox4.TabIndex = 1;
         // 
-        // label4
+        // button6
         // 
-        label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label4.Location = new System.Drawing.Point(0, 153);
-        label4.Name = "label4";
-        label4.Size = new System.Drawing.Size(143, 31);
-        label4.TabIndex = 3;
-        label4.Text = "Tên danh mục :";
-        label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        button6.BackColor = System.Drawing.Color.Firebrick;
+        button6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button6.ForeColor = System.Drawing.Color.White;
+        button6.Location = new System.Drawing.Point(542, 14);
+        button6.Name = "button6";
+        button6.Size = new System.Drawing.Size(85, 36);
+        button6.TabIndex = 2;
+        button6.Text = "Tìm";
+        button6.UseVisualStyleBackColor = false;
         // 
-        // textBox2
+        // dataGridView1
         // 
-        textBox2.Location = new System.Drawing.Point(144, 153);
-        textBox2.Name = "textBox2";
-        textBox2.Size = new System.Drawing.Size(239, 31);
-        textBox2.TabIndex = 4;
+        dataGridView1.BackgroundColor = System.Drawing.Color.White;
+        dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { idItems, nameItems, descItems, statusItems });
+        dataGridView1.GridColor = System.Drawing.SystemColors.InfoText;
+        dataGridView1.Location = new System.Drawing.Point(3, 67);
+        dataGridView1.Name = "dataGridView1";
+        dataGridView1.RowHeadersWidth = 62;
+        dataGridView1.Size = new System.Drawing.Size(669, 393);
+        dataGridView1.TabIndex = 3;
+        dataGridView1.Text = "dataGridView1";
         // 
-        // label5
+        // idItems
         // 
-        label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label5.Location = new System.Drawing.Point(3, 202);
-        label5.Name = "label5";
-        label5.Size = new System.Drawing.Size(135, 31);
-        label5.TabIndex = 5;
-        label5.Text = "Mô tả :";
-        label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        idItems.HeaderText = "Mã DM";
+        idItems.MinimumWidth = 8;
+        idItems.Name = "idItems";
+        idItems.Width = 150;
         // 
-        // textBox3
+        // nameItems
         // 
-        textBox3.Location = new System.Drawing.Point(84, 202);
-        textBox3.Multiline = true;
-        textBox3.Name = "textBox3";
-        textBox3.Size = new System.Drawing.Size(292, 101);
-        textBox3.TabIndex = 6;
+        nameItems.HeaderText = "Tên danh mục";
+        nameItems.MinimumWidth = 8;
+        nameItems.Name = "nameItems";
+        nameItems.Width = 150;
         // 
-        // panel3
+        // descItems
         // 
-        panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-        panel3.Location = new System.Drawing.Point(14, 75);
-        panel3.Name = "panel3";
-        panel3.Size = new System.Drawing.Size(645, 463);
-        panel3.TabIndex = 2;
+        descItems.HeaderText = "Mô tả";
+        descItems.MinimumWidth = 8;
+        descItems.Name = "descItems";
+        descItems.Width = 150;
         // 
-        // button1
+        // statusItems
         // 
-        button1.Location = new System.Drawing.Point(8, 336);
-        button1.Name = "button1";
-        button1.Size = new System.Drawing.Size(135, 48);
-        button1.TabIndex = 7;
-        button1.Text = "button1";
-        button1.UseVisualStyleBackColor = true;
-        // 
-        // button2
-        // 
-        button2.Location = new System.Drawing.Point(241, 336);
-        button2.Name = "button2";
-        button2.Size = new System.Drawing.Size(135, 48);
-        button2.TabIndex = 8;
-        button2.Text = "button2";
-        button2.UseVisualStyleBackColor = true;
-        // 
-        // button3
-        // 
-        button3.Location = new System.Drawing.Point(8, 401);
-        button3.Name = "button3";
-        button3.Size = new System.Drawing.Size(135, 48);
-        button3.TabIndex = 9;
-        button3.Text = "button3";
-        button3.UseVisualStyleBackColor = true;
-        // 
-        // button4
-        // 
-        button4.Location = new System.Drawing.Point(241, 401);
-        button4.Name = "button4";
-        button4.Size = new System.Drawing.Size(135, 48);
-        button4.TabIndex = 10;
-        button4.Text = "button4";
-        button4.UseVisualStyleBackColor = true;
-        // 
-        // button5
-        // 
-        button5.Location = new System.Drawing.Point(79, 473);
-        button5.Name = "button5";
-        button5.Size = new System.Drawing.Size(226, 48);
-        button5.TabIndex = 11;
-        button5.Text = "button5";
-        button5.UseVisualStyleBackColor = true;
+        statusItems.HeaderText = "Trạng thái";
+        statusItems.MinimumWidth = 8;
+        statusItems.Name = "statusItems";
+        statusItems.Width = 150;
         // 
         // frmQuanLyDanhMuc
         // 
@@ -273,11 +356,24 @@ partial class frmQuanLyDanhMuc
         panel1.ResumeLayout(false);
         panel1.PerformLayout();
         panel2.ResumeLayout(false);
+        panel3.ResumeLayout(false);
+        panel3.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
 
-    private System.Windows.Forms.Button button5;
+    private System.Windows.Forms.DataGridViewTextBoxColumn idItems;
+    private System.Windows.Forms.DataGridViewTextBoxColumn nameItems;
+    private System.Windows.Forms.DataGridViewTextBoxColumn descItems;
+    private System.Windows.Forms.DataGridViewTextBoxColumn statusItems;
+
+    private System.Windows.Forms.DataGridView dataGridView1;
+
+    private System.Windows.Forms.TextBox textBox4;
+    private System.Windows.Forms.Button button6;
+
+    private System.Windows.Forms.Label label6;
 
     private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button button2;
