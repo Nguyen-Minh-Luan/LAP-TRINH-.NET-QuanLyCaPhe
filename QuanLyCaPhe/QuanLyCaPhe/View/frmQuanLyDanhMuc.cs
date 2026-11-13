@@ -6,4 +6,14 @@ public partial class frmQuanLyDanhMuc : Form
     {
         InitializeComponent();
     }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void button6_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }
