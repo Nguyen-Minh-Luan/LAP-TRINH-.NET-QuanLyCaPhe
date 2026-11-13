@@ -6,4 +6,9 @@ public partial class frmQuanLyKhuVucVaBan : Form
     {
         InitializeComponent();
     }
+
+    private void label8_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }
