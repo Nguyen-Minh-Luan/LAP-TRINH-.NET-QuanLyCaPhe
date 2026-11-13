@@ -53,6 +53,9 @@
       <Compile Update="View\frmQuanLyMonAn.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="View\frmQuanLyKhuVucVaBan.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>
