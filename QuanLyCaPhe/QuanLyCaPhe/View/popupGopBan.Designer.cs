@@ -218,7 +218,7 @@ partial class popupGopBan
         MinimizeBox = false;
         Name = "popupGopBan";
         ShowInTaskbar = false;
-        StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Gộp Bàn";
         panelHeader.ResumeLayout(false);
         panelContent.ResumeLayout(false);

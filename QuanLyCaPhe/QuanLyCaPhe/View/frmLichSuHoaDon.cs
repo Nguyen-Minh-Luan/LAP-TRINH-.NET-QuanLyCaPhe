@@ -28,21 +28,6 @@ public partial class frmLichSuHoaDon : Form
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
 
-        // Danh sách bàn
-        cboBan.Items.Clear();
-        cboBan.Items.Add("-- Tất cả bàn --");
-        cboBan.Items.Add("Bàn 01 (Tầng 1)");
-        cboBan.Items.Add("Bàn 02 (Tầng 1)");
-        cboBan.Items.Add("Bàn 03 (Tầng 1)");
-        cboBan.Items.Add("Bàn 04 (Tầng 1)");
-        cboBan.Items.Add("Bàn 05 (Tầng 1)");
-        cboBan.Items.Add("Bàn 06 (Tầng 2)");
-        cboBan.Items.Add("Bàn 07 (Tầng 2)");
-        cboBan.Items.Add("Bàn 08 (Tầng 2)");
-        cboBan.Items.Add("Bàn 09 (Sân vườn)");
-        cboBan.Items.Add("Bàn 10 (Sân vườn)");
-        cboBan.SelectedIndex = 0;
-
         // Danh sách nhân viên
         cboNhanVien.Items.Clear();
         cboNhanVien.Items.Add("-- Tất cả thu ngân --");
@@ -144,7 +129,6 @@ public partial class frmLichSuHoaDon : Form
     {
         dgvHoaDon.Rows.Clear();
         int stt = 1;
-        decimal tongDoanhThu = 0;
 
         foreach (var item in danhSach)
         {
@@ -158,10 +142,7 @@ public partial class frmLichSuHoaDon : Form
             );
 
             dgvHoaDon.Rows[rowIndex].Tag = item;
-            tongDoanhThu += item.TongTien;
         }
-
-        lblThongKeTong.Text = $"Tổng số: {danhSach.Count} hóa đơn | Tổng doanh thu: {tongDoanhThu:N0} đ";
 
         if (dgvHoaDon.Rows.Count > 0)
         {
@@ -208,7 +189,7 @@ public partial class frmLichSuHoaDon : Form
         }
 
         decimal tienGiam = hoaDon.TienMon * (hoaDon.GiamGiaPhanTram / 100m);
-        lblTienMonVal.Text = hoaDon.TienMon.ToString("N0", CultureInfo.InvariantCulture) + " đ";
+        /*lblTienMonVal.Text = hoaDon.TienMon.ToString("N0", CultureInfo.InvariantCulture) + " đ";*/
         lblGiamGiaVal.Text = $"- {tienGiam:N0} đ ({hoaDon.GiamGiaPhanTram}%)";
         lblHinhThucVal.Text = hoaDon.HinhThucThanhToan;
         lblTongCongVal.Text = hoaDon.TongTien.ToString("N0", CultureInfo.InvariantCulture) + " đ";
@@ -218,7 +199,7 @@ public partial class frmLichSuHoaDon : Form
     {
         lblThongTinChiTietHD.Text = "Hóa đơn: Chưa chọn";
         dgvChiTietHoaDon.Rows.Clear();
-        lblTienMonVal.Text = "0 đ";
+        /*lblTienMonVal.Text = "0 đ";*/
         lblGiamGiaVal.Text = "- 0 đ (0%)";
         lblHinhThucVal.Text = "--";
         lblTongCongVal.Text = "0 đ";
@@ -235,7 +216,6 @@ public partial class frmLichSuHoaDon : Form
             return;
         }
 
-        string banDuocChon = cboBan.SelectedIndex > 0 ? cboBan.SelectedItem.ToString()! : string.Empty;
         string nhanVienDuocChon = cboNhanVien.SelectedIndex > 0 ? cboNhanVien.SelectedItem.ToString()! : string.Empty;
         string tuKhoa = txtTimKiem.Text.Trim().ToLower();
 
@@ -244,13 +224,6 @@ public partial class frmLichSuHoaDon : Form
             // Lọc theo thời gian
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
-
-            // Lọc theo bàn
-            if (!string.IsNullOrEmpty(banDuocChon))
-            {
-                if (!item.TenBan.Equals(banDuocChon, StringComparison.OrdinalIgnoreCase))
-                    return false;
-            }
 
             // Lọc theo nhân viên
             if (!string.IsNullOrEmpty(nhanVienDuocChon))
@@ -280,31 +253,10 @@ public partial class frmLichSuHoaDon : Form
     {
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
-        cboBan.SelectedIndex = 0;
         cboNhanVien.SelectedIndex = 0;
         txtTimKiem.Clear();
 
         HienThiDanhSachHoaDon(_danhSachHoaDonGoc);
-    }
-
-    private void btnInLaiHoaDon_Click(object sender, EventArgs e)
-    {
-        if (dgvHoaDon.SelectedRows.Count == 0)
-        {
-            MessageBox.Show("Vui lòng chọn một hóa đơn để in lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return;
-        }
-
-        var item = dgvHoaDon.SelectedRows[0].Tag as HoaDonLichSuItem;
-        if (item == null)
-            return;
-
-        MessageBox.Show(
-            $"Đã gửi lệnh in lại hóa đơn {item.MaHD} ({item.TenBan}) ra máy in nhiệt K80.\nTổng tiền: {item.TongTien:N0} đ.",
-            "In lại hóa đơn",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information
-        );
     }
 
     private void btnDong_Click(object sender, EventArgs e)
