@@ -119,7 +119,6 @@ public partial class frmLogin
         txtPassword.PlaceholderText = "Nhập mật khẩu...";
         txtPassword.Size = new System.Drawing.Size(579, 37);
         txtPassword.TabIndex = 13;
-        txtPassword.TextChanged += textBox2_TextChanged;
         // 
         // btnLogin
         // 
