@@ -25,4 +25,9 @@ public partial class frmThongKeDoanhThu : Form
     {
         throw new System.NotImplementedException();
     }
+
+    private void btnDong_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
 }
