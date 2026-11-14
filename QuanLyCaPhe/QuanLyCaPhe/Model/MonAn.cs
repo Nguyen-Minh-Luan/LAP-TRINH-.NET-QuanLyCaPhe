@@ -22,4 +22,8 @@ public class MonAn
         DonViTinh = donViTinh;
         TrangThai = trangThai;
     }
+   public override string ToString()
+    {
+        return @$"Mã món: {MaMon} | Danh mục: {MaDanhMuc} | {TenMon} - {DonGia:N0} VNĐ/{DonViTinh} ({TrangThai})";
+    }
 }
