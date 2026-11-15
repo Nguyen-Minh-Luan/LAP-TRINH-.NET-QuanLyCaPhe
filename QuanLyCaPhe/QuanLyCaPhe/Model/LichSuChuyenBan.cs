@@ -3,28 +3,29 @@ namespace QuanLyCaPhe.Model;
 public class LichSuChuyenBan
 {
     public int MaLichSu { get; set; }
-    public int MaBanNguon { get; set; }
-    public int MaBanDich { get; set; }
-    public int MaNhanVien { get; set; }
-    public DateTime ThoiGian { get; set; }
-    public string LoaiThaoTac { get; set; }
+    public int MaHoaDon { get; set; }
+    public int MaBanCu { get; set; }
+    public int MaBanMoi { get; set; }
+    public DateTime ThoiGianChuyen { get; set; }
+    public string? LyDo { get; set; }
 
     public LichSuChuyenBan()
     {
     }
 
-    public LichSuChuyenBan(int maLichSu, int maBanNguon, int maBanDich, int maNhanVien, DateTime thoiGian, string loaiThaoTac)
+    public LichSuChuyenBan(int maLichSu, int maHoaDon, int maBanCu, int maBanMoi, DateTime thoiGianChuyen, string? lyDo = null)
     {
         MaLichSu = maLichSu;
-        MaBanNguon = maBanNguon;
-        MaBanDich = maBanDich;
-        MaNhanVien = maNhanVien;
-        ThoiGian = thoiGian;
-        LoaiThaoTac = loaiThaoTac;
+        MaHoaDon = maHoaDon;
+        MaBanCu = maBanCu;
+        MaBanMoi = maBanMoi;
+        ThoiGianChuyen = thoiGianChuyen;
+        LyDo = lyDo;
     }
 
     public override string ToString()
     {
-        return @$"Mã LS: {MaLichSu} | Bàn {MaBanNguon} -> Bàn {MaBanDich} | NV: {MaNhanVien} | Thời gian: {ThoiGian:dd/MM/yyyy HH:mm} | Thao tác: {LoaiThaoTac}";
+        return $"LS #{MaLichSu} | HĐ #{MaHoaDon} | Bàn #{MaBanCu} -> Bàn #{MaBanMoi} | Lúc: {ThoiGianChuyen:dd/MM/yyyy HH:mm}" +
+               (string.IsNullOrEmpty(LyDo) ? "" : $" | Lý do: {LyDo}");
     }
 }
