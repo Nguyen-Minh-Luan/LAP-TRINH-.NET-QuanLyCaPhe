@@ -7,26 +7,27 @@ public class ChiTietHoaDon
     public int MaMon { get; set; }
     public int SoLuong { get; set; }
     public decimal DonGia { get; set; }
-    public decimal ThanhTien { get; set; }
-    public string GhiChu { get; set; }
+    public string? GhiChu { get; set; }
+
+    public decimal ThanhTien => SoLuong * DonGia;
 
     public ChiTietHoaDon()
     {
     }
 
-    public ChiTietHoaDon(int maChiTiet, int maHoaDon, int maMon, int soLuong, decimal donGia, decimal thanhTien, string ghiChu)
+    public ChiTietHoaDon(int maChiTiet, int maHoaDon, int maMon, int soLuong, decimal donGia, string? ghiChu = null)
     {
         MaChiTiet = maChiTiet;
         MaHoaDon = maHoaDon;
         MaMon = maMon;
         SoLuong = soLuong;
         DonGia = donGia;
-        ThanhTien = thanhTien;
         GhiChu = ghiChu;
     }
 
     public override string ToString()
     {
-        return @$"Mã CT: {MaChiTiet} | HĐ: {MaHoaDon} | Món: {MaMon} | SL: {SoLuong} | Đơn giá: {DonGia:N0} VNĐ | Thành tiền: {ThanhTien:N0} VNĐ | Ghi chú: {GhiChu}";
+        return $"CT #{MaChiTiet} | HĐ #{MaHoaDon} | Món #{MaMon} | SL: {SoLuong} x {DonGia:N0} = {ThanhTien:N0} VNĐ" +
+               (string.IsNullOrEmpty(GhiChu) ? "" : $" ({GhiChu})");
     }
 }
