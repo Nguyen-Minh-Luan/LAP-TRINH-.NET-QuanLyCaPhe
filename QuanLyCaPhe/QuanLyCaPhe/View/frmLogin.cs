@@ -73,7 +73,7 @@ public partial class frmLogin : Form
         if (nv != null)
         {
             MessageBox.Show($"Đăng nhập thành công. Xin chào bạn nhân viên: {textName}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmMain frm = new frmMain();
+            frmMain frm = new frmMain(nv);
             frm.Show();
             this.Hide();
         }
