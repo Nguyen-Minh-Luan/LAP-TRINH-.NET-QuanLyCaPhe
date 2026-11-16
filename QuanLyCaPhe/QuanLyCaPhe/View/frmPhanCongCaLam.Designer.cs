@@ -1,11 +1,15 @@
-namespace QuanLyCaPhe;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace QuanLyCaPhe.View;
 
 partial class frmPhanCongCaLam
 {
     /// <summary>
     ///  Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private IContainer components = null;
 
     /// <summary>
     ///  Clean up any resources being used.
@@ -22,197 +26,430 @@ partial class frmPhanCongCaLam
 
     #region Windows Form Designer generated code
 
-    /// <summary>
-    ///  Required method for Designer support - do not modify
-    ///  the contents of this method with the code editor.
-    /// </summary>
     private void InitializeComponent()
     {
-        gbThongTinPhanCong = new System.Windows.Forms.GroupBox();
-        lblNgayLam = new System.Windows.Forms.Label();
-        dtpNgayLam = new System.Windows.Forms.DateTimePicker();
-        lblNhanVien = new System.Windows.Forms.Label();
-        cbNhanVien = new System.Windows.Forms.ComboBox();
-        lblCaLam = new System.Windows.Forms.Label();
-        cbCaLam = new System.Windows.Forms.ComboBox();
-        lblGhiChu = new System.Windows.Forms.Label();
-        txtGhiChu = new System.Windows.Forms.TextBox();
-        btnPhanCong = new System.Windows.Forms.Button();
-        btnSuaLich = new System.Windows.Forms.Button();
-        btnXoaLich = new System.Windows.Forms.Button();
-        btnLamMoi = new System.Windows.Forms.Button();
-        dgvPhanCong = new System.Windows.Forms.DataGridView();
+        DataGridViewCellStyle dgvCellStyleHeader = new DataGridViewCellStyle();
+        DataGridViewCellStyle dgvCellStyleCenter = new DataGridViewCellStyle();
+
+        lblTieuDe = new Label();
+        gbThongTinPhanCong = new GroupBox();
+        lblNgayLam = new Label();
+        dtpNgayLam = new DateTimePicker();
+        lblNhanVien = new Label();
+        cbNhanVien = new ComboBox();
+        lblCaLam = new Label();
+        cbCaLam = new ComboBox();
+        lblTrangThai = new Label();
+        cbTrangThai = new ComboBox();
+        lblGhiChu = new Label();
+        txtGhiChu = new TextBox();
+        btnPhanCong = new Button();
+        btnSuaLich = new Button();
+        btnXoaLich = new Button();
+        btnLamMoi = new Button();
+
+        gbDanhSachPhanCong = new GroupBox();
+        lblTimKiem = new Label();
+        txtTimKiem = new TextBox();
+        btnTraCuu = new Button();
+        btnTatCa = new Button();
+        dgvPhanCong = new DataGridView();
+        colSTT = new DataGridViewTextBoxColumn();
+        colMaPC = new DataGridViewTextBoxColumn();
+        colNgayLam = new DataGridViewTextBoxColumn();
+        colNhanVien = new DataGridViewTextBoxColumn();
+        colCaLam = new DataGridViewTextBoxColumn();
+        colTrangThai = new DataGridViewTextBoxColumn();
+        colGhiChu = new DataGridViewTextBoxColumn();
+
+        lblTongSoLich = new Label();
+        btnDong = new Button();
+
         gbThongTinPhanCong.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)dgvPhanCong).BeginInit();
+        gbDanhSachPhanCong.SuspendLayout();
+        ((ISupportInitialize)dgvPhanCong).BeginInit();
         SuspendLayout();
+
         // 
-        // gbThongTinPhanCong
+        // lblTieuDe
         // 
+        lblTieuDe.Dock = DockStyle.Top;
+        lblTieuDe.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        lblTieuDe.ForeColor = Color.Blue;
+        lblTieuDe.Location = new Point(0, 0);
+        lblTieuDe.Name = "lblTieuDe";
+        lblTieuDe.Size = new Size(1024, 45);
+        lblTieuDe.TabIndex = 0;
+        lblTieuDe.Text = "PHÂN CÔNG CA LÀM VIỆC";
+        lblTieuDe.TextAlign = ContentAlignment.MiddleCenter;
+
+        // 
+        // gbThongTinPhanCong (Cột trái)
+        // 
+        gbThongTinPhanCong.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gbThongTinPhanCong.Controls.Add(btnLamMoi);
+        gbThongTinPhanCong.Controls.Add(btnXoaLich);
+        gbThongTinPhanCong.Controls.Add(btnSuaLich);
+        gbThongTinPhanCong.Controls.Add(btnPhanCong);
         gbThongTinPhanCong.Controls.Add(txtGhiChu);
         gbThongTinPhanCong.Controls.Add(lblGhiChu);
+        gbThongTinPhanCong.Controls.Add(cbTrangThai);
+        gbThongTinPhanCong.Controls.Add(lblTrangThai);
         gbThongTinPhanCong.Controls.Add(cbCaLam);
         gbThongTinPhanCong.Controls.Add(lblCaLam);
         gbThongTinPhanCong.Controls.Add(cbNhanVien);
         gbThongTinPhanCong.Controls.Add(lblNhanVien);
         gbThongTinPhanCong.Controls.Add(dtpNgayLam);
         gbThongTinPhanCong.Controls.Add(lblNgayLam);
-        gbThongTinPhanCong.Location = new System.Drawing.Point(12, 12);
+        gbThongTinPhanCong.Location = new Point(12, 50);
         gbThongTinPhanCong.Name = "gbThongTinPhanCong";
-        gbThongTinPhanCong.Size = new System.Drawing.Size(776, 120);
-        gbThongTinPhanCong.TabIndex = 0;
+        gbThongTinPhanCong.Size = new Size(360, 480);
+        gbThongTinPhanCong.TabIndex = 1;
         gbThongTinPhanCong.TabStop = false;
-        gbThongTinPhanCong.Text = "Thông tin phân công ca làm";
-        // 
+        gbThongTinPhanCong.Text = "Thông tin phân công";
+
         // lblNgayLam
-        // 
         lblNgayLam.AutoSize = true;
-        lblNgayLam.Location = new System.Drawing.Point(20, 30);
+        lblNgayLam.Location = new Point(16, 25);
         lblNgayLam.Name = "lblNgayLam";
-        lblNgayLam.Size = new System.Drawing.Size(61, 15);
+        lblNgayLam.Size = new Size(84, 15);
         lblNgayLam.TabIndex = 0;
-        lblNgayLam.Text = "Ngày làm:";
-        // 
+        lblNgayLam.Text = "Ngày làm việc:";
+
         // dtpNgayLam
-        // 
-        dtpNgayLam.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-        dtpNgayLam.Location = new System.Drawing.Point(90, 27);
+        dtpNgayLam.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        dtpNgayLam.CustomFormat = "dd/MM/yyyy";
+        dtpNgayLam.Format = DateTimePickerFormat.Custom;
+        dtpNgayLam.Location = new Point(16, 45);
         dtpNgayLam.Name = "dtpNgayLam";
-        dtpNgayLam.Size = new System.Drawing.Size(150, 23);
+        dtpNgayLam.Size = new Size(328, 23);
         dtpNgayLam.TabIndex = 1;
-        // 
+
         // lblNhanVien
-        // 
         lblNhanVien.AutoSize = true;
-        lblNhanVien.Location = new System.Drawing.Point(270, 30);
+        lblNhanVien.Location = new Point(16, 77);
         lblNhanVien.Name = "lblNhanVien";
-        lblNhanVien.Size = new System.Drawing.Size(64, 15);
+        lblNhanVien.Size = new Size(64, 15);
         lblNhanVien.TabIndex = 2;
         lblNhanVien.Text = "Nhân viên:";
-        // 
+
         // cbNhanVien
-        // 
+        cbNhanVien.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        cbNhanVien.DropDownStyle = ComboBoxStyle.DropDownList;
         cbNhanVien.FormattingEnabled = true;
-        cbNhanVien.Location = new System.Drawing.Point(340, 27);
+        cbNhanVien.Location = new Point(16, 97);
         cbNhanVien.Name = "cbNhanVien";
-        cbNhanVien.Size = new System.Drawing.Size(160, 23);
+        cbNhanVien.Size = new Size(328, 23);
         cbNhanVien.TabIndex = 3;
-        // 
+
         // lblCaLam
-        // 
         lblCaLam.AutoSize = true;
-        lblCaLam.Location = new System.Drawing.Point(530, 30);
+        lblCaLam.Location = new Point(16, 130);
         lblCaLam.Name = "lblCaLam";
-        lblCaLam.Size = new System.Drawing.Size(47, 15);
+        lblCaLam.Size = new Size(47, 15);
         lblCaLam.TabIndex = 4;
         lblCaLam.Text = "Ca làm:";
-        // 
+
         // cbCaLam
-        // 
+        cbCaLam.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        cbCaLam.DropDownStyle = ComboBoxStyle.DropDownList;
         cbCaLam.FormattingEnabled = true;
-        cbCaLam.Location = new System.Drawing.Point(585, 27);
+        cbCaLam.Location = new Point(16, 150);
         cbCaLam.Name = "cbCaLam";
-        cbCaLam.Size = new System.Drawing.Size(160, 23);
+        cbCaLam.Size = new Size(328, 23);
         cbCaLam.TabIndex = 5;
-        // 
+
+        // lblTrangThai
+        lblTrangThai.AutoSize = true;
+        lblTrangThai.Location = new Point(16, 185);
+        lblTrangThai.Name = "lblTrangThai";
+        lblTrangThai.Size = new Size(62, 15);
+        lblTrangThai.TabIndex = 6;
+        lblTrangThai.Text = "Trạng thái:";
+
+        // cbTrangThai
+        cbTrangThai.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        cbTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbTrangThai.FormattingEnabled = true;
+        cbTrangThai.Location = new Point(16, 205);
+        cbTrangThai.Name = "cbTrangThai";
+        cbTrangThai.Size = new Size(328, 23);
+        cbTrangThai.TabIndex = 7;
+
         // lblGhiChu
-        // 
         lblGhiChu.AutoSize = true;
-        lblGhiChu.Location = new System.Drawing.Point(20, 75);
+        lblGhiChu.Location = new Point(16, 238);
         lblGhiChu.Name = "lblGhiChu";
-        lblGhiChu.Size = new System.Drawing.Size(51, 15);
-        lblGhiChu.TabIndex = 6;
+        lblGhiChu.Size = new Size(51, 15);
+        lblGhiChu.TabIndex = 8;
         lblGhiChu.Text = "Ghi chú:";
-        // 
+
         // txtGhiChu
-        // 
-        txtGhiChu.Location = new System.Drawing.Point(90, 72);
+        txtGhiChu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        txtGhiChu.Location = new Point(16, 258);
+        txtGhiChu.Multiline = true;
         txtGhiChu.Name = "txtGhiChu";
-        txtGhiChu.Size = new System.Drawing.Size(655, 23);
-        txtGhiChu.TabIndex = 7;
-        // 
+        txtGhiChu.PlaceholderText = "Nhập ghi chú phân công ca làm...";
+        txtGhiChu.ScrollBars = ScrollBars.Vertical;
+        txtGhiChu.Size = new Size(328, 110);
+        txtGhiChu.TabIndex = 9;
+
         // btnPhanCong
-        // 
-        btnPhanCong.Location = new System.Drawing.Point(210, 145);
+        btnPhanCong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnPhanCong.Location = new Point(16, 385);
         btnPhanCong.Name = "btnPhanCong";
-        btnPhanCong.Size = new System.Drawing.Size(100, 30);
-        btnPhanCong.TabIndex = 1;
-        btnPhanCong.Text = "Phân công";
+        btnPhanCong.Size = new Size(155, 36);
+        btnPhanCong.TabIndex = 10;
+        btnPhanCong.Text = "Phân công mới";
         btnPhanCong.UseVisualStyleBackColor = true;
         btnPhanCong.Click += btnPhanCong_Click;
-        // 
+
         // btnSuaLich
-        // 
-        btnSuaLich.Location = new System.Drawing.Point(325, 145);
+        btnSuaLich.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnSuaLich.Location = new Point(189, 385);
         btnSuaLich.Name = "btnSuaLich";
-        btnSuaLich.Size = new System.Drawing.Size(90, 30);
-        btnSuaLich.TabIndex = 2;
-        btnSuaLich.Text = "Sửa lịch";
+        btnSuaLich.Size = new Size(155, 36);
+        btnSuaLich.TabIndex = 11;
+        btnSuaLich.Text = "Cập nhật lịch";
         btnSuaLich.UseVisualStyleBackColor = true;
         btnSuaLich.Click += btnSuaLich_Click;
-        // 
+
         // btnXoaLich
-        // 
-        btnXoaLich.Location = new System.Drawing.Point(430, 145);
+        btnXoaLich.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnXoaLich.Location = new Point(16, 430);
         btnXoaLich.Name = "btnXoaLich";
-        btnXoaLich.Size = new System.Drawing.Size(90, 30);
-        btnXoaLich.TabIndex = 3;
+        btnXoaLich.Size = new Size(155, 36);
+        btnXoaLich.TabIndex = 12;
         btnXoaLich.Text = "Xóa lịch";
         btnXoaLich.UseVisualStyleBackColor = true;
         btnXoaLich.Click += btnXoaLich_Click;
-        // 
+
         // btnLamMoi
-        // 
-        btnLamMoi.Location = new System.Drawing.Point(535, 145);
+        btnLamMoi.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnLamMoi.Location = new Point(189, 430);
         btnLamMoi.Name = "btnLamMoi";
-        btnLamMoi.Size = new System.Drawing.Size(90, 30);
-        btnLamMoi.TabIndex = 4;
+        btnLamMoi.Size = new Size(155, 36);
+        btnLamMoi.TabIndex = 13;
         btnLamMoi.Text = "Làm mới";
         btnLamMoi.UseVisualStyleBackColor = true;
         btnLamMoi.Click += btnLamMoi_Click;
+
         // 
+        // gbDanhSachPhanCong (Cột phải)
+        // 
+        gbDanhSachPhanCong.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        gbDanhSachPhanCong.Controls.Add(dgvPhanCong);
+        gbDanhSachPhanCong.Controls.Add(btnTatCa);
+        gbDanhSachPhanCong.Controls.Add(btnTraCuu);
+        gbDanhSachPhanCong.Controls.Add(txtTimKiem);
+        gbDanhSachPhanCong.Controls.Add(lblTimKiem);
+        gbDanhSachPhanCong.Location = new Point(382, 50);
+        gbDanhSachPhanCong.Name = "gbDanhSachPhanCong";
+        gbDanhSachPhanCong.Size = new Size(630, 480);
+        gbDanhSachPhanCong.TabIndex = 2;
+        gbDanhSachPhanCong.TabStop = false;
+        gbDanhSachPhanCong.Text = "Lịch phân công làm việc";
+
+        // lblTimKiem
+        lblTimKiem.AutoSize = true;
+        lblTimKiem.Location = new Point(16, 26);
+        lblTimKiem.Name = "lblTimKiem";
+        lblTimKiem.Size = new Size(59, 15);
+        lblTimKiem.TabIndex = 0;
+        lblTimKiem.Text = "Tìm kiếm:";
+
+        // txtTimKiem
+        txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        txtTimKiem.Location = new Point(81, 22);
+        txtTimKiem.Name = "txtTimKiem";
+        txtTimKiem.PlaceholderText = "Nhập tên nhân viên, ca làm hoặc ngày làm việc...";
+        txtTimKiem.Size = new Size(357, 23);
+        txtTimKiem.TabIndex = 1;
+        txtTimKiem.KeyDown += txtTimKiem_KeyDown;
+
+        // btnTraCuu
+        btnTraCuu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnTraCuu.Location = new Point(448, 20);
+        btnTraCuu.Name = "btnTraCuu";
+        btnTraCuu.Size = new Size(86, 27);
+        btnTraCuu.TabIndex = 2;
+        btnTraCuu.Text = "Tìm kiếm";
+        btnTraCuu.UseVisualStyleBackColor = true;
+        btnTraCuu.Click += btnTraCuu_Click;
+
+        // btnTatCa
+        btnTatCa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnTatCa.Location = new Point(540, 20);
+        btnTatCa.Name = "btnTatCa";
+        btnTatCa.Size = new Size(76, 27);
+        btnTatCa.TabIndex = 3;
+        btnTatCa.Text = "Tất cả";
+        btnTatCa.UseVisualStyleBackColor = true;
+        btnTatCa.Click += btnTatCa_Click;
+
         // dgvPhanCong
-        // 
-        dgvPhanCong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dgvPhanCong.Location = new System.Drawing.Point(12, 190);
+        dgvPhanCong.AllowUserToAddRows = false;
+        dgvPhanCong.AllowUserToDeleteRows = false;
+        dgvPhanCong.AllowUserToResizeRows = false;
+        dgvPhanCong.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        dgvPhanCong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvPhanCong.BackgroundColor = SystemColors.ControlLight;
+
+        dgvCellStyleHeader.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dgvCellStyleHeader.BackColor = SystemColors.Control;
+        dgvCellStyleHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        dgvCellStyleHeader.ForeColor = SystemColors.WindowText;
+        dgvCellStyleHeader.SelectionBackColor = SystemColors.Highlight;
+        dgvCellStyleHeader.SelectionForeColor = SystemColors.HighlightText;
+        dgvCellStyleHeader.WrapMode = DataGridViewTriState.True;
+        dgvPhanCong.ColumnHeadersDefaultCellStyle = dgvCellStyleHeader;
+        dgvPhanCong.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+        dgvPhanCong.Columns.AddRange(new DataGridViewColumn[] {
+            colSTT,
+            colMaPC,
+            colNgayLam,
+            colNhanVien,
+            colCaLam,
+            colTrangThai,
+            colGhiChu
+        });
+
+        dgvPhanCong.GridColor = Color.DarkGray;
+        dgvPhanCong.Location = new Point(16, 56);
+        dgvPhanCong.MultiSelect = false;
         dgvPhanCong.Name = "dgvPhanCong";
-        dgvPhanCong.Size = new System.Drawing.Size(776, 250);
-        dgvPhanCong.TabIndex = 5;
+        dgvPhanCong.ReadOnly = true;
+        dgvPhanCong.RowHeadersVisible = false;
+        dgvPhanCong.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dgvPhanCong.Size = new Size(600, 410);
+        dgvPhanCong.TabIndex = 4;
         dgvPhanCong.CellClick += dgvPhanCong_CellClick;
+
+        dgvCellStyleCenter.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+        colSTT.DefaultCellStyle = dgvCellStyleCenter;
+        colSTT.FillWeight = 35F;
+        colSTT.HeaderText = "STT";
+        colSTT.Name = "colSTT";
+        colSTT.ReadOnly = true;
+
+        colMaPC.DefaultCellStyle = dgvCellStyleCenter;
+        colMaPC.FillWeight = 65F;
+        colMaPC.HeaderText = "Mã PC";
+        colMaPC.Name = "colMaPC";
+        colMaPC.ReadOnly = true;
+
+        colNgayLam.DefaultCellStyle = dgvCellStyleCenter;
+        colNgayLam.FillWeight = 85F;
+        colNgayLam.HeaderText = "Ngày làm";
+        colNgayLam.Name = "colNgayLam";
+        colNgayLam.ReadOnly = true;
+
+        colNhanVien.FillWeight = 120F;
+        colNhanVien.HeaderText = "Nhân viên";
+        colNhanVien.Name = "colNhanVien";
+        colNhanVien.ReadOnly = true;
+
+        colCaLam.FillWeight = 110F;
+        colCaLam.HeaderText = "Ca làm";
+        colCaLam.Name = "colCaLam";
+        colCaLam.ReadOnly = true;
+
+        colTrangThai.DefaultCellStyle = dgvCellStyleCenter;
+        colTrangThai.FillWeight = 85F;
+        colTrangThai.HeaderText = "Trạng thái";
+        colTrangThai.Name = "colTrangThai";
+        colTrangThai.ReadOnly = true;
+
+        colGhiChu.FillWeight = 110F;
+        colGhiChu.HeaderText = "Ghi chú";
+        colGhiChu.Name = "colGhiChu";
+        colGhiChu.ReadOnly = true;
+
+        // 
+        // lblTongSoLich
+        // 
+        lblTongSoLich.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        lblTongSoLich.AutoSize = true;
+        lblTongSoLich.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+        lblTongSoLich.ForeColor = Color.DarkSlateGray;
+        lblTongSoLich.Location = new Point(382, 542);
+        lblTongSoLich.Name = "lblTongSoLich";
+        lblTongSoLich.Size = new Size(125, 15);
+        lblTongSoLich.TabIndex = 3;
+        lblTongSoLich.Text = "Tổng số lịch trực: 0 ca";
+
+        // 
+        // btnDong
+        // 
+        btnDong.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnDong.Location = new Point(912, 537);
+        btnDong.Name = "btnDong";
+        btnDong.Size = new Size(100, 28);
+        btnDong.TabIndex = 4;
+        btnDong.Text = "Đóng";
+        btnDong.UseVisualStyleBackColor = true;
+        btnDong.Click += btnDong_Click;
+
         // 
         // frmPhanCongCaLam
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(800, 450);
-        Controls.Add(dgvPhanCong);
-        Controls.Add(btnLamMoi);
-        Controls.Add(btnXoaLich);
-        Controls.Add(btnSuaLich);
-        Controls.Add(btnPhanCong);
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1024, 575);
+        Controls.Add(btnDong);
+        Controls.Add(lblTongSoLich);
+        Controls.Add(gbDanhSachPhanCong);
         Controls.Add(gbThongTinPhanCong);
+        Controls.Add(lblTieuDe);
+        MinimumSize = new Size(950, 550);
         Name = "frmPhanCongCaLam";
-        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "Phân Công Ca Làm";
+        Load += frmPhanCongCaLam_Load;
         gbThongTinPhanCong.ResumeLayout(false);
         gbThongTinPhanCong.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)dgvPhanCong).EndInit();
+        gbDanhSachPhanCong.ResumeLayout(false);
+        gbDanhSachPhanCong.PerformLayout();
+        ((ISupportInitialize)dgvPhanCong).EndInit();
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
 
-    private System.Windows.Forms.GroupBox gbThongTinPhanCong;
-    private System.Windows.Forms.Label lblNgayLam;
-    private System.Windows.Forms.DateTimePicker dtpNgayLam;
-    private System.Windows.Forms.Label lblNhanVien;
-    private System.Windows.Forms.ComboBox cbNhanVien;
-    private System.Windows.Forms.Label lblCaLam;
-    private System.Windows.Forms.ComboBox cbCaLam;
-    private System.Windows.Forms.Label lblGhiChu;
-    private System.Windows.Forms.TextBox txtGhiChu;
-    private System.Windows.Forms.Button btnPhanCong;
-    private System.Windows.Forms.Button btnSuaLich;
-    private System.Windows.Forms.Button btnXoaLich;
-    private System.Windows.Forms.Button btnLamMoi;
-    private System.Windows.Forms.DataGridView dgvPhanCong;
+    private Label lblTieuDe;
+    private GroupBox gbThongTinPhanCong;
+    private Label lblNgayLam;
+    private DateTimePicker dtpNgayLam;
+    private Label lblNhanVien;
+    private ComboBox cbNhanVien;
+    private Label lblCaLam;
+    private ComboBox cbCaLam;
+    private Label lblTrangThai;
+    private ComboBox cbTrangThai;
+    private Label lblGhiChu;
+    private TextBox txtGhiChu;
+    private Button btnPhanCong;
+    private Button btnSuaLich;
+    private Button btnXoaLich;
+    private Button btnLamMoi;
+
+    private GroupBox gbDanhSachPhanCong;
+    private Label lblTimKiem;
+    private TextBox txtTimKiem;
+    private Button btnTraCuu;
+    private Button btnTatCa;
+    private DataGridView dgvPhanCong;
+    private DataGridViewTextBoxColumn colSTT;
+    private DataGridViewTextBoxColumn colMaPC;
+    private DataGridViewTextBoxColumn colNgayLam;
+    private DataGridViewTextBoxColumn colNhanVien;
+    private DataGridViewTextBoxColumn colCaLam;
+    private DataGridViewTextBoxColumn colTrangThai;
+    private DataGridViewTextBoxColumn colGhiChu;
+
+    private Label lblTongSoLich;
+    private Button btnDong;
 }
