@@ -10,7 +10,7 @@ public class NhanVienDAO
     {
         using var conn = DBConnect.GetConnection();
         string checkNhanVienSQL = @"SELECT TenDangNhap, MatKhau
-                                 From NhanVien
+                                 From NHAN_VIEN
                                  WHERE TenDangNhap = @TenDangNhap
                                  AND MatKhau = @MatKhau
                                  AND TrangThai = 'Đang làm việc'";
