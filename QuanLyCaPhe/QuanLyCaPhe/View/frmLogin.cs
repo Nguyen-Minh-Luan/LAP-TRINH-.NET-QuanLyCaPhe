@@ -1,4 +1,7 @@
 using System.Text.RegularExpressions;
+using QuanLyCaPhe.Dao;
+using QuanLyCaPhe.Model;
+using QuanLyCaPhe.View;
 
 namespace QuanLyCaPhe;
 
@@ -8,51 +11,77 @@ public partial class frmLogin : Form
     {
         InitializeComponent();
     }
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
+    
+    private bool checkName()
     {
-    }
+        string textName = txtName.Text.Trim();
+        if (string.IsNullOrEmpty(textName))
+        {
+            MessageBox.Show("Tên đăng nhập không được để trống", "Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            return false;
+        }
 
-    private void textBox1_TextChanged_1(object sender, EventArgs e)
-    {
-    }
+        if (textName.Length < 3 || textName.Length > 30)
+        {
+            MessageBox.Show("Tên đăng nhập phải từ 3 đến 30 ký tự", "Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            return false;
+        }
+        return true;
 
-    private void label3_Click(object sender, EventArgs e)
-    {
     }
-
-    private void label4_Click(object sender, EventArgs e)
-    {
-    }
-
     private bool checkPassword()
     {
         string textPassword = txtPassword.Text.Trim();
-        string pattern = @"^(?=.*[A-Z]).{6,}\z";
+        string patternPassword = @"^(?=.*[A-Z])(?=.*[0-9]).{6,}\z";
         if (string.IsNullOrEmpty(textPassword))
         {
-            MessageBox.Show("Mật khẩu không được để trống");
+            MessageBox.Show("Mật khẩu không được để trống", "Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
             return false;
         }
-        
-        if (!Regex.IsMatch(textPassword, pattern))
+        if (textPassword.Length < 8 || textPassword.Length > 20)
         {
-            MessageBox.Show("Mật khẩu dài hơn 5 ký tự và ít nhất 1 chữ hoa thường");
+            MessageBox.Show("Mật khẩu phải từ 8 đến 20 ký tự", "Lỗi đăng nhập",MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            return false;
+        }
+        if (!Regex.IsMatch(textPassword, patternPassword))
+        {
+            MessageBox.Show("Mật khẩu không chính xác, vui lòng thử lại", "Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
             return false;
         }
         
         return true;
     }
-
-    private void frmLogin_Load(object sender, EventArgs e)
-    {
-    }
-
+    
     private void btnLogin_Click(object sender, EventArgs e)
     {
-        if (checkPassword())
+        string textName = txtName.Text.Trim();
+        string textPassword = txtPassword.Text.Trim();
+        NhanVienDAO nvDao = new NhanVienDAO();
+
+        if (!checkName())
         {
-            MessageBox.Show("Đăng nhập thành công");
+            txtName.Focus();
+            return;
+        }
+
+        if (!checkPassword())
+        {
+            txtPassword.Focus();
+            return;
+        }
+        NhanVien? nv = nvDao.DangNhap(textName, textPassword);
+        if (nv != null)
+        {
+            MessageBox.Show($"Đăng nhập thành công. Xin chào bạn nhân viên: {textName}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmMain frm = new frmMain();
+            frm.Show();
+            this.Hide();
+        }
+        else
+        {
+            MessageBox.Show("Đăng nhập thất bại do sai mật khẩu hoặc tên đăng nhập","Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            txtName.Clear();
+            txtPassword.Clear();
         }
     }
 }
