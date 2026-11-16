@@ -47,6 +47,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Agents configuration & rules
+.agents
 .agents/
+AGENTS.md
 
 
