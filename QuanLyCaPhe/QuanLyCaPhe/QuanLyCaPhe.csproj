@@ -62,4 +62,11 @@
       <PackageReference Include="Microsoft.Data.Sqlite" Version="11.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Database\QuanLyCaPhe.db" />
+      <Content Include="Database\QuanLyCaPhe.db">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
