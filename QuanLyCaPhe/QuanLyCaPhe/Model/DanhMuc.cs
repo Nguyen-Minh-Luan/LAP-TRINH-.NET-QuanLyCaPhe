@@ -4,21 +4,21 @@ public class DanhMuc
 {
     public int MaDanhMuc { get; set; }
     public string TenDanhMuc { get; set; } = string.Empty;
-    public string TrangThai { get; set; } = "Hoạt động";
+    public string? MoTa { get; set; }
 
     public DanhMuc()
     {
     }
 
-    public DanhMuc(int maDanhMuc, string tenDanhMuc, string trangThai = "Hoạt động")
+    public DanhMuc(int maDanhMuc, string tenDanhMuc, string? moTa = null)
     {
         MaDanhMuc = maDanhMuc;
         TenDanhMuc = tenDanhMuc;
-        TrangThai = trangThai;
+        MoTa = moTa;
     }
 
     public override string ToString()
     {
-        return $"{TenDanhMuc} (Mã: {MaDanhMuc}) - {TrangThai}";
+        return $"{TenDanhMuc} (Mã: {MaDanhMuc})";
     }
 }
