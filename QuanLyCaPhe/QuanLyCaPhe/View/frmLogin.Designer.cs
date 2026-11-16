@@ -89,7 +89,6 @@ public partial class frmLogin
         lblTitle.TabIndex = 10;
         lblTitle.Text = "Đăng nhập tài khoản";
         lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-        lblTitle.Click += label3_Click;
         // 
         // lblIntroduce
         // 
@@ -119,7 +118,6 @@ public partial class frmLogin
         txtPassword.PlaceholderText = "Nhập mật khẩu...";
         txtPassword.Size = new System.Drawing.Size(579, 37);
         txtPassword.TabIndex = 13;
-        txtPassword.TextChanged += textBox2_TextChanged;
         // 
         // btnLogin
         // 
@@ -198,7 +196,6 @@ public partial class frmLogin
         Controls.Add(txtName);
         StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Đăng nhập";
-        Load += frmLogin_Load;
         ((System.ComponentModel.ISupportInitialize)pictureLogin).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureUser).EndInit();
         ((System.ComponentModel.ISupportInitialize)picturePassword).EndInit();
