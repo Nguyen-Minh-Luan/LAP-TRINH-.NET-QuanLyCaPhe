@@ -9,7 +9,7 @@ public class NhanVienDAO
     public NhanVien? DangNhap(string tenDN, string mkDN)
     {
         using var conn = DBConnect.GetConnection();
-        string checkNhanVienSQL = @"SELECT TenDangNhap, MatKhau
+        string checkNhanVienSQL = @"SELECT *
                                  From NHAN_VIEN
                                  WHERE TenDangNhap = @TenDangNhap
                                  AND MatKhau = @MatKhau
@@ -23,11 +23,17 @@ public class NhanVienDAO
         {
             NhanVien nv = new NhanVien
             {
+                MaNhanVien = reader.GetInt32(reader.GetOrdinal("MaNhanVien")),
+                HoTen = reader.GetString(reader.GetOrdinal("HoTen")),
                 TenDangNhap = reader.GetString(reader.GetOrdinal("TenDangNhap")),
                 MatKhau = reader.GetString(reader.GetOrdinal("MatKhau")),
+                SoDienThoai =  reader.GetString(reader.GetOrdinal("SoDienThoai")),
+                VaiTro = reader.GetString(reader.GetOrdinal("VaiTro")),
+                TrangThai = reader.GetString(reader.GetOrdinal("TrangThai"))
             };
             return nv;
         }
         return null;
     }
+    
 }
