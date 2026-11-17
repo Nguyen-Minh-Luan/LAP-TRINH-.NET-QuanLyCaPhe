@@ -12,7 +12,7 @@ public partial class frmMain : Form
         InitializeComponent();
         _nv = nv;
         lblMaNV.Text = _nv.MaNhanVien.ToString();
-        lblTenNV.Text = _nv.TenDangNhap;
+        lblTenNV.Text = _nv.HoTen;
         lblVaiTro.Text = _nv.VaiTro;
         phanCongDao.loadThongTinCaTruc(_nv.MaNhanVien, lblThoiGianTruc, lblTenCa);
     }
@@ -48,6 +48,21 @@ public partial class frmMain : Form
     }
 
     private void button1_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void label9_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void lblTenNV_Click(object sender, EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void label11_Click(object sender, EventArgs e)
     {
         throw new System.NotImplementedException();
     }
