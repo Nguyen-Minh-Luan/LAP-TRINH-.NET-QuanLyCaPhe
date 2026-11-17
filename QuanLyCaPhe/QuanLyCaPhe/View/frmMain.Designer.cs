@@ -31,12 +31,23 @@ partial class frmMain
     /// </summary>
     private void InitializeComponent()
     {
-        menuStrip1 = new System.Windows.Forms.MenuStrip();
+        menuStripHome = new System.Windows.Forms.MenuStrip();
         MenuStripPhucVu = new System.Windows.Forms.ToolStripMenuItem();
+        mnuSoDoBan = new System.Windows.Forms.ToolStripMenuItem();
+        mnuLichSuHoaDon = new System.Windows.Forms.ToolStripMenuItem();
+        mnuLichSuChuyenBan = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripThucDon = new System.Windows.Forms.ToolStripMenuItem();
+        mnuQLMonAn = new System.Windows.Forms.ToolStripMenuItem();
+        mnuQLDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
+        mnuQLKhuVuc = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripCaLam = new System.Windows.Forms.ToolStripMenuItem();
+        mnuPCCaLam = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripThongKe = new System.Windows.Forms.ToolStripMenuItem();
+        mnuTKDoanhThu = new System.Windows.Forms.ToolStripMenuItem();
+        mnuMonBanChay = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripTaiKhoan = new System.Windows.Forms.ToolStripMenuItem();
+        mnuTTCaNhan = new System.Windows.Forms.ToolStripMenuItem();
+        mnuSoDoBanDangXuat = new System.Windows.Forms.ToolStripMenuItem();
         panel1 = new System.Windows.Forms.Panel();
         tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         label6 = new System.Windows.Forms.Label();
@@ -61,7 +72,7 @@ partial class frmMain
         label12 = new System.Windows.Forms.Label();
         panel4 = new System.Windows.Forms.Panel();
         label2 = new System.Windows.Forms.Label();
-        menuStrip1.SuspendLayout();
+        menuStripHome.SuspendLayout();
         panel1.SuspendLayout();
         tableLayoutPanel1.SuspendLayout();
         panel2.SuspendLayout();
@@ -70,45 +81,126 @@ partial class frmMain
         panel4.SuspendLayout();
         SuspendLayout();
         // 
-        // menuStrip1
+        // menuStripHome
         // 
-        menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-        menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuStripPhucVu, MenuStripThucDon, MenuStripCaLam, MenuStripThongKe, MenuStripTaiKhoan });
-        menuStrip1.Location = new System.Drawing.Point(0, 0);
-        menuStrip1.Name = "menuStrip1";
-        menuStrip1.Size = new System.Drawing.Size(1148, 33);
-        menuStrip1.TabIndex = 0;
-        menuStrip1.Text = "menuStrip1";
+        menuStripHome.ImageScalingSize = new System.Drawing.Size(24, 24);
+        menuStripHome.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuStripPhucVu, MenuStripThucDon, MenuStripCaLam, MenuStripThongKe, MenuStripTaiKhoan });
+        menuStripHome.Location = new System.Drawing.Point(0, 0);
+        menuStripHome.Name = "menuStripHome";
+        menuStripHome.Size = new System.Drawing.Size(1148, 33);
+        menuStripHome.TabIndex = 0;
+        menuStripHome.Text = "menuStrip1";
         // 
         // MenuStripPhucVu
         // 
+        MenuStripPhucVu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuSoDoBan, mnuLichSuHoaDon, mnuLichSuChuyenBan });
         MenuStripPhucVu.Name = "MenuStripPhucVu";
         MenuStripPhucVu.Size = new System.Drawing.Size(90, 29);
         MenuStripPhucVu.Text = "Phục vụ";
         // 
+        // mnuSoDoBan
+        // 
+        mnuSoDoBan.Name = "mnuSoDoBan";
+        mnuSoDoBan.Size = new System.Drawing.Size(270, 34);
+        mnuSoDoBan.Text = "Sơ đồ bàn";
+        mnuSoDoBan.Click += mnuSoDoBan_Click;
+        // 
+        // mnuLichSuHoaDon
+        // 
+        mnuLichSuHoaDon.Name = "mnuLichSuHoaDon";
+        mnuLichSuHoaDon.Size = new System.Drawing.Size(270, 34);
+        mnuLichSuHoaDon.Text = "Lịch sử hóa đơn";
+        mnuLichSuHoaDon.Click += mnuLichSuHD_Click;
+        // 
+        // mnuLichSuChuyenBan
+        // 
+        mnuLichSuChuyenBan.Name = "mnuLichSuChuyenBan";
+        mnuLichSuChuyenBan.Size = new System.Drawing.Size(270, 34);
+        mnuLichSuChuyenBan.Text = "Lịch sử chuyển bàn";
+        mnuLichSuChuyenBan.Click += mnuLichSuCB_Click;
+        // 
         // MenuStripThucDon
         // 
+        MenuStripThucDon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuQLMonAn, mnuQLDanhMuc, mnuQLKhuVuc });
         MenuStripThucDon.Name = "MenuStripThucDon";
         MenuStripThucDon.Size = new System.Drawing.Size(103, 29);
         MenuStripThucDon.Text = "Thực đơn";
         // 
+        // mnuQLMonAn
+        // 
+        mnuQLMonAn.Name = "mnuQLMonAn";
+        mnuQLMonAn.Size = new System.Drawing.Size(300, 34);
+        mnuQLMonAn.Text = "Quản lý món ăn";
+        mnuQLMonAn.Click += mnuQLMA_Click;
+        // 
+        // mnuQLDanhMuc
+        // 
+        mnuQLDanhMuc.Name = "mnuQLDanhMuc";
+        mnuQLDanhMuc.Size = new System.Drawing.Size(300, 34);
+        mnuQLDanhMuc.Text = "Quản lý danh mục";
+        mnuQLDanhMuc.Click += mnuQLDM_Click;
+        // 
+        // mnuQLKhuVuc
+        // 
+        mnuQLKhuVuc.Name = "mnuQLKhuVuc";
+        mnuQLKhuVuc.Size = new System.Drawing.Size(300, 34);
+        mnuQLKhuVuc.Text = "Quản lý khu vực và bàn";
+        mnuQLKhuVuc.Click += mnuQLKhuVuc_Click;
+        // 
         // MenuStripCaLam
         // 
+        MenuStripCaLam.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuPCCaLam });
         MenuStripCaLam.Name = "MenuStripCaLam";
         MenuStripCaLam.Size = new System.Drawing.Size(82, 29);
         MenuStripCaLam.Text = "Ca làm";
         // 
+        // mnuPCCaLam
+        // 
+        mnuPCCaLam.Name = "mnuPCCaLam";
+        mnuPCCaLam.Size = new System.Drawing.Size(254, 34);
+        mnuPCCaLam.Text = "Phân công ca làm";
+        mnuPCCaLam.Click += mnuPCCaLam_Click;
+        // 
         // MenuStripThongKe
         // 
+        MenuStripThongKe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuTKDoanhThu, mnuMonBanChay });
         MenuStripThongKe.Name = "MenuStripThongKe";
         MenuStripThongKe.Size = new System.Drawing.Size(102, 29);
         MenuStripThongKe.Text = "Thống kê";
         // 
+        // mnuTKDoanhThu
+        // 
+        mnuTKDoanhThu.Name = "mnuTKDoanhThu";
+        mnuTKDoanhThu.Size = new System.Drawing.Size(275, 34);
+        mnuTKDoanhThu.Text = "Thống kê doanh thu";
+        mnuTKDoanhThu.Click += mnuTKDoanhThu_Click;
+        // 
+        // mnuMonBanChay
+        // 
+        mnuMonBanChay.Name = "mnuMonBanChay";
+        mnuMonBanChay.Size = new System.Drawing.Size(275, 34);
+        mnuMonBanChay.Text = "Món bán chạy";
+        mnuMonBanChay.Click += mnuMonBanChay_Click;
+        // 
         // MenuStripTaiKhoan
         // 
+        MenuStripTaiKhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuTTCaNhan, mnuSoDoBanDangXuat });
         MenuStripTaiKhoan.Name = "MenuStripTaiKhoan";
         MenuStripTaiKhoan.Size = new System.Drawing.Size(102, 29);
         MenuStripTaiKhoan.Text = "Tài khoản";
+        // 
+        // mnuTTCaNhan
+        // 
+        mnuTTCaNhan.Name = "mnuTTCaNhan";
+        mnuTTCaNhan.Size = new System.Drawing.Size(256, 34);
+        mnuTTCaNhan.Text = "Thông tin cá nhân";
+        mnuTTCaNhan.Click += mnuTTCaNhan_Click;
+        // 
+        // mnuSoDoBanDangXuat
+        // 
+        mnuSoDoBanDangXuat.Name = "mnuSoDoBanDangXuat";
+        mnuSoDoBanDangXuat.Size = new System.Drawing.Size(256, 34);
+        mnuSoDoBanDangXuat.Text = "Đăng xuất";
         // 
         // panel1
         // 
@@ -400,15 +492,15 @@ partial class frmMain
         ClientSize = new System.Drawing.Size(1148, 594);
         Controls.Add(panel3);
         Controls.Add(panel1);
-        Controls.Add(menuStrip1);
-        MainMenuStrip = menuStrip1;
+        Controls.Add(menuStripHome);
+        MainMenuStrip = menuStripHome;
         MinimumSize = new System.Drawing.Size(1000, 650);
         StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Trang chủ";
         Load += frmMain_Load;
         Resize += frmMain_Resize;
-        menuStrip1.ResumeLayout(false);
-        menuStrip1.PerformLayout();
+        menuStripHome.ResumeLayout(false);
+        menuStripHome.PerformLayout();
         panel1.ResumeLayout(false);
         tableLayoutPanel1.ResumeLayout(false);
         panel2.ResumeLayout(false);
@@ -418,6 +510,28 @@ partial class frmMain
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.ToolStripMenuItem mnuSoDoBanDangXuat;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuTTCaNhan;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuMonBanChay;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuTKDoanhThu;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuPCCaLam;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuQLKhuVuc;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuQLDanhMuc;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuQLMonAn;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuLichSuChuyenBan;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuLichSuHoaDon;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuSoDoBan;
 
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.Label label6;
@@ -465,7 +579,7 @@ partial class frmMain
 
     private System.Windows.Forms.ToolStripMenuItem MenuStripPhucVu;
 
-    private System.Windows.Forms.MenuStrip menuStrip1;
+    private System.Windows.Forms.MenuStrip menuStripHome;
 
     #endregion
 }
