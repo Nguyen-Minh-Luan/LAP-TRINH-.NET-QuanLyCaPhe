@@ -37,10 +37,11 @@ partial class frmMain
         thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         profileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+        thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         panel1 = new System.Windows.Forms.Panel();
+        label3 = new System.Windows.Forms.Label();
         lblThoiGianTruc = new System.Windows.Forms.Label();
         label11 = new System.Windows.Forms.Label();
-        button1 = new System.Windows.Forms.Button();
         lblTenCa = new System.Windows.Forms.Label();
         label9 = new System.Windows.Forms.Label();
         lblVaiTro = new System.Windows.Forms.Label();
@@ -105,16 +106,23 @@ partial class frmMain
         // 
         // profileToolStripMenuItem1
         // 
+        profileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { thôngTinCáNhânToolStripMenuItem });
         profileToolStripMenuItem1.Name = "profileToolStripMenuItem1";
-        profileToolStripMenuItem1.Size = new System.Drawing.Size(78, 29);
-        profileToolStripMenuItem1.Text = "Profile";
+        profileToolStripMenuItem1.Size = new System.Drawing.Size(102, 29);
+        profileToolStripMenuItem1.Text = "Tài khoản";
+        // 
+        // thôngTinCáNhânToolStripMenuItem
+        // 
+        thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
+        thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(256, 34);
+        thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
         // 
         // panel1
         // 
         panel1.BackColor = System.Drawing.Color.Silver;
+        panel1.Controls.Add(label3);
         panel1.Controls.Add(lblThoiGianTruc);
         panel1.Controls.Add(label11);
-        panel1.Controls.Add(button1);
         panel1.Controls.Add(lblTenCa);
         panel1.Controls.Add(label9);
         panel1.Controls.Add(lblVaiTro);
@@ -124,14 +132,25 @@ partial class frmMain
         panel1.Controls.Add(lblMaNV);
         panel1.Controls.Add(label5);
         panel1.Controls.Add(panel2);
-        panel1.Location = new System.Drawing.Point(12, 36);
+        panel1.Location = new System.Drawing.Point(12, 48);
         panel1.Name = "panel1";
-        panel1.Size = new System.Drawing.Size(355, 454);
+        panel1.Size = new System.Drawing.Size(355, 442);
         panel1.TabIndex = 1;
+        // 
+        // label3
+        // 
+        label3.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)(System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic)), System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label3.ForeColor = System.Drawing.Color.Brown;
+        label3.Location = new System.Drawing.Point(3, 84);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(349, 76);
+        label3.TabIndex = 13;
+        label3.Text = "CHÀO BẠN ĐẾN HỆ THỐNG POS BÁN CÀ PHÊ";
+        label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
         // lblThoiGianTruc
         // 
-        lblThoiGianTruc.Location = new System.Drawing.Point(176, 280);
+        lblThoiGianTruc.Location = new System.Drawing.Point(167, 361);
         lblThoiGianTruc.Name = "lblThoiGianTruc";
         lblThoiGianTruc.Size = new System.Drawing.Size(122, 32);
         lblThoiGianTruc.TabIndex = 12;
@@ -140,28 +159,16 @@ partial class frmMain
         // label11
         // 
         label11.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label11.Location = new System.Drawing.Point(16, 280);
+        label11.Location = new System.Drawing.Point(16, 358);
         label11.Name = "label11";
         label11.Size = new System.Drawing.Size(106, 35);
         label11.TabIndex = 11;
         label11.Text = "Thời gian:";
-        // 
-        // button1
-        // 
-        button1.BackColor = System.Drawing.Color.Red;
-        button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, ((System.Drawing.FontStyle)(System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic)), System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-        button1.Location = new System.Drawing.Point(67, 381);
-        button1.Name = "button1";
-        button1.Size = new System.Drawing.Size(188, 41);
-        button1.TabIndex = 10;
-        button1.Text = "Xem tài khoản";
-        button1.UseVisualStyleBackColor = false;
-        button1.Click += button1_Click;
+        label11.Click += label11_Click;
         // 
         // lblTenCa
         // 
-        lblTenCa.Location = new System.Drawing.Point(176, 235);
+        lblTenCa.Location = new System.Drawing.Point(167, 324);
         lblTenCa.Name = "lblTenCa";
         lblTenCa.Size = new System.Drawing.Size(88, 32);
         lblTenCa.TabIndex = 9;
@@ -171,15 +178,16 @@ partial class frmMain
         // label9
         // 
         label9.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label9.Location = new System.Drawing.Point(16, 235);
+        label9.Location = new System.Drawing.Point(16, 324);
         label9.Name = "label9";
         label9.Size = new System.Drawing.Size(83, 35);
         label9.TabIndex = 8;
         label9.Text = "Tên ca:";
+        label9.Click += label9_Click;
         // 
         // lblVaiTro
         // 
-        lblVaiTro.Location = new System.Drawing.Point(176, 187);
+        lblVaiTro.Location = new System.Drawing.Point(167, 292);
         lblVaiTro.Name = "lblVaiTro";
         lblVaiTro.Size = new System.Drawing.Size(135, 32);
         lblVaiTro.TabIndex = 7;
@@ -188,7 +196,7 @@ partial class frmMain
         // label7
         // 
         label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label7.Location = new System.Drawing.Point(16, 187);
+        label7.Location = new System.Drawing.Point(16, 289);
         label7.Name = "label7";
         label7.Size = new System.Drawing.Size(98, 35);
         label7.TabIndex = 6;
@@ -196,16 +204,17 @@ partial class frmMain
         // 
         // lblTenNV
         // 
-        lblTenNV.Location = new System.Drawing.Point(176, 144);
+        lblTenNV.Location = new System.Drawing.Point(167, 257);
         lblTenNV.Name = "lblTenNV";
         lblTenNV.Size = new System.Drawing.Size(135, 32);
         lblTenNV.TabIndex = 5;
         lblTenNV.Text = "Name user";
+        lblTenNV.Click += lblTenNV_Click;
         // 
         // label100
         // 
         label100.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label100.Location = new System.Drawing.Point(16, 141);
+        label100.Location = new System.Drawing.Point(16, 254);
         label100.Name = "label100";
         label100.Size = new System.Drawing.Size(145, 35);
         label100.TabIndex = 4;
@@ -213,7 +222,7 @@ partial class frmMain
         // 
         // lblMaNV
         // 
-        lblMaNV.Location = new System.Drawing.Point(176, 98);
+        lblMaNV.Location = new System.Drawing.Point(167, 222);
         lblMaNV.Name = "lblMaNV";
         lblMaNV.Size = new System.Drawing.Size(135, 32);
         lblMaNV.TabIndex = 3;
@@ -223,7 +232,7 @@ partial class frmMain
         // label5
         // 
         label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label5.Location = new System.Drawing.Point(16, 95);
+        label5.Location = new System.Drawing.Point(16, 219);
         label5.Name = "label5";
         label5.Size = new System.Drawing.Size(145, 35);
         label5.TabIndex = 2;
@@ -242,7 +251,7 @@ partial class frmMain
         // 
         label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-        label1.Location = new System.Drawing.Point(94, 0);
+        label1.Location = new System.Drawing.Point(97, 0);
         label1.Name = "label1";
         label1.Size = new System.Drawing.Size(158, 52);
         label1.TabIndex = 0;
@@ -253,9 +262,9 @@ partial class frmMain
         panel3.BackColor = System.Drawing.Color.Silver;
         panel3.Controls.Add(panel5);
         panel3.Controls.Add(panel4);
-        panel3.Location = new System.Drawing.Point(382, 36);
+        panel3.Location = new System.Drawing.Point(382, 48);
         panel3.Name = "panel3";
-        panel3.Size = new System.Drawing.Size(562, 454);
+        panel3.Size = new System.Drawing.Size(562, 442);
         panel3.TabIndex = 2;
         // 
         // panel5
@@ -371,6 +380,8 @@ partial class frmMain
         PerformLayout();
     }
 
+    private System.Windows.Forms.ToolStripMenuItem thôngTinCáNhânToolStripMenuItem;
+
     private System.Windows.Forms.Label label100;
 
     private System.Windows.Forms.Label label11;
@@ -382,8 +393,6 @@ partial class frmMain
     private System.Windows.Forms.Button button5;
 
     private System.Windows.Forms.Label label12;
-
-    private System.Windows.Forms.Button button1;
 
     private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem1;
 

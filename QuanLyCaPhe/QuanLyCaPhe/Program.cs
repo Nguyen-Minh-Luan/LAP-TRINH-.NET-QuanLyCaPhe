@@ -15,6 +15,7 @@ static class Program
         ApplicationConfiguration.Initialize();
         /*Application.Run(new Form1());*/
         /*Application.Run(new frmThongKeDoanhThu());*/
-        Application.Run(new frmTable());
+        /*Application.Run(new frmTable());*/
+        Application.Run(new frmLogin());
     }
 }
