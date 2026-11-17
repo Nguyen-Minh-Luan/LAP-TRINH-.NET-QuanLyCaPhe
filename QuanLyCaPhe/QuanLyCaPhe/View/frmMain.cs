@@ -16,7 +16,58 @@ public partial class frmMain : Form
         lblVaiTro.Text = _nv.VaiTro;
         phanCongDao.loadThongTinCaTruc(_nv.MaNhanVien, lblThoiGianTruc, lblTenCa);
     }
-    
+    private void MoForm(Form frm)
+    {
+        try
+        {
+            frm.ShowDialog(this);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Đã có lỗi xảy ra vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+    private void mnuSoDoBan_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmTable());
+    }
+    private void mnuLichSuHD_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmLichSuHoaDon());
+    }
+    private void mnuLichSuCB_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmLichSuChuyenBan());
+    }
+    private void mnuQLMA_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmQuanLyMonAn());
+    }
+    private void mnuQLDM_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmQuanLyDanhMuc());
+    }
+    private void mnuQLKhuVuc_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmQuanLyKhuVucVaBan());
+    }
+    private void mnuPCCaLam_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmPhanCongCaLam());
+    }
+    private void mnuTKDoanhThu_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmThongKeDoanhThu());
+    }
+    private void mnuMonBanChay_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmThongKeMonBanChay());
+    }
+    private void mnuTTCaNhan_Click(object sender, EventArgs e)
+    {
+        frmThongTinCaNhan frmTTCN = new frmThongTinCaNhan(_nv);
+        MoForm(frmTTCN);
+    }
     private void frmMain_Load(object sender, EventArgs e)
     {
         CanChinhBoCuc();
@@ -33,7 +84,7 @@ public partial class frmMain : Form
 
         const int le = 12;  
         const int khoangCach = 12;  
-        int top = menuStrip1.Bottom + 12;
+        int top = menuStripHome.Bottom + 12;
         int chieuCao = ClientSize.Height - top - le;
         int chieuRongConLai = ClientSize.Width - 2 * le - khoangCach;
         if (chieuCao < 100 || chieuRongConLai < 100) return;
