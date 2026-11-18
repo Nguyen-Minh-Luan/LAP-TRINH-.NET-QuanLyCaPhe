@@ -55,7 +55,7 @@ partial class frmThongTinCaNhan
         label1 = new System.Windows.Forms.Label();
         pictureBox1 = new System.Windows.Forms.PictureBox();
         panel2 = new System.Windows.Forms.Panel();
-        dataGridView1 = new System.Windows.Forms.DataGridView();
+        DGVCaLam = new System.Windows.Forms.DataGridView();
         datework = new System.Windows.Forms.DataGridViewTextBoxColumn();
         shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
         startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,7 +86,7 @@ partial class frmThongTinCaNhan
         panel4.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         panel2.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)DGVCaLam).BeginInit();
         panel5.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         panel3.SuspendLayout();
@@ -319,7 +319,6 @@ partial class frmThongTinCaNhan
         txtSDT.Name = "txtSDT";
         txtSDT.Size = new System.Drawing.Size(236, 31);
         txtSDT.TabIndex = 6;
-        txtSDT.TextChanged += textBox3_TextChanged;
         // 
         // button1
         // 
@@ -373,12 +372,11 @@ partial class frmThongTinCaNhan
         pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         pictureBox1.TabIndex = 1;
         pictureBox1.TabStop = false;
-        pictureBox1.Click += pictureBox1_Click;
         // 
         // panel2
         // 
         panel2.BackColor = System.Drawing.Color.Silver;
-        panel2.Controls.Add(dataGridView1);
+        panel2.Controls.Add(DGVCaLam);
         panel2.Controls.Add(panel5);
         panel2.Dock = System.Windows.Forms.DockStyle.Fill;
         panel2.Location = new System.Drawing.Point(460, 6);
@@ -387,21 +385,20 @@ partial class frmThongTinCaNhan
         panel2.Size = new System.Drawing.Size(669, 281);
         panel2.TabIndex = 2;
         // 
-        // dataGridView1
+        // DGVCaLam
         // 
-        dataGridView1.AllowUserToAddRows = false;
-        dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-        dataGridView1.BackgroundColor = System.Drawing.Color.White;
-        dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { datework, shift, startdate, enddate });
-        dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-        dataGridView1.Location = new System.Drawing.Point(0, 52);
-        dataGridView1.Name = "dataGridView1";
-        dataGridView1.RowHeadersWidth = 62;
-        dataGridView1.Size = new System.Drawing.Size(669, 229);
-        dataGridView1.TabIndex = 2;
-        dataGridView1.Text = "dataGridView1";
-        dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+        DGVCaLam.AllowUserToAddRows = false;
+        DGVCaLam.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+        DGVCaLam.BackgroundColor = System.Drawing.Color.White;
+        DGVCaLam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        DGVCaLam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { datework, shift, startdate, enddate });
+        DGVCaLam.Dock = System.Windows.Forms.DockStyle.Fill;
+        DGVCaLam.Location = new System.Drawing.Point(0, 52);
+        DGVCaLam.Name = "DGVCaLam";
+        DGVCaLam.RowHeadersWidth = 62;
+        DGVCaLam.Size = new System.Drawing.Size(669, 229);
+        DGVCaLam.TabIndex = 2;
+        DGVCaLam.Text = "dataGridView1";
         // 
         // datework
         // 
@@ -634,7 +631,7 @@ partial class frmThongTinCaNhan
         panel4.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         panel2.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)DGVCaLam).EndInit();
         panel5.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
         panel3.ResumeLayout(false);
@@ -655,7 +652,7 @@ partial class frmThongTinCaNhan
     private System.Windows.Forms.DataGridViewTextBoxColumn startdate;
     private System.Windows.Forms.DataGridViewTextBoxColumn enddate;
 
-    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.DataGridView DGVCaLam;
 
     private System.Windows.Forms.Label lblDateToday;
     private System.Windows.Forms.Label lblTimeToday;
