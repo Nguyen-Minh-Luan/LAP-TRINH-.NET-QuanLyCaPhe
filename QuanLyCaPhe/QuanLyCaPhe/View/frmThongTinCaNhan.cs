@@ -1,4 +1,5 @@
 using System.Globalization;
+using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
 
 namespace QuanLyCaPhe;
@@ -24,6 +25,7 @@ public partial class frmThongTinCaNhan : Form
         txtTenDN.Text = _nv.TenDangNhap;
         txtHoTenNV.Text = _nv.HoTen;
         txtSDT.Text = _nv.SoDienThoai;
+        loadData_DGVCaLam();
     }
 
     private string DateToday()
@@ -37,17 +39,18 @@ public partial class frmThongTinCaNhan : Form
         DateTime now = DateTime.Now;
         return now.ToString("HH:mm:ss");
     }
-    private void textBox3_TextChanged(object sender, EventArgs e)
-    {
-    }
 
-    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-        throw new System.NotImplementedException();
+    private void loadData_DGVCaLam()
+    { 
+        CaLamDAO caLamDAO = new CaLamDAO();
+        DGVCaLam.AutoGenerateColumns = false;
+        
+        datework.DataPropertyName = "NgayLam";
+        shift.DataPropertyName = "TenCa";
+        startdate.DataPropertyName = "GioBatDau";
+        enddate.DataPropertyName = "GioKetThuc";
+        
+        DGVCaLam.DataSource = caLamDAO.getCaLam(_nv.MaNhanVien);
     }
-
-    private void pictureBox1_Click(object sender, EventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }
