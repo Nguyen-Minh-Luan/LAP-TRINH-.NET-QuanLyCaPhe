@@ -52,5 +52,21 @@ public partial class frmThongTinCaNhan : Form
         
         DGVCaLam.DataSource = caLamDAO.getCaLam(_nv.MaNhanVien);
     }
+
+    private void btnCapNhatNV_Click(object sender, EventArgs e)
+    {
+        NhanVienDAO nvDAO = new NhanVienDAO();
+        _nv.HoTen = txtHoTenNV.Text.Trim();
+        _nv.SoDienThoai = txtSDT.Text.Trim();
+        _nv.TenDangNhap = txtTenDN.Text.Trim();
+        if (nvDAO.CapNhatNV(_nv.MaNhanVien,_nv))
+        {
+            MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        else
+        {
+            MessageBox.Show("Không có dữ liệu được cập nhật!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
     
 }
