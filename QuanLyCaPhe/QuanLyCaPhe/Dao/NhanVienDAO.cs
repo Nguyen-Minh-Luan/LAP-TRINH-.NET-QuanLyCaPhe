@@ -35,5 +35,22 @@ public class NhanVienDAO
         }
         return null;
     }
+
+    public bool CapNhatNV(int maNV,NhanVien nv)
+    {
+        using var conn = DBConnect.GetConnection();
+        string updateNhanVienSQL = @"UPDATE NHAN_VIEN
+                                      SET HoTen = @HoTen, 
+                                          SoDienThoai = @SoDienThoai,
+                                          TenDangNhap = @TenDangNhap
+                                          WHERE MaNhanVien = @MaNhanVien";
+        var command = new SqliteCommand(updateNhanVienSQL, conn);
+        command.Parameters.AddWithValue("@HoTen", nv.HoTen);
+        command.Parameters.AddWithValue("@SoDienThoai", nv.SoDienThoai);
+        command.Parameters.AddWithValue("@TenDangNhap", nv.TenDangNhap);
+        command.Parameters.AddWithValue("@MaNhanVien", maNV);
+
+        return command.ExecuteNonQuery() > 0;
+    }
     
 }
