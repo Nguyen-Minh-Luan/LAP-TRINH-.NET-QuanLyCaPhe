@@ -50,7 +50,7 @@ partial class frmThongTinCaNhan
         txtHoTenNV = new System.Windows.Forms.TextBox();
         label6 = new System.Windows.Forms.Label();
         txtSDT = new System.Windows.Forms.TextBox();
-        button1 = new System.Windows.Forms.Button();
+        btnCapNhatTT = new System.Windows.Forms.Button();
         panel4 = new System.Windows.Forms.Panel();
         label1 = new System.Windows.Forms.Label();
         pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -127,6 +127,7 @@ partial class frmThongTinCaNhan
         // 
         // tlpThongTin
         // 
+        tlpThongTin.BackColor = System.Drawing.Color.FromArgb(((int)((byte)248)), ((int)((byte)245)), ((int)((byte)240)));
         tlpThongTin.ColumnCount = 2;
         tlpThongTin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
         tlpThongTin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
@@ -138,7 +139,7 @@ partial class frmThongTinCaNhan
         tlpThongTin.Controls.Add(txtHoTenNV, 1, 3);
         tlpThongTin.Controls.Add(label6, 0, 4);
         tlpThongTin.Controls.Add(txtSDT, 1, 4);
-        tlpThongTin.Controls.Add(button1, 0, 6);
+        tlpThongTin.Controls.Add(btnCapNhatTT, 0, 6);
         tlpThongTin.Dock = System.Windows.Forms.DockStyle.Fill;
         tlpThongTin.Location = new System.Drawing.Point(0, 52);
         tlpThongTin.Name = "tlpThongTin";
@@ -277,6 +278,7 @@ partial class frmThongTinCaNhan
         // txtTenDN
         // 
         txtTenDN.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+        txtTenDN.BackColor = System.Drawing.Color.Gainsboro;
         txtTenDN.Location = new System.Drawing.Point(183, 192);
         txtTenDN.Name = "txtTenDN";
         txtTenDN.Size = new System.Drawing.Size(236, 31);
@@ -296,6 +298,7 @@ partial class frmThongTinCaNhan
         // txtHoTenNV
         // 
         txtHoTenNV.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+        txtHoTenNV.BackColor = System.Drawing.Color.Gainsboro;
         txtHoTenNV.Location = new System.Drawing.Point(183, 247);
         txtHoTenNV.Name = "txtHoTenNV";
         txtHoTenNV.Size = new System.Drawing.Size(236, 31);
@@ -315,28 +318,30 @@ partial class frmThongTinCaNhan
         // txtSDT
         // 
         txtSDT.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+        txtSDT.BackColor = System.Drawing.Color.Gainsboro;
         txtSDT.Location = new System.Drawing.Point(183, 302);
         txtSDT.Name = "txtSDT";
         txtSDT.Size = new System.Drawing.Size(236, 31);
         txtSDT.TabIndex = 6;
         // 
-        // button1
+        // btnCapNhatTT
         // 
-        button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-        button1.BackColor = System.Drawing.Color.DarkRed;
-        tlpThongTin.SetColumnSpan(button1, 2);
-        button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-        button1.FlatAppearance.BorderSize = 0;
-        button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)0)), ((int)((byte)0)));
-        button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)64)), ((int)((byte)0)));
-        button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button1.ForeColor = System.Drawing.Color.White;
-        button1.Location = new System.Drawing.Point(68, 430);
-        button1.Name = "button1";
-        button1.Size = new System.Drawing.Size(305, 53);
-        button1.TabIndex = 9;
-        button1.Text = "Cập nhật thông tin";
-        button1.UseVisualStyleBackColor = false;
+        btnCapNhatTT.Anchor = System.Windows.Forms.AnchorStyles.None;
+        btnCapNhatTT.BackColor = System.Drawing.Color.DarkRed;
+        tlpThongTin.SetColumnSpan(btnCapNhatTT, 2);
+        btnCapNhatTT.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+        btnCapNhatTT.FlatAppearance.BorderSize = 0;
+        btnCapNhatTT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)0)), ((int)((byte)0)));
+        btnCapNhatTT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)64)), ((int)((byte)0)));
+        btnCapNhatTT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        btnCapNhatTT.ForeColor = System.Drawing.Color.White;
+        btnCapNhatTT.Location = new System.Drawing.Point(68, 430);
+        btnCapNhatTT.Name = "btnCapNhatTT";
+        btnCapNhatTT.Size = new System.Drawing.Size(305, 53);
+        btnCapNhatTT.TabIndex = 9;
+        btnCapNhatTT.Text = "Cập nhật thông tin";
+        btnCapNhatTT.UseVisualStyleBackColor = false;
+        btnCapNhatTT.Click += btnCapNhatNV_Click;
         // 
         // panel4
         // 
@@ -477,6 +482,7 @@ partial class frmThongTinCaNhan
         // 
         // tlpDoiMatKhau
         // 
+        tlpDoiMatKhau.BackColor = System.Drawing.Color.FromArgb(((int)((byte)248)), ((int)((byte)245)), ((int)((byte)240)));
         tlpDoiMatKhau.ColumnCount = 2;
         tlpDoiMatKhau.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
         tlpDoiMatKhau.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
@@ -613,6 +619,7 @@ partial class frmThongTinCaNhan
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        BackColor = System.Drawing.Color.FromArgb(((int)((byte)238)), ((int)((byte)233)), ((int)((byte)225)));
         ClientSize = new System.Drawing.Size(1159, 611);
         Controls.Add(tlpMain);
         MinimumSize = new System.Drawing.Size(1000, 650);
@@ -679,7 +686,7 @@ partial class frmThongTinCaNhan
 
     private System.Windows.Forms.Panel panel7;
 
-    private System.Windows.Forms.Button button1;
+    private System.Windows.Forms.Button btnCapNhatTT;
 
 
     private System.Windows.Forms.Label label6;

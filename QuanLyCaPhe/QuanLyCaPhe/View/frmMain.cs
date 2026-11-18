@@ -82,41 +82,50 @@ public partial class frmMain : Form
     {
         if (WindowState == FormWindowState.Minimized) return;
 
-        const int le = 12;  
-        const int khoangCach = 12;  
-        int top = menuStripHome.Bottom + 12;
+        const int le = 16;
+        const int khoangCach = 16;
+        int top = menuStripHome.Bottom + 16;
         int chieuCao = ClientSize.Height - top - le;
         int chieuRongConLai = ClientSize.Width - 2 * le - khoangCach;
         if (chieuCao < 100 || chieuRongConLai < 100) return;
 
         SuspendLayout();
-        
-        panel1.SetBounds(le, top, chieuRongConLai * 40 / 100, chieuCao);
-        panel3.SetBounds(panel1.Right + khoangCach, top, chieuRongConLai - panel1.Width, chieuCao);
 
-        label3.SetBounds(3, panel2.Bottom + 20, panel1.Width - 6, 76);
-        int banTop = label3.Bottom + 10;
-        int banCao = Math.Max(200, panel1.Height - banTop - 20);
-        int banRong = panel1.Width * 85 / 100;
-        tableLayoutPanel1.SetBounds((panel1.Width - banRong) / 2, banTop, banRong, banCao);
+        // Chia khu vực theo tỷ lệ cân đối, ưu tiên không gian làm việc.
+        int rongTrai = chieuRongConLai * 40 / 100;
+        panel1.SetBounds(le, top, rongTrai, chieuCao);
+        panel3.SetBounds(panel1.Right + khoangCach, top,
+            chieuRongConLai - rongTrai, chieuCao);
 
-        panel5.SetBounds(13, panel4.Bottom + 6, panel3.Width - 26, panel3.Height - panel4.Bottom - 19);
-        int lePanel = 20;
-        label12.SetBounds(lePanel, 20, panel5.Width - 2 * lePanel, 56);
+        // Thông tin nhân viên được gom gọn ngay dưới lời chào.
+        label3.SetBounds(16, panel2.Bottom + 8, panel1.Width - 32, 66);
+        int thongTinTop = label3.Bottom + 8;
+        int thongTinCao = Math.Max(150, panel1.Height - thongTinTop - 16);
+        int thongTinRong = panel1.Width - 48;
+        tableLayoutPanel1.SetBounds((panel1.Width - thongTinRong) / 2,
+            thongTinTop, thongTinRong, thongTinCao);
 
-        int khoangNut = 20;
+        // Các nút chức năng chia đều thành hai cột, hai hàng.
+        int lePanel = 16;
+        panel5.SetBounds(lePanel, panel4.Bottom + 10,
+            panel3.Width - 2 * lePanel,
+            panel3.Height - panel4.Bottom - 26);
+        label12.SetBounds(lePanel, 12, panel5.Width - 2 * lePanel, 48);
+
+        int khoangNut = 16;
         int nutRong = (panel5.Width - 2 * lePanel - khoangNut) / 2;
-        int vungNutTop = label12.Bottom + 20;
-        int vungNutCao = panel5.Height - vungNutTop - 20;
-        int nutCao = Math.Min(110, (vungNutCao - khoangNut) / 2);
-        if (nutCao < 40) nutCao = 40;
-        int nutTop = vungNutTop + (vungNutCao - (2 * nutCao + khoangNut)) / 2;
+        int vungNutTop = label12.Bottom + 10;
+        int vungNutCao = panel5.Height - vungNutTop - 16;
+        int nutCao = Math.Min(132, (vungNutCao - khoangNut) / 2);
+        nutCao = Math.Max(58, nutCao);
+        int nutTop = vungNutTop + Math.Max(0,
+            (vungNutCao - (2 * nutCao + khoangNut)) / 2);
         int cot2 = lePanel + nutRong + khoangNut;
 
-        button2.SetBounds(lePanel, nutTop, nutRong, nutCao);                     
-        button3.SetBounds(cot2, nutTop, nutRong, nutCao);                         
-        button4.SetBounds(lePanel, nutTop + nutCao + khoangNut, nutRong, nutCao); 
-        button5.SetBounds(cot2, nutTop + nutCao + khoangNut, nutRong, nutCao);   
+        btnSoDoBan.SetBounds(lePanel, nutTop, nutRong, nutCao);
+        btnLSChuyenBan.SetBounds(cot2, nutTop, nutRong, nutCao);
+        btnLichSuHD.SetBounds(lePanel, nutTop + nutCao + khoangNut, nutRong, nutCao);
+        btnTKDoanhThu.SetBounds(cot2, nutTop + nutCao + khoangNut, nutRong, nutCao);
 
         ResumeLayout(true);
     }
