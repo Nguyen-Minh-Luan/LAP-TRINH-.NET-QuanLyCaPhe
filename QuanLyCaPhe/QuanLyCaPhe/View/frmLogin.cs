@@ -84,19 +84,5 @@ public partial class frmLogin : Form
             txtPassword.Clear();
         }
     }
-
-    private void pictureBox1_Click(object sender, EventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void label2_Click(object sender, EventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void picturePassword_Click(object sender, EventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }
