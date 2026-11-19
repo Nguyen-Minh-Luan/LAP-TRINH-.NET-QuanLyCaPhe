@@ -66,12 +66,12 @@ partial class frmThongTinCaNhan
         panel3 = new System.Windows.Forms.Panel();
         tlpDoiMatKhau = new System.Windows.Forms.TableLayoutPanel();
         label10 = new System.Windows.Forms.Label();
-        textBox4 = new System.Windows.Forms.TextBox();
+        txtMKHienTai = new System.Windows.Forms.TextBox();
         label11 = new System.Windows.Forms.Label();
-        textBox5 = new System.Windows.Forms.TextBox();
+        txtMKMoi = new System.Windows.Forms.TextBox();
         label12 = new System.Windows.Forms.Label();
-        textBox6 = new System.Windows.Forms.TextBox();
-        button3 = new System.Windows.Forms.Button();
+        txtXacNhanMK = new System.Windows.Forms.TextBox();
+        btnCapNhatPassword = new System.Windows.Forms.Button();
         panel6 = new System.Windows.Forms.Panel();
         label3 = new System.Windows.Forms.Label();
         pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -487,12 +487,12 @@ partial class frmThongTinCaNhan
         tlpDoiMatKhau.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
         tlpDoiMatKhau.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
         tlpDoiMatKhau.Controls.Add(label10, 0, 0);
-        tlpDoiMatKhau.Controls.Add(textBox4, 1, 0);
+        tlpDoiMatKhau.Controls.Add(txtMKHienTai, 1, 0);
         tlpDoiMatKhau.Controls.Add(label11, 0, 1);
-        tlpDoiMatKhau.Controls.Add(textBox5, 1, 1);
+        tlpDoiMatKhau.Controls.Add(txtMKMoi, 1, 1);
         tlpDoiMatKhau.Controls.Add(label12, 0, 2);
-        tlpDoiMatKhau.Controls.Add(textBox6, 1, 2);
-        tlpDoiMatKhau.Controls.Add(button3, 0, 3);
+        tlpDoiMatKhau.Controls.Add(txtXacNhanMK, 1, 2);
+        tlpDoiMatKhau.Controls.Add(btnCapNhatPassword, 0, 3);
         tlpDoiMatKhau.Dock = System.Windows.Forms.DockStyle.Fill;
         tlpDoiMatKhau.Location = new System.Drawing.Point(0, 49);
         tlpDoiMatKhau.Name = "tlpDoiMatKhau";
@@ -516,13 +516,13 @@ partial class frmThongTinCaNhan
         label10.Text = "Mật khẩu hiện tại:";
         label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
-        // textBox4
+        // txtMKHienTai
         // 
-        textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
-        textBox4.Location = new System.Drawing.Point(274, 20);
-        textBox4.Name = "textBox4";
-        textBox4.Size = new System.Drawing.Size(372, 31);
-        textBox4.TabIndex = 13;
+        txtMKHienTai.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+        txtMKHienTai.Location = new System.Drawing.Point(274, 20);
+        txtMKHienTai.Name = "txtMKHienTai";
+        txtMKHienTai.Size = new System.Drawing.Size(372, 31);
+        txtMKHienTai.TabIndex = 13;
         // 
         // label11
         // 
@@ -535,13 +535,13 @@ partial class frmThongTinCaNhan
         label11.Text = "Mật khẩu mới:";
         label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
-        // textBox5
+        // txtMKMoi
         // 
-        textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
-        textBox5.Location = new System.Drawing.Point(274, 71);
-        textBox5.Name = "textBox5";
-        textBox5.Size = new System.Drawing.Size(372, 31);
-        textBox5.TabIndex = 15;
+        txtMKMoi.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+        txtMKMoi.Location = new System.Drawing.Point(274, 71);
+        txtMKMoi.Name = "txtMKMoi";
+        txtMKMoi.Size = new System.Drawing.Size(372, 31);
+        txtMKMoi.TabIndex = 15;
         // 
         // label12
         // 
@@ -554,31 +554,32 @@ partial class frmThongTinCaNhan
         label12.Text = "Xác nhận mật khẩu:";
         label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
-        // textBox6
+        // txtXacNhanMK
         // 
-        textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
-        textBox6.Location = new System.Drawing.Point(274, 122);
-        textBox6.Name = "textBox6";
-        textBox6.Size = new System.Drawing.Size(372, 31);
-        textBox6.TabIndex = 17;
+        txtXacNhanMK.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+        txtXacNhanMK.Location = new System.Drawing.Point(274, 122);
+        txtXacNhanMK.Name = "txtXacNhanMK";
+        txtXacNhanMK.Size = new System.Drawing.Size(372, 31);
+        txtXacNhanMK.TabIndex = 17;
         // 
-        // button3
+        // btnCapNhatPassword
         // 
-        button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-        button3.BackColor = System.Drawing.Color.DarkRed;
-        tlpDoiMatKhau.SetColumnSpan(button3, 2);
-        button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-        button3.FlatAppearance.BorderSize = 0;
-        button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)0)), ((int)((byte)0)));
-        button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)64)), ((int)((byte)0)));
-        button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button3.ForeColor = System.Drawing.Color.White;
-        button3.Location = new System.Drawing.Point(182, 166);
-        button3.Name = "button3";
-        button3.Size = new System.Drawing.Size(305, 53);
-        button3.TabIndex = 13;
-        button3.Text = "Cập nhật mật khẩu";
-        button3.UseVisualStyleBackColor = false;
+        btnCapNhatPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+        btnCapNhatPassword.BackColor = System.Drawing.Color.DarkRed;
+        tlpDoiMatKhau.SetColumnSpan(btnCapNhatPassword, 2);
+        btnCapNhatPassword.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+        btnCapNhatPassword.FlatAppearance.BorderSize = 0;
+        btnCapNhatPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)0)), ((int)((byte)0)));
+        btnCapNhatPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)((byte)192)), ((int)((byte)64)), ((int)((byte)0)));
+        btnCapNhatPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        btnCapNhatPassword.ForeColor = System.Drawing.Color.White;
+        btnCapNhatPassword.Location = new System.Drawing.Point(182, 166);
+        btnCapNhatPassword.Name = "btnCapNhatPassword";
+        btnCapNhatPassword.Size = new System.Drawing.Size(305, 53);
+        btnCapNhatPassword.TabIndex = 13;
+        btnCapNhatPassword.Text = "Cập nhật mật khẩu";
+        btnCapNhatPassword.UseVisualStyleBackColor = false;
+        btnCapNhatPassword.Click += btnCapNhatPassword_Click;
         // 
         // panel6
         // 
@@ -669,14 +670,14 @@ partial class frmThongTinCaNhan
 
     private System.Windows.Forms.Panel panel8;
 
-    private System.Windows.Forms.Button button3;
+    private System.Windows.Forms.Button btnCapNhatPassword;
 
     private System.Windows.Forms.Label label12;
-    private System.Windows.Forms.TextBox textBox6;
+    private System.Windows.Forms.TextBox txtXacNhanMK;
 
-    private System.Windows.Forms.TextBox textBox4;
+    private System.Windows.Forms.TextBox txtMKHienTai;
     private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.TextBox textBox5;
+    private System.Windows.Forms.TextBox txtMKMoi;
 
     private System.Windows.Forms.Label label10;
 
