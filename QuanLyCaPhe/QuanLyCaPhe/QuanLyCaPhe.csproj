@@ -56,6 +56,9 @@
       <Compile Update="View\frmQuanLyKhuVucVaBan.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="View\popupQuenMK.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

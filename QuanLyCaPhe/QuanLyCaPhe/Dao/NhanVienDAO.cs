@@ -65,4 +65,21 @@ public class NhanVienDAO
         return command.ExecuteNonQuery() > 0;
     }
     
+    public bool quenMatKhau(string tenDN, string mkMoi)
+    {
+        using var conn = DBConnect.GetConnection();
+
+        string quenMKSQL = @"UPDATE NHAN_VIEN
+                   SET MatKhau = @MatKhau
+                   WHERE TenDangNhap = @TenDangNhap
+                   AND TrangThai = 'Đang làm việc'";
+
+        using var command = new SqliteCommand(quenMKSQL, conn);
+
+        command.Parameters.AddWithValue("@TenDangNhap", tenDN);
+        command.Parameters.AddWithValue("@MatKhau", mkMoi);
+
+        return command.ExecuteNonQuery() > 0;
+    }  
+    
 }
