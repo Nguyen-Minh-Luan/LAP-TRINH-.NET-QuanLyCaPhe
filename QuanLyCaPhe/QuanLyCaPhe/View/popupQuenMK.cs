@@ -10,6 +10,7 @@ public partial class popupQuenMK : Form
     {
         InitializeComponent();
         _nv = nv;
+        btnHuy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
     }
 
     private void btnDoiMK_Click(object sender, EventArgs e)
@@ -25,9 +26,10 @@ public partial class popupQuenMK : Form
             return;
         }
 
-        if (textName != _nv.TenDangNhap)
+        if (!nvDAO.KiemTraTrungTenDangNhap(textName))
         {
-            MessageBox.Show("Tên đăng nhập không tồn tại!", "Lỗi", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            MessageBox.Show("Tên đăng nhập không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            txtTenDNMK.Focus();
             return;
         }
         if (textName.Length < 3 || textName.Length > 30)
@@ -43,7 +45,7 @@ public partial class popupQuenMK : Form
             return;
         }
 
-        if (nvDAO.quenMatKhau(_nv.TenDangNhap, xacNhanMK))
+        if (nvDAO.quenMatKhau(textName, xacNhanMK))
         {
             MessageBox.Show("Đổi mật khẩu thành công!", "Thành công", MessageBoxButtons.OK ,MessageBoxIcon.Information);
             this.Close();

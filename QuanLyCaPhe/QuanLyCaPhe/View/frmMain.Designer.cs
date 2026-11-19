@@ -47,7 +47,7 @@ partial class frmMain
         mnuMonBanChay = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripTaiKhoan = new System.Windows.Forms.ToolStripMenuItem();
         mnuTTCaNhan = new System.Windows.Forms.ToolStripMenuItem();
-        mnuSoDoBanDangXuat = new System.Windows.Forms.ToolStripMenuItem();
+        mnuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
         panel1 = new System.Windows.Forms.Panel();
         tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         label6 = new System.Windows.Forms.Label();
@@ -184,7 +184,7 @@ partial class frmMain
         // 
         // MenuStripTaiKhoan
         // 
-        MenuStripTaiKhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuTTCaNhan, mnuSoDoBanDangXuat });
+        MenuStripTaiKhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuTTCaNhan, mnuDangXuat });
         MenuStripTaiKhoan.Name = "MenuStripTaiKhoan";
         MenuStripTaiKhoan.Size = new System.Drawing.Size(102, 29);
         MenuStripTaiKhoan.Text = "Tài khoản";
@@ -192,15 +192,16 @@ partial class frmMain
         // mnuTTCaNhan
         // 
         mnuTTCaNhan.Name = "mnuTTCaNhan";
-        mnuTTCaNhan.Size = new System.Drawing.Size(256, 34);
+        mnuTTCaNhan.Size = new System.Drawing.Size(270, 34);
         mnuTTCaNhan.Text = "Thông tin cá nhân";
         mnuTTCaNhan.Click += mnuTTCaNhan_Click;
         // 
-        // mnuSoDoBanDangXuat
+        // mnuDangXuat
         // 
-        mnuSoDoBanDangXuat.Name = "mnuSoDoBanDangXuat";
-        mnuSoDoBanDangXuat.Size = new System.Drawing.Size(256, 34);
-        mnuSoDoBanDangXuat.Text = "Đăng xuất";
+        mnuDangXuat.Name = "mnuDangXuat";
+        mnuDangXuat.Size = new System.Drawing.Size(270, 34);
+        mnuDangXuat.Text = "Đăng xuất";
+        mnuDangXuat.Click += mnuDangXuat_Click;
         // 
         // panel1
         // 
@@ -530,7 +531,7 @@ partial class frmMain
         PerformLayout();
     }
 
-    private System.Windows.Forms.ToolStripMenuItem mnuSoDoBanDangXuat;
+    private System.Windows.Forms.ToolStripMenuItem mnuDangXuat;
 
     private System.Windows.Forms.ToolStripMenuItem mnuTTCaNhan;
 
