@@ -144,6 +144,7 @@ public partial class frmLogin
         lblForgotPass.TabIndex = 18;
         lblForgotPass.Text = "Quên mật khẩu?";
         lblForgotPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        lblForgotPass.Click += lblForgotPass_Click;
         // 
         // tblMain
         // 

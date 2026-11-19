@@ -12,6 +12,7 @@ public partial class frmLogin : Form
     public frmLogin()
     {
         InitializeComponent();
+        
     }
     
     private bool checkName()
@@ -34,7 +35,7 @@ public partial class frmLogin : Form
     private bool checkPassword()
     {
         string textPassword = txtPassword.Text.Trim();
-        string patternPassword = @"^(?=.*[A-Z])(?=.*[0-9]).{7,20}\z";
+        string patternPassword = @"^(?=.*[A-Z]).{7,20}\z";
 
         if (string.IsNullOrEmpty(textPassword))
         {
@@ -47,7 +48,7 @@ public partial class frmLogin : Form
 
         if (!Regex.IsMatch(textPassword, patternPassword))
         {
-            MessageBox.Show("Mật khẩu phải ít nhất 7 ký tự, ít nhất 1 chữ in hoa và 1 chữ số!",
+            MessageBox.Show("Mật khẩu phải ít nhất 7 ký tự, ít nhất 1 chữ in hoa",
                 "Lỗi đăng nhập",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
@@ -88,6 +89,18 @@ public partial class frmLogin : Form
             txtName.Clear();
             txtPassword.Clear();
         }
+    }
+    public void LamMoiForm()
+    {
+        txtName.Clear();
+        txtPassword.Clear();
+        txtName.Focus();
+    }
+    private void lblForgotPass_Click(object? sender, EventArgs e)
+    {
+        NhanVien nv = new NhanVien();
+        var popup = new popupQuenMK(nv);
+        popup.ShowDialog(this);
     }
     
 }
