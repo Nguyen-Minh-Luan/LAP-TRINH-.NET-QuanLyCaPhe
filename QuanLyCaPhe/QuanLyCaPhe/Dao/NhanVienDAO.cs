@@ -9,7 +9,7 @@ public class NhanVienDAO
     public NhanVien? DangNhap(string tenDN, string mkDN)
     {
         using var conn = DBConnect.GetConnection();
-        string checkNhanVienSQL = @"SELECT TenDangNhap, MatKhau
+        string checkNhanVienSQL = @"SELECT *
                                  From NHAN_VIEN
                                  WHERE TenDangNhap = @TenDangNhap
                                  AND MatKhau = @MatKhau
@@ -23,11 +23,46 @@ public class NhanVienDAO
         {
             NhanVien nv = new NhanVien
             {
+                MaNhanVien = reader.GetInt32(reader.GetOrdinal("MaNhanVien")),
+                HoTen = reader.GetString(reader.GetOrdinal("HoTen")),
                 TenDangNhap = reader.GetString(reader.GetOrdinal("TenDangNhap")),
                 MatKhau = reader.GetString(reader.GetOrdinal("MatKhau")),
+                SoDienThoai =  reader.GetString(reader.GetOrdinal("SoDienThoai")),
+                VaiTro = reader.GetString(reader.GetOrdinal("VaiTro")),
+                TrangThai = reader.GetString(reader.GetOrdinal("TrangThai"))
             };
             return nv;
         }
         return null;
     }
+
+    public bool CapNhatNV(int maNV,NhanVien nv)
+    {
+        using var conn = DBConnect.GetConnection();
+        string updateNhanVienSQL = @"UPDATE NHAN_VIEN
+                                      SET HoTen = @HoTen, 
+                                          SoDienThoai = @SoDienThoai,
+                                          TenDangNhap = @TenDangNhap
+                                          WHERE MaNhanVien = @MaNhanVien";
+        var command = new SqliteCommand(updateNhanVienSQL, conn);
+        command.Parameters.AddWithValue("@HoTen", nv.HoTen);
+        command.Parameters.AddWithValue("@SoDienThoai", nv.SoDienThoai);
+        command.Parameters.AddWithValue("@TenDangNhap", nv.TenDangNhap);
+        command.Parameters.AddWithValue("@MaNhanVien", maNV);
+
+        return command.ExecuteNonQuery() > 0;
+    }
+
+    public bool capNhatMKNV(int maNV, string newMK)
+    {
+        using var conn = DBConnect.GetConnection();
+        string updateMKNVSQL = @"UPDATE NHAN_VIEN
+                                      SET MatKhau = @mkMoi
+                                          WHERE MaNhanVien = @MaNhanVien";
+        var command = new SqliteCommand(updateMKNVSQL, conn);
+        command.Parameters.AddWithValue("@mkMoi", newMK);
+        command.Parameters.AddWithValue("@MaNhanVien", maNV);
+        return command.ExecuteNonQuery() > 0;
+    }
+    
 }
