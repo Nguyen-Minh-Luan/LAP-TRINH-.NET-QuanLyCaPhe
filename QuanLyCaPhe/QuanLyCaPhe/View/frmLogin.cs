@@ -10,6 +10,7 @@ public partial class frmLogin : Form
     public frmLogin()
     {
         InitializeComponent();
+        
     }
     
     private bool checkName()
@@ -86,6 +87,12 @@ public partial class frmLogin : Form
             txtName.Clear();
             txtPassword.Clear();
         }
+    }
+    private void lblForgotPass_Click(object? sender, EventArgs e)
+    {
+        NhanVien nv = new NhanVien();
+        var popup = new popupQuenMK(nv);
+        popup.ShowDialog(this);
     }
     
 }
