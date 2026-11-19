@@ -4,12 +4,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
+using QuanLyCaPhe.View;
 
 namespace QuanLyCaPhe;
 
 public partial class frmTable : Form
 {
-    private readonly BanDAO _banDao = new();
+    private readonly BanDAO banDao = new();
 
     public frmTable()
     {
@@ -27,7 +28,7 @@ public partial class frmTable : Form
         flpTang2.Controls.Clear();
         flpSanThuong.Controls.Clear();
 
-        List<Ban> dsBan = _banDao.LayDanhSachBan();
+        List<Ban> dsBan = banDao.LayDanhSachBan();
 
         foreach (Ban ban in dsBan)
         {
@@ -42,8 +43,11 @@ public partial class frmTable : Form
                 ImageKey = "coffee-table (1).png",
                 Text = $"{ban.TenBan}\n({ban.SoChoNgoi} chỗ)",
                 BackColor = LayMauTheoTrangThai(ban.TrangThai),
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand,
                 Tag = ban
             };
+            btn.FlatAppearance.BorderSize = 0;
 
             btn.Click += BtnBan_Click;
 
@@ -75,11 +79,16 @@ public partial class frmTable : Form
 
     private void BtnBan_Click(object? sender, EventArgs e)
     {
-        if (sender is Button btn && btn.Tag is Ban ban)
+        if (sender != null)
         {
-            frmTableDetail detail = new frmTableDetail();
-            detail.ShowDialog();
-            LoadDanhSachBan();
+            Button btn = (Button)sender;
+            if (btn.Tag != null)
+            {
+                Ban ban = (Ban)btn.Tag;
+                frmTableDetail detail = new frmTableDetail(ban);
+                detail.ShowDialog();
+                LoadDanhSachBan();
+            }
         }
     }
 
@@ -95,5 +104,17 @@ public partial class frmTable : Form
 
     private void nướcUốngToolStripMenuItem_Click(object? sender, EventArgs e)
     {
+    }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+        popupChuyenBan chuyenBanBtn = new popupChuyenBan();
+        chuyenBanBtn.ShowDialog();
+    }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+        popupGopBan gopBanBtn = new popupGopBan();
+        gopBanBtn.ShowDialog();
     }
 }
