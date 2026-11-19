@@ -1,3 +1,5 @@
+using System;
+using System.Windows.Forms;
 using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
 
