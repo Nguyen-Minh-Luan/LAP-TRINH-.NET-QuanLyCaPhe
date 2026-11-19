@@ -1,4 +1,6 @@
+using System;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
 using QuanLyCaPhe.View;
