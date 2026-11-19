@@ -32,23 +32,26 @@ public partial class frmLogin : Form
     private bool checkPassword()
     {
         string textPassword = txtPassword.Text.Trim();
-        string patternPassword = @"^(?=.*[A-Z])(?=.*[0-9]).{6,}\z";
+        string patternPassword = @"^(?=.*[A-Z])(?=.*[0-9]).{7,20}\z";
+
         if (string.IsNullOrEmpty(textPassword))
         {
-            MessageBox.Show("Mật khẩu không được để trống", "Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            MessageBox.Show("Mật khẩu không được để trống!",
+                "Lỗi đăng nhập",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             return false;
         }
-        if (textPassword.Length < 8 || textPassword.Length > 20)
-        {
-            MessageBox.Show("Mật khẩu phải từ 8 đến 20 ký tự", "Lỗi đăng nhập",MessageBoxButtons.OK ,MessageBoxIcon.Error);
-            return false;
-        }
+
         if (!Regex.IsMatch(textPassword, patternPassword))
         {
-            MessageBox.Show("Mật khẩu không chính xác, vui lòng thử lại", "Lỗi đăng nhập", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            MessageBox.Show("Mật khẩu phải ít nhất 7 ký tự, ít nhất 1 chữ in hoa và 1 chữ số!",
+                "Lỗi đăng nhập",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             return false;
         }
-        
+
         return true;
     }
     
@@ -73,7 +76,7 @@ public partial class frmLogin : Form
         if (nv != null)
         {
             MessageBox.Show($"Đăng nhập thành công. Xin chào bạn nhân viên: {textName}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmMain frm = new frmMain();
+            frmMain frm = new frmMain(nv);
             frm.Show();
             this.Hide();
         }
@@ -84,4 +87,5 @@ public partial class frmLogin : Form
             txtPassword.Clear();
         }
     }
+    
 }
