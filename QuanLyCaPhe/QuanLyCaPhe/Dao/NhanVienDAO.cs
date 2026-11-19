@@ -52,5 +52,17 @@ public class NhanVienDAO
 
         return command.ExecuteNonQuery() > 0;
     }
+
+    public bool capNhatMKNV(int maNV, string newMK)
+    {
+        using var conn = DBConnect.GetConnection();
+        string updateMKNVSQL = @"UPDATE NHAN_VIEN
+                                      SET MatKhau = @mkMoi
+                                          WHERE MaNhanVien = @MaNhanVien";
+        var command = new SqliteCommand(updateMKNVSQL, conn);
+        command.Parameters.AddWithValue("@mkMoi", newMK);
+        command.Parameters.AddWithValue("@MaNhanVien", maNV);
+        return command.ExecuteNonQuery() > 0;
+    }
     
 }
