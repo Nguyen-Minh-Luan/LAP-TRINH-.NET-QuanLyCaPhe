@@ -80,6 +80,22 @@ public partial class frmMain : Form
         CanChinhBoCuc();
     }
 
+    private void mnuDangXuat_Click(object? sender, EventArgs e)
+    {
+        DialogResult kq = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Đăng xuất", MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+        if (kq == DialogResult.Yes)
+        {
+            frmLogin? login = Application.OpenForms.OfType<frmLogin>().FirstOrDefault();
+            if (login == null)
+            {
+                login = new frmLogin();
+            }
+            login.LamMoiForm();
+            login.Show();
+            this.Close();
+        }
+    }
     private void CanChinhBoCuc()
     {
         if (WindowState == FormWindowState.Minimized) return;

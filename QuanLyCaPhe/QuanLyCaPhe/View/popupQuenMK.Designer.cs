@@ -33,7 +33,7 @@ partial class popupQuenMK
     {
         label1 = new System.Windows.Forms.Label();
         panel1 = new System.Windows.Forms.Panel();
-        button2 = new System.Windows.Forms.Button();
+        btnHuy = new System.Windows.Forms.Button();
         btnDoiMK = new System.Windows.Forms.Button();
         label4 = new System.Windows.Forms.Label();
         txtXacNhanMKMoi = new System.Windows.Forms.TextBox();
@@ -56,7 +56,7 @@ partial class popupQuenMK
         // 
         // panel1
         // 
-        panel1.Controls.Add(button2);
+        panel1.Controls.Add(btnHuy);
         panel1.Controls.Add(btnDoiMK);
         panel1.Controls.Add(label4);
         panel1.Controls.Add(txtXacNhanMKMoi);
@@ -69,17 +69,17 @@ partial class popupQuenMK
         panel1.Size = new System.Drawing.Size(671, 337);
         panel1.TabIndex = 1;
         // 
-        // button2
+        // btnHuy
         // 
-        button2.BackColor = System.Drawing.Color.Chocolate;
-        button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button2.ForeColor = System.Drawing.Color.MintCream;
-        button2.Location = new System.Drawing.Point(435, 260);
-        button2.Name = "button2";
-        button2.Size = new System.Drawing.Size(166, 53);
-        button2.TabIndex = 7;
-        button2.Text = "Huỷ";
-        button2.UseVisualStyleBackColor = false;
+        btnHuy.BackColor = System.Drawing.Color.Chocolate;
+        btnHuy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        btnHuy.ForeColor = System.Drawing.Color.MintCream;
+        btnHuy.Location = new System.Drawing.Point(435, 260);
+        btnHuy.Name = "btnHuy";
+        btnHuy.Size = new System.Drawing.Size(166, 53);
+        btnHuy.TabIndex = 7;
+        btnHuy.Text = "Huỷ";
+        btnHuy.UseVisualStyleBackColor = false;
         // 
         // btnDoiMK
         // 
@@ -162,7 +162,7 @@ partial class popupQuenMK
     }
 
     private System.Windows.Forms.Button btnDoiMK;
-    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button btnHuy;
 
     private System.Windows.Forms.TextBox txtXacNhanMKMoi;
     private System.Windows.Forms.Label label4;
