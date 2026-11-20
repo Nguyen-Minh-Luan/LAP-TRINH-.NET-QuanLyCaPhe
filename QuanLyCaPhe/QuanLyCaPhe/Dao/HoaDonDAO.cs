@@ -172,4 +172,106 @@ public class HoaDonDAO
             return false;
         }
     }
+
+    public HoaDon? LayHoaDonChuaThanhToanTheoBan(int maBan)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"SELECT hd.MaHoaDon, hd.MaNhanVien, hd.NgayTao, hd.TongTien, hd.TienGiam, hd.ThanhTien, hd.TrangThai 
+                           FROM HOA_DON hd
+                           JOIN HOA_DON_BAN hdb ON hd.MaHoaDon = hdb.MaHoaDon
+                           WHERE hdb.MaBan = @MaBan 
+                             AND (hd.TrangThai = 'ChuaThanhToan' OR hd.TrangThai = 'Chưa thanh toán')
+                           ORDER BY hd.MaHoaDon DESC LIMIT 1";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@MaBan", maBan);
+
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return MappingToHoaDon(reader);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        return null;
+    }
+
+    public bool LienKetHoaDonBan(int maHoaDon, int maBan)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"INSERT INTO HOA_DON_BAN (MaHoaDon, MaBan, ThoiGianBatDau)
+                           VALUES (@MaHoaDon, @MaBan, @ThoiGianBatDau)";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+            cmd.Parameters.AddWithValue("@MaBan", maBan);
+            cmd.Parameters.AddWithValue("@ThoiGianBatDau", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
+    // Cập nhật tổng tiền, giảm giá và chuyển trạng thái hóa đơn thành DaThanhToan
+    public bool ChotThanhToanHoaDon(int maHoaDon, decimal tongTien, decimal tienGiam, decimal thanhTien)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"UPDATE HOA_DON 
+                           SET TongTien = @TongTien, 
+                               TienGiam = @TienGiam, 
+                               ThanhTien = @ThanhTien, 
+                               TrangThai = 'DaThanhToan' 
+                           WHERE MaHoaDon = @MaHoaDon";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@TongTien", tongTien);
+            cmd.Parameters.AddWithValue("@TienGiam", tienGiam);
+            cmd.Parameters.AddWithValue("@ThanhTien", thanhTien);
+            cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
+    // Ghi nhận thời gian kết thúc của bàn vào bảng HOA_DON_BAN
+    public bool KetThucHoaDonBan(int maHoaDon)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"UPDATE HOA_DON_BAN 
+                           SET ThoiGianKetThuc = @ThoiGianKetThuc 
+                           WHERE MaHoaDon = @MaHoaDon AND (ThoiGianKetThuc IS NULL OR ThoiGianKetThuc = '')";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@ThoiGianKetThuc", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
 }

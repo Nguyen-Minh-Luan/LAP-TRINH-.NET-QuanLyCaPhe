@@ -16,6 +16,10 @@ partial class frmTable
 
     #region Windows Form Designer generated code
 
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
     private void InitializeComponent()
     {
         components = new System.ComponentModel.Container();
@@ -34,7 +38,6 @@ partial class frmTable
         lịchSửHoáĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        button1 = new System.Windows.Forms.Button();
         button2 = new System.Windows.Forms.Button();
         button3 = new System.Windows.Forms.Button();
         btnLamMoi = new System.Windows.Forms.Button();
@@ -171,42 +174,53 @@ partial class frmTable
         profileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
         profileToolStripMenuItem.Text = "Profile";
         // 
-        // button1
-        // 
-        button1.BackColor = System.Drawing.SystemColors.Control;
-        button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-        button1.Location = new System.Drawing.Point(667, 63);
-        button1.Name = "button1";
-        button1.Size = new System.Drawing.Size(121, 30);
-        button1.TabIndex = 2;
-        button1.Text = "Đặt bàn";
-        button1.UseVisualStyleBackColor = false;
-        button1.Click += button1_Click;
-        // 
         // button2
         // 
-        button2.BackColor = System.Drawing.SystemColors.Control;
-        button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-        button2.Location = new System.Drawing.Point(667, 99);
+        button2.BackColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        button2.Cursor = System.Windows.Forms.Cursors.Hand;
+        button2.FlatAppearance.BorderSize = 0;
+        button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button2.ForeColor = System.Drawing.Color.White;
+        button2.Location = new System.Drawing.Point(667, 58);
         button2.Name = "button2";
-        button2.Size = new System.Drawing.Size(121, 30);
+        button2.Size = new System.Drawing.Size(121, 35);
         button2.TabIndex = 3;
         button2.Text = "Chuyển bàn";
         button2.UseVisualStyleBackColor = false;
+        button2.Click += button2_Click;
         // 
         // button3
         // 
-        button3.BackColor = System.Drawing.SystemColors.Control;
-        button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-        button3.Location = new System.Drawing.Point(667, 135);
+        button3.BackColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        button3.Cursor = System.Windows.Forms.Cursors.Hand;
+        button3.FlatAppearance.BorderSize = 0;
+        button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        button3.ForeColor = System.Drawing.Color.White;
+        button3.Location = new System.Drawing.Point(667, 100);
         button3.Name = "button3";
-        button3.Size = new System.Drawing.Size(121, 30);
+        button3.Size = new System.Drawing.Size(121, 35);
         button3.TabIndex = 4;
         button3.Text = "Gộp bàn";
         button3.UseVisualStyleBackColor = false;
+        button3.Click += button3_Click;
+        // 
+        // btnLamMoi
+        // 
+        btnLamMoi.BackColor = System.Drawing.Color.SeaGreen;
+        btnLamMoi.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnLamMoi.FlatAppearance.BorderSize = 0;
+        btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        btnLamMoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        btnLamMoi.ForeColor = System.Drawing.Color.White;
+        btnLamMoi.Location = new System.Drawing.Point(667, 262);
+        btnLamMoi.Name = "btnLamMoi";
+        btnLamMoi.Size = new System.Drawing.Size(121, 35);
+        btnLamMoi.TabIndex = 6;
+        btnLamMoi.Text = "🔄 Làm mới";
+        btnLamMoi.UseVisualStyleBackColor = false;
+        btnLamMoi.Click += btnLamMoi_Click;
         // 
         // groupBox1
         // 
@@ -217,7 +231,7 @@ partial class frmTable
         groupBox1.Controls.Add(label1);
         groupBox1.Controls.Add(panel2);
         groupBox1.Controls.Add(panel1);
-        groupBox1.Location = new System.Drawing.Point(667, 182);
+        groupBox1.Location = new System.Drawing.Point(667, 145);
         groupBox1.Name = "groupBox1";
         groupBox1.Size = new System.Drawing.Size(121, 102);
         groupBox1.TabIndex = 5;
@@ -281,19 +295,6 @@ partial class frmTable
         panel1.Size = new System.Drawing.Size(27, 19);
         panel1.TabIndex = 0;
         // 
-        // btnLamMoi
-        // 
-        btnLamMoi.BackColor = System.Drawing.Color.LightCyan;
-        btnLamMoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        btnLamMoi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-        btnLamMoi.Location = new System.Drawing.Point(667, 295);
-        btnLamMoi.Name = "btnLamMoi";
-        btnLamMoi.Size = new System.Drawing.Size(121, 35);
-        btnLamMoi.TabIndex = 6;
-        btnLamMoi.Text = "🔄 Làm mới";
-        btnLamMoi.UseVisualStyleBackColor = false;
-        btnLamMoi.Click += btnLamMoi_Click;
-        // 
         // frmTable
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -303,7 +304,6 @@ partial class frmTable
         Controls.Add(groupBox1);
         Controls.Add(button3);
         Controls.Add(button2);
-        Controls.Add(button1);
         Controls.Add(tabControl1);
         Controls.Add(menuStrip1);
         MainMenuStrip = menuStrip1;
@@ -335,7 +335,6 @@ partial class frmTable
     private System.Windows.Forms.ToolStripMenuItem lịchSửHoáĐơnToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem thốngKêDoanhThuToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
-    private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button button2;
     private System.Windows.Forms.Button button3;
     private System.Windows.Forms.Button btnLamMoi;
