@@ -4,23 +4,38 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Windows.Forms;
+using QuanLyCaPhe.Dao;
+using QuanLyCaPhe.Model;
 
 namespace QuanLyCaPhe;
 
 public partial class frmThanhToan : Form
 {
-    private decimal _tongTienMon = 0;
-    private decimal _tongCanThu = 0;
-    private decimal _tienGiam = 0;
+    private decimal tongTienMon = 0;
+    private decimal tongCanThu = 0;
+    private decimal tienGiam = 0;
+
+    private int maHoaDonId = 0;
+    private int maBanId = 0;
+    private int maNhanVienId = 1;
+
+    private readonly HoaDonDAO hoaDonDao = new();
+    private readonly ThanhToanDAO thanhToanDao = new();
+    private readonly GiamGiaDAO giamGiaDao = new();
+    private readonly BanDAO banDao = new();
 
     public frmThanhToan()
     {
         InitializeComponent();
     }
 
-    /// <summary>
-    /// Khởi tạo Form thanh toán với thông tin bàn và hóa đơn
-    /// </summary>
+    public frmThanhToan(int maHoaDonId, int maBanId, string tenBan, string maHoaDon, string thuNgan, decimal tongTienMon, List<ChiTietMonItem>? danhSachMon = null, int maNhanVienId = 1) : this(tenBan, maHoaDon, thuNgan, tongTienMon, danhSachMon)
+    {
+        this.maHoaDonId = maHoaDonId;
+        this.maBanId = maBanId;
+        this.maNhanVienId = maNhanVienId;
+    }
+
     public frmThanhToan(string tenBan, string maHoaDon, string thuNgan, decimal tongTienMon, List<ChiTietMonItem>? danhSachMon = null) : this()
     {
         lblTenBan.Text = tenBan.ToUpper();
@@ -28,7 +43,7 @@ public partial class frmThanhToan : Form
         lblThuNgan.Text = thuNgan;
         lblGioVao.Text = DateTime.Now.AddHours(-1).ToString("HH:mm");
 
-        _tongTienMon = tongTienMon;
+        this.tongTienMon = tongTienMon;
 
         if (danhSachMon != null && danhSachMon.Count > 0)
         {
@@ -44,18 +59,16 @@ public partial class frmThanhToan : Form
     {
         tabHinhThuc.SelectedTab = tabTienMat;
 
-        if (dgvChiTietHoaDon.Rows.Count == 0 && _tongTienMon == 0)
+        if (dgvChiTietHoaDon.Rows.Count == 0 && tongTienMon == 0)
         {
             LoadDuLieuMauMacDinh();
         }
 
         TinhToanTien();
-        VeHinhAnhQRDong();
+        HienThiAnhQR();
     }
 
-    /// <summary>
-    /// Nạp dữ liệu mẫu khi mở kiểm tra hoặc chưa có dữ liệu truyền vào
-    /// </summary>
+    // Nạp dữ liệu món mẫu khi mở thử form mà chưa có dữ liệu truyền vào
     private void LoadDuLieuMauMacDinh()
     {
         var sampleItems = new List<ChiTietMonItem>
@@ -65,10 +78,11 @@ public partial class frmThanhToan : Form
             new ChiTietMonItem { STT = 3, TenMon = "Bánh Croissant", SoLuong = 1, DonGia = 35000 }
         };
 
-        _tongTienMon = 150000;
+        tongTienMon = 150000;
         LoadDanhSachMon(sampleItems);
     }
 
+    // Hiển thị danh sách món ăn lên bảng
     public void LoadDanhSachMon(List<ChiTietMonItem> danhSachMon)
     {
         dgvChiTietHoaDon.Rows.Clear();
@@ -90,36 +104,36 @@ public partial class frmThanhToan : Form
         lblTongSoMon.Text = $"Tổng số lượng món: {tongSoLuong} ly/phần";
     }
 
+    // Tính toán số tiền giảm giá và tổng tiền cần thu
     private void TinhToanTien()
     {
         decimal phanTramGiam = nudGiamGia.Value;
-        _tienGiam = _tongTienMon * (phanTramGiam / 100m);
-        _tongCanThu = _tongTienMon - _tienGiam;
+        tienGiam = tongTienMon * (phanTramGiam / 100m);
+        tongCanThu = tongTienMon - tienGiam;
 
-        if (_tongCanThu < 0)
-            _tongCanThu = 0;
+        if (tongCanThu < 0)
+            tongCanThu = 0;
 
-        lblTongTienMon.Text = _tongTienMon.ToString("N0", CultureInfo.InvariantCulture) + " đ";
-        lblTienGiam.Text = "- " + _tienGiam.ToString("N0", CultureInfo.InvariantCulture) + " đ";
-        lblTongCanThu.Text = _tongCanThu.ToString("N0", CultureInfo.InvariantCulture) + " đ";
-        lblSoTienQR.Text = $"Số tiền cần chuyển: {_tongCanThu:N0} đ";
+        lblTongTienMon.Text = tongTienMon.ToString("N0", CultureInfo.InvariantCulture) + " đ";
+        lblTienGiam.Text = "- " + tienGiam.ToString("N0", CultureInfo.InvariantCulture) + " đ";
+        lblTongCanThu.Text = tongCanThu.ToString("N0", CultureInfo.InvariantCulture) + " đ";
+        lblSoTienQR.Text = $"Số tiền cần chuyển: {tongCanThu:N0} đ";
 
-        // Nếu đang ở tab Chuyển khoản, tự động cập nhật số tiền khách đưa bằng tổng cần thu
         if (tabHinhThuc.SelectedTab == tabChuyenKhoan)
         {
-            txtTienKhachDua.Text = _tongCanThu.ToString("N0", CultureInfo.InvariantCulture);
-            VeHinhAnhQRDong();
+            txtTienKhachDua.Text = tongCanThu.ToString("N0", CultureInfo.InvariantCulture);
         }
 
         TinhTienThoi();
     }
 
+    // Tính tiền thừa trả lại cho khách
     private void TinhTienThoi()
     {
         string textTienKhach = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
         if (decimal.TryParse(textTienKhach, out decimal tienKhachDua))
         {
-            decimal tienThoi = tienKhachDua - _tongCanThu;
+            decimal tienThoi = tienKhachDua - tongCanThu;
             if (tienThoi >= 0)
             {
                 lblTienThoi.ForeColor = Color.ForestGreen;
@@ -137,23 +151,25 @@ public partial class frmThanhToan : Form
         }
     }
 
+    // Xử lý khi chuyển tab giữa Tiền mặt và Chuyển khoản QR
     private void tabHinhThuc_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (tabHinhThuc.SelectedTab == tabChuyenKhoan)
         {
-            txtTienKhachDua.Text = _tongCanThu.ToString("N0", CultureInfo.InvariantCulture);
-            lblSoTienQR.Text = $"Số tiền cần chuyển: {_tongCanThu:N0} đ";
-            VeHinhAnhQRDong();
+            txtTienKhachDua.Text = tongCanThu.ToString("N0", CultureInfo.InvariantCulture);
+            lblSoTienQR.Text = $"Số tiền cần chuyển: {tongCanThu:N0} đ";
         }
 
         TinhTienThoi();
     }
 
+    // Xử lý khi thay đổi phần trăm giảm giá
     private void nudGiamGia_ValueChanged(object? sender, EventArgs e)
     {
         TinhToanTien();
     }
 
+    // Định dạng tiền khách đưa thành dạng số có dấu phẩy và tính lại tiền thối
     private void txtTienKhachDua_TextChanged(object? sender, EventArgs e)
     {
         string raw = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
@@ -177,19 +193,21 @@ public partial class frmThanhToan : Form
         TinhTienThoi();
     }
 
+    // Xử lý khi bấm nút Xác nhận thanh toán
     private void btnThanhToan_Click(object? sender, EventArgs e)
     {
         string hinhThuc = tabHinhThuc.SelectedTab == tabTienMat ? "Tiền mặt" : "Chuyển khoản (QR)";
+        string phuongThucDb = tabHinhThuc.SelectedTab == tabTienMat ? "Tiền mặt" : "Chuyển khoản";
 
         if (tabHinhThuc.SelectedTab == tabTienMat)
         {
             string raw = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
             decimal.TryParse(raw, out decimal tienKhachDua);
 
-            if (tienKhachDua < _tongCanThu)
+            if (tienKhachDua < tongCanThu)
             {
                 var dialogResult = MessageBox.Show(
-                    $"Tiền khách đưa ({tienKhachDua:N0} đ) nhỏ hơn tổng cần thu ({_tongCanThu:N0} đ).\nBạn có chắc chắn muốn xác nhận?",
+                    $"Tiền khách đưa ({tienKhachDua:N0} đ) nhỏ hơn tổng cần thu ({tongCanThu:N0} đ).\nBạn có chắc chắn muốn xác nhận?",
                     "Cảnh báo thanh toán",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
@@ -200,10 +218,58 @@ public partial class frmThanhToan : Form
             }
         }
 
+        if (maHoaDonId > 0)
+        {
+            try
+            {
+                bool capNhatHd = hoaDonDao.ChotThanhToanHoaDon(maHoaDonId, tongTienMon, tienGiam, tongCanThu);
+                if (!capNhatHd)
+                {
+                    MessageBox.Show("Không thể cập nhật trạng thái hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                hoaDonDao.KetThucHoaDonBan(maHoaDonId);
+
+                ThanhToan tt = new ThanhToan
+                {
+                    MaHoaDon = maHoaDonId,
+                    NgayThanhToan = DateTime.Now,
+                    SoTien = tongCanThu,
+                    PhuongThuc = phuongThucDb,
+                    TrangThai = "ThanhCong"
+                };
+                thanhToanDao.ThemThanhToan(tt);
+
+                if (tienGiam > 0)
+                {
+                    GiamGia gg = new GiamGia
+                    {
+                        MaHoaDon = maHoaDonId,
+                        MaNhanVien = maNhanVienId,
+                        LoaiGiamGia = "Phần trăm",
+                        GiaTriGiam = nudGiamGia.Value,
+                        LyDo = string.IsNullOrWhiteSpace(txtGhiChu.Text) ? "Giảm giá khi thanh toán" : txtGhiChu.Text.Trim()
+                    };
+                    giamGiaDao.ThemGiamGia(gg);
+                }
+
+                if (maBanId > 0)
+                {
+                    banDao.CapNhatTrangThai(maBanId, "Trong");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu dữ liệu thanh toán: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
         string thongBao = $"Thanh toán thành công!\n" +
                           $"- Bàn: {lblTenBan.Text}\n" +
                           $"- Số HĐ: {lblMaHoaDon.Text}\n" +
-                          $"- Tổng tiền: {_tongCanThu:N0} đ\n" +
+                          $"- Tổng tiền: {tongCanThu:N0} đ\n" +
                           $"- Hình thức: {hinhThuc}";
 
         if (chkInHoaDon.Checked)
@@ -217,14 +283,34 @@ public partial class frmThanhToan : Form
         this.Close();
     }
 
+    // In phiếu tạm tính để khách kiểm tra đối chiếu món
     private void btnInTamTinh_Click(object? sender, EventArgs e)
     {
-        MessageBox.Show(
-            $"Đã gửi lệnh in Phiếu tạm tính cho {lblTenBan.Text}.\nTổng tạm tính: {_tongCanThu:N0} đ.",
-            "In tạm tính",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information
-        );
+        string chiTiet = $"====== PHIẾU TẠM TÍNH ======\n" +
+                         $"Bàn: {lblTenBan.Text}\n" +
+                         $"Mã HĐ: {lblMaHoaDon.Text}\n" +
+                         $"Giờ vào: {lblGioVao.Text} | Thu ngân: {lblThuNgan.Text}\n" +
+                         $"-----------------------------\n";
+
+        foreach (DataGridViewRow row in dgvChiTietHoaDon.Rows)
+        {
+            if (row.Cells[1].Value != null)
+            {
+                string tenMon = row.Cells[1].Value.ToString() ?? "";
+                string sl = row.Cells[2].Value?.ToString() ?? "1";
+                string thanhTien = row.Cells[4].Value?.ToString() ?? "0";
+                chiTiet += $"{tenMon} x {sl} = {thanhTien} đ\n";
+            }
+        }
+
+        chiTiet += $"-----------------------------\n" +
+                   $"Tổng tiền món: {tongTienMon:N0} đ\n" +
+                   $"Giảm giá: {tienGiam:N0} đ ({nudGiamGia.Value}%)\n" +
+                   $"TỔNG CẦN THU: {tongCanThu:N0} đ\n" +
+                   $"=============================\n" +
+                   $"(Phiếu tạm tính dùng để đối chiếu, chưa phải hóa đơn thanh toán)";
+
+        MessageBox.Show(chiTiet, "In phiếu tạm tính", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void btnHuy_Click(object? sender, EventArgs e)
@@ -233,68 +319,29 @@ public partial class frmThanhToan : Form
         this.Close();
     }
 
-    /// <summary>
-    /// Vẽ đồ họa QR Code mô phỏng chuyển khoản
-    /// </summary>
-    private void VeHinhAnhQRDong()
+    // Tải và hiển thị ảnh mã QR chuyển khoản của quán
+    private void HienThiAnhQR()
     {
-        int size = 130;
-        Bitmap bmp = new Bitmap(size, size);
-        using (Graphics g = Graphics.FromImage(bmp))
+        try
         {
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            g.Clear(Color.White);
-
-            // Viền ngoài
-            using Pen penBorder = new Pen(Color.FromArgb(70, 130, 180), 2.5f);
-            g.DrawRectangle(penBorder, 5, 5, size - 10, size - 10);
-
-            // Giả lập các ô vuông định vị QR (3 góc)
-            VeGocQR(g, 10, 10, 26);
-            VeGocQR(g, size - 36, 10, 26);
-            VeGocQR(g, 10, size - 36, 26);
-
-            // Giả lập các ô vuông dữ liệu
-            using Brush brushData = new SolidBrush(Color.FromArgb(45, 52, 54));
-            for (int x = 40; x < size - 40; x += 10)
+            string duongDan = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "vietqr.jpg");
+            if (!File.Exists(duongDan))
             {
-                for (int y = 40; y < size - 40; y += 10)
-                {
-                    if ((x + y) % 7 == 0 || (x * y) % 5 == 0)
-                        g.FillRectangle(brushData, x, y, 6, 6);
-                }
+                duongDan = Path.Combine(Application.StartupPath, "..", "..", "..", "Resources", "vietqr.jpg");
             }
 
-            // Logo VietQR ở giữa
-            Rectangle rectLogo = new Rectangle(size / 2 - 24, size / 2 - 12, 48, 24);
-            g.FillRectangle(Brushes.White, rectLogo);
-            g.DrawRectangle(Pens.Gray, rectLogo);
-
-            using Font fontLogo = new Font("Segoe UI", 7.5f, FontStyle.Bold);
-            using StringFormat sf = new StringFormat
+            if (File.Exists(duongDan))
             {
-                Alignment = StringAlignment.Center,
-                LineAlignment = StringAlignment.Center
-            };
-            g.DrawString("VietQR", fontLogo, Brushes.DarkBlue, rectLogo, sf);
+                picQRCode.Image = Image.FromFile(duongDan);
+            }
         }
-
-        picQRCode.Image?.Dispose();
-        picQRCode.Image = bmp;
-    }
-
-    private void VeGocQR(Graphics g, int x, int y, int size)
-    {
-        using Brush brushDark = new SolidBrush(Color.FromArgb(41, 128, 185));
-        g.FillRectangle(brushDark, x, y, size, size);
-        g.FillRectangle(Brushes.White, x + 4, y + 4, size - 8, size - 8);
-        g.FillRectangle(brushDark, x + 7, y + 7, size - 14, size - 14);
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }
 
-/// <summary>
-/// Model DTO chứa chi tiết món để hiển thị lên bảng thanh toán
-/// </summary>
 public class ChiTietMonItem
 {
     public int STT { get; set; }
