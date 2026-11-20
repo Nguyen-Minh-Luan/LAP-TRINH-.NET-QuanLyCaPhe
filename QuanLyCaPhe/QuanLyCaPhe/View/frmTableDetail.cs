@@ -434,11 +434,21 @@ public partial class frmTableDetail : Form
             string tenBan = banHienTai != null ? banHienTai.TenBan : "Bàn";
             string maHdStr = $"HD-{hoaDonHienTai.MaHoaDon:D5}";
             decimal tongTien = hoaDonHienTai.TongTien;
+            int maBan = banHienTai != null ? banHienTai.MaBan : 0;
+            int maNv = hoaDonHienTai.MaNhanVien;
 
-            frmThanhToan thanhToanForm = new frmThanhToan(tenBan, maHdStr, "Thu ngân", tongTien, dsItem);
-            thanhToanForm.ShowDialog();
-
-            KiemTraVaLoadHoaDonCuaBan();
+            frmThanhToan thanhToanForm = new frmThanhToan(hoaDonHienTai.MaHoaDon, maBan, tenBan, maHdStr, "Thu ngân", tongTien, dsItem, maNv);
+            if (thanhToanForm.ShowDialog() == DialogResult.OK)
+            {
+                // Thanh toán hoàn tất: bàn đã được giải phóng về trạng thái trống
+                hoaDonHienTai = null;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                KiemTraVaLoadHoaDonCuaBan();
+            }
         }
         catch (Exception ex)
         {
