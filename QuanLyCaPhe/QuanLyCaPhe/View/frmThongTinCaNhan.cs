@@ -60,13 +60,18 @@ public partial class frmThongTinCaNhan : Form
         _nv.HoTen = txtHoTenNV.Text.Trim();
         _nv.SoDienThoai = txtSDT.Text.Trim();
         _nv.TenDangNhap = txtTenDN.Text.Trim();
-        if (nvDAO.CapNhatNV(_nv.MaNhanVien,_nv))
+
+        DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật thông tin mới?", "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
+        if (result == DialogResult.Yes)
         {
-            MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        else
-        {
-            MessageBox.Show("Không có dữ liệu được cập nhật!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (nvDAO.CapNhatNV(_nv.MaNhanVien,_nv))
+            {
+                MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu được cập nhật!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
     private bool checkPassword()
@@ -107,19 +112,22 @@ public partial class frmThongTinCaNhan : Form
             NhanVienDAO nvDAO = new NhanVienDAO();
             if (!checkPassword()) return;
             string newPassword = txtMKMoi.Text.Trim();
-            if (nvDAO.capNhatMKNV(_nv.MaNhanVien, newPassword))
-            {
-                _nv.MatKhau = newPassword;
-                MessageBox.Show("Đổi mật khẩu thành công!", "Thành công", MessageBoxButtons.OK ,MessageBoxIcon.Information);
-                txtMKHienTai.Clear();
-                txtMKMoi.Clear();
-                txtXacNhanMK.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Đổi mật khẩu thất bại!", "Lỗi mật khẩu ", MessageBoxButtons.OK ,MessageBoxIcon.Error);
-
-            }
             
+            DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật mật khẩu mới?", "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (nvDAO.capNhatMKNV(_nv.MaNhanVien, newPassword))
+                {
+                    _nv.MatKhau = newPassword;
+                    MessageBox.Show("Đổi mật khẩu thành công!", "Thành công", MessageBoxButtons.OK ,MessageBoxIcon.Information);
+                    txtMKHienTai.Clear();
+                    txtMKMoi.Clear();
+                    txtXacNhanMK.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Đổi mật khẩu thất bại!", "Lỗi mật khẩu ", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                }
+            }
         }
 }

@@ -13,7 +13,7 @@ public partial class popupQuenMK : Form
         btnHuy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
     }
 
-    private void btnDoiMK_Click(object sender, EventArgs e)
+    private bool checkDoiMatKhau()
     {
         NhanVienDAO nvDAO = new NhanVienDAO();
         string textName = txtTenDNMK.Text.Trim();
@@ -23,36 +23,50 @@ public partial class popupQuenMK : Form
         if (string.IsNullOrEmpty(textName) || string.IsNullOrEmpty(mkMoi) || string.IsNullOrEmpty(xacNhanMK))
         {
             MessageBox.Show("Thành phần nhập không để trống!", "Lỗi", MessageBoxButtons.OK ,MessageBoxIcon.Error);
-            return;
+            return false;
         }
 
         if (!nvDAO.KiemTraTrungTenDangNhap(textName))
         {
             MessageBox.Show("Tên đăng nhập không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtTenDNMK.Focus();
-            return;
+            return false;
         }
         if (textName.Length < 3 || textName.Length > 30)
         {
             MessageBox.Show("Tên đăng nhập phải từ 3 đến 30 ký tự!", "Lỗi", MessageBoxButtons.OK ,MessageBoxIcon.Error);
             txtTenDNMK.Focus();
-            return;
+            return false;
         }
         if (mkMoi != xacNhanMK)
         {
             MessageBox.Show("Mật khẩu xác nhận không khớp!", "Lỗi", MessageBoxButtons.OK ,MessageBoxIcon.Error);
             txtXacNhanMKMoi.Focus();
-            return;
+            return false;
         }
+        return true;
+    }
 
-        if (nvDAO.quenMatKhau(textName, xacNhanMK))
+    private void btnDoiMK_Click(object sender, EventArgs e)
+    {
+        NhanVienDAO nvDAO = new NhanVienDAO();
+        string textName = txtTenDNMK.Text.Trim();
+        string xacNhanMK = txtXacNhanMKMoi.Text.Trim();
+
+        if(!checkDoiMatKhau()) return;
+        
+        DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật mật khẩu mới?", "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
+        if (result == DialogResult.Yes)
         {
-            MessageBox.Show("Đổi mật khẩu thành công!", "Thành công", MessageBoxButtons.OK ,MessageBoxIcon.Information);
-            this.Close();
-        }
-        else
-        {
-            MessageBox.Show("Đổi mật khẩu thất bại!", "Lỗi", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            if (nvDAO.quenMatKhau(textName, xacNhanMK))
+            {
+                MessageBox.Show("Đổi mật khẩu thành công!", "Thành công", MessageBoxButtons.OK ,MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Đổi mật khẩu thất bại!", "Lỗi", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using Microsoft.Data.Sqlite;
 using QuanLyCaPhe.Model;
 using QuanLyCaPhe.Utils;
@@ -19,7 +20,19 @@ public class BanDAO
             SoChoNgoi = Convert.ToInt32(reader["SoChoNgoi"])
         };
     }
-
+    public DataTable timKiemTenBan(string keyword)
+    {
+        DataTable dt = new DataTable();
+        using var conn = DBConnect.GetConnection();
+        string sql = @"SELECT MaBan, MaKhuVuc, TenBan, SoChoNgoi, TrangThai 
+                        FROM BAN
+                        WHERE TenBan LIKE @TuKhoa";
+        using var command = new SqliteCommand(sql, conn);
+        command.Parameters.AddWithValue("@TuKhoa", $"%{keyword}%");
+        using var reader = command.ExecuteReader();
+        dt.Load(reader);
+        return dt;
+    }
     public List<Ban> LayDanhSachBan()
     {
         var danhSach = new List<Ban>();

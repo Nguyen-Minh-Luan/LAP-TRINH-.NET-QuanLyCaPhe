@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.Data.Sqlite;
 using QuanLyCaPhe.Model;
 using QuanLyCaPhe.Utils;
@@ -6,6 +7,20 @@ namespace QuanLyCaPhe.Dao;
 
 public class DanhMucDAO
 {
+    public DataTable timKiemDanhMuc(string tk)
+    {
+        DataTable dt = new DataTable();
+        using var conn = DBConnect.GetConnection();
+        string sql = @"SELECT TenDanhMuc, MoTa
+                    FROM DANH_MUC
+                    WHERE TenDanhMuc LIKE @TuKhoa
+        ";
+        using var command = new SqliteCommand(sql, conn);
+        command.Parameters.AddWithValue("@TuKhoa", $"%{tk}%");
+        using var reader = command.ExecuteReader();
+        dt.Load(reader);
+        return dt;
+    }
     private DanhMuc MappingToDanhMuc(SqliteDataReader reader)
     {
         return new DanhMuc
