@@ -223,4 +223,55 @@ public class HoaDonDAO
             return false;
         }
     }
+
+    // Cập nhật tổng tiền, giảm giá và chuyển trạng thái hóa đơn thành DaThanhToan
+    public bool ChotThanhToanHoaDon(int maHoaDon, decimal tongTien, decimal tienGiam, decimal thanhTien)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"UPDATE HOA_DON 
+                           SET TongTien = @TongTien, 
+                               TienGiam = @TienGiam, 
+                               ThanhTien = @ThanhTien, 
+                               TrangThai = 'DaThanhToan' 
+                           WHERE MaHoaDon = @MaHoaDon";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@TongTien", tongTien);
+            cmd.Parameters.AddWithValue("@TienGiam", tienGiam);
+            cmd.Parameters.AddWithValue("@ThanhTien", thanhTien);
+            cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
+    // Ghi nhận thời gian kết thúc của bàn vào bảng HOA_DON_BAN
+    public bool KetThucHoaDonBan(int maHoaDon)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"UPDATE HOA_DON_BAN 
+                           SET ThoiGianKetThuc = @ThoiGianKetThuc 
+                           WHERE MaHoaDon = @MaHoaDon AND (ThoiGianKetThuc IS NULL OR ThoiGianKetThuc = '')";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@ThoiGianKetThuc", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
 }
