@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using Microsoft.Data.Sqlite;
 using QuanLyCaPhe.Model;
 using QuanLyCaPhe.Utils;
@@ -17,7 +18,19 @@ public class KhuVucDAO
             MoTa = reader["MoTa"] == DBNull.Value ? null : reader["MoTa"].ToString()
         };
     }
-
+    public DataTable timKiemKhuVuc(string keyword)
+    {
+        DataTable dt = new DataTable();
+        using var conn = DBConnect.GetConnection();
+        string sql = @"SELECT MaKhuVuc, TenKhuVuc, MoTa
+                        FROM KHU_VUC
+                        WHERE TenKhuVuc LIKE @TuKhoa";
+        using var command = new SqliteCommand(sql, conn);
+        command.Parameters.AddWithValue("@TuKhoa", $"%{keyword}%");
+        using var reader = command.ExecuteReader();
+        dt.Load(reader);
+        return dt;
+    }
     public List<KhuVuc> LayDanhSachKhuVuc()
     {
         var danhSach = new List<KhuVuc>();
