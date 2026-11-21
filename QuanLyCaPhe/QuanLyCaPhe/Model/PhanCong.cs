@@ -6,6 +6,8 @@ public class PhanCong
     public int MaNhanVien { get; set; }
     public int MaCa { get; set; }
     public DateTime NgayLam { get; set; }
+    public string? TenNhanVien { get; set; }
+    public string? TenCa { get; set; }    
 
     public PhanCong()
     {
