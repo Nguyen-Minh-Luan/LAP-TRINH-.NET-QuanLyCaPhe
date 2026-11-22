@@ -26,14 +26,12 @@ public partial class frmQuanLyDanhMuc : Form
 
         dgvDanhMuc.DataSource = danhMucDao.LayDanhSachDanhMuc();
     }
-
     private void btnTimDanhMuc_Click(object sender, EventArgs e)
     {
         DanhMucDAO danhMucDao = new DanhMucDAO();
         string timKiem = txtTimKiemDM.Text.Trim();
         dgvDanhMuc.DataSource = danhMucDao.timKiemDanhMuc(timKiem);
     }
-
     private void txtTimKiemDM_TextChanged(object sender, EventArgs e)
     {
         if (String.IsNullOrEmpty(txtTimKiemDM.Text))
@@ -41,7 +39,6 @@ public partial class frmQuanLyDanhMuc : Form
             loadData_DGVdsDanhMuc();
         }
     }
-
     private void dgvdsDanhMuc_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex < 0) return;
@@ -50,13 +47,25 @@ public partial class frmQuanLyDanhMuc : Form
         txtTenDanhMuc.Text = row.Cells["nameItems"].Value?.ToString();
         txtMoTa.Text = row.Cells["descItems"].Value?.ToString();
     }
-    public void refreshForm()
+    private void refreshForm()
     {
         maDMDangChon = 0;
         txtTenDanhMuc.Clear();
         txtMoTa.Clear();
     }
-
+    private bool KiemTraTenDM(string tenDM)
+    {
+        DanhMucDAO danhMucDao = new DanhMucDAO();
+        var dsDM = danhMucDao.LayDanhSachDanhMuc();
+        return dsDM.Any(dm => dm.TenDanhMuc.Trim().Equals(tenDM.Trim(), StringComparison.CurrentCultureIgnoreCase));
+    }
+    private bool kiemTraTenDMKhiCapNhat(string tenDM, int maDM)
+    {
+        DanhMucDAO danhMucDao = new DanhMucDAO();
+        var dsDM = danhMucDao.LayDanhSachDanhMuc();
+        return dsDM.Any(dm => dm.TenDanhMuc.Trim().Equals(tenDM.Trim(),  
+            StringComparison.CurrentCultureIgnoreCase) && dm.MaDanhMuc != maDM);
+    }
     private void btnThem_Click(object sender, EventArgs e)
     {
         string tenDM = txtTenDanhMuc.Text.Trim();
@@ -66,6 +75,14 @@ public partial class frmQuanLyDanhMuc : Form
         if (string.IsNullOrWhiteSpace(tenDM) || tenDM.Length < 2)
         {
             MessageBox.Show("Tên danh mục không hợp lệ!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenDanhMuc.Focus();
+            return; 
+        }
+
+        if (KiemTraTenDM(tenDM))
+        {
+            MessageBox.Show("Tên danh mục đã tồn tại trên hệ thống!", 
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtTenDanhMuc.Focus();
             return; 
@@ -136,6 +153,13 @@ public partial class frmQuanLyDanhMuc : Form
         if (string.IsNullOrWhiteSpace(tenDM) || tenDM.Length < 2)
         {
             MessageBox.Show("Tên danh mục không hợp lệ!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenDanhMuc.Focus();
+            return; 
+        }
+        if (kiemTraTenDMKhiCapNhat(tenDM, maDMDangChon))
+        {
+            MessageBox.Show("Tên danh mục đã tồn tại trên hệ thống!", 
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtTenDanhMuc.Focus();
             return; 

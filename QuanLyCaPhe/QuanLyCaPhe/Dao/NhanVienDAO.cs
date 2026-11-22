@@ -14,18 +14,20 @@ public class NhanVienDAO
         string checkNhanVienSQL = @"SELECT *
                                  FROM NHAN_VIEN
                                  WHERE TenDangNhap = @TenDangNhap
-                                 AND MatKhau = @MatKhau
                                  AND TrangThai = 'Đang làm việc'";
         using var command = new SqliteCommand(checkNhanVienSQL, conn);
         command.Parameters.AddWithValue("@TenDangNhap", tenDN);
-        command.Parameters.AddWithValue("@MatKhau", mkDN);
 
         using var reader = command.ExecuteReader();
-        if (reader.Read())
-        {
-            return MapNhanVien(reader);
-        }
-        return null;
+        if (!reader.Read()) return null;
+        
+        string passwordHash = reader["MatKhau"]?.ToString() ?? "";
+        bool isVerify = BCrypt.Net.BCrypt.Verify(mkDN, passwordHash);
+        
+        if(!isVerify) return null;
+        
+        return MapNhanVien(reader);
+
     }
     public bool quenMatKhau(string tenDN, string mkMoi)
     {
