@@ -36,7 +36,7 @@ partial class frmMain
         mnuSoDoBan = new System.Windows.Forms.ToolStripMenuItem();
         mnuLichSuHoaDon = new System.Windows.Forms.ToolStripMenuItem();
         mnuLichSuChuyenBan = new System.Windows.Forms.ToolStripMenuItem();
-        MenuStripThucDon = new System.Windows.Forms.ToolStripMenuItem();
+        MenuStripQuanLy = new System.Windows.Forms.ToolStripMenuItem();
         mnuQLMonAn = new System.Windows.Forms.ToolStripMenuItem();
         mnuQLDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
         mnuQLKhuVuc = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +84,7 @@ partial class frmMain
         // menuStripHome
         // 
         menuStripHome.ImageScalingSize = new System.Drawing.Size(24, 24);
-        menuStripHome.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuStripPhucVu, MenuStripThucDon, MenuStripCaLam, MenuStripThongKe, MenuStripTaiKhoan });
+        menuStripHome.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { MenuStripPhucVu, MenuStripQuanLy, MenuStripCaLam, MenuStripThongKe, MenuStripTaiKhoan });
         menuStripHome.Location = new System.Drawing.Point(0, 0);
         menuStripHome.Name = "menuStripHome";
         menuStripHome.Size = new System.Drawing.Size(1148, 33);
@@ -119,12 +119,12 @@ partial class frmMain
         mnuLichSuChuyenBan.Text = "Lịch sử chuyển bàn";
         mnuLichSuChuyenBan.Click += mnuLichSuCB_Click;
         // 
-        // MenuStripThucDon
+        // MenuStripQuanLy
         // 
-        MenuStripThucDon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuQLMonAn, mnuQLDanhMuc, mnuQLKhuVuc });
-        MenuStripThucDon.Name = "MenuStripThucDon";
-        MenuStripThucDon.Size = new System.Drawing.Size(103, 29);
-        MenuStripThucDon.Text = "Thực đơn";
+        MenuStripQuanLy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuQLMonAn, mnuQLDanhMuc, mnuQLKhuVuc });
+        MenuStripQuanLy.Name = "MenuStripQuanLy";
+        MenuStripQuanLy.Size = new System.Drawing.Size(89, 29);
+        MenuStripQuanLy.Text = "Quản lý";
         // 
         // mnuQLMonAn
         // 
@@ -192,14 +192,14 @@ partial class frmMain
         // mnuTTCaNhan
         // 
         mnuTTCaNhan.Name = "mnuTTCaNhan";
-        mnuTTCaNhan.Size = new System.Drawing.Size(270, 34);
+        mnuTTCaNhan.Size = new System.Drawing.Size(256, 34);
         mnuTTCaNhan.Text = "Thông tin cá nhân";
         mnuTTCaNhan.Click += mnuTTCaNhan_Click;
         // 
         // mnuDangXuat
         // 
         mnuDangXuat.Name = "mnuDangXuat";
-        mnuDangXuat.Size = new System.Drawing.Size(270, 34);
+        mnuDangXuat.Size = new System.Drawing.Size(256, 34);
         mnuDangXuat.Text = "Đăng xuất";
         mnuDangXuat.Click += mnuDangXuat_Click;
         // 
@@ -595,7 +595,7 @@ partial class frmMain
     private System.Windows.Forms.ToolStripMenuItem MenuStripCaLam;
     private System.Windows.Forms.ToolStripMenuItem MenuStripThongKe;
 
-    private System.Windows.Forms.ToolStripMenuItem MenuStripThucDon;
+    private System.Windows.Forms.ToolStripMenuItem MenuStripQuanLy;
 
     private System.Windows.Forms.ToolStripMenuItem MenuStripPhucVu;
 

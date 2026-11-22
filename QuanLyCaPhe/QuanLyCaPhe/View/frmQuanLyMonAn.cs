@@ -25,7 +25,7 @@ public partial class frmQuanLyMonAn : Form
         unitPrice.DataPropertyName = "DonViTinh";
         statusCoffee.DataPropertyName = "TrangThai";
 
-        dgvDanhSachMon.DataSource = monAnDAO.getDanhSachMon();
+        dgvDanhSachMon.DataSource = monAnDAO.getDanhSachMonVoiDanhMuc();
     }
     private void loadDanhMuc()
     {
@@ -40,7 +40,19 @@ public partial class frmQuanLyMonAn : Form
       string timKiem = txtTimKiemMon.Text;
       dgvDanhSachMon.DataSource = monAnDAO.timKiemMon(timKiem);
     }
-
+    private bool kiemTraTenMon(string tenMon)
+    {
+        MonAnDAO monAnDAO = new MonAnDAO();
+        var dsMon = monAnDAO.LayDanhSachMonAn();
+        return dsMon.Any(ma => ma.TenMon.Trim().Equals(tenMon.Trim(),  StringComparison.CurrentCultureIgnoreCase));
+    }
+    private bool kiemTraTenMonKhiCapNhat(string tenMon, int Mamon)
+    {
+        MonAnDAO monAnDAO = new MonAnDAO();
+        var dsMon = monAnDAO.LayDanhSachMonAn();
+        return dsMon.Any(ma => ma.TenMon.Trim().Equals(tenMon.Trim(),  
+            StringComparison.CurrentCultureIgnoreCase) && ma.MaMon != Mamon);
+    }
     private void txtTimKiemMon_TextChanged(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(txtTimKiemMon.Text))
@@ -48,7 +60,6 @@ public partial class frmQuanLyMonAn : Form
             loadData_DGVdsMon();
         }
     }
-
     private void dgvDanhSachMon_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex < 0) return;
@@ -59,7 +70,6 @@ public partial class frmQuanLyMonAn : Form
         cmbDanhMuc.Text = row.Cells["itemsCoffee"].Value?.ToString();
         txtDonViTinh.Text = row.Cells["unitPrice"].Value?.ToString();
     }
-
     private void btnThem_Click(object sender, EventArgs e)
     {
         string tenMon = txtTenMon.Text.Trim();
@@ -68,6 +78,14 @@ public partial class frmQuanLyMonAn : Form
         if (string.IsNullOrWhiteSpace(tenMon) || tenMon.Length < 2)
         {
             MessageBox.Show("Tên món không hợp lệ!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenMon.Focus();
+            return; 
+        }
+
+        if (kiemTraTenMon(tenMon))
+        {
+            MessageBox.Show("Tên món đã tồn tại trên hệ thống!", 
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtTenMon.Focus();
             return; 
@@ -110,8 +128,7 @@ public partial class frmQuanLyMonAn : Form
             }
         }
     }
-
-    public void refreshForm()
+    private void refreshForm()
     {
         maMonDangChon = 0;
         txtTenMon.Clear();
@@ -122,6 +139,7 @@ public partial class frmQuanLyMonAn : Form
     private void btnSua_Click(object sender, EventArgs e)
     {
         MonAnDAO monAnDAO = new MonAnDAO();
+        string tenMon = txtTenMon.Text.Trim();
 
         if (maMonDangChon == 0)
         {
@@ -129,13 +147,27 @@ public partial class frmQuanLyMonAn : Form
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        if (string.IsNullOrWhiteSpace(txtTenMon.Text) || 
-            !decimal.TryParse(txtDonGia.Text, out decimal donGia) || donGia <= 0)
+        if (string.IsNullOrWhiteSpace(tenMon) || tenMon.Length < 2)
         {
-            MessageBox.Show("Tên món và đơn giá không hợp lệ!", 
+            MessageBox.Show("Tên món không hợp lệ!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenMon.Focus();
+            return; 
+        }
+        if (kiemTraTenMonKhiCapNhat(tenMon, maMonDangChon))
+        {
+            MessageBox.Show("Tên món đã tồn tại trên hệ thống!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenMon.Focus();
+            return; 
+        }
+        if (!decimal.TryParse(txtDonGia.Text, out decimal donGia) || donGia <= 0)
+        {
+            MessageBox.Show("Đơn giá không hợp lệ!", 
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
+        
         if (cmbDanhMuc.SelectedValue == null)
         {
             MessageBox.Show("Vui lòng chọn danh mục!", 
@@ -162,7 +194,6 @@ public partial class frmQuanLyMonAn : Form
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-
     private void btnXoa_Click(object sender, EventArgs e)
     {
         MonAnDAO monAnDAO = new MonAnDAO();

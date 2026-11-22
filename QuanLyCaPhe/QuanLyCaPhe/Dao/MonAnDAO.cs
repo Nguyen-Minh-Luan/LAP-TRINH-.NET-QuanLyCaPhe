@@ -7,7 +7,7 @@ namespace QuanLyCaPhe.Dao;
 
 public class MonAnDAO
 {
-    public DataTable getDanhSachMon()
+    public DataTable getDanhSachMonVoiDanhMuc()
     {
         DataTable dt = new DataTable();
         using var conn = DBConnect.GetConnection();
