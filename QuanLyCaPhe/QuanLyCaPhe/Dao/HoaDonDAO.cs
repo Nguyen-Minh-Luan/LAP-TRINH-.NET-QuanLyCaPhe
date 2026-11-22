@@ -224,7 +224,6 @@ public class HoaDonDAO
         }
     }
 
-    // Cập nhật tổng tiền, giảm giá và chuyển trạng thái hóa đơn thành DaThanhToan
     public bool ChotThanhToanHoaDon(int maHoaDon, decimal tongTien, decimal tienGiam, decimal thanhTien)
     {
         try
@@ -252,7 +251,6 @@ public class HoaDonDAO
         }
     }
 
-    // Ghi nhận thời gian kết thúc của bàn vào bảng HOA_DON_BAN
     public bool KetThucHoaDonBan(int maHoaDon)
     {
         try

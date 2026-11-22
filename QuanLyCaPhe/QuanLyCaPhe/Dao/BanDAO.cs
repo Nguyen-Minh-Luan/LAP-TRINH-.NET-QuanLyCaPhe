@@ -17,7 +17,8 @@ public class BanDAO
             MaKhuVuc = Convert.ToInt32(reader["MaKhuVuc"]),
             TenBan = reader["TenBan"].ToString() ?? "",
             TrangThai = reader["TrangThai"].ToString() ?? "",
-            SoChoNgoi = Convert.ToInt32(reader["SoChoNgoi"])
+            SoChoNgoi = Convert.ToInt32(reader["SoChoNgoi"]),
+            TenNhom = reader["TenNhom"] == DBNull.Value ? null : reader["TenNhom"].ToString()
         };
     }
     public DataTable timKiemTenBan(string keyword)
@@ -40,7 +41,7 @@ public class BanDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "SELECT MaBan, MaKhuVuc, TenBan, TrangThai, SoChoNgoi FROM BAN";
+            string sql = "SELECT MaBan, MaKhuVuc, TenBan, TrangThai, SoChoNgoi, TenNhom FROM BAN";
 
             using var cmd = new SqliteCommand(sql, conn);
             using var reader = cmd.ExecuteReader();
@@ -65,7 +66,7 @@ public class BanDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "SELECT MaBan, MaKhuVuc, TenBan, TrangThai, SoChoNgoi FROM BAN WHERE MaKhuVuc = @MaKhuVuc";
+            string sql = "SELECT MaBan, MaKhuVuc, TenBan, TrangThai, SoChoNgoi, TenNhom FROM BAN WHERE MaKhuVuc = @MaKhuVuc";
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
@@ -89,7 +90,7 @@ public class BanDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "SELECT MaBan, MaKhuVuc, TenBan, TrangThai, SoChoNgoi FROM BAN WHERE MaBan = @MaBan";
+            string sql = "SELECT MaBan, MaKhuVuc, TenBan, TrangThai, SoChoNgoi, TenNhom FROM BAN WHERE MaBan = @MaBan";
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MaBan", maBan);
@@ -164,7 +165,9 @@ public class BanDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "UPDATE BAN SET TrangThai = @TrangThai WHERE MaBan = @MaBan";
+            string sql = trangThaiMoi == "Trong"
+                ? "UPDATE BAN SET TrangThai = @TrangThai, TenNhom = NULL WHERE MaBan = @MaBan"
+                : "UPDATE BAN SET TrangThai = @TrangThai WHERE MaBan = @MaBan";
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@TrangThai", trangThaiMoi);
@@ -188,6 +191,27 @@ public class BanDAO
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MaBan", maBan);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
+    public bool GiaiPhongCacBanTheoHoaDon(int maHoaDon)
+    {
+        try
+        {
+            using var conn = DBConnect.GetConnection();
+            string sql = @"UPDATE BAN 
+                           SET TrangThai = 'Trong', TenNhom = NULL 
+                           WHERE MaBan IN (SELECT MaBan FROM HOA_DON_BAN WHERE MaHoaDon = @MaHoaDon)";
+
+            using var cmd = new SqliteCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
 
             return cmd.ExecuteNonQuery() > 0;
         }

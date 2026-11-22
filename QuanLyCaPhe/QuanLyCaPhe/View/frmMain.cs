@@ -109,13 +109,11 @@ public partial class frmMain : Form
 
         SuspendLayout();
 
-        // Chia khu vực theo tỷ lệ cân đối, ưu tiên không gian làm việc.
         int rongTrai = chieuRongConLai * 40 / 100;
         panel1.SetBounds(le, top, rongTrai, chieuCao);
         panel3.SetBounds(panel1.Right + khoangCach, top,
             chieuRongConLai - rongTrai, chieuCao);
 
-        // Thông tin nhân viên được gom gọn ngay dưới lời chào.
         label3.SetBounds(16, panel2.Bottom + 8, panel1.Width - 32, 66);
         int thongTinTop = label3.Bottom + 8;
         int thongTinCao = Math.Max(150, panel1.Height - thongTinTop - 16);
@@ -123,7 +121,6 @@ public partial class frmMain : Form
         tableLayoutPanel1.SetBounds((panel1.Width - thongTinRong) / 2,
             thongTinTop, thongTinRong, thongTinCao);
 
-        // Các nút chức năng chia đều thành hai cột, hai hàng.
         int lePanel = 16;
         panel5.SetBounds(lePanel, panel4.Bottom + 10,
             panel3.Width - 2 * lePanel,

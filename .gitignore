@@ -51,4 +51,13 @@ $RECYCLE.BIN/
 .agents/
 AGENTS.md
 
+# SQLite Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+QuanLyCaPhe/QuanLyCaPhe/Database/QuanLyCaPhe.db
+
+
 

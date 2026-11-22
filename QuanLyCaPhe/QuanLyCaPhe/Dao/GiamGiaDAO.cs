@@ -8,7 +8,6 @@ namespace QuanLyCaPhe.Dao;
 
 public class GiamGiaDAO
 {
-    // Chuyển dòng dữ liệu từ CSDL sang đối tượng GiamGia
     private GiamGia MappingToGiamGia(SqliteDataReader reader)
     {
         return new GiamGia
@@ -22,7 +21,6 @@ public class GiamGiaDAO
         };
     }
 
-    // Thêm bản ghi giảm giá vào bảng GIAM_GIA
     public bool ThemGiamGia(GiamGia gg)
     {
         try
@@ -47,7 +45,6 @@ public class GiamGiaDAO
         }
     }
 
-    // Lấy thông tin giảm giá theo mã hóa đơn
     public List<GiamGia> LayGiamGiaTheoHoaDon(int maHoaDon)
     {
         var danhSach = new List<GiamGia>();

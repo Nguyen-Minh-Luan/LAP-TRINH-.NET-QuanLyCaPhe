@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using QuanLyCaPhe.Dao;
 
 namespace QuanLyCaPhe.View;
 
 public partial class frmLichSuChuyenBan : Form
 {
+    private LichSuChuyenBanDAO lichSuDao = new LichSuChuyenBanDAO();
     private List<LichSuChuyenBanItem> _danhSachGoc = new();
 
     public frmLichSuChuyenBan()
@@ -18,15 +20,37 @@ public partial class frmLichSuChuyenBan : Form
     private void frmLichSuChuyenBan_Load(object sender, EventArgs e)
     {
         KhoiTaoBoLoc();
-        KhoiTaoDuLieuMau();
+        LoadDuLieuLichSu();
         HienThiDanhSach(_danhSachGoc);
     }
 
     private void KhoiTaoBoLoc()
     {
-        // Mặc định lọc 7 ngày gần nhất
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
+    }
+
+    private void LoadDuLieuLichSu()
+    {
+        var dsTuDb = lichSuDao.LayDanhSachLichSu();
+        if (dsTuDb != null && dsTuDb.Count > 0)
+        {
+            _danhSachGoc = dsTuDb.Select(item => new LichSuChuyenBanItem
+            {
+                MaChuyen = $"CB-{item.MaLichSu:D5}",
+                BanNguon = !string.IsNullOrEmpty(item.TenBanNguon) ? item.TenBanNguon : $"Bàn #{item.MaBanNguon}",
+                BanDich = !string.IsNullOrEmpty(item.TenBanDich) ? item.TenBanDich : $"Bàn #{item.MaBanDich}",
+                ThoiGian = item.ThoiGian,
+                NhanVien = item.TenNhanVien,
+                TongTienDon = item.TongTienDon,
+                GhiChu = item.LyDo,
+                DanhSachMon = item.DanhSachMon
+            }).ToList();
+        }
+        else
+        {
+            KhoiTaoDuLieuMau();
+        }
     }
 
     private void KhoiTaoDuLieuMau()
@@ -129,11 +153,9 @@ public partial class frmLichSuChuyenBan : Form
 
         var ketQua = _danhSachGoc.Where(item =>
         {
-            // Lọc theo thời gian
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
 
-            // Lọc theo từ khóa (tìm theo mã chuyển, bàn chuyển đi, bàn chuyển đến, nhân viên, ghi chú)
             if (!string.IsNullOrEmpty(tuKhoa))
             {
                 bool matchMa = item.MaChuyen.ToLower().Contains(tuKhoa);
@@ -158,6 +180,7 @@ public partial class frmLichSuChuyenBan : Form
         dtpDenNgay.Value = DateTime.Today;
         txtTimKiem.Clear();
 
+        LoadDuLieuLichSu();
         HienThiDanhSach(_danhSachGoc);
     }
 
@@ -204,9 +227,6 @@ public partial class frmLichSuChuyenBan : Form
     }
 }
 
-/// <summary>
-/// Model DTO chứa thông tin một lượt chuyển bàn
-/// </summary>
 public class LichSuChuyenBanItem
 {
     public string MaChuyen { get; set; } = string.Empty;

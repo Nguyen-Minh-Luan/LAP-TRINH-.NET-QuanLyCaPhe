@@ -32,6 +32,10 @@ public partial class frmTable : Form
 
         foreach (Ban ban in dsBan)
         {
+            string tenHienThi = (ban.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(ban.TenNhom))
+                ? ban.TenNhom
+                : ban.TenBan;
+
             Button btn = new Button
             {
                 Width = 112,
@@ -41,7 +45,7 @@ public partial class frmTable : Form
                 ImageAlign = ContentAlignment.TopCenter,
                 ImageList = imgListBan,
                 ImageKey = "coffee-table (1).png",
-                Text = $"{ban.TenBan}\n({ban.SoChoNgoi} chỗ)",
+                Text = $"{tenHienThi}\n({ban.SoChoNgoi} chỗ)",
                 BackColor = LayMauTheoTrangThai(ban.TrangThai),
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand,
@@ -109,12 +113,18 @@ public partial class frmTable : Form
     private void button2_Click(object sender, EventArgs e)
     {
         popupChuyenBan chuyenBanBtn = new popupChuyenBan();
-        chuyenBanBtn.ShowDialog();
+        if (chuyenBanBtn.ShowDialog() == DialogResult.OK)
+        {
+            LoadDanhSachBan();
+        }
     }
 
     private void button3_Click(object sender, EventArgs e)
     {
         popupGopBan gopBanBtn = new popupGopBan();
-        gopBanBtn.ShowDialog();
+        if (gopBanBtn.ShowDialog() == DialogResult.OK)
+        {
+            LoadDanhSachBan();
+        }
     }
 }
