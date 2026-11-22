@@ -107,6 +107,34 @@ public partial class frmQuanLyKhuVucVaBan : Form
         txtStatusTable.Clear();
     }
 
+    private bool kiemTraKV(string tenKV)
+    {
+        KhuVucDAO khuVucDao = new KhuVucDAO();
+        var dsKV = khuVucDao.LayDanhSachKhuVuc();
+        return dsKV.Any(ma => ma.TenKhuVuc.Trim().Equals(tenKV.Trim(),  StringComparison.CurrentCultureIgnoreCase));
+    }
+    private bool kiemTraKVKhiCapNhat(string tenKV, int MaKV)
+    {
+        KhuVucDAO khuVucDao = new KhuVucDAO();
+        var dsKV = khuVucDao.LayDanhSachKhuVuc();
+        return dsKV.Any(ma => ma.TenKhuVuc.Trim().Equals(tenKV.Trim(),  
+            StringComparison.CurrentCultureIgnoreCase) && ma.MaKhuVuc != MaKV);
+    }
+    
+    private bool kiemTraBan(string tenBan)
+    {
+        BanDAO banDao = new BanDAO();
+        var dsBan = banDao.LayDanhSachBan();
+        return dsBan.Any(ban => ban.TenBan.Trim().Equals(tenBan.Trim(), StringComparison.CurrentCultureIgnoreCase));
+    }
+    private bool kiemTraBanKhiCapNhat(string tenBan, int MaBan)
+    {
+        BanDAO banDao = new BanDAO();
+        var dsBan = banDao.LayDanhSachBan();
+        return dsBan.Any(ban => ban.TenBan.Trim().Equals(tenBan.Trim(),  
+            StringComparison.CurrentCultureIgnoreCase) && ban.MaBan != MaBan);
+    }
+    
     private void btnThemKV_Click(object sender, EventArgs e)
     {
         string tenKV = txtTenKhu.Text.Trim();
@@ -119,6 +147,13 @@ public partial class frmQuanLyKhuVucVaBan : Form
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtTenKhu.Focus();
             return;
+        }
+        if (kiemTraKV(tenKV))
+        {
+            MessageBox.Show("Tên khu vực đã tồn tại trên hệ thống!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenKhu.Focus();
+            return; 
         }
         if (string.IsNullOrWhiteSpace(moTa) || moTa.Length < 8)
         {
@@ -162,6 +197,20 @@ public partial class frmQuanLyKhuVucVaBan : Form
             MessageBox.Show("Tên khu vực không hợp lệ!",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtTenKhu.Focus();
+            return;
+        }
+        if (kiemTraKVKhiCapNhat(tenKV, maKVDangChon))
+        {
+            MessageBox.Show("Tên khu vực đã tồn tại trên hệ thống!", 
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtTenKhu.Focus();
+            return; 
+        }
+        if (string.IsNullOrWhiteSpace(moTa) || moTa.Length < 8)
+        {
+            MessageBox.Show("Mô tả không hợp lệ!",
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtMoTaKV.Focus();
             return;
         }
         KhuVuc kv = new KhuVuc(maKVDangChon, tenKV, moTa == "" ? null : moTa);
@@ -230,6 +279,14 @@ public partial class frmQuanLyKhuVucVaBan : Form
             return;
         }
 
+        if (kiemTraBan(tenBan))
+        {
+            MessageBox.Show("Tên bàn đã tồn tại trên hệ thống!",
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtNameBan.Focus();
+            return;
+        }
+
         if (string.IsNullOrWhiteSpace(trangThai) || trangThai.Length < 2)
         {
             MessageBox.Show("Trạng thái bàn không hợp lệ!",
@@ -293,6 +350,13 @@ public partial class frmQuanLyKhuVucVaBan : Form
             MessageBox.Show("Trạng thái bàn không hợp lệ!",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtStatusTable.Focus();
+            return;
+        }
+        if (kiemTraBanKhiCapNhat(tenBan, maBanDangChon))
+        {
+            MessageBox.Show("Tên bàn đã tồn tại trên hệ thống!",
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtNameBan.Focus();
             return;
         }
         if (cmbKhuVuc.SelectedValue == null)
