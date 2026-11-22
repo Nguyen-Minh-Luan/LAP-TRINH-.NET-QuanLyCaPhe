@@ -8,32 +8,27 @@ using QuanLyCaPhe.Dao;
 
 namespace QuanLyCaPhe.View;
 
-public partial class frmThongKeDoanhThu : Form
-{
+public partial class frmThongKeDoanhThu : Form {
     private readonly ThongKeDAO _thongKeDAO = new();
     private readonly decimal[] _doanhThu12Thang = new decimal[12];
     private readonly int[] _soHoaDon12Thang = new int[12];
     private int _thangDangChon = -1;
 
-    public frmThongKeDoanhThu()
-    {
+    public frmThongKeDoanhThu() {
         InitializeComponent();
         this.Load += frmThongKeDoanhThu_Load;
         panelChartContainer.Resize += (s, e) => panelChartContainer.Invalidate();
     }
 
-    private void frmThongKeDoanhThu_Load(object? sender, EventArgs e)
-    {
+    private void frmThongKeDoanhThu_Load(object? sender, EventArgs e) {
         var dsNam = _thongKeDAO.LayDanhSachNam();
         cbNam.DataSource = dsNam;
-        if (cbNam.Items.Count > 0)
-        {
+        if (cbNam.Items.Count > 0) {
             cbNam.SelectedIndex = 0;
         }
     }
 
-    private void cbNam_SelectedIndexChanged(object sender, EventArgs e)
-    {
+    private void cbNam_SelectedIndexChanged(object sender, EventArgs e) {
         if (cbNam.SelectedItem == null) return;
         if (!int.TryParse(cbNam.SelectedItem.ToString(), out int nam)) return;
 
@@ -42,19 +37,15 @@ public partial class frmThongKeDoanhThu : Form
         TaiDuLieuMonBanChay(nam);
     }
 
-    private void TaiDuLieuDoanhThu(int nam)
-    {
-        try
-        {
+    private void TaiDuLieuDoanhThu(int nam) {
+        try {
             Array.Clear(_doanhThu12Thang, 0, _doanhThu12Thang.Length);
             Array.Clear(_soHoaDon12Thang, 0, _soHoaDon12Thang.Length);
 
             DataTable dt = _thongKeDAO.ThongKeDoanhThuTheoNam(nam);
-            foreach (DataRow row in dt.Rows)
-            {
+            foreach (DataRow row in dt.Rows) {
                 int thang = Convert.ToInt32(row["Thang"]);
-                if (thang >= 1 && thang <= 12)
-                {
+                if (thang >= 1 && thang <= 12) {
                     _soHoaDon12Thang[thang - 1] = Convert.ToInt32(row["SoHoaDon"]);
                     _doanhThu12Thang[thang - 1] = Convert.ToDecimal(row["DoanhThu"]);
                 }
@@ -64,8 +55,7 @@ public partial class frmThongKeDoanhThu : Form
             decimal tongDoanhThuNam = 0;
             int tongHoaDonNam = 0;
 
-            for (int i = 0; i < 12; i++)
-            {
+            for (int i = 0; i < 12; i++) {
                 int thang = i + 1;
                 int soHD = _soHoaDon12Thang[i];
                 decimal doanhThu = _doanhThu12Thang[i];
@@ -88,22 +78,18 @@ public partial class frmThongKeDoanhThu : Form
 
             panelChartContainer.Invalidate();
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             MessageBox.Show($"Lỗi tải thống kê doanh thu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
-    private void TaiDuLieuMonBanChay(int nam)
-    {
-        try
-        {
+    private void TaiDuLieuMonBanChay(int nam) {
+        try {
             DataTable dt = _thongKeDAO.ThongKeMonBanChay(nam);
             dgvMonBanChay.Rows.Clear();
 
             int stt = 1;
-            foreach (DataRow row in dt.Rows)
-            {
+            foreach (DataRow row in dt.Rows) {
                 dgvMonBanChay.Rows.Add(
                     stt++,
                     row["TenMon"].ToString(),
@@ -114,26 +100,22 @@ public partial class frmThongKeDoanhThu : Form
 
             gbMonBanChay.Text = $"Danh sách món bán chạy - Năm {nam} ({dt.Rows.Count} món)";
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             MessageBox.Show($"Lỗi tải thống kê món bán chạy: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
-    private void dgvDoanhThu_CellClick(object sender, DataGridViewCellEventArgs e)
-    {
+    private void dgvDoanhThu_CellClick(object sender, DataGridViewCellEventArgs e) {
         if (e.RowIndex < 0 || e.RowIndex >= 12) return;
 
         _thangDangChon = e.RowIndex + 1;
         panelChartContainer.Invalidate();
     }
 
-    private void dgvMonBanChay_CellClick(object sender, DataGridViewCellEventArgs e)
-    {
+    private void dgvMonBanChay_CellClick(object sender, DataGridViewCellEventArgs e) {
     }
 
-    private void panelChartContainer_Paint(object sender, PaintEventArgs e)
-    {
+    private void panelChartContainer_Paint(object sender, PaintEventArgs e) {
         Graphics g = e.Graphics;
         g.SmoothingMode = SmoothingMode.AntiAlias;
         g.Clear(Color.White);
@@ -163,8 +145,7 @@ public partial class frmThongKeDoanhThu : Form
         using Font fontVal = new Font("Segoe UI", 7.5f, FontStyle.Bold);
 
         int gridSteps = 5;
-        for (int i = 0; i <= gridSteps; i++)
-        {
+        for (int i = 0; i <= gridSteps; i++) {
             float y = marginTop + chartHeight - (chartHeight * i / (float)gridSteps);
             decimal val = niceMax * i / gridSteps;
             string yLabel = val >= 1_000_000 ? $"{val / 1_000_000:0.#}M" :
@@ -181,8 +162,7 @@ public partial class frmThongKeDoanhThu : Form
         float slotWidth = chartWidth / 12f;
         float barWidth = Math.Min(36f, slotWidth * 0.6f);
 
-        for (int i = 0; i < 12; i++)
-        {
+        for (int i = 0; i < 12; i++) {
             decimal val = _doanhThu12Thang[i];
             float barHeight = (float)(val / niceMax) * chartHeight;
             float x = marginLeft + i * slotWidth + (slotWidth - barWidth) / 2;
@@ -193,8 +173,7 @@ public partial class frmThongKeDoanhThu : Form
                 ? Color.FromArgb(211, 84, 0)
                 : Color.FromArgb(41, 128, 185);
 
-            if (barHeight > 0)
-            {
+            if (barHeight > 0) {
                 using SolidBrush brushBar = new SolidBrush(barColor);
                 g.FillRectangle(brushBar, x, y, barWidth, barHeight);
 
@@ -211,8 +190,7 @@ public partial class frmThongKeDoanhThu : Form
         }
     }
 
-    private void btnDong_Click(object sender, EventArgs e)
-    {
+    private void btnDong_Click(object sender, EventArgs e) {
         this.Close();
     }
 }

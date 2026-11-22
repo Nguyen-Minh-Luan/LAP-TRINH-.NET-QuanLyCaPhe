@@ -15,7 +15,6 @@ public class ThongKeDAO {
                            FROM HOA_DON
                            WHERE NgayTao IS NOT NULL
                            ORDER BY Nam DESC";
-
             using var cmd = new SqliteCommand(sql, conn);
             using var reader = cmd.ExecuteReader();
             while (reader.Read()) {
@@ -27,12 +26,17 @@ public class ThongKeDAO {
             }
         }
         catch (Exception ex) {
-            Console.WriteLine(ex.Message); }
+            Console.WriteLine(ex.Message);
+        }
 
         int namHienTai = DateTime.Now.Year;
-        if (!dsNam.Contains(namHienTai)) { dsNam.Insert(0, namHienTai); }
+        if (!dsNam.Contains(namHienTai)) {
+            dsNam.Insert(0, namHienTai);
+        }
+
         return dsNam;
     }
+
     public DataTable ThongKeDoanhThuTheoNam(int nam) {
         DataTable dt = new DataTable();
         using var conn = DBConnect.GetConnection();
@@ -52,6 +56,8 @@ public class ThongKeDAO {
         dt.Load(reader);
         return dt;
     }
+
+   
     public DataTable ThongKeMonBanChay(int nam) {
         DataTable dt = new DataTable();
         using var conn = DBConnect.GetConnection();
@@ -69,6 +75,34 @@ public class ThongKeDAO {
 
         using var cmd = new SqliteCommand(sql, conn);
         cmd.Parameters.AddWithValue("@Nam", nam.ToString());
+
+        using var reader = cmd.ExecuteReader();
+        dt.Load(reader);
+        return dt;
+    }
+    public DataTable ThongKeTopMonBanChay(DateTime tuNgay, DateTime denNgay, int maDanhMuc = 0) {
+        DataTable dt = new DataTable();
+        using var conn = DBConnect.GetConnection();
+        string sql = @"SELECT ma.MaMon,
+                              ma.TenMon,
+                              dm.TenDanhMuc,
+                              ma.DonGia,
+                              IFNULL(SUM(ct.SoLuong), 0) AS SoLuongBan,
+                              IFNULL(SUM(ct.ThanhTien), 0) AS TongDoanhThu
+                       FROM CHI_TIET_HOA_DON ct
+                       JOIN HOA_DON hd ON ct.MaHoaDon = hd.MaHoaDon
+                       JOIN MON_AN ma ON ct.MaMon = ma.MaMon
+                       JOIN DANH_MUC dm ON ma.MaDanhMuc = dm.MaDanhMuc
+                       WHERE (hd.TrangThai = 'DaThanhToan' OR hd.TrangThai = 'Đã thanh toán')
+                         AND date(hd.NgayTao) BETWEEN date(@TuNgay) AND date(@DenNgay)
+                         AND (@MaDanhMuc = 0 OR ma.MaDanhMuc = @MaDanhMuc)
+                       GROUP BY ma.MaMon, ma.TenMon, dm.TenDanhMuc, ma.DonGia
+                       ORDER BY SoLuongBan DESC, TongDoanhThu DESC";
+
+        using var cmd = new SqliteCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@TuNgay", tuNgay.ToString("yyyy-MM-dd"));
+        cmd.Parameters.AddWithValue("@DenNgay", denNgay.ToString("yyyy-MM-dd"));
+        cmd.Parameters.AddWithValue("@MaDanhMuc", maDanhMuc);
 
         using var reader = cmd.ExecuteReader();
         dt.Load(reader);
