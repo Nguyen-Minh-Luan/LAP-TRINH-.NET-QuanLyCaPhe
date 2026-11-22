@@ -109,7 +109,10 @@ public partial class frmTable : Form
     private void button2_Click(object sender, EventArgs e)
     {
         popupChuyenBan chuyenBanBtn = new popupChuyenBan();
-        chuyenBanBtn.ShowDialog();
+        if (chuyenBanBtn.ShowDialog() == DialogResult.OK)
+        {
+            LoadDanhSachBan();
+        }
     }
 
     private void button3_Click(object sender, EventArgs e)
