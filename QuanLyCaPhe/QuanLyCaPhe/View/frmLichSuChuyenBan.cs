@@ -26,7 +26,6 @@ public partial class frmLichSuChuyenBan : Form
 
     private void KhoiTaoBoLoc()
     {
-        // Mặc định lọc 7 ngày gần nhất
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
     }
@@ -154,11 +153,9 @@ public partial class frmLichSuChuyenBan : Form
 
         var ketQua = _danhSachGoc.Where(item =>
         {
-            // Lọc theo thời gian
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
 
-            // Lọc theo từ khóa (tìm theo mã chuyển, bàn chuyển đi, bàn chuyển đến, nhân viên, ghi chú)
             if (!string.IsNullOrEmpty(tuKhoa))
             {
                 bool matchMa = item.MaChuyen.ToLower().Contains(tuKhoa);
@@ -230,9 +227,6 @@ public partial class frmLichSuChuyenBan : Form
     }
 }
 
-/// <summary>
-/// Model DTO chứa thông tin một lượt chuyển bàn
-/// </summary>
 public class LichSuChuyenBanItem
 {
     public string MaChuyen { get; set; } = string.Empty;

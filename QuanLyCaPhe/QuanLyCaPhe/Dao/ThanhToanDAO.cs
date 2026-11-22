@@ -8,7 +8,6 @@ namespace QuanLyCaPhe.Dao;
 
 public class ThanhToanDAO
 {
-    // Chuyển dòng dữ liệu từ CSDL sang đối tượng ThanhToan
     private ThanhToan MappingToThanhToan(SqliteDataReader reader)
     {
         return new ThanhToan
@@ -22,7 +21,6 @@ public class ThanhToanDAO
         };
     }
 
-    // Thêm bản ghi thanh toán mới vào bảng THANH_TOAN
     public bool ThemThanhToan(ThanhToan tt)
     {
         try
@@ -47,7 +45,6 @@ public class ThanhToanDAO
         }
     }
 
-    // Lấy danh sách thanh toán theo mã hóa đơn
     public List<ThanhToan> LayThanhToanTheoHoaDon(int maHoaDon)
     {
         var danhSach = new List<ThanhToan>();

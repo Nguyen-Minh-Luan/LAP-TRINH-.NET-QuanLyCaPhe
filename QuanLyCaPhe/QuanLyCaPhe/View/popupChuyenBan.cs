@@ -39,13 +39,11 @@ public partial class popupChuyenBan : Form
         LoadDanhSachBanDich();
     }
 
-    // Tải danh sách các bàn đang có khách vào combobox bàn nguồn
     private void LoadDanhSachBanNguon()
     {
         try
         {
             List<Ban> danhSachTatCaBan = banDao.LayDanhSachBan();
-            // Bàn nguồn phải là bàn đang có người hoặc gộp bàn
             List<Ban> danhSachBanCoKhach = danhSachTatCaBan
                 .Where(b => b.TrangThai != "Trong")
                 .ToList();
@@ -66,13 +64,11 @@ public partial class popupChuyenBan : Form
         }
     }
 
-    // Tải danh sách các bàn đang trống vào combobox bàn đích
     private void LoadDanhSachBanDich()
     {
         try
         {
             List<Ban> danhSachTatCaBan = banDao.LayDanhSachBan();
-            // Bàn đích phải là bàn đang trống
             List<Ban> danhSachBanTrong = danhSachTatCaBan
                 .Where(b => b.TrangThai == "Trong")
                 .ToList();
@@ -117,7 +113,6 @@ public partial class popupChuyenBan : Form
             string tenBanDich = cboBanMoi.Text;
             string lyDo = txtGhiChu.Text.Trim();
 
-            // Xác nhận hành động chuyển bàn
             var luaChon = MessageBox.Show(
                 $"Bạn có chắc chắn muốn chuyển từ [{tenBanNguon}] sang [{tenBanDich}] không?",
                 "Xác nhận chuyển bàn",
@@ -129,7 +124,6 @@ public partial class popupChuyenBan : Form
                 return;
             }
 
-            // Thực hiện chuyển bàn qua DAO
             bool ketQua = lichSuDao.ChuyenBan(maBanNguon, maBanDich, maNhanVien, lyDo, out string thongBaoLoi);
 
             if (ketQua)

@@ -8,7 +8,6 @@ namespace QuanLyCaPhe.Dao;
 
 public class LichSuChuyenBanDAO
 {
-    // 1. Lấy mã hóa đơn chưa thanh toán của một bàn
     public int LayMaHoaDonChuaThanhToan(int maBan, SqliteConnection conn, SqliteTransaction trans)
     {
         string sql = @"SELECT hd.MaHoaDon 
@@ -30,7 +29,6 @@ public class LichSuChuyenBanDAO
         return 0;
     }
 
-    // 2. Lấy trạng thái hiện tại của một bàn
     public string LayTrangThaiBan(int maBan, SqliteConnection conn, SqliteTransaction trans)
     {
         string sql = "SELECT TrangThai FROM BAN WHERE MaBan = @MaBan";
@@ -42,7 +40,6 @@ public class LichSuChuyenBanDAO
         return result?.ToString() ?? string.Empty;
     }
 
-    // 3. Cập nhật hóa đơn từ bàn cũ sang bàn mới trong bảng HOA_DON_BAN
     public bool CapNhatHoaDonSangBanMoi(int maHoaDon, int maBanNguon, int maBanDich, SqliteConnection conn, SqliteTransaction trans)
     {
         string sql = @"UPDATE HOA_DON_BAN 
@@ -57,7 +54,6 @@ public class LichSuChuyenBanDAO
         return cmd.ExecuteNonQuery() > 0;
     }
 
-    // 4. Cập nhật trạng thái bàn (Trong / CoNguoi)
     public bool CapNhatTrangThaiBan(int maBan, string trangThaiMoi, SqliteConnection conn, SqliteTransaction trans)
     {
         string sql = "UPDATE BAN SET TrangThai = @TrangThai WHERE MaBan = @MaBan";
@@ -69,7 +65,6 @@ public class LichSuChuyenBanDAO
         return cmd.ExecuteNonQuery() > 0;
     }
 
-    // 5. Ghi nhận nhật ký vào bảng LICH_SU_CHUYEN_BAN kèm MaHoaDon và LyDo
     public bool GhiLichSuChuyenBan(int maHoaDon, int maBanNguon, int maBanDich, int maNhanVien, string lyDo, SqliteConnection conn, SqliteTransaction trans)
     {
         string sql = @"INSERT INTO LICH_SU_CHUYEN_BAN 
@@ -88,7 +83,6 @@ public class LichSuChuyenBanDAO
         return cmd.ExecuteNonQuery() > 0;
     }
 
-    // Hàm điều phối nghiệp vụ chuyển bàn: gọi lần lượt các hàm nhỏ ở trên
     public bool ChuyenBan(int maBanNguon, int maBanDich, int maNhanVien, string lyDo, out string thongBaoLoi)
     {
         thongBaoLoi = string.Empty;
@@ -110,7 +104,6 @@ public class LichSuChuyenBanDAO
             using var conn = DBConnect.GetConnection();
             using var trans = conn.BeginTransaction();
 
-            // Bước 1: Kiểm tra hóa đơn chưa thanh toán của bàn nguồn
             int maHoaDon = LayMaHoaDonChuaThanhToan(maBanNguon, conn, trans);
             if (maHoaDon <= 0)
             {
@@ -119,7 +112,6 @@ public class LichSuChuyenBanDAO
                 return false;
             }
 
-            // Bước 2: Kiểm tra bàn đích có đang trống không
             string trangThaiBanDich = LayTrangThaiBan(maBanDich, conn, trans);
             if (trangThaiBanDich != "Trong")
             {
@@ -128,19 +120,14 @@ public class LichSuChuyenBanDAO
                 return false;
             }
 
-            // Bước 3: Cập nhật hóa đơn của bàn nguồn sang bàn đích
             CapNhatHoaDonSangBanMoi(maHoaDon, maBanNguon, maBanDich, conn, trans);
 
-            // Bước 4: Cập nhật trạng thái bàn nguồn thành 'Trong'
             CapNhatTrangThaiBan(maBanNguon, "Trong", conn, trans);
 
-            // Bước 5: Cập nhật trạng thái bàn đích thành 'CoNguoi'
             CapNhatTrangThaiBan(maBanDich, "CoNguoi", conn, trans);
 
-            // Bước 6: Ghi log vào bảng LICH_SU_CHUYEN_BAN kèm mã hóa đơn
             GhiLichSuChuyenBan(maHoaDon, maBanNguon, maBanDich, maNhanVien, lyDo, conn, trans);
 
-            // Hoàn tất giao dịch
             trans.Commit();
             return true;
         }
@@ -151,7 +138,6 @@ public class LichSuChuyenBanDAO
         }
     }
 
-    // Lấy danh sách các món ăn đã gọi theo mã hóa đơn
     private List<string> LayDanhSachMonTheoHoaDon(int maHoaDon, SqliteConnection conn)
     {
         var danhSachMon = new List<string>();
@@ -184,7 +170,6 @@ public class LichSuChuyenBanDAO
         return danhSachMon;
     }
 
-    // Lấy danh sách lịch sử chuyển bàn kèm thông tin chi tiết hóa đơn và danh sách món
     public List<LichSuChuyenBanModelDTO> LayDanhSachLichSu()
     {
         var danhSach = new List<LichSuChuyenBanModelDTO>();
@@ -237,7 +222,6 @@ public class LichSuChuyenBanDAO
                 }
             }
 
-            // Lấy danh sách các món ăn của từng hóa đơn chuyển bàn
             foreach (var item in danhSach)
             {
                 if (item.MaHoaDon > 0)

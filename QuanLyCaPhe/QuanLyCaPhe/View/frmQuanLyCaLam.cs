@@ -24,9 +24,6 @@ public partial class frmQuanLyCaLam : Form
         LamMoiForm();
     }
 
-    /// <summary>
-    /// Khởi tạo danh sách ca làm mẫu phục vụ kiểm thử và hiển thị
-    /// </summary>
     private void TaiDanhSachCaLam(string tuKhoa = "")
     {
         try
@@ -61,7 +58,6 @@ public partial class frmQuanLyCaLam : Form
         }
     }
     
-    /// Xử lý chọn dòng trên DataGridView để xem/sửa
     private void dgvCaLam_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex < 0 || e.RowIndex >= dgvCaLam.Rows.Count) return;
@@ -82,9 +78,6 @@ public partial class frmQuanLyCaLam : Form
         }
     }
 
-    /// <summary>
-    /// Thêm mới một ca làm việc
-    /// </summary>
     private void btnThem_Click(object sender, EventArgs e)
     {
         if (!KiemTraDuLieu(maCaBoQua: 0)) return;
@@ -110,9 +103,6 @@ public partial class frmQuanLyCaLam : Form
         }
     }
 
-    /// <summary>
-    /// Cập nhật thông tin ca làm việc đang chọn
-    /// </summary>
     private void btnSua_Click(object sender, EventArgs e)
     {
         if (_maCaDangChon <= 0)
@@ -146,9 +136,6 @@ public partial class frmQuanLyCaLam : Form
         }
     }
 
-    /// <summary>
-    /// Xóa ca làm việc đang chọn
-    /// </summary>
     private void btnXoa_Click(object sender, EventArgs e)
     {
         if (_maCaDangChon <= 0)
@@ -182,9 +169,6 @@ public partial class frmQuanLyCaLam : Form
         }
     }
 
-    /// <summary>
-    /// Xóa trắng ô nhập liệu và reset trạng thái nút
-    /// </summary>
     private void btnLamMoi_Click(object sender, EventArgs e)
     {
         LamMoiForm();
@@ -210,9 +194,6 @@ public partial class frmQuanLyCaLam : Form
         txtMaCa.Focus();
     }
 
-    /// <summary>
-    /// Tìm kiếm ca làm theo từ khóa
-    /// </summary>
     private void btnTraCuu_Click(object sender, EventArgs e)
     {
        ThucHienTimKiem();
@@ -232,24 +213,17 @@ public partial class frmQuanLyCaLam : Form
         TaiDanhSachCaLam(txtTimKiem.Text);
     }
     
-    /// Hiển thị lại toàn bộ danh sách ca làm
     private void btnTatCa_Click(object sender, EventArgs e)
     {
         txtTimKiem.Clear();
         TaiDanhSachCaLam();
     }
 
-    /// <summary>
-    /// Đóng form quản lý ca làm
-    /// </summary>
     private void btnDong_Click(object sender, EventArgs e)
     {
         this.Close();
     }
 
-    /// <summary>
-    /// Kiểm tra tính hợp lệ dữ liệu nhập
-    /// </summary>
     private bool KiemTraDuLieu(int maCaBoQua)
     {
         string tenCa = txtTenCa.Text.Trim();

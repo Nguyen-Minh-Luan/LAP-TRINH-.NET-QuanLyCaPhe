@@ -68,7 +68,6 @@ public partial class frmThanhToan : Form
         HienThiAnhQR();
     }
 
-    // Nạp dữ liệu món mẫu khi mở thử form mà chưa có dữ liệu truyền vào
     private void LoadDuLieuMauMacDinh()
     {
         var sampleItems = new List<ChiTietMonItem>
@@ -82,7 +81,6 @@ public partial class frmThanhToan : Form
         LoadDanhSachMon(sampleItems);
     }
 
-    // Hiển thị danh sách món ăn lên bảng
     public void LoadDanhSachMon(List<ChiTietMonItem> danhSachMon)
     {
         dgvChiTietHoaDon.Rows.Clear();
@@ -104,7 +102,6 @@ public partial class frmThanhToan : Form
         lblTongSoMon.Text = $"Tổng số lượng món: {tongSoLuong} ly/phần";
     }
 
-    // Tính toán số tiền giảm giá và tổng tiền cần thu
     private void TinhToanTien()
     {
         decimal phanTramGiam = nudGiamGia.Value;
@@ -127,7 +124,6 @@ public partial class frmThanhToan : Form
         TinhTienThoi();
     }
 
-    // Tính tiền thừa trả lại cho khách
     private void TinhTienThoi()
     {
         string textTienKhach = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
@@ -151,7 +147,6 @@ public partial class frmThanhToan : Form
         }
     }
 
-    // Xử lý khi chuyển tab giữa Tiền mặt và Chuyển khoản QR
     private void tabHinhThuc_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (tabHinhThuc.SelectedTab == tabChuyenKhoan)
@@ -163,13 +158,11 @@ public partial class frmThanhToan : Form
         TinhTienThoi();
     }
 
-    // Xử lý khi thay đổi phần trăm giảm giá
     private void nudGiamGia_ValueChanged(object? sender, EventArgs e)
     {
         TinhToanTien();
     }
 
-    // Định dạng tiền khách đưa thành dạng số có dấu phẩy và tính lại tiền thối
     private void txtTienKhachDua_TextChanged(object? sender, EventArgs e)
     {
         string raw = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
@@ -193,7 +186,6 @@ public partial class frmThanhToan : Form
         TinhTienThoi();
     }
 
-    // Xử lý khi bấm nút Xác nhận thanh toán
     private void btnThanhToan_Click(object? sender, EventArgs e)
     {
         string hinhThuc = tabHinhThuc.SelectedTab == tabTienMat ? "Tiền mặt" : "Chuyển khoản (QR)";
@@ -254,7 +246,11 @@ public partial class frmThanhToan : Form
                     giamGiaDao.ThemGiamGia(gg);
                 }
 
-                if (maBanId > 0)
+                if (maHoaDonId > 0)
+                {
+                    banDao.GiaiPhongCacBanTheoHoaDon(maHoaDonId);
+                }
+                else if (maBanId > 0)
                 {
                     banDao.CapNhatTrangThai(maBanId, "Trong");
                 }
@@ -283,7 +279,6 @@ public partial class frmThanhToan : Form
         this.Close();
     }
 
-    // In phiếu tạm tính để khách kiểm tra đối chiếu món
     private void btnInTamTinh_Click(object? sender, EventArgs e)
     {
         string chiTiet = $"====== PHIẾU TẠM TÍNH ======\n" +
@@ -319,7 +314,6 @@ public partial class frmThanhToan : Form
         this.Close();
     }
 
-    // Tải và hiển thị ảnh mã QR chuyển khoản của quán
     private void HienThiAnhQR()
     {
         try

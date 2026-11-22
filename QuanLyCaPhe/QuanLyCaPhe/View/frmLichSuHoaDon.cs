@@ -24,11 +24,9 @@ public partial class frmLichSuHoaDon : Form
 
     private void KhoiTaoBoLoc()
     {
-        // Khoảng ngày mặc định 7 ngày gần đây
         dtpTuNgay.Value = DateTime.Today.AddDays(-7);
         dtpDenNgay.Value = DateTime.Today;
 
-        // Danh sách nhân viên
         cboNhanVien.Items.Clear();
         cboNhanVien.Items.Add("-- Tất cả thu ngân --");
         cboNhanVien.Items.Add("Admin");
@@ -189,7 +187,6 @@ public partial class frmLichSuHoaDon : Form
         }
 
         decimal tienGiam = hoaDon.TienMon * (hoaDon.GiamGiaPhanTram / 100m);
-        /*lblTienMonVal.Text = hoaDon.TienMon.ToString("N0", CultureInfo.InvariantCulture) + " đ";*/
         lblGiamGiaVal.Text = $"- {tienGiam:N0} đ ({hoaDon.GiamGiaPhanTram}%)";
         lblHinhThucVal.Text = hoaDon.HinhThucThanhToan;
         lblTongCongVal.Text = hoaDon.TongTien.ToString("N0", CultureInfo.InvariantCulture) + " đ";
@@ -199,7 +196,6 @@ public partial class frmLichSuHoaDon : Form
     {
         lblThongTinChiTietHD.Text = "Hóa đơn: Chưa chọn";
         dgvChiTietHoaDon.Rows.Clear();
-        /*lblTienMonVal.Text = "0 đ";*/
         lblGiamGiaVal.Text = "- 0 đ (0%)";
         lblHinhThucVal.Text = "--";
         lblTongCongVal.Text = "0 đ";
@@ -221,18 +217,15 @@ public partial class frmLichSuHoaDon : Form
 
         var ketQua = _danhSachHoaDonGoc.Where(item =>
         {
-            // Lọc theo thời gian
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
 
-            // Lọc theo nhân viên
             if (!string.IsNullOrEmpty(nhanVienDuocChon))
             {
                 if (!item.ThuNgan.Equals(nhanVienDuocChon, StringComparison.OrdinalIgnoreCase))
                     return false;
             }
 
-            // Lọc theo từ khóa
             if (!string.IsNullOrEmpty(tuKhoa))
             {
                 bool matchMaHD = item.MaHD.ToLower().Contains(tuKhoa);
@@ -266,7 +259,6 @@ public partial class frmLichSuHoaDon : Form
 
     private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        // Giữ lại để tương thích các sự kiện cũ nếu cần
     }
 
     private void dtpTuNgay_ValueChanged(object sender, EventArgs e)
@@ -278,9 +270,6 @@ public partial class frmLichSuHoaDon : Form
     }
 }
 
-/// <summary>
-/// Model DTO chứa thông tin hóa đơn lịch sử
-/// </summary>
 public class HoaDonLichSuItem
 {
     public string MaHD { get; set; } = string.Empty;
@@ -294,9 +283,6 @@ public class HoaDonLichSuItem
     public List<ChiTietHoaDonLichSuItem> DanhSachMon { get; set; } = new();
 }
 
-/// <summary>
-/// Model DTO chứa thông tin chi tiết từng món trong hóa đơn
-/// </summary>
 public class ChiTietHoaDonLichSuItem
 {
     public string TenMon { get; set; } = string.Empty;
