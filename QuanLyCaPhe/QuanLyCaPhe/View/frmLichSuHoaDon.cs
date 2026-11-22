@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using QuanLyCaPhe.Dao;
 
 namespace QuanLyCaPhe;
 
 public partial class frmLichSuHoaDon : Form
 {
-    private List<HoaDonLichSuItem> _danhSachHoaDonGoc = new();
+    private HoaDonDAO hoaDonDao = new HoaDonDAO();
+    private NhanVienDAO nhanVienDao = new NhanVienDAO();
+    private List<HoaDonLichSuItem> danhSachHoaDonGoc = new();
 
     public frmLichSuHoaDon()
     {
@@ -18,27 +21,67 @@ public partial class frmLichSuHoaDon : Form
     private void frmLichSuHoaDon_Load(object sender, EventArgs e)
     {
         KhoiTaoBoLoc();
-        KhoiTaoDuLieuMau();
-        HienThiDanhSachHoaDon(_danhSachHoaDonGoc);
+        LoadDuLieuHoaDon();
+        HienThiDanhSachHoaDon(danhSachHoaDonGoc);
     }
 
     private void KhoiTaoBoLoc()
     {
-        dtpTuNgay.Value = DateTime.Today.AddDays(-7);
+        dtpTuNgay.Value = DateTime.Today.AddDays(-30);
         dtpDenNgay.Value = DateTime.Today;
 
         cboNhanVien.Items.Clear();
         cboNhanVien.Items.Add("-- Tất cả thu ngân --");
-        cboNhanVien.Items.Add("Admin");
-        cboNhanVien.Items.Add("Trần Thị Mai Anh");
-        cboNhanVien.Items.Add("Nguyễn Văn Tuấn");
-        cboNhanVien.Items.Add("Lê Thị Hương");
+
+        try
+        {
+            var dsNhanVien = nhanVienDao.LayDanhSachNhanVien();
+            foreach (var nv in dsNhanVien)
+            {
+                if (!string.IsNullOrWhiteSpace(nv.HoTen))
+                {
+                    cboNhanVien.Items.Add(nv.HoTen);
+                }
+            }
+        }
+        catch
+        {
+        }
+
         cboNhanVien.SelectedIndex = 0;
+    }
+
+    private void LoadDuLieuHoaDon()
+    {
+        var dsTuDb = hoaDonDao.LayDanhSachHoaDonLichSu();
+        if (dsTuDb != null && dsTuDb.Count > 0)
+        {
+            danhSachHoaDonGoc = dsTuDb.Select(hd => new HoaDonLichSuItem
+            {
+                MaHD = $"HD{hd.MaHoaDon:D5}",
+                TenBan = hd.TenBan,
+                ThoiGian = hd.NgayTao,
+                ThuNgan = hd.TenThuNgan,
+                TienMon = hd.TongTien,
+                GiamGiaPhanTram = hd.GiamGiaPhanTram,
+                HinhThucThanhToan = hd.PhuongThucThanhToan,
+                DanhSachMon = hd.DanhSachMon.Select(m => new ChiTietHoaDonLichSuItem
+                {
+                    TenMon = m.TenMon,
+                    SoLuong = m.SoLuong,
+                    DonGia = m.DonGia
+                }).ToList()
+            }).ToList();
+        }
+        else
+        {
+            KhoiTaoDuLieuMau();
+        }
     }
 
     private void KhoiTaoDuLieuMau()
     {
-        _danhSachHoaDonGoc = new List<HoaDonLichSuItem>
+        danhSachHoaDonGoc = new List<HoaDonLichSuItem>
         {
             new HoaDonLichSuItem
             {
@@ -212,10 +255,10 @@ public partial class frmLichSuHoaDon : Form
             return;
         }
 
-        string nhanVienDuocChon = cboNhanVien.SelectedIndex > 0 ? cboNhanVien.SelectedItem.ToString()! : string.Empty;
+        string nhanVienDuocChon = cboNhanVien.SelectedIndex > 0 ? (cboNhanVien.SelectedItem?.ToString() ?? string.Empty) : string.Empty;
         string tuKhoa = txtTimKiem.Text.Trim().ToLower();
 
-        var ketQua = _danhSachHoaDonGoc.Where(item =>
+        var ketQua = danhSachHoaDonGoc.Where(item =>
         {
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
@@ -244,12 +287,13 @@ public partial class frmLichSuHoaDon : Form
 
     private void btnLamMoi_Click(object sender, EventArgs e)
     {
-        dtpTuNgay.Value = DateTime.Today.AddDays(-7);
+        dtpTuNgay.Value = DateTime.Today.AddDays(-30);
         dtpDenNgay.Value = DateTime.Today;
         cboNhanVien.SelectedIndex = 0;
         txtTimKiem.Clear();
 
-        HienThiDanhSachHoaDon(_danhSachHoaDonGoc);
+        LoadDuLieuHoaDon();
+        HienThiDanhSachHoaDon(danhSachHoaDonGoc);
     }
 
     private void btnDong_Click(object sender, EventArgs e)
