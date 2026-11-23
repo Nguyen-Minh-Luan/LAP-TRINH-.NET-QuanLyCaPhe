@@ -327,7 +327,7 @@ partial class frmThongTinCaNhan
         // btnCapNhatTT
         // 
         btnCapNhatTT.Anchor = System.Windows.Forms.AnchorStyles.None;
-        btnCapNhatTT.BackColor = System.Drawing.Color.DarkRed;
+        btnCapNhatTT.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         tlpThongTin.SetColumnSpan(btnCapNhatTT, 2);
         btnCapNhatTT.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
         btnCapNhatTT.FlatAppearance.BorderSize = 0;
@@ -345,7 +345,7 @@ partial class frmThongTinCaNhan
         // 
         // panel4
         // 
-        panel4.BackColor = System.Drawing.Color.Brown;
+        panel4.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         panel4.Controls.Add(label1);
         panel4.Controls.Add(pictureBox1);
         panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -435,7 +435,7 @@ partial class frmThongTinCaNhan
         // 
         // panel5
         // 
-        panel5.BackColor = System.Drawing.Color.Brown;
+        panel5.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         panel5.Controls.Add(label2);
         panel5.Controls.Add(pictureBox2);
         panel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -565,7 +565,7 @@ partial class frmThongTinCaNhan
         // btnCapNhatPassword
         // 
         btnCapNhatPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-        btnCapNhatPassword.BackColor = System.Drawing.Color.DarkRed;
+        btnCapNhatPassword.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         tlpDoiMatKhau.SetColumnSpan(btnCapNhatPassword, 2);
         btnCapNhatPassword.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
         btnCapNhatPassword.FlatAppearance.BorderSize = 0;
@@ -583,7 +583,7 @@ partial class frmThongTinCaNhan
         // 
         // panel6
         // 
-        panel6.BackColor = System.Drawing.Color.Brown;
+        panel6.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         panel6.Controls.Add(label3);
         panel6.Controls.Add(pictureBox3);
         panel6.Dock = System.Windows.Forms.DockStyle.Top;

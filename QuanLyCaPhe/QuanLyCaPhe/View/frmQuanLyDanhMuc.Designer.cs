@@ -225,7 +225,7 @@ partial class frmQuanLyDanhMuc
         // 
         // btnThem
         // 
-        btnThem.BackColor = System.Drawing.Color.Firebrick;
+        btnThem.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThem.Dock = System.Windows.Forms.DockStyle.Fill;
         btnThem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnThem.ForeColor = System.Drawing.Color.White;
@@ -240,7 +240,7 @@ partial class frmQuanLyDanhMuc
         // 
         // btnSua
         // 
-        btnSua.BackColor = System.Drawing.Color.Firebrick;
+        btnSua.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnSua.Dock = System.Windows.Forms.DockStyle.Fill;
         btnSua.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnSua.ForeColor = System.Drawing.Color.White;
@@ -255,7 +255,7 @@ partial class frmQuanLyDanhMuc
         // 
         // btnXoa
         // 
-        btnXoa.BackColor = System.Drawing.Color.Firebrick;
+        btnXoa.BackColor = System.Drawing.Color.FromArgb(160, 60, 50);
         btnXoa.Dock = System.Windows.Forms.DockStyle.Fill;
         btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnXoa.ForeColor = System.Drawing.Color.White;
@@ -270,7 +270,7 @@ partial class frmQuanLyDanhMuc
         // 
         // label1
         // 
-        label1.BackColor = System.Drawing.Color.Brown;
+        label1.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         label1.Dock = System.Windows.Forms.DockStyle.Top;
         label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -384,7 +384,7 @@ partial class frmQuanLyDanhMuc
         // 
         // btnTimDanhMuc
         // 
-        btnTimDanhMuc.BackColor = System.Drawing.Color.Firebrick;
+        btnTimDanhMuc.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         btnTimDanhMuc.Dock = System.Windows.Forms.DockStyle.Fill;
         btnTimDanhMuc.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnTimDanhMuc.ForeColor = System.Drawing.Color.White;
@@ -399,7 +399,7 @@ partial class frmQuanLyDanhMuc
         // 
         // label2
         // 
-        label2.BackColor = System.Drawing.Color.Brown;
+        label2.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         label2.Dock = System.Windows.Forms.DockStyle.Top;
         label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;

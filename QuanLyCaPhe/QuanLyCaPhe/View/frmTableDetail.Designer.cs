@@ -191,6 +191,7 @@ partial class frmTableDetail
         // 
         lblTitleMenu.AutoSize = true;
         lblTitleMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+        lblTitleMenu.ForeColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblTitleMenu.Location = new System.Drawing.Point(12, 12);
         lblTitleMenu.Name = "lblTitleMenu";
         lblTitleMenu.Size = new System.Drawing.Size(271, 21);
@@ -220,12 +221,12 @@ partial class frmTableDetail
         // 
         // btnQuayLai
         // 
-        btnQuayLai.BackColor = System.Drawing.Color.Gainsboro;
+        btnQuayLai.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
         btnQuayLai.Cursor = System.Windows.Forms.Cursors.Hand;
         btnQuayLai.FlatAppearance.BorderSize = 0;
         btnQuayLai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         btnQuayLai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-        btnQuayLai.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)64)), ((int)((byte)64)), ((int)((byte)64)));
+        btnQuayLai.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnQuayLai.Location = new System.Drawing.Point(288, 412);
         btnQuayLai.Name = "btnQuayLai";
         btnQuayLai.Size = new System.Drawing.Size(128, 42);
@@ -235,7 +236,7 @@ partial class frmTableDetail
         // 
         // btnThanhToan
         // 
-        btnThanhToan.BackColor = System.Drawing.Color.SeaGreen;
+        btnThanhToan.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
         btnThanhToan.FlatAppearance.BorderSize = 0;
         btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -251,7 +252,7 @@ partial class frmTableDetail
         // 
         // btnDatBan
         // 
-        btnDatBan.BackColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        btnDatBan.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         btnDatBan.Cursor = System.Windows.Forms.Cursors.Hand;
         btnDatBan.FlatAppearance.BorderSize = 0;
         btnDatBan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -267,7 +268,7 @@ partial class frmTableDetail
         // lblTongTien
         // 
         lblTongTien.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        lblTongTien.ForeColor = System.Drawing.Color.Firebrick;
+        lblTongTien.ForeColor = System.Drawing.Color.FromArgb(139, 54, 48);
         lblTongTien.Location = new System.Drawing.Point(110, 365);
         lblTongTien.Name = "lblTongTien";
         lblTongTien.Size = new System.Drawing.Size(306, 27);
@@ -404,8 +405,9 @@ partial class frmTableDetail
         // 
         // lblTenBan
         // 
-        lblTenBan.BackColor = System.Drawing.Color.LightSteelBlue;
+        lblTenBan.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblTenBan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+        lblTenBan.ForeColor = System.Drawing.Color.White;
         lblTenBan.Location = new System.Drawing.Point(12, 10);
         lblTenBan.Name = "lblTenBan";
         lblTenBan.Size = new System.Drawing.Size(404, 34);

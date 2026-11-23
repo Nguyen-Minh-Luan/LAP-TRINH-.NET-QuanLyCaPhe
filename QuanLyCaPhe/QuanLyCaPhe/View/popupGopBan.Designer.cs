@@ -50,7 +50,7 @@ partial class popupGopBan
         // 
         // panelHeader
         // 
-        panelHeader.BackColor = System.Drawing.Color.FromArgb(70, 130, 180);
+        panelHeader.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         panelHeader.Controls.Add(lblTitle);
         panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
         panelHeader.Location = new System.Drawing.Point(0, 0);
@@ -175,7 +175,7 @@ partial class popupGopBan
         // 
         // btnXacNhan
         // 
-        btnXacNhan.BackColor = System.Drawing.Color.FromArgb(70, 130, 180);
+        btnXacNhan.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
         btnXacNhan.FlatAppearance.BorderSize = 0;
         btnXacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

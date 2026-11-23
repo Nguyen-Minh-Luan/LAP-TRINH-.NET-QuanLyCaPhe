@@ -176,7 +176,7 @@ partial class frmTable
         // 
         // button2
         // 
-        button2.BackColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        button2.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         button2.Cursor = System.Windows.Forms.Cursors.Hand;
         button2.FlatAppearance.BorderSize = 0;
         button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -192,7 +192,7 @@ partial class frmTable
         // 
         // button3
         // 
-        button3.BackColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        button3.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         button3.Cursor = System.Windows.Forms.Cursors.Hand;
         button3.FlatAppearance.BorderSize = 0;
         button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -208,7 +208,7 @@ partial class frmTable
         // 
         // btnLamMoi
         // 
-        btnLamMoi.BackColor = System.Drawing.Color.SeaGreen;
+        btnLamMoi.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         btnLamMoi.Cursor = System.Windows.Forms.Cursors.Hand;
         btnLamMoi.FlatAppearance.BorderSize = 0;
         btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -80,7 +80,7 @@ partial class frmLichSuHoaDon
         // 
         lblTieuDe.Dock = System.Windows.Forms.DockStyle.Top;
         lblTieuDe.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-        lblTieuDe.ForeColor = System.Drawing.Color.Blue;
+        lblTieuDe.ForeColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new System.Drawing.Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new System.Drawing.Size(984, 45);
@@ -184,23 +184,27 @@ partial class frmLichSuHoaDon
         // btnTraCuu
         // 
         btnTraCuu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        btnTraCuu.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
+        btnTraCuu.ForeColor = System.Drawing.Color.White;
         btnTraCuu.Location = new System.Drawing.Point(770, 56);
         btnTraCuu.Name = "btnTraCuu";
         btnTraCuu.Size = new System.Drawing.Size(85, 26);
         btnTraCuu.TabIndex = 8;
         btnTraCuu.Text = "Tra cứu";
-        btnTraCuu.UseVisualStyleBackColor = true;
+        btnTraCuu.UseVisualStyleBackColor = false;
         btnTraCuu.Click += btnTraCuu_Click;
         // 
         // btnLamMoi
         // 
         btnLamMoi.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        btnLamMoi.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnLamMoi.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnLamMoi.Location = new System.Drawing.Point(862, 56);
         btnLamMoi.Name = "btnLamMoi";
         btnLamMoi.Size = new System.Drawing.Size(85, 26);
         btnLamMoi.TabIndex = 9;
         btnLamMoi.Text = "Làm mới";
-        btnLamMoi.UseVisualStyleBackColor = true;
+        btnLamMoi.UseVisualStyleBackColor = false;
         btnLamMoi.Click += btnLamMoi_Click;
         // 
         // gbDanhSachHoaDon
@@ -294,7 +298,7 @@ partial class frmLichSuHoaDon
         // 
         lblThongTinChiTietHD.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         lblThongTinChiTietHD.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-        lblThongTinChiTietHD.ForeColor = System.Drawing.Color.DarkBlue;
+        lblThongTinChiTietHD.ForeColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblThongTinChiTietHD.Location = new System.Drawing.Point(8, 20);
         lblThongTinChiTietHD.Name = "lblThongTinChiTietHD";
         lblThongTinChiTietHD.Size = new System.Drawing.Size(398, 20);
@@ -435,12 +439,14 @@ partial class frmLichSuHoaDon
         // btnDong
         // 
         btnDong.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+        btnDong.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnDong.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnDong.Location = new System.Drawing.Point(872, 540);
         btnDong.Name = "btnDong";
         btnDong.Size = new System.Drawing.Size(100, 28);
         btnDong.TabIndex = 4;
         btnDong.Text = "Đóng";
-        btnDong.UseVisualStyleBackColor = true;
+        btnDong.UseVisualStyleBackColor = false;
         btnDong.Click += btnDong_Click;
         // 
         // frmLichSuHoaDon

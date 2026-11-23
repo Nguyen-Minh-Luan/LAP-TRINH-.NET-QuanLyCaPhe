@@ -66,7 +66,7 @@ partial class frmThongKeMonBanChay
         // 
         lblTieuDe.Dock = DockStyle.Top;
         lblTieuDe.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblTieuDe.ForeColor = Color.Blue;
+        lblTieuDe.ForeColor = Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new Size(1024, 45);
@@ -137,21 +137,25 @@ partial class frmThongKeMonBanChay
         cbDanhMuc.SelectedIndexChanged += cbDanhMuc_SelectedIndexChanged;
 
         btnXemBaoCao.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnXemBaoCao.BackColor = Color.FromArgb(139, 54, 48);
+        btnXemBaoCao.ForeColor = Color.White;
         btnXemBaoCao.Location = new Point(775, 24);
         btnXemBaoCao.Name = "btnXemBaoCao";
         btnXemBaoCao.Size = new Size(110, 28);
         btnXemBaoCao.TabIndex = 6;
         btnXemBaoCao.Text = "Xem thống kê";
-        btnXemBaoCao.UseVisualStyleBackColor = true;
+        btnXemBaoCao.UseVisualStyleBackColor = false;
         btnXemBaoCao.Click += btnXemBaoCao_Click;
 
         btnLamMoi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnLamMoi.BackColor = Color.FromArgb(232, 224, 214);
+        btnLamMoi.ForeColor = Color.FromArgb(110, 85, 70);
         btnLamMoi.Location = new Point(895, 24);
         btnLamMoi.Name = "btnLamMoi";
         btnLamMoi.Size = new Size(90, 28);
         btnLamMoi.TabIndex = 7;
         btnLamMoi.Text = "Làm mới";
-        btnLamMoi.UseVisualStyleBackColor = true;
+        btnLamMoi.UseVisualStyleBackColor = false;
         btnLamMoi.Click += btnLamMoi_Click;
 
         // 
@@ -264,12 +268,14 @@ partial class frmThongKeMonBanChay
         // btnDong
         // 
         btnDong.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnDong.BackColor = Color.FromArgb(232, 224, 214);
+        btnDong.ForeColor = Color.FromArgb(110, 85, 70);
         btnDong.Location = new Point(912, 537);
         btnDong.Name = "btnDong";
         btnDong.Size = new Size(100, 28);
         btnDong.TabIndex = 4;
         btnDong.Text = "Đóng";
-        btnDong.UseVisualStyleBackColor = true;
+        btnDong.UseVisualStyleBackColor = false;
         btnDong.Click += btnDong_Click;
 
         // 

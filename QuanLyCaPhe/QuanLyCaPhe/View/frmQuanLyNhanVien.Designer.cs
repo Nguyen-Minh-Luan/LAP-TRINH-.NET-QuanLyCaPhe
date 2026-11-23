@@ -83,7 +83,7 @@ namespace QuanLyCaPhe.View
             // pnlTop
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Height = 55;
-            pnlTop.BackColor = Color.FromArgb(78, 52, 46);
+            pnlTop.BackColor = Color.FromArgb(112, 67, 48);
             lblTitle.Text = "QUẢN LÝ NHÂN VIÊN & PHÂN QUYỀN";
             lblTitle.ForeColor = Color.White;
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -100,7 +100,7 @@ namespace QuanLyCaPhe.View
 
             lblFormHeader.Text = "THÔNG TIN NHÂN VIÊN";
             lblFormHeader.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblFormHeader.ForeColor = Color.FromArgb(78, 52, 46);
+            lblFormHeader.ForeColor = Color.FromArgb(112, 67, 48);
             lblFormHeader.Location = new Point(20, 15);
             lblFormHeader.AutoSize = true;
 
@@ -169,7 +169,7 @@ namespace QuanLyCaPhe.View
             btnThem.Text = "Thêm mới";
             btnThem.Location = new Point(20, y);
             btnThem.Size = new Size(100, 36);
-            btnThem.BackColor = Color.FromArgb(46, 125, 50);
+            btnThem.BackColor = Color.FromArgb(139, 54, 48);
             btnThem.ForeColor = Color.White;
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.Click += btnThem_Click;
@@ -177,7 +177,7 @@ namespace QuanLyCaPhe.View
             btnSua.Text = "Cập nhật";
             btnSua.Location = new Point(128, y);
             btnSua.Size = new Size(100, 36);
-            btnSua.BackColor = Color.FromArgb(2, 119, 189);
+            btnSua.BackColor = Color.FromArgb(112, 67, 48);
             btnSua.ForeColor = Color.White;
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.Click += btnSua_Click;
@@ -185,7 +185,7 @@ namespace QuanLyCaPhe.View
             btnXoa.Text = "Xóa";
             btnXoa.Location = new Point(236, y);
             btnXoa.Size = new Size(99, 36);
-            btnXoa.BackColor = Color.FromArgb(198, 40, 40);
+            btnXoa.BackColor = Color.FromArgb(160, 60, 50);
             btnXoa.ForeColor = Color.White;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Click += btnXoa_Click;
@@ -194,7 +194,7 @@ namespace QuanLyCaPhe.View
             btnDatLaiMK.Text = "Đặt lại mật khẩu";
             btnDatLaiMK.Location = new Point(20, y);
             btnDatLaiMK.Size = new Size(154, 35);
-            btnDatLaiMK.BackColor = Color.FromArgb(239, 108, 0);
+            btnDatLaiMK.BackColor = Color.FromArgb(139, 75, 54);
             btnDatLaiMK.ForeColor = Color.White;
             btnDatLaiMK.FlatStyle = FlatStyle.Flat;
             btnDatLaiMK.Click += btnDatLaiMK_Click;
@@ -202,7 +202,7 @@ namespace QuanLyCaPhe.View
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.Location = new Point(181, y);
             btnLamMoi.Size = new Size(154, 35);
-            btnLamMoi.BackColor = Color.FromArgb(97, 97, 97);
+            btnLamMoi.BackColor = Color.FromArgb(120, 100, 90);
             btnLamMoi.ForeColor = Color.White;
             btnLamMoi.FlatStyle = FlatStyle.Flat;
             btnLamMoi.Click += btnLamMoi_Click;
@@ -237,6 +237,9 @@ namespace QuanLyCaPhe.View
             btnTimKiem.Text = "Tìm kiếm";
             btnTimKiem.Location = new Point(410, 7);
             btnTimKiem.Size = new Size(90, 29);
+            btnTimKiem.BackColor = Color.FromArgb(112, 67, 48);
+            btnTimKiem.ForeColor = Color.White;
+            btnTimKiem.UseVisualStyleBackColor = false;
             btnTimKiem.Click += btnTimKiem_Click;
 
             pnlSearch.Controls.AddRange(new Control[] { txtTimKiem, cboLocVaiTro, btnTimKiem });

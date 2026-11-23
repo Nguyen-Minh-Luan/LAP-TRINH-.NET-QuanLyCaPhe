@@ -156,4 +156,9 @@ public partial class frmMain : Form
 
         ResumeLayout(true);
     }
+
+    private void mnuQuanLyNhanVien_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmQuanLyNhanVien());
+    }
 }

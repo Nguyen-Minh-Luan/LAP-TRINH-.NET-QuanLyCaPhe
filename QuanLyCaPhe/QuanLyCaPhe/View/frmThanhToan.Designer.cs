@@ -85,7 +85,7 @@ partial class frmThanhToan
         // 
         lblTieuDe.Dock = System.Windows.Forms.DockStyle.Top;
         lblTieuDe.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-        lblTieuDe.ForeColor = System.Drawing.Color.Black;
+        lblTieuDe.ForeColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new System.Drawing.Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new System.Drawing.Size(884, 45);
@@ -510,33 +510,39 @@ partial class frmThanhToan
         // 
         // btnThanhToan
         // 
+        btnThanhToan.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThanhToan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+        btnThanhToan.ForeColor = System.Drawing.Color.White;
         btnThanhToan.Location = new System.Drawing.Point(525, 524);
         btnThanhToan.Name = "btnThanhToan";
         btnThanhToan.Size = new System.Drawing.Size(110, 35);
         btnThanhToan.TabIndex = 4;
         btnThanhToan.Text = "Thanh toán";
-        btnThanhToan.UseVisualStyleBackColor = true;
+        btnThanhToan.UseVisualStyleBackColor = false;
         btnThanhToan.Click += btnThanhToan_Click;
         // 
         // btnInTamTinh
         // 
+        btnInTamTinh.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
+        btnInTamTinh.ForeColor = System.Drawing.Color.White;
         btnInTamTinh.Location = new System.Drawing.Point(645, 524);
         btnInTamTinh.Name = "btnInTamTinh";
         btnInTamTinh.Size = new System.Drawing.Size(110, 35);
         btnInTamTinh.TabIndex = 5;
         btnInTamTinh.Text = "In tạm tính";
-        btnInTamTinh.UseVisualStyleBackColor = true;
+        btnInTamTinh.UseVisualStyleBackColor = false;
         btnInTamTinh.Click += btnInTamTinh_Click;
         // 
         // btnHuy
         // 
+        btnHuy.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnHuy.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnHuy.Location = new System.Drawing.Point(765, 524);
         btnHuy.Name = "btnHuy";
         btnHuy.Size = new System.Drawing.Size(105, 35);
         btnHuy.TabIndex = 6;
         btnHuy.Text = "Đóng";
-        btnHuy.UseVisualStyleBackColor = true;
+        btnHuy.UseVisualStyleBackColor = false;
         btnHuy.Click += btnHuy_Click;
         // 
         // frmThanhToan
