@@ -11,7 +11,7 @@ public class MonAnDAO
     {
         DataTable dt = new DataTable();
         using var conn = DBConnect.GetConnection();
-        string sql = @"SELECT MA.MaMon, MA.TenMon, DM.TenDanhMuc, MA.DonGia, MA.DonViTinh, MA.TrangThai
+        string sql = @"SELECT MA.MaMon, MA.TenMon, DM.TenDanhMuc, MA.DonGia, MA.DonViTinh, MA.TrangThai, MA.HinhAnh
             FROM MON_AN MA
             JOIN DANH_MUC DM ON MA.MaDanhMuc = DM.MaDanhMuc";
         using var command = new SqliteCommand(sql, conn);
@@ -26,7 +26,7 @@ public class MonAnDAO
         using var conn = DBConnect.GetConnection();
         string sql = @"
           SELECT MA.MaMon, MA.TenMon, DM.TenDanhMuc,
-               MA.DonGia, MA.DonViTinh, MA.TrangThai
+               MA.DonGia, MA.DonViTinh, MA.TrangThai, MA.HinhAnh
         FROM MON_AN MA
         JOIN DANH_MUC DM ON MA.MaDanhMuc = DM.MaDanhMuc
         WHERE MA.TenMon LIKE @TuKhoa
@@ -47,7 +47,8 @@ public class MonAnDAO
             TenMon = reader["TenMon"].ToString() ?? "",
             DonGia = Convert.ToDecimal(reader["DonGia"]),
             DonViTinh = reader["DonViTinh"].ToString() ?? "",
-            TrangThai = reader["TrangThai"].ToString() ?? ""
+            TrangThai = reader["TrangThai"].ToString() ?? "",
+            HinhAnh = reader["HinhAnh"] != DBNull.Value ? (byte[])reader["HinhAnh"] : null
         };
     }
 
@@ -58,7 +59,7 @@ public class MonAnDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "SELECT MaMon, MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai FROM MON_AN";
+            string sql = "SELECT MaMon, MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai, HinhAnh FROM MON_AN";
 
             using var cmd = new SqliteCommand(sql, conn);
             using var reader = cmd.ExecuteReader();
@@ -83,7 +84,7 @@ public class MonAnDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "SELECT MaMon, MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai FROM MON_AN WHERE MaDanhMuc = @MaDanhMuc";
+            string sql = "SELECT MaMon, MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai, HinhAnh FROM MON_AN WHERE MaDanhMuc = @MaDanhMuc";
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MaDanhMuc", maDanhMuc);
@@ -107,7 +108,7 @@ public class MonAnDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = "SELECT MaMon, MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai FROM MON_AN WHERE MaMon = @MaMon";
+            string sql = "SELECT MaMon, MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai, HinhAnh FROM MON_AN WHERE MaMon = @MaMon";
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MaMon", maMon);
@@ -131,8 +132,8 @@ public class MonAnDAO
         try
         {
             using var conn = DBConnect.GetConnection();
-            string sql = @"INSERT INTO MON_AN (MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai) 
-                           VALUES (@MaDanhMuc, @TenMon, @DonGia, @DonViTinh, @TrangThai)";
+            string sql = @"INSERT INTO MON_AN (MaDanhMuc, TenMon, DonGia, DonViTinh, TrangThai, HinhAnh) 
+                           VALUES (@MaDanhMuc, @TenMon, @DonGia, @DonViTinh, @TrangThai, @HinhAnh)";
 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MaDanhMuc", mon.MaDanhMuc);
@@ -140,6 +141,7 @@ public class MonAnDAO
             cmd.Parameters.AddWithValue("@DonGia", mon.DonGia);
             cmd.Parameters.AddWithValue("@DonViTinh", mon.DonViTinh);
             cmd.Parameters.AddWithValue("@TrangThai", mon.TrangThai);
+            cmd.Parameters.Add("@HinhAnh", SqliteType.Blob).Value = mon.HinhAnh ?? (object)DBNull.Value;
 
             return cmd.ExecuteNonQuery() > 0;
         }
@@ -160,7 +162,8 @@ public class MonAnDAO
                                TenMon = @TenMon, 
                                DonGia = @DonGia, 
                                DonViTinh = @DonViTinh, 
-                               TrangThai = @TrangThai 
+                               TrangThai = @TrangThai,
+                               HinhAnh = @HinhAnh
                            WHERE MaMon = @MaMon";
 
             using var cmd = new SqliteCommand(sql, conn);
@@ -169,6 +172,7 @@ public class MonAnDAO
             cmd.Parameters.AddWithValue("@DonGia", mon.DonGia);
             cmd.Parameters.AddWithValue("@DonViTinh", mon.DonViTinh);
             cmd.Parameters.AddWithValue("@TrangThai", mon.TrangThai);
+            cmd.Parameters.Add("@HinhAnh", SqliteType.Blob).Value = mon.HinhAnh ?? (object)DBNull.Value;
             cmd.Parameters.AddWithValue("@MaMon", mon.MaMon);
 
             return cmd.ExecuteNonQuery() > 0;

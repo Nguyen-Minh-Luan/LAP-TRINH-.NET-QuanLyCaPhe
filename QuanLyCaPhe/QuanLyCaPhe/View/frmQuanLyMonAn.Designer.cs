@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace QuanLyCaPhe.View;
 
@@ -46,6 +46,11 @@ partial class frmQuanLyMonAn
         label5 = new System.Windows.Forms.Label();
         cmbDanhMuc = new System.Windows.Forms.ComboBox();
         txtDonViTinh = new System.Windows.Forms.TextBox();
+        labelHinhAnh = new System.Windows.Forms.Label();
+        pnlChonAnh = new System.Windows.Forms.Panel();
+        picHinhAnh = new System.Windows.Forms.PictureBox();
+        btnChonAnh = new System.Windows.Forms.Button();
+        btnXoaAnh = new System.Windows.Forms.Button();
         panel2 = new System.Windows.Forms.TableLayoutPanel();
         label2 = new System.Windows.Forms.Label();
         label8 = new System.Windows.Forms.Label();
@@ -61,6 +66,8 @@ partial class frmQuanLyMonAn
         tblRoot.SuspendLayout();
         panel1.SuspendLayout();
         tblNut.SuspendLayout();
+        pnlChonAnh.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)picHinhAnh).BeginInit();
         panel2.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dgvDanhSachMon).BeginInit();
         SuspendLayout();
@@ -103,6 +110,8 @@ partial class frmQuanLyMonAn
         panel1.Controls.Add(label5, 2, 1);
         panel1.Controls.Add(cmbDanhMuc, 3, 1);
         panel1.Controls.Add(txtDonViTinh, 3, 2);
+        panel1.Controls.Add(labelHinhAnh, 4, 1);
+        panel1.Controls.Add(pnlChonAnh, 5, 1);
         panel1.Dock = System.Windows.Forms.DockStyle.Fill;
         panel1.Location = new System.Drawing.Point(12, 12);
         panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 12);
@@ -283,6 +292,63 @@ partial class frmQuanLyMonAn
         txtDonViTinh.Size = new System.Drawing.Size(288, 31);
         txtDonViTinh.TabIndex = 10;
         // 
+        // labelHinhAnh
+        // 
+        labelHinhAnh.Anchor = System.Windows.Forms.AnchorStyles.Left;
+        labelHinhAnh.AutoSize = true;
+        labelHinhAnh.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        labelHinhAnh.Location = new System.Drawing.Point(895, 71);
+        labelHinhAnh.Margin = new System.Windows.Forms.Padding(16, 12, 8, 12);
+        labelHinhAnh.Name = "labelHinhAnh";
+        labelHinhAnh.Size = new System.Drawing.Size(95, 28);
+        labelHinhAnh.TabIndex = 10;
+        labelHinhAnh.Text = "Hình ảnh:";
+        // 
+        // pnlChonAnh
+        // 
+        pnlChonAnh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+        pnlChonAnh.Controls.Add(picHinhAnh);
+        pnlChonAnh.Controls.Add(btnChonAnh);
+        pnlChonAnh.Controls.Add(btnXoaAnh);
+        pnlChonAnh.Location = new System.Drawing.Point(995, 65);
+        pnlChonAnh.Name = "pnlChonAnh";
+        panel1.SetRowSpan(pnlChonAnh, 2);
+        pnlChonAnh.Size = new System.Drawing.Size(180, 95);
+        pnlChonAnh.TabIndex = 11;
+        // 
+        // picHinhAnh
+        // 
+        picHinhAnh.BackColor = System.Drawing.Color.White;
+        picHinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        picHinhAnh.Cursor = System.Windows.Forms.Cursors.Hand;
+        picHinhAnh.Location = new System.Drawing.Point(0, 5);
+        picHinhAnh.Name = "picHinhAnh";
+        picHinhAnh.Size = new System.Drawing.Size(85, 85);
+        picHinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+        picHinhAnh.TabIndex = 0;
+        picHinhAnh.TabStop = false;
+        picHinhAnh.Click += picHinhAnh_Click;
+        // 
+        // btnChonAnh
+        // 
+        btnChonAnh.Location = new System.Drawing.Point(92, 8);
+        btnChonAnh.Name = "btnChonAnh";
+        btnChonAnh.Size = new System.Drawing.Size(75, 34);
+        btnChonAnh.TabIndex = 1;
+        btnChonAnh.Text = "Chọn...";
+        btnChonAnh.UseVisualStyleBackColor = true;
+        btnChonAnh.Click += btnChonAnh_Click;
+        // 
+        // btnXoaAnh
+        // 
+        btnXoaAnh.Location = new System.Drawing.Point(92, 48);
+        btnXoaAnh.Name = "btnXoaAnh";
+        btnXoaAnh.Size = new System.Drawing.Size(75, 34);
+        btnXoaAnh.TabIndex = 2;
+        btnXoaAnh.Text = "Xóa";
+        btnXoaAnh.UseVisualStyleBackColor = true;
+        btnXoaAnh.Click += btnXoaAnh_Click;
+        // 
         // panel2
         // 
         panel2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -432,11 +498,19 @@ partial class frmQuanLyMonAn
         panel1.ResumeLayout(false);
         panel1.PerformLayout();
         tblNut.ResumeLayout(false);
+        pnlChonAnh.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)picHinhAnh).EndInit();
         panel2.ResumeLayout(false);
         panel2.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)dgvDanhSachMon).EndInit();
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Label labelHinhAnh;
+    private System.Windows.Forms.Panel pnlChonAnh;
+    private System.Windows.Forms.PictureBox picHinhAnh;
+    private System.Windows.Forms.Button btnChonAnh;
+    private System.Windows.Forms.Button btnXoaAnh;
 
     private System.Windows.Forms.DataGridViewTextBoxColumn idCoffee;
     private System.Windows.Forms.DataGridViewTextBoxColumn nameCoffee;

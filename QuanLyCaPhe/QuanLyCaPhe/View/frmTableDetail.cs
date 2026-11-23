@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
+using QuanLyCaPhe.Utils;
 using QuanLyCaPhe.View;
 
 namespace QuanLyCaPhe;
@@ -147,7 +148,7 @@ public partial class frmTableDetail : Form
                 Panel pnlItem = new Panel
                 {
                     Width = 115,
-                    Height = 125,
+                    Height = 135,
                     BackColor = Color.White,
                     BorderStyle = BorderStyle.FixedSingle,
                     Cursor = Cursors.Hand,
@@ -155,13 +156,28 @@ public partial class frmTableDetail : Form
                     Margin = new Padding(6)
                 };
 
+                PictureBox picMon = new PictureBox
+                {
+                    Location = new Point(5, 5),
+                    Size = new Size(103, 65),
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.FromArgb(245, 245, 245),
+                    Tag = mon,
+                    Cursor = Cursors.Hand
+                };
+
+                if (mon.HinhAnh != null && mon.HinhAnh.Length > 0)
+                {
+                    picMon.Image = ImageHelper.ChuyenByteArraySangAnh(mon.HinhAnh);
+                }
+
                 Label lblTen = new Label
                 {
                     Text = mon.TenMon,
-                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
                     ForeColor = Color.FromArgb(40, 40, 40),
-                    Location = new Point(4, 15),
-                    Size = new Size(105, 55),
+                    Location = new Point(2, 72),
+                    Size = new Size(109, 36),
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = mon
                 };
@@ -169,33 +185,22 @@ public partial class frmTableDetail : Form
                 Label lblGia = new Label
                 {
                     Text = $"{mon.DonGia:N0} đ",
-                    Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                     ForeColor = Color.Firebrick,
-                    Location = new Point(4, 75),
-                    Size = new Size(105, 25),
+                    Location = new Point(2, 108),
+                    Size = new Size(109, 20),
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = mon
                 };
 
-                Label lblDvt = new Label
-                {
-                    Text = $"/{mon.DonViTinh}",
-                    Font = new Font("Segoe UI", 8F, FontStyle.Italic),
-                    ForeColor = Color.DimGray,
-                    Location = new Point(4, 98),
-                    Size = new Size(105, 18),
-                    TextAlign = ContentAlignment.TopCenter,
-                    Tag = mon
-                };
-
+                pnlItem.Controls.Add(picMon);
                 pnlItem.Controls.Add(lblTen);
                 pnlItem.Controls.Add(lblGia);
-                pnlItem.Controls.Add(lblDvt);
 
                 pnlItem.Click += ItemMon_Click;
+                picMon.Click += ItemMon_Click;
                 lblTen.Click += ItemMon_Click;
                 lblGia.Click += ItemMon_Click;
-                lblDvt.Click += ItemMon_Click;
 
                 flpMenu.Controls.Add(pnlItem);
             }

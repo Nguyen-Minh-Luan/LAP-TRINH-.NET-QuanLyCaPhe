@@ -1,6 +1,11 @@
-﻿using System.Windows.Forms;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
+using QuanLyCaPhe.Utils;
 
 namespace QuanLyCaPhe.View;
 
@@ -69,6 +74,17 @@ public partial class frmQuanLyMonAn : Form
         txtDonGia.Text = row.Cells["priceCoffee"].Value?.ToString();
         cmbDanhMuc.Text = row.Cells["itemsCoffee"].Value?.ToString();
         txtDonViTinh.Text = row.Cells["unitPrice"].Value?.ToString();
+
+        MonAnDAO monAnDAO = new MonAnDAO();
+        MonAn? mon = monAnDAO.LayMonAnTheoMa(maMonDangChon);
+        if (mon != null && mon.HinhAnh != null && mon.HinhAnh.Length > 0)
+        {
+            picHinhAnh.Image = ImageHelper.ChuyenByteArraySangAnh(mon.HinhAnh);
+        }
+        else
+        {
+            picHinhAnh.Image = null;
+        }
     }
     private void btnThem_Click(object sender, EventArgs e)
     {
@@ -110,8 +126,9 @@ public partial class frmQuanLyMonAn : Form
             txtDonViTinh.Focus();
             return; 
         }
+        byte[]? hinhAnhBytes = picHinhAnh.Image != null ? ImageHelper.ChuyenAnhSangByteArray(picHinhAnh.Image) : null;
         MonAn monAn = new MonAn(0, Convert.ToInt32(cmbDanhMuc.SelectedValue), 
-            txtTenMon.Text.Trim(), donGia, txtDonViTinh.Text.Trim(), "Còn bán");
+            txtTenMon.Text.Trim(), donGia, txtDonViTinh.Text.Trim(), "Còn bán", hinhAnhBytes);
         DialogResult result = MessageBox.Show("Bạn có xác nhận thêm món?", "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
         if (result == DialogResult.Yes)
         {
@@ -134,6 +151,7 @@ public partial class frmQuanLyMonAn : Form
         txtTenMon.Clear();
         txtDonGia.Clear();
         txtDonViTinh.Clear();
+        picHinhAnh.Image = null;
         if (cmbDanhMuc.Items.Count > 0) cmbDanhMuc.SelectedIndex = 0;
     }
     private void btnSua_Click(object sender, EventArgs e)
@@ -175,8 +193,9 @@ public partial class frmQuanLyMonAn : Form
             return;
         }
         
+        byte[]? hinhAnhBytes = picHinhAnh.Image != null ? ImageHelper.ChuyenAnhSangByteArray(picHinhAnh.Image) : null;
         MonAn monAn = new MonAn(maMonDangChon, Convert.ToInt32(cmbDanhMuc.SelectedValue), 
-            txtTenMon.Text.Trim(), donGia, txtDonViTinh.Text.Trim(), "Còn bán");
+            txtTenMon.Text.Trim(), donGia, txtDonViTinh.Text.Trim(), "Còn bán", hinhAnhBytes);
         
         DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật món?", 
             "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
@@ -218,6 +237,41 @@ public partial class frmQuanLyMonAn : Form
             {
                 MessageBox.Show("Xoá thất bại",
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+
+    private void btnChonAnh_Click(object? sender, EventArgs e)
+    {
+        ChonAnh();
+    }
+
+    private void picHinhAnh_Click(object? sender, EventArgs e)
+    {
+        ChonAnh();
+    }
+
+    private void btnXoaAnh_Click(object? sender, EventArgs e)
+    {
+        picHinhAnh.Image = null;
+    }
+
+    private void ChonAnh()
+    {
+        using OpenFileDialog ofd = new OpenFileDialog();
+        ofd.Title = "Chọn hình ảnh món ăn";
+        ofd.Filter = "Tệp ảnh (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|Tất cả tệp (*.*)|*.*";
+        if (ofd.ShowDialog() == DialogResult.OK)
+        {
+            try
+            {
+                using var stream = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                using var imgGoc = Image.FromStream(stream);
+                picHinhAnh.Image = new Bitmap(imgGoc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Không thể mở tệp ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
