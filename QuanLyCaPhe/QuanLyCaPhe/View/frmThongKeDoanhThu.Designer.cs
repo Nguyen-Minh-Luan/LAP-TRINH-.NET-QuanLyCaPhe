@@ -80,7 +80,7 @@ partial class frmThongKeDoanhThu
         // 
         lblTieuDe.Dock = DockStyle.Top;
         lblTieuDe.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblTieuDe.ForeColor = Color.Blue;
+        lblTieuDe.ForeColor = Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new Size(1024, 45);
@@ -335,12 +335,14 @@ partial class frmThongKeDoanhThu
         // btnDong
         // 
         btnDong.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnDong.BackColor = Color.FromArgb(232, 224, 214);
+        btnDong.ForeColor = Color.FromArgb(110, 85, 70);
         btnDong.Location = new Point(912, 537);
         btnDong.Name = "btnDong";
         btnDong.Size = new Size(100, 28);
         btnDong.TabIndex = 3;
         btnDong.Text = "Đóng";
-        btnDong.UseVisualStyleBackColor = true;
+        btnDong.UseVisualStyleBackColor = false;
         btnDong.Click += btnDong_Click;
 
         // 

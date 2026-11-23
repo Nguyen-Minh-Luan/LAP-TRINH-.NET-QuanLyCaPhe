@@ -95,23 +95,23 @@ partial class frmQuanLyMonAn
         panel1.BackColor = System.Drawing.SystemColors.ControlLight;
         panel1.ColumnCount = 6;
         panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.69381F));
+        panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
         panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.856678F));
+        panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
         panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.286646F));
+        panel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
         panel1.Controls.Add(label1, 0, 0);
-        panel1.Controls.Add(label6, 0, 2);
-        panel1.Controls.Add(txtDonGia, 1, 2);
-        panel1.Controls.Add(label7, 2, 2);
-        panel1.Controls.Add(tblNut, 0, 3);
         panel1.Controls.Add(label4, 0, 1);
         panel1.Controls.Add(txtTenMon, 1, 1);
         panel1.Controls.Add(label5, 2, 1);
         panel1.Controls.Add(cmbDanhMuc, 3, 1);
-        panel1.Controls.Add(txtDonViTinh, 3, 2);
         panel1.Controls.Add(labelHinhAnh, 4, 1);
         panel1.Controls.Add(pnlChonAnh, 5, 1);
+        panel1.Controls.Add(label6, 0, 2);
+        panel1.Controls.Add(txtDonGia, 1, 2);
+        panel1.Controls.Add(label7, 2, 2);
+        panel1.Controls.Add(txtDonViTinh, 3, 2);
+        panel1.Controls.Add(tblNut, 0, 3);
         panel1.Dock = System.Windows.Forms.DockStyle.Fill;
         panel1.Location = new System.Drawing.Point(12, 12);
         panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 12);
@@ -121,13 +121,12 @@ partial class frmQuanLyMonAn
         panel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
         panel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
         panel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-        panel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
         panel1.Size = new System.Drawing.Size(1111, 230);
         panel1.TabIndex = 0;
         // 
         // label1
         // 
-        label1.BackColor = System.Drawing.Color.Brown;
+        label1.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         panel1.SetColumnSpan(label1, 6);
         label1.Dock = System.Windows.Forms.DockStyle.Fill;
         label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
@@ -156,7 +155,7 @@ partial class frmQuanLyMonAn
         // 
         txtDonGia.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
         txtDonGia.Location = new System.Drawing.Point(160, 126);
-        txtDonGia.Margin = new System.Windows.Forms.Padding(0, 12, 0, 12);
+        txtDonGia.Margin = new System.Windows.Forms.Padding(0, 12, 12, 12);
         txtDonGia.Name = "txtDonGia";
         txtDonGia.Size = new System.Drawing.Size(287, 31);
         txtDonGia.TabIndex = 8;
@@ -167,7 +166,7 @@ partial class frmQuanLyMonAn
         label7.AutoSize = true;
         label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label7.Location = new System.Drawing.Point(471, 127);
-        label7.Margin = new System.Windows.Forms.Padding(24, 12, 8, 12);
+        label7.Margin = new System.Windows.Forms.Padding(16, 12, 8, 12);
         label7.Name = "label7";
         label7.Size = new System.Drawing.Size(118, 28);
         label7.TabIndex = 9;
@@ -177,12 +176,11 @@ partial class frmQuanLyMonAn
         // 
         tblNut.AutoSize = true;
         tblNut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        tblNut.ColumnCount = 4;
+        tblNut.ColumnCount = 3;
         panel1.SetColumnSpan(tblNut, 6);
-        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+        tblNut.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
         tblNut.Controls.Add(btnThem, 0, 0);
         tblNut.Controls.Add(btnSua, 1, 0);
         tblNut.Controls.Add(btnXoa, 2, 0);
@@ -197,7 +195,7 @@ partial class frmQuanLyMonAn
         // 
         // btnThem
         // 
-        btnThem.BackColor = System.Drawing.Color.Firebrick;
+        btnThem.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThem.Dock = System.Windows.Forms.DockStyle.Fill;
         btnThem.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnThem.ForeColor = System.Drawing.Color.White;
@@ -212,7 +210,7 @@ partial class frmQuanLyMonAn
         // 
         // btnSua
         // 
-        btnSua.BackColor = System.Drawing.Color.Firebrick;
+        btnSua.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnSua.Dock = System.Windows.Forms.DockStyle.Fill;
         btnSua.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnSua.ForeColor = System.Drawing.Color.White;
@@ -227,7 +225,7 @@ partial class frmQuanLyMonAn
         // 
         // btnXoa
         // 
-        btnXoa.BackColor = System.Drawing.Color.Firebrick;
+        btnXoa.BackColor = System.Drawing.Color.FromArgb(160, 60, 50);
         btnXoa.Dock = System.Windows.Forms.DockStyle.Fill;
         btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnXoa.ForeColor = System.Drawing.Color.White;
@@ -245,8 +243,8 @@ partial class frmQuanLyMonAn
         label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
         label4.AutoSize = true;
         label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label4.Location = new System.Drawing.Point(24, 71);
-        label4.Margin = new System.Windows.Forms.Padding(24, 12, 8, 12);
+        label4.Location = new System.Drawing.Point(16, 71);
+        label4.Margin = new System.Windows.Forms.Padding(16, 12, 8, 12);
         label4.Name = "label4";
         label4.Size = new System.Drawing.Size(97, 28);
         label4.TabIndex = 3;
@@ -256,7 +254,7 @@ partial class frmQuanLyMonAn
         // 
         txtTenMon.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
         txtTenMon.Location = new System.Drawing.Point(160, 70);
-        txtTenMon.Margin = new System.Windows.Forms.Padding(0, 12, 0, 12);
+        txtTenMon.Margin = new System.Windows.Forms.Padding(0, 12, 12, 12);
         txtTenMon.Name = "txtTenMon";
         txtTenMon.Size = new System.Drawing.Size(287, 31);
         txtTenMon.TabIndex = 4;
@@ -267,7 +265,7 @@ partial class frmQuanLyMonAn
         label5.AutoSize = true;
         label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label5.Location = new System.Drawing.Point(471, 71);
-        label5.Margin = new System.Windows.Forms.Padding(24, 12, 8, 12);
+        label5.Margin = new System.Windows.Forms.Padding(16, 12, 8, 12);
         label5.Name = "label5";
         label5.Size = new System.Drawing.Size(110, 28);
         label5.TabIndex = 5;
@@ -278,7 +276,7 @@ partial class frmQuanLyMonAn
         cmbDanhMuc.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
         cmbDanhMuc.FormattingEnabled = true;
         cmbDanhMuc.Location = new System.Drawing.Point(597, 69);
-        cmbDanhMuc.Margin = new System.Windows.Forms.Padding(0, 12, 16, 12);
+        cmbDanhMuc.Margin = new System.Windows.Forms.Padding(0, 12, 12, 12);
         cmbDanhMuc.Name = "cmbDanhMuc";
         cmbDanhMuc.Size = new System.Drawing.Size(272, 33);
         cmbDanhMuc.TabIndex = 6;
@@ -287,33 +285,36 @@ partial class frmQuanLyMonAn
         // 
         txtDonViTinh.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
         txtDonViTinh.Location = new System.Drawing.Point(597, 126);
-        txtDonViTinh.Margin = new System.Windows.Forms.Padding(0, 12, 0, 12);
+        txtDonViTinh.Margin = new System.Windows.Forms.Padding(0, 12, 12, 12);
         txtDonViTinh.Name = "txtDonViTinh";
         txtDonViTinh.Size = new System.Drawing.Size(288, 31);
         txtDonViTinh.TabIndex = 10;
         // 
         // labelHinhAnh
         // 
-        labelHinhAnh.Anchor = System.Windows.Forms.AnchorStyles.Left;
+        labelHinhAnh.Anchor = System.Windows.Forms.AnchorStyles.None;
         labelHinhAnh.AutoSize = true;
         labelHinhAnh.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         labelHinhAnh.Location = new System.Drawing.Point(895, 71);
-        labelHinhAnh.Margin = new System.Windows.Forms.Padding(16, 12, 8, 12);
+        labelHinhAnh.Margin = new System.Windows.Forms.Padding(12, 0, 6, 0);
         labelHinhAnh.Name = "labelHinhAnh";
-        labelHinhAnh.Size = new System.Drawing.Size(95, 28);
+        labelHinhAnh.Size = new System.Drawing.Size(85, 28);
         labelHinhAnh.TabIndex = 10;
         labelHinhAnh.Text = "Hình ảnh:";
+        labelHinhAnh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        panel1.SetRowSpan(labelHinhAnh, 2);
         // 
         // pnlChonAnh
         // 
-        pnlChonAnh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+        pnlChonAnh.Anchor = System.Windows.Forms.AnchorStyles.Left;
         pnlChonAnh.Controls.Add(picHinhAnh);
         pnlChonAnh.Controls.Add(btnChonAnh);
         pnlChonAnh.Controls.Add(btnXoaAnh);
         pnlChonAnh.Location = new System.Drawing.Point(995, 65);
+        pnlChonAnh.Margin = new System.Windows.Forms.Padding(4, 4, 12, 4);
         pnlChonAnh.Name = "pnlChonAnh";
         panel1.SetRowSpan(pnlChonAnh, 2);
-        pnlChonAnh.Size = new System.Drawing.Size(180, 95);
+        pnlChonAnh.Size = new System.Drawing.Size(205, 100);
         pnlChonAnh.TabIndex = 11;
         // 
         // picHinhAnh
@@ -323,7 +324,7 @@ partial class frmQuanLyMonAn
         picHinhAnh.Cursor = System.Windows.Forms.Cursors.Hand;
         picHinhAnh.Location = new System.Drawing.Point(0, 5);
         picHinhAnh.Name = "picHinhAnh";
-        picHinhAnh.Size = new System.Drawing.Size(85, 85);
+        picHinhAnh.Size = new System.Drawing.Size(90, 90);
         picHinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         picHinhAnh.TabIndex = 0;
         picHinhAnh.TabStop = false;
@@ -331,22 +332,30 @@ partial class frmQuanLyMonAn
         // 
         // btnChonAnh
         // 
-        btnChonAnh.Location = new System.Drawing.Point(92, 8);
+        btnChonAnh.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnChonAnh.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnChonAnh.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+        btnChonAnh.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
+        btnChonAnh.Location = new System.Drawing.Point(98, 10);
         btnChonAnh.Name = "btnChonAnh";
-        btnChonAnh.Size = new System.Drawing.Size(75, 34);
+        btnChonAnh.Size = new System.Drawing.Size(98, 36);
         btnChonAnh.TabIndex = 1;
-        btnChonAnh.Text = "Chọn...";
-        btnChonAnh.UseVisualStyleBackColor = true;
+        btnChonAnh.Text = "Chọn ảnh";
+        btnChonAnh.UseVisualStyleBackColor = false;
         btnChonAnh.Click += btnChonAnh_Click;
         // 
         // btnXoaAnh
         // 
-        btnXoaAnh.Location = new System.Drawing.Point(92, 48);
+        btnXoaAnh.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnXoaAnh.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnXoaAnh.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+        btnXoaAnh.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
+        btnXoaAnh.Location = new System.Drawing.Point(98, 52);
         btnXoaAnh.Name = "btnXoaAnh";
-        btnXoaAnh.Size = new System.Drawing.Size(75, 34);
+        btnXoaAnh.Size = new System.Drawing.Size(98, 36);
         btnXoaAnh.TabIndex = 2;
-        btnXoaAnh.Text = "Xóa";
-        btnXoaAnh.UseVisualStyleBackColor = true;
+        btnXoaAnh.Text = "Xóa ảnh";
+        btnXoaAnh.UseVisualStyleBackColor = false;
         btnXoaAnh.Click += btnXoaAnh_Click;
         // 
         // panel2
@@ -374,7 +383,7 @@ partial class frmQuanLyMonAn
         // 
         // label2
         // 
-        label2.BackColor = System.Drawing.Color.Brown;
+        label2.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         panel2.SetColumnSpan(label2, 3);
         label2.Dock = System.Windows.Forms.DockStyle.Fill;
         label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
@@ -412,7 +421,7 @@ partial class frmQuanLyMonAn
         // 
         // btnTimKiemMon
         // 
-        btnTimKiemMon.BackColor = System.Drawing.Color.Firebrick;
+        btnTimKiemMon.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         btnTimKiemMon.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnTimKiemMon.ForeColor = System.Drawing.Color.White;
         btnTimKiemMon.Location = new System.Drawing.Point(955, 63);

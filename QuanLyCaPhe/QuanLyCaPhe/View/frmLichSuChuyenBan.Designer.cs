@@ -65,7 +65,7 @@ partial class frmLichSuChuyenBan
         // 
         lblTieuDe.Dock = System.Windows.Forms.DockStyle.Top;
         lblTieuDe.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-        lblTieuDe.ForeColor = System.Drawing.Color.Blue;
+        lblTieuDe.ForeColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new System.Drawing.Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new System.Drawing.Size(950, 45);
@@ -148,23 +148,27 @@ partial class frmLichSuChuyenBan
         // btnTraCuu
         // 
         btnTraCuu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        btnTraCuu.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
+        btnTraCuu.ForeColor = System.Drawing.Color.White;
         btnTraCuu.Location = new System.Drawing.Point(732, 20);
         btnTraCuu.Name = "btnTraCuu";
         btnTraCuu.Size = new System.Drawing.Size(88, 27);
         btnTraCuu.TabIndex = 6;
         btnTraCuu.Text = "Tra cứu";
-        btnTraCuu.UseVisualStyleBackColor = true;
+        btnTraCuu.UseVisualStyleBackColor = false;
         btnTraCuu.Click += btnTraCuu_Click;
         // 
         // btnLamMoi
         // 
         btnLamMoi.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        btnLamMoi.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnLamMoi.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnLamMoi.Location = new System.Drawing.Point(826, 20);
         btnLamMoi.Name = "btnLamMoi";
         btnLamMoi.Size = new System.Drawing.Size(88, 27);
         btnLamMoi.TabIndex = 7;
         btnLamMoi.Text = "Làm mới";
-        btnLamMoi.UseVisualStyleBackColor = true;
+        btnLamMoi.UseVisualStyleBackColor = false;
         btnLamMoi.Click += btnLamMoi_Click;
         // 
         // gbDanhSach
@@ -265,23 +269,27 @@ partial class frmLichSuChuyenBan
         // btnXemChiTiet
         // 
         btnXemChiTiet.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+        btnXemChiTiet.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
+        btnXemChiTiet.ForeColor = System.Drawing.Color.White;
         btnXemChiTiet.Location = new System.Drawing.Point(718, 517);
         btnXemChiTiet.Name = "btnXemChiTiet";
         btnXemChiTiet.Size = new System.Drawing.Size(110, 28);
         btnXemChiTiet.TabIndex = 3;
         btnXemChiTiet.Text = "Xem chi tiết";
-        btnXemChiTiet.UseVisualStyleBackColor = true;
+        btnXemChiTiet.UseVisualStyleBackColor = false;
         btnXemChiTiet.Click += btnXemChiTiet_Click;
         // 
         // btnDong
         // 
         btnDong.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+        btnDong.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnDong.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnDong.Location = new System.Drawing.Point(838, 517);
         btnDong.Name = "btnDong";
         btnDong.Size = new System.Drawing.Size(100, 28);
         btnDong.TabIndex = 4;
         btnDong.Text = "Đóng";
-        btnDong.UseVisualStyleBackColor = true;
+        btnDong.UseVisualStyleBackColor = false;
         btnDong.Click += btnDong_Click;
         // 
         // frmLichSuChuyenBan

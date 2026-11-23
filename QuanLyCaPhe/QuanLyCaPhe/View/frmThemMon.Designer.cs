@@ -36,7 +36,7 @@ partial class frmThemMon
         // lblTieuDe
         // 
         lblTieuDe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        lblTieuDe.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        lblTieuDe.ForeColor = System.Drawing.Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new System.Drawing.Point(20, 15);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new System.Drawing.Size(340, 25);
@@ -80,14 +80,14 @@ partial class frmThemMon
         // 
         // btnHuyBo
         // 
-        btnHuyBo.BackColor = System.Drawing.SystemColors.ActiveBorder;
+        btnHuyBo.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
         btnHuyBo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
         btnHuyBo.Cursor = System.Windows.Forms.Cursors.Hand;
         btnHuyBo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         btnHuyBo.FlatAppearance.BorderSize = 0;
         btnHuyBo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         btnHuyBo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        btnHuyBo.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)64)), ((int)((byte)64)), ((int)((byte)64)));
+        btnHuyBo.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnHuyBo.Location = new System.Drawing.Point(50, 145);
         btnHuyBo.Name = "btnHuyBo";
         btnHuyBo.Size = new System.Drawing.Size(125, 36);
@@ -98,7 +98,7 @@ partial class frmThemMon
         // 
         // btnThemMon
         // 
-        btnThemMon.BackColor = System.Drawing.Color.FromArgb(((int)((byte)70)), ((int)((byte)130)), ((int)((byte)180)));
+        btnThemMon.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThemMon.Cursor = System.Windows.Forms.Cursors.Hand;
         btnThemMon.FlatAppearance.BorderSize = 0;
         btnThemMon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

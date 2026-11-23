@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace QuanLyCaPhe.View;
 
@@ -208,7 +208,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnThemKV
         // 
-        btnThemKV.BackColor = System.Drawing.Color.Brown;
+        btnThemKV.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThemKV.Dock = System.Windows.Forms.DockStyle.Fill;
         btnThemKV.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnThemKV.ForeColor = System.Drawing.Color.White;
@@ -223,7 +223,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnSuaKV
         // 
-        btnSuaKV.BackColor = System.Drawing.Color.Brown;
+        btnSuaKV.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnSuaKV.Dock = System.Windows.Forms.DockStyle.Fill;
         btnSuaKV.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnSuaKV.ForeColor = System.Drawing.Color.White;
@@ -238,7 +238,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnXoaKV
         // 
-        btnXoaKV.BackColor = System.Drawing.Color.Brown;
+        btnXoaKV.BackColor = System.Drawing.Color.FromArgb(160, 60, 50);
         btnXoaKV.Dock = System.Windows.Forms.DockStyle.Fill;
         btnXoaKV.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnXoaKV.ForeColor = System.Drawing.Color.White;
@@ -254,7 +254,7 @@ partial class frmQuanLyKhuVucVaBan
         // label1
         // 
         label1.AutoEllipsis = true;
-        label1.BackColor = System.Drawing.Color.Brown;
+        label1.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         label1.Dock = System.Windows.Forms.DockStyle.Top;
         label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label1.ForeColor = System.Drawing.Color.White;
@@ -412,7 +412,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnThemBan
         // 
-        btnThemBan.BackColor = System.Drawing.Color.Brown;
+        btnThemBan.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnThemBan.Dock = System.Windows.Forms.DockStyle.Fill;
         btnThemBan.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnThemBan.ForeColor = System.Drawing.Color.White;
@@ -427,7 +427,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnSuaBan
         // 
-        btnSuaBan.BackColor = System.Drawing.Color.Brown;
+        btnSuaBan.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnSuaBan.Dock = System.Windows.Forms.DockStyle.Fill;
         btnSuaBan.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnSuaBan.ForeColor = System.Drawing.Color.White;
@@ -442,7 +442,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnXoaBan
         // 
-        btnXoaBan.BackColor = System.Drawing.Color.Brown;
+        btnXoaBan.BackColor = System.Drawing.Color.FromArgb(160, 60, 50);
         btnXoaBan.Dock = System.Windows.Forms.DockStyle.Fill;
         btnXoaBan.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnXoaBan.ForeColor = System.Drawing.Color.White;
@@ -458,7 +458,7 @@ partial class frmQuanLyKhuVucVaBan
         // label2
         // 
         label2.AutoEllipsis = true;
-        label2.BackColor = System.Drawing.Color.Brown;
+        label2.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         label2.Dock = System.Windows.Forms.DockStyle.Top;
         label2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label2.ForeColor = System.Drawing.Color.White;
@@ -561,7 +561,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnTimKV
         // 
-        btnTimKV.BackColor = System.Drawing.Color.Brown;
+        btnTimKV.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         btnTimKV.Dock = System.Windows.Forms.DockStyle.Fill;
         btnTimKV.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnTimKV.ForeColor = System.Drawing.Color.White;
@@ -577,7 +577,7 @@ partial class frmQuanLyKhuVucVaBan
         // label11
         // 
         label11.AutoEllipsis = true;
-        label11.BackColor = System.Drawing.Color.Brown;
+        label11.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         label11.Dock = System.Windows.Forms.DockStyle.Top;
         label11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label11.ForeColor = System.Drawing.Color.White;
@@ -696,7 +696,7 @@ partial class frmQuanLyKhuVucVaBan
         // 
         // btnTimKiemBan
         // 
-        btnTimKiemBan.BackColor = System.Drawing.Color.Brown;
+        btnTimKiemBan.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         btnTimKiemBan.Dock = System.Windows.Forms.DockStyle.Fill;
         btnTimKiemBan.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnTimKiemBan.ForeColor = System.Drawing.Color.White;
@@ -712,7 +712,7 @@ partial class frmQuanLyKhuVucVaBan
         // label12
         // 
         label12.AutoEllipsis = true;
-        label12.BackColor = System.Drawing.Color.Brown;
+        label12.BackColor = System.Drawing.Color.FromArgb(112, 67, 48);
         label12.Dock = System.Windows.Forms.DockStyle.Top;
         label12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label12.ForeColor = System.Drawing.Color.White;

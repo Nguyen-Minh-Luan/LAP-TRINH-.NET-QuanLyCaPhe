@@ -75,7 +75,7 @@ partial class frmPhanCongCaLam
         // 
         lblTieuDe.Dock = DockStyle.Top;
         lblTieuDe.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblTieuDe.ForeColor = Color.Blue;
+        lblTieuDe.ForeColor = Color.FromArgb(112, 67, 48);
         lblTieuDe.Location = new Point(0, 0);
         lblTieuDe.Name = "lblTieuDe";
         lblTieuDe.Size = new Size(1024, 45);
@@ -196,42 +196,58 @@ partial class frmPhanCongCaLam
 
         // btnPhanCong
         btnPhanCong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnPhanCong.BackColor = Color.FromArgb(139, 54, 48);
+        btnPhanCong.FlatStyle = FlatStyle.Flat;
+        btnPhanCong.FlatAppearance.BorderSize = 0;
+        btnPhanCong.ForeColor = Color.White;
         btnPhanCong.Location = new Point(16, 385);
         btnPhanCong.Name = "btnPhanCong";
         btnPhanCong.Size = new Size(155, 36);
         btnPhanCong.TabIndex = 10;
         btnPhanCong.Text = "Phân công mới";
-        btnPhanCong.UseVisualStyleBackColor = true;
+        btnPhanCong.UseVisualStyleBackColor = false;
         btnPhanCong.Click += btnPhanCong_Click;
 
         // btnSuaLich
         btnSuaLich.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnSuaLich.BackColor = Color.FromArgb(139, 54, 48);
+        btnSuaLich.FlatStyle = FlatStyle.Flat;
+        btnSuaLich.FlatAppearance.BorderSize = 0;
+        btnSuaLich.ForeColor = Color.White;
         btnSuaLich.Location = new Point(189, 385);
         btnSuaLich.Name = "btnSuaLich";
         btnSuaLich.Size = new Size(155, 36);
         btnSuaLich.TabIndex = 11;
         btnSuaLich.Text = "Cập nhật lịch";
-        btnSuaLich.UseVisualStyleBackColor = true;
+        btnSuaLich.UseVisualStyleBackColor = false;
         btnSuaLich.Click += btnSuaLich_Click;
 
         // btnXoaLich
         btnXoaLich.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnXoaLich.BackColor = Color.FromArgb(160, 60, 50);
+        btnXoaLich.FlatStyle = FlatStyle.Flat;
+        btnXoaLich.FlatAppearance.BorderSize = 0;
+        btnXoaLich.ForeColor = Color.White;
         btnXoaLich.Location = new Point(16, 430);
         btnXoaLich.Name = "btnXoaLich";
         btnXoaLich.Size = new Size(155, 36);
         btnXoaLich.TabIndex = 12;
         btnXoaLich.Text = "Xóa lịch";
-        btnXoaLich.UseVisualStyleBackColor = true;
+        btnXoaLich.UseVisualStyleBackColor = false;
         btnXoaLich.Click += btnXoaLich_Click;
 
         // btnLamMoi
         btnLamMoi.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        btnLamMoi.BackColor = Color.FromArgb(232, 224, 214);
+        btnLamMoi.FlatStyle = FlatStyle.Flat;
+        btnLamMoi.FlatAppearance.BorderSize = 0;
+        btnLamMoi.ForeColor = Color.FromArgb(110, 85, 70);
         btnLamMoi.Location = new Point(189, 430);
         btnLamMoi.Name = "btnLamMoi";
         btnLamMoi.Size = new Size(155, 36);
         btnLamMoi.TabIndex = 13;
         btnLamMoi.Text = "Làm mới";
-        btnLamMoi.UseVisualStyleBackColor = true;
+        btnLamMoi.UseVisualStyleBackColor = false;
         btnLamMoi.Click += btnLamMoi_Click;
 
         // 
@@ -269,22 +285,30 @@ partial class frmPhanCongCaLam
 
         // btnTraCuu
         btnTraCuu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnTraCuu.BackColor = Color.FromArgb(112, 67, 48);
+        btnTraCuu.FlatStyle = FlatStyle.Flat;
+        btnTraCuu.FlatAppearance.BorderSize = 0;
+        btnTraCuu.ForeColor = Color.White;
         btnTraCuu.Location = new Point(448, 20);
         btnTraCuu.Name = "btnTraCuu";
         btnTraCuu.Size = new Size(86, 27);
         btnTraCuu.TabIndex = 2;
         btnTraCuu.Text = "Tìm kiếm";
-        btnTraCuu.UseVisualStyleBackColor = true;
+        btnTraCuu.UseVisualStyleBackColor = false;
         btnTraCuu.Click += btnTraCuu_Click;
 
         // btnTatCa
         btnTatCa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnTatCa.BackColor = Color.FromArgb(232, 224, 214);
+        btnTatCa.FlatStyle = FlatStyle.Flat;
+        btnTatCa.FlatAppearance.BorderSize = 0;
+        btnTatCa.ForeColor = Color.FromArgb(110, 85, 70);
         btnTatCa.Location = new Point(540, 20);
         btnTatCa.Name = "btnTatCa";
         btnTatCa.Size = new Size(76, 27);
         btnTatCa.TabIndex = 3;
         btnTatCa.Text = "Tất cả";
-        btnTatCa.UseVisualStyleBackColor = true;
+        btnTatCa.UseVisualStyleBackColor = false;
         btnTatCa.Click += btnTatCa_Click;
 
         // dgvPhanCong

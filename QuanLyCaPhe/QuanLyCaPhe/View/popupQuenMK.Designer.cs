@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace QuanLyCaPhe.View;
 
@@ -71,9 +71,9 @@ partial class popupQuenMK
         // 
         // btnHuy
         // 
-        btnHuy.BackColor = System.Drawing.Color.Chocolate;
+        btnHuy.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
         btnHuy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        btnHuy.ForeColor = System.Drawing.Color.MintCream;
+        btnHuy.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
         btnHuy.Location = new System.Drawing.Point(435, 260);
         btnHuy.Name = "btnHuy";
         btnHuy.Size = new System.Drawing.Size(166, 53);
@@ -83,7 +83,7 @@ partial class popupQuenMK
         // 
         // btnDoiMK
         // 
-        btnDoiMK.BackColor = System.Drawing.Color.DarkOliveGreen;
+        btnDoiMK.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
         btnDoiMK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         btnDoiMK.ForeColor = System.Drawing.SystemColors.ControlLightLight;
         btnDoiMK.Location = new System.Drawing.Point(64, 260);
