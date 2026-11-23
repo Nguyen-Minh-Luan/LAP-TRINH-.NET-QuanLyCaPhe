@@ -117,7 +117,7 @@ partial class frmTableDetail
         pnlMenu.Controls.Add(lblTitleMenu);
         pnlMenu.Location = new System.Drawing.Point(12, 32);
         pnlMenu.Name = "pnlMenu";
-        pnlMenu.Size = new System.Drawing.Size(420, 475);
+        pnlMenu.Size = new System.Drawing.Size(425, 475);
         pnlMenu.TabIndex = 1;
         // 
         // flpMenu
@@ -126,10 +126,10 @@ partial class frmTableDetail
         flpMenu.BackColor = System.Drawing.Color.White;
         flpMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         flpMenu.Controls.Add(pnlItemMon);
-        flpMenu.Location = new System.Drawing.Point(12, 80);
+        flpMenu.Location = new System.Drawing.Point(8, 80);
         flpMenu.Name = "flpMenu";
-        flpMenu.Padding = new System.Windows.Forms.Padding(6);
-        flpMenu.Size = new System.Drawing.Size(393, 380);
+        flpMenu.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+        flpMenu.Size = new System.Drawing.Size(407, 380);
         flpMenu.TabIndex = 3;
         // 
         // pnlItemMon
@@ -141,16 +141,16 @@ partial class frmTableDetail
         pnlItemMon.Cursor = System.Windows.Forms.Cursors.Hand;
         pnlItemMon.Location = new System.Drawing.Point(9, 9);
         pnlItemMon.Name = "pnlItemMon";
-        pnlItemMon.Size = new System.Drawing.Size(115, 125);
+        pnlItemMon.Size = new System.Drawing.Size(116, 140);
         pnlItemMon.TabIndex = 0;
         // 
         // lblTenMon
         // 
-        lblTenMon.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-        lblTenMon.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)64)), ((int)((byte)64)), ((int)((byte)64)));
-        lblTenMon.Location = new System.Drawing.Point(2, 87);
+        lblTenMon.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+        lblTenMon.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)40)), ((int)((byte)40)), ((int)((byte)40)));
+        lblTenMon.Location = new System.Drawing.Point(2, 78);
         lblTenMon.Name = "lblTenMon";
-        lblTenMon.Size = new System.Drawing.Size(109, 34);
+        lblTenMon.Size = new System.Drawing.Size(110, 36);
         lblTenMon.TabIndex = 1;
         lblTenMon.Text = "Cà phê sữa đá";
         lblTenMon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,10 +158,10 @@ partial class frmTableDetail
         // picMonAn
         // 
         picMonAn.BackColor = System.Drawing.Color.FromArgb(((int)((byte)245)), ((int)((byte)245)), ((int)((byte)245)));
-        picMonAn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        picMonAn.Location = new System.Drawing.Point(4, 4);
+        picMonAn.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        picMonAn.Location = new System.Drawing.Point(5, 5);
         picMonAn.Name = "picMonAn";
-        picMonAn.Size = new System.Drawing.Size(105, 80);
+        picMonAn.Size = new System.Drawing.Size(104, 70);
         picMonAn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         picMonAn.TabIndex = 0;
         picMonAn.TabStop = false;
@@ -172,9 +172,9 @@ partial class frmTableDetail
         cboDanhMuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         cboDanhMuc.Font = new System.Drawing.Font("Segoe UI", 9.75F);
         cboDanhMuc.FormattingEnabled = true;
-        cboDanhMuc.Location = new System.Drawing.Point(90, 45);
+        cboDanhMuc.Location = new System.Drawing.Point(85, 45);
         cboDanhMuc.Name = "cboDanhMuc";
-        cboDanhMuc.Size = new System.Drawing.Size(315, 25);
+        cboDanhMuc.Size = new System.Drawing.Size(330, 25);
         cboDanhMuc.TabIndex = 2;
         // 
         // lblDanhMuc
