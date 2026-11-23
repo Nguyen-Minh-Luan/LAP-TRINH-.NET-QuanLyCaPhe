@@ -65,6 +65,17 @@ public partial class frmMain : Form
     {
         MoForm(new frmThongKeMonBanChay());
     }
+
+    private void mnuQuanLyCaLam_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmQuanLyCaLam());
+
+    }
+    private void mnuQuanLyNV_Click(object sender, EventArgs e)
+    {
+        MoForm(new frmQuanLyNhanVien());
+
+    }
     private void mnuTTCaNhan_Click(object sender, EventArgs e)
     {
         frmThongTinCaNhan frmTTCN = new frmThongTinCaNhan(_nv);
@@ -74,6 +85,7 @@ public partial class frmMain : Form
     {
         CanChinhBoCuc();
     }
+    
 
     private void frmMain_Resize(object sender, EventArgs e)
     {
