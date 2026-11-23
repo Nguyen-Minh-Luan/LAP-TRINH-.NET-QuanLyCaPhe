@@ -16,20 +16,6 @@ public partial class frmPhanCongCaLam : Form
     public frmPhanCongCaLam()
     {
         InitializeComponent();
-        DangKySuKien();
-    }
-    private void DangKySuKien()
-    {
-        this.Load += frmPhanCongCaLam_Load;
-        dgvPhanCong.CellClick += dgvPhanCong_CellClick;
-        btnPhanCong.Click += btnPhanCong_Click;
-        btnSuaLich.Click += btnSuaLich_Click;
-        btnXoaLich.Click += btnXoaLich_Click;
-        btnLamMoi.Click += btnLamMoi_Click;
-        btnTraCuu.Click += btnTraCuu_Click;
-        btnTatCa.Click += btnTatCa_Click;
-        btnDong.Click += btnDong_Click;
-        txtTimKiem.KeyDown += txtTimKiem_KeyDown;
     }
     private void frmPhanCongCaLam_Load(object? sender, EventArgs e)
     {
