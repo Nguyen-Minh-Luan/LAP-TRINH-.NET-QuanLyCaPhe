@@ -32,6 +32,7 @@ public class NhanVienDAO
     public bool quenMatKhau(string tenDN, string mkMoi)
     {
         using var conn = DBConnect.GetConnection();
+        string newMatKhau = BCrypt.Net.BCrypt.HashPassword(mkMoi);
 
         string sql = @"UPDATE NHAN_VIEN
                    SET MatKhau = @MatKhau
@@ -40,7 +41,7 @@ public class NhanVienDAO
 
         using var command = new SqliteCommand(sql, conn);
         command.Parameters.AddWithValue("@TenDangNhap", tenDN);
-        command.Parameters.AddWithValue("@MatKhau", mkMoi);
+        command.Parameters.AddWithValue("@MatKhau", newMatKhau);
 
         return command.ExecuteNonQuery() > 0;
     }
@@ -98,6 +99,7 @@ public class NhanVienDAO
     public bool ThemNhanVien(NhanVien nv)
     {
         using var conn = DBConnect.GetConnection();
+        nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(nv.MatKhau);
         string insertSQL = @"INSERT INTO NHAN_VIEN (HoTen, TenDangNhap, MatKhau, SoDienThoai, VaiTro, TrangThai)
                              VALUES (@HoTen, @TenDangNhap, @MatKhau, @SoDienThoai, @VaiTro, @TrangThai)";
 
@@ -136,11 +138,12 @@ public class NhanVienDAO
     public bool capNhatMKNV(int maNV, string newMK)
     {
         using var conn = DBConnect.GetConnection();
+        string newMatKhau = BCrypt.Net.BCrypt.HashPassword(newMK);
         string updateMKNVSQL = @"UPDATE NHAN_VIEN
                                  SET MatKhau = @mkMoi
                                  WHERE MaNhanVien = @MaNhanVien";
         using var command = new SqliteCommand(updateMKNVSQL, conn);
-        command.Parameters.AddWithValue("@mkMoi", newMK);
+        command.Parameters.AddWithValue("@mkMoi", newMatKhau);
         command.Parameters.AddWithValue("@MaNhanVien", maNV);
         return command.ExecuteNonQuery() > 0;
     }

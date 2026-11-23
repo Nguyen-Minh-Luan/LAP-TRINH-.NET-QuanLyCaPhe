@@ -40,6 +40,7 @@ partial class frmMain
         mnuQLMonAn = new System.Windows.Forms.ToolStripMenuItem();
         mnuQLDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
         mnuQLKhuVuc = new System.Windows.Forms.ToolStripMenuItem();
+        mnuQuanLyCaLam = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripCaLam = new System.Windows.Forms.ToolStripMenuItem();
         mnuPCCaLam = new System.Windows.Forms.ToolStripMenuItem();
         MenuStripThongKe = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +73,7 @@ partial class frmMain
         label12 = new System.Windows.Forms.Label();
         panel4 = new System.Windows.Forms.Panel();
         label2 = new System.Windows.Forms.Label();
+        mnuQuanLyNhanVien = new System.Windows.Forms.ToolStripMenuItem();
         menuStripHome.SuspendLayout();
         panel1.SuspendLayout();
         tableLayoutPanel1.SuspendLayout();
@@ -121,7 +123,7 @@ partial class frmMain
         // 
         // MenuStripQuanLy
         // 
-        MenuStripQuanLy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuQLMonAn, mnuQLDanhMuc, mnuQLKhuVuc });
+        MenuStripQuanLy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuQLMonAn, mnuQLDanhMuc, mnuQLKhuVuc, mnuQuanLyCaLam, mnuQuanLyNhanVien });
         MenuStripQuanLy.Name = "MenuStripQuanLy";
         MenuStripQuanLy.Size = new System.Drawing.Size(89, 29);
         MenuStripQuanLy.Text = "Quản lý";
@@ -146,6 +148,13 @@ partial class frmMain
         mnuQLKhuVuc.Size = new System.Drawing.Size(300, 34);
         mnuQLKhuVuc.Text = "Quản lý khu vực và bàn";
         mnuQLKhuVuc.Click += mnuQLKhuVuc_Click;
+        // 
+        // mnuQuanLyCaLam
+        // 
+        mnuQuanLyCaLam.Name = "mnuQuanLyCaLam";
+        mnuQuanLyCaLam.Size = new System.Drawing.Size(300, 34);
+        mnuQuanLyCaLam.Text = "Quản lý ca làm";
+        mnuQuanLyCaLam.Click += mnuQuanLyCaLam_Click;
         // 
         // MenuStripCaLam
         // 
@@ -504,6 +513,12 @@ partial class frmMain
         label2.Text = "Khu vực làm việc";
         label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
+        // mnuQuanLyNhanVien
+        // 
+        mnuQuanLyNhanVien.Name = "mnuQuanLyNhanVien";
+        mnuQuanLyNhanVien.Size = new System.Drawing.Size(300, 34);
+        mnuQuanLyNhanVien.Text = "Quản lý nhân viên";
+        // 
         // frmMain
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -530,6 +545,10 @@ partial class frmMain
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.ToolStripMenuItem mnuQuanLyNhanVien;
+
+    private System.Windows.Forms.ToolStripMenuItem mnuQuanLyCaLam;
 
     private System.Windows.Forms.ToolStripMenuItem mnuDangXuat;
 

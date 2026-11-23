@@ -89,9 +89,10 @@ public partial class frmThongTinCaNhan : Form
             return false;
         }
 
-        if (oldTextPassword != _nv.MatKhau)
+        if (!BCrypt.Net.BCrypt.Verify(oldTextPassword, _nv.MatKhau))
         {
-            MessageBox.Show("Mật khẩu hiện tại không chính xác!", "Lỗi mật khẩu ", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            MessageBox.Show("Mật khẩu hiện tại không chính xác!",
+                "Lỗi mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);       
             return false;
         }
         if (!Regex.IsMatch(newTextPassword, patternPassword))
