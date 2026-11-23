@@ -147,19 +147,19 @@ public partial class frmTableDetail : Form
             {
                 Panel pnlItem = new Panel
                 {
-                    Width = 115,
-                    Height = 135,
+                    Width = 116,
+                    Height = 140,
                     BackColor = Color.White,
                     BorderStyle = BorderStyle.FixedSingle,
                     Cursor = Cursors.Hand,
                     Tag = mon,
-                    Margin = new Padding(6)
+                    Margin = new Padding(3, 4, 3, 4)
                 };
 
                 PictureBox picMon = new PictureBox
                 {
                     Location = new Point(5, 5),
-                    Size = new Size(103, 65),
+                    Size = new Size(104, 70),
                     SizeMode = PictureBoxSizeMode.Zoom,
                     BackColor = Color.FromArgb(245, 245, 245),
                     Tag = mon,
@@ -176,8 +176,8 @@ public partial class frmTableDetail : Form
                     Text = mon.TenMon,
                     Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
                     ForeColor = Color.FromArgb(40, 40, 40),
-                    Location = new Point(2, 72),
-                    Size = new Size(109, 36),
+                    Location = new Point(2, 78),
+                    Size = new Size(110, 36),
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = mon
                 };
@@ -186,9 +186,9 @@ public partial class frmTableDetail : Form
                 {
                     Text = $"{mon.DonGia:N0} đ",
                     Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                    ForeColor = Color.Firebrick,
-                    Location = new Point(2, 108),
-                    Size = new Size(109, 20),
+                    ForeColor = Color.FromArgb(139, 54, 48),
+                    Location = new Point(2, 115),
+                    Size = new Size(110, 20),
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = mon
                 };
