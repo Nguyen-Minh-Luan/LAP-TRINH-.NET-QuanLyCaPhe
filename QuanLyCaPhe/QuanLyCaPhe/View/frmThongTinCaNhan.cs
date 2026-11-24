@@ -56,22 +56,68 @@ public partial class frmThongTinCaNhan : Form
 
     private void btnCapNhatNV_Click(object sender, EventArgs e)
     {
-        NhanVienDAO nvDAO = new NhanVienDAO();
-        _nv.HoTen = txtHoTenNV.Text.Trim();
-        _nv.SoDienThoai = txtSDT.Text.Trim();
-        _nv.TenDangNhap = txtTenDN.Text.Trim();
-
-        DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật thông tin mới?", "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
-        if (result == DialogResult.Yes)
+        try
         {
-            if (nvDAO.CapNhatNV(_nv.MaNhanVien,_nv))
+            string hoTenMoi = txtHoTenNV.Text.Trim();
+            string soDienThoaiMoi = txtSDT.Text.Trim();
+            string tenDangNhapMoi = txtTenDN.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(hoTenMoi))
             {
-                MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Họ và tên không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtHoTenNV.Focus();
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(tenDangNhapMoi))
             {
-                MessageBox.Show("Không có dữ liệu được cập nhật!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tên đăng nhập không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenDN.Focus();
+                return;
             }
+
+            NhanVienDAO nvDAO = new NhanVienDAO();
+
+            // Kiểm tra xem tên đăng nhập mới có bị trùng với tài khoản khác không
+            if (nvDAO.KiemTraTrungTenDangNhap(tenDangNhapMoi, _nv.MaNhanVien))
+            {
+                MessageBox.Show("Tên đăng nhập này đã được sử dụng bởi tài khoản khác. Vui lòng chọn tên đăng nhập khác!", "Trùng tên đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenDN.Focus();
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật thông tin mới?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // Tạo đối tượng tạm để cập nhật CSDL
+                NhanVien nvCapNhat = new NhanVien
+                {
+                    MaNhanVien = _nv.MaNhanVien,
+                    HoTen = hoTenMoi,
+                    SoDienThoai = soDienThoaiMoi,
+                    TenDangNhap = tenDangNhapMoi,
+                    VaiTro = _nv.VaiTro,
+                    TrangThai = _nv.TrangThai
+                };
+
+                if (nvDAO.CapNhatNV(_nv.MaNhanVien, nvCapNhat))
+                {
+                    // Cập nhật thành công mới đồng bộ lại đối tượng _nv trong phiên đăng nhập
+                    _nv.HoTen = hoTenMoi;
+                    _nv.SoDienThoai = soDienThoaiMoi;
+                    _nv.TenDangNhap = tenDangNhapMoi;
+
+                    MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Đã xảy ra lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
     private bool checkPassword()

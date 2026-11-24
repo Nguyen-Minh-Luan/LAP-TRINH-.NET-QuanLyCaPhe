@@ -31,7 +31,6 @@ public partial class frmLogin
         label2 = new Label();
         picturePassword = new PictureBox();
         txtPassword = new TextBox();
-        lblForgotPass = new Label();
         btnLogin = new Button();
         btnThoat = new Button();
         ((ISupportInitialize)pictureProfile).BeginInit();
@@ -120,17 +119,6 @@ public partial class frmLogin
         txtPassword.TabIndex = 8;
         txtPassword.UseSystemPasswordChar = true;
 
-        lblForgotPass.Cursor = Cursors.Hand;
-        lblForgotPass.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-        lblForgotPass.ForeColor = Color.FromArgb(151, 77, 54);
-        lblForgotPass.Location = new Point(260, 332);
-        lblForgotPass.Name = "lblForgotPass";
-        lblForgotPass.Size = new Size(160, 24);
-        lblForgotPass.TabIndex = 9;
-        lblForgotPass.Text = "Quên mật khẩu?";
-        lblForgotPass.TextAlign = ContentAlignment.MiddleRight;
-        lblForgotPass.Click += lblForgotPass_Click;
-
         btnLogin.BackColor = Color.FromArgb(139, 75, 54);
         btnLogin.Cursor = Cursors.Hand;
         btnLogin.FlatAppearance.BorderSize = 0;
@@ -139,10 +127,10 @@ public partial class frmLogin
         btnLogin.FlatStyle = FlatStyle.Flat;
         btnLogin.Font = new Font("Segoe UI", 11.5F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnLogin.ForeColor = Color.White;
-        btnLogin.Location = new Point(40, 370);
+        btnLogin.Location = new Point(40, 345);
         btnLogin.Name = "btnLogin";
         btnLogin.Size = new Size(380, 44);
-        btnLogin.TabIndex = 10;
+        btnLogin.TabIndex = 9;
         btnLogin.Text = "ĐĂNG NHẬP";
         btnLogin.UseVisualStyleBackColor = false;
         btnLogin.Click += btnLogin_Click;
@@ -155,10 +143,10 @@ public partial class frmLogin
         btnThoat.FlatStyle = FlatStyle.Flat;
         btnThoat.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnThoat.ForeColor = Color.FromArgb(110, 85, 70);
-        btnThoat.Location = new Point(40, 424);
+        btnThoat.Location = new Point(40, 399);
         btnThoat.Name = "btnThoat";
         btnThoat.Size = new Size(380, 36);
-        btnThoat.TabIndex = 11;
+        btnThoat.TabIndex = 10;
         btnThoat.Text = "Thoát";
         btnThoat.UseVisualStyleBackColor = false;
         btnThoat.Click += btnThoat_Click;
@@ -167,10 +155,9 @@ public partial class frmLogin
         AutoScaleDimensions = new SizeF(7F, 17F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(245, 240, 232);
-        ClientSize = new Size(460, 490);
+        ClientSize = new Size(460, 465);
         Controls.Add(btnThoat);
         Controls.Add(btnLogin);
-        Controls.Add(lblForgotPass);
         Controls.Add(txtPassword);
         Controls.Add(picturePassword);
         Controls.Add(label2);
@@ -204,7 +191,6 @@ public partial class frmLogin
     private Label label2;
     private PictureBox picturePassword;
     private TextBox txtPassword;
-    private Label lblForgotPass;
     private Button btnLogin;
     private Button btnThoat;
 }
