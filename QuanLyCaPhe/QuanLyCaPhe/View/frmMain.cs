@@ -17,6 +17,33 @@ public partial class frmMain : Form
         lblTenNV.Text = _nv.HoTen;
         lblVaiTro.Text = _nv.VaiTro;
         phanCongDao.loadThongTinCaTruc(_nv.MaNhanVien, lblThoiGianTruc, lblTenCa);
+        PhanQuyenTheoVaiTro();
+    }
+
+    private void PhanQuyenTheoVaiTro()
+    {
+        string vaiTro = _nv.VaiTro?.Trim() ?? "";
+
+        // 1. Quản lý: Có đầy đủ tất cả quyền truy cập
+        if (vaiTro.Equals("Quản lý", StringComparison.OrdinalIgnoreCase))
+        {
+            return;
+        }
+
+        // 2. Các vai trò không phải Quản lý thì không vào menu Quản trị, Phân công ca làm, Thống kê
+        MenuStripQuanLy.Visible = false;
+        MenuStripCaLam.Visible = false;
+        MenuStripThongKe.Visible = false;
+        btnTKDoanhThu.Visible = false;
+
+        // 3. Phân quyền chi tiết cho Pha chế (chỉ dùng Sơ đồ bàn để xem món cần chế biến)
+        if (vaiTro.Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+        {
+            mnuLichSuHoaDon.Visible = false;
+            mnuLichSuChuyenBan.Visible = false;
+            btnLichSuHD.Visible = false;
+            btnLSChuyenBan.Visible = false;
+        }
     }
     private void MoForm(Form frm)
     {
@@ -31,7 +58,7 @@ public partial class frmMain : Form
     }
     private void mnuSoDoBan_Click(object sender, EventArgs e)
     {
-        MoForm(new frmTable());
+        MoForm(new frmTable(_nv));
     }
     private void mnuLichSuHD_Click(object sender, EventArgs e)
     {

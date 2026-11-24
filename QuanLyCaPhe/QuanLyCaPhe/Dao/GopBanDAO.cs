@@ -120,6 +120,17 @@ public class GopBanDAO
         return cmd.ExecuteNonQuery() > 0;
     }
 
+    public bool KiemTraTrungTenNhom(string tenNhom)
+    {
+        if (string.IsNullOrWhiteSpace(tenNhom)) return false;
+
+        using var conn = DBConnect.GetConnection();
+        string sql = "SELECT COUNT(1) FROM BAN WHERE TenNhom = @TenNhom";
+        using var cmd = new SqliteCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@TenNhom", tenNhom.Trim());
+        return Convert.ToInt32(cmd.ExecuteScalar() ?? 0) > 0;
+    }
+
     public bool GhiLichSuGopBan(int maBanNguon, int maBanDich, int maNhanVien, string lyDo, int maHoaDon, SqliteConnection conn, SqliteTransaction trans)
     {
         string sql = @"INSERT INTO LICH_SU_CHUYEN_BAN 

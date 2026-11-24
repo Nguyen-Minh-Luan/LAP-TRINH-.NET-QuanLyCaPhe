@@ -112,6 +112,16 @@ public partial class popupGopBan : Form
                 tenNhom = "Gộp: " + string.Join(" + ", dsBanDuocChon.Select(b => b.TenBan));
             }
 
+            // Kiểm tra tên nhóm đã có trong cơ sở dữ liệu chưa
+            if (gopBanDao.KiemTraTrungTenNhom(tenNhom))
+            {
+                MessageBox.Show("Tên nhóm bàn này đã tồn tại trong hệ thống, vui lòng đổi tên khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenNhom.Focus();
+                return;
+            }
+
+            var dsMaBan = dsBanDuocChon.Select(b => b.MaBan).ToList();
+
             string tenCacBan = string.Join(", ", dsBanDuocChon.Select(b => b.TenBan));
             string ghiChu = txtGhiChu.Text.Trim();
 
@@ -125,8 +135,6 @@ public partial class popupGopBan : Form
             {
                 return;
             }
-
-            var dsMaBan = dsBanDuocChon.Select(b => b.MaBan).ToList();
 
             bool thanhCong = gopBanDao.ThucHienGopBan(dsMaBan, maNhanVien, tenNhom, ghiChu, out string thongBaoLoi);
 

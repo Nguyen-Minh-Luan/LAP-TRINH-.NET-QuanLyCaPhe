@@ -19,6 +19,7 @@ public partial class frmTableDetail : Form
 
     private Ban? banHienTai;
     private HoaDon? hoaDonHienTai;
+    private NhanVien? nhanVienHienTai;
 
     public frmTableDetail()
     {
@@ -37,12 +38,17 @@ public partial class frmTableDetail : Form
         banHienTai = ban;
     }
 
+    public frmTableDetail(Ban ban, NhanVien? nv) : this(ban)
+    {
+        nhanVienHienTai = nv;
+    }
+
     private void frmTableDetail_Load(object? sender, EventArgs e)
     {
         if (banHienTai != null)
         {
             string tenBanHienThi = (banHienTai.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(banHienTai.TenNhom))
-                ? banHienTai.TenNhom
+                ? $"{banHienTai.TenBan} ({banHienTai.TenNhom})"
                 : banHienTai.TenBan;
             lblTenBan.Text = "CHI TIẾT HÓA ĐƠN - " + tenBanHienThi.ToUpper();
         }
@@ -50,6 +56,32 @@ public partial class frmTableDetail : Form
         LoadDanhMuc();
         loadMonAn();
         KiemTraVaLoadHoaDonCuaBan();
+        PhanQuyenTheoVaiTro();
+    }
+
+    private void PhanQuyenTheoVaiTro()
+    {
+        if (nhanVienHienTai == null) return;
+
+        string vaiTro = nhanVienHienTai.VaiTro?.Trim() ?? "";
+        if (vaiTro.Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+        {
+            // Pha chế chỉ được xem hoá đơn:
+            // 1. Không được thanh toán
+            btnThanhToan.Visible = false;
+
+            // 2. Không được đặt bàn / lưu hoá đơn
+            btnDatBan.Visible = false;
+
+            // 3. Không được chỉnh sửa số lượng hay xoá món
+            btnTangSL.Visible = false;
+            btnGiamSL.Visible = false;
+            btnXoaMon.Visible = false;
+
+            // 4. Khóa khu vực chọn món & ghi chú
+            pnlMenu.Enabled = false;
+            txtGhiChuMon.ReadOnly = true;
+        }
     }
 
     public void KiemTraVaLoadHoaDonCuaBan()
@@ -213,6 +245,11 @@ public partial class frmTableDetail : Form
 
     private void ItemMon_Click(object? sender, EventArgs e)
     {
+        if (nhanVienHienTai != null && nhanVienHienTai.VaiTro.Trim().Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+        {
+            return;
+        }
+
         if (sender != null)
         {
             Control ctrl = (Control)sender;
@@ -280,6 +317,12 @@ public partial class frmTableDetail : Form
     {
         try
         {
+            if (nhanVienHienTai != null && nhanVienHienTai.VaiTro.Trim().Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Nhân viên pha chế không có quyền đặt bàn hoặc lưu món!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (banHienTai == null)
             {
                 MessageBox.Show("Chưa xác định được thông tin bàn!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -416,6 +459,12 @@ public partial class frmTableDetail : Form
     {
         try
         {
+            if (nhanVienHienTai != null && nhanVienHienTai.VaiTro.Trim().Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Nhân viên pha chế không có quyền thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (hoaDonHienTai == null)
             {
                 MessageBox.Show("Bàn này chưa có hóa đơn được lưu! Vui lòng bấm 'Lưu / Đặt món' trước khi thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -440,7 +489,7 @@ public partial class frmTableDetail : Form
             }
 
             string tenBan = banHienTai != null
-                ? ((banHienTai.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(banHienTai.TenNhom)) ? banHienTai.TenNhom : banHienTai.TenBan)
+                ? ((banHienTai.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(banHienTai.TenNhom)) ? $"{banHienTai.TenBan} ({banHienTai.TenNhom})" : banHienTai.TenBan)
                 : "Bàn";
             string maHdStr = $"HD-{hoaDonHienTai.MaHoaDon:D5}";
             decimal tongTien = hoaDonHienTai.TongTien;

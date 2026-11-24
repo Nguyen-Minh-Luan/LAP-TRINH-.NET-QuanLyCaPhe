@@ -96,12 +96,6 @@ public partial class frmLogin : Form
         txtPassword.Clear();
         txtName.Focus();
     }
-    private void lblForgotPass_Click(object? sender, EventArgs e)
-    {
-        NhanVien nv = new NhanVien();
-        var popup = new popupQuenMK(nv);
-        popup.ShowDialog(this);
-    }
 
     private void btnThoat_Click(object? sender, EventArgs e)
     {

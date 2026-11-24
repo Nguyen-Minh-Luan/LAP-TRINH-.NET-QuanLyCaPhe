@@ -11,15 +11,32 @@ namespace QuanLyCaPhe;
 public partial class frmTable : Form
 {
     private readonly BanDAO banDao = new();
+    private NhanVien? nhanVienHienTai;
 
     public frmTable()
     {
         InitializeComponent();
     }
 
+    public frmTable(NhanVien? nv) : this()
+    {
+        nhanVienHienTai = nv;
+    }
+
     private void frmTable_Load(object? sender, EventArgs e)
     {
+        PhanQuyenTheoVaiTro();
         LoadDanhSachBan();
+    }
+
+    private void PhanQuyenTheoVaiTro()
+    {
+        if (nhanVienHienTai != null && nhanVienHienTai.VaiTro.Trim().Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+        {
+            // Pha chế chỉ xem sơ đồ bàn, không chuyển bàn hay gộp bàn
+            button2.Visible = false;
+            button3.Visible = false;
+        }
     }
 
     public void LoadDanhSachBan()
@@ -32,20 +49,20 @@ public partial class frmTable : Form
 
         foreach (Ban ban in dsBan)
         {
-            string tenHienThi = (ban.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(ban.TenNhom))
-                ? ban.TenNhom
-                : ban.TenBan;
+            string thongTinHienThi = (ban.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(ban.TenNhom))
+                ? $"{ban.TenBan}\n[{ban.TenNhom}]\n({ban.SoChoNgoi} chỗ)"
+                : $"{ban.TenBan}\n({ban.SoChoNgoi} chỗ)";
 
             Button btn = new Button
             {
-                Width = 112,
-                Height = 87,
-                Font = new Font("Segoe UI", 9.75f, FontStyle.Bold),
+                Width = 118,
+                Height = 96,
+                Font = new Font("Segoe UI", 9f, FontStyle.Bold),
                 TextAlign = ContentAlignment.BottomCenter,
                 ImageAlign = ContentAlignment.TopCenter,
                 ImageList = imgListBan,
                 ImageKey = "coffee-table (1).png",
-                Text = $"{tenHienThi}\n({ban.SoChoNgoi} chỗ)",
+                Text = thongTinHienThi,
                 BackColor = LayMauTheoTrangThai(ban.TrangThai),
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand,
@@ -89,7 +106,7 @@ public partial class frmTable : Form
             if (btn.Tag != null)
             {
                 Ban ban = (Ban)btn.Tag;
-                frmTableDetail detail = new frmTableDetail(ban);
+                frmTableDetail detail = new frmTableDetail(ban, nhanVienHienTai);
                 detail.ShowDialog();
                 LoadDanhSachBan();
             }
