@@ -67,7 +67,10 @@ public partial class popupGopBan : Form
         try
         {
             clbDanhSachBan.Items.Clear();
-            var dsBan = banDao.LayDanhSachBanTheoKhuVuc(maKhuVuc);
+            // Chỉ lấy các bàn chưa bị gộp để tránh gộp đè
+            var dsBan = banDao.LayDanhSachBanTheoKhuVuc(maKhuVuc)
+                              .Where(b => b.TrangThai != "GopBan")
+                              .ToList();
 
             foreach (var ban in dsBan)
             {
@@ -103,6 +106,14 @@ public partial class popupGopBan : Form
             if (dsBanDuocChon.Count < 2)
             {
                 MessageBox.Show("Vui lòng chọn ít nhất 2 bàn để thực hiện gộp bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra chặn nếu có bàn nào đã ở trạng thái gộp
+            var banDaGop = dsBanDuocChon.FirstOrDefault(b => b.TrangThai == "GopBan");
+            if (banDaGop != null)
+            {
+                MessageBox.Show($"Bàn '{banDaGop.TenBan}' đã nằm trong một nhóm gộp khác. Không thể tiếp tục gộp đè lên bàn đã gộp!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

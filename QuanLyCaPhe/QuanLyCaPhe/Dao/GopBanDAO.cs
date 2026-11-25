@@ -54,59 +54,69 @@ public class GopBanDAO
         return 0;
     }
 
+    public bool KiemTraLienKetHoaDonBan(int maHoaDon, int maBan, SqliteConnection conn, SqliteTransaction trans)
+    {
+        string sql = "SELECT COUNT(1) FROM HOA_DON_BAN WHERE MaHoaDon = @MaHoaDon AND MaBan = @MaBan";
+        using var cmd = new SqliteCommand(sql, conn, trans);
+        cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+        cmd.Parameters.AddWithValue("@MaBan", maBan);
+        long count = Convert.ToInt64(cmd.ExecuteScalar() ?? 0);
+        return count > 0;
+    }
+
+    public bool ThemLienKetHoaDonBan(int maHoaDon, int maBan, SqliteConnection conn, SqliteTransaction trans)
+    {
+        string sql = @"INSERT INTO HOA_DON_BAN (MaHoaDon, MaBan, ThoiGianBatDau)
+                       VALUES (@MaHoaDon, @MaBan, @ThoiGianBatDau)";
+        using var cmd = new SqliteCommand(sql, conn, trans);
+        cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+        cmd.Parameters.AddWithValue("@MaBan", maBan);
+        cmd.Parameters.AddWithValue("@ThoiGianBatDau", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        return cmd.ExecuteNonQuery() > 0;
+    }
+
     public bool LienKetBanVaoHoaDon(int maHoaDon, int maBan, SqliteConnection conn, SqliteTransaction trans)
     {
-        string sqlCheck = "SELECT COUNT(1) FROM HOA_DON_BAN WHERE MaHoaDon = @MaHoaDon AND MaBan = @MaBan";
-        using (var cmdCheck = new SqliteCommand(sqlCheck, conn, trans))
+        if (KiemTraLienKetHoaDonBan(maHoaDon, maBan, conn, trans))
         {
-            cmdCheck.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
-            cmdCheck.Parameters.AddWithValue("@MaBan", maBan);
-            long count = Convert.ToInt64(cmdCheck.ExecuteScalar());
-            if (count > 0)
-            {
-                return true;
-            }
+            return true;
         }
+        return ThemLienKetHoaDonBan(maHoaDon, maBan, conn, trans);
+    }
 
-        string sqlInsert = @"INSERT INTO HOA_DON_BAN (MaHoaDon, MaBan, ThoiGianBatDau)
-                             VALUES (@MaHoaDon, @MaBan, @ThoiGianBatDau)";
+    public bool ChuyenChiTietMon(int maHoaDonPhu, int maHoaDonChinh, SqliteConnection conn, SqliteTransaction trans)
+    {
+        string sql = "UPDATE CHI_TIET_HOA_DON SET MaHoaDon = @MaHoaDonChinh WHERE MaHoaDon = @MaHoaDonPhu";
+        using var cmd = new SqliteCommand(sql, conn, trans);
+        cmd.Parameters.AddWithValue("@MaHoaDonChinh", maHoaDonChinh);
+        cmd.Parameters.AddWithValue("@MaHoaDonPhu", maHoaDonPhu);
+        return cmd.ExecuteNonQuery() > 0;
+    }
 
-        using (var cmdInsert = new SqliteCommand(sqlInsert, conn, trans))
-        {
-            cmdInsert.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
-            cmdInsert.Parameters.AddWithValue("@MaBan", maBan);
-            cmdInsert.Parameters.AddWithValue("@ThoiGianBatDau", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            return cmdInsert.ExecuteNonQuery() > 0;
-        }
+    public bool CapNhatTongTienHoaDon(int maHoaDon, SqliteConnection conn, SqliteTransaction trans)
+    {
+        string sql = @"UPDATE HOA_DON 
+                       SET TongTien = (SELECT COALESCE(SUM(ThanhTien), 0) FROM CHI_TIET_HOA_DON WHERE MaHoaDon = @MaHoaDon),
+                           ThanhTien = (SELECT COALESCE(SUM(ThanhTien), 0) FROM CHI_TIET_HOA_DON WHERE MaHoaDon = @MaHoaDon) - TienGiam
+                       WHERE MaHoaDon = @MaHoaDon";
+        using var cmd = new SqliteCommand(sql, conn, trans);
+        cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+        return cmd.ExecuteNonQuery() > 0;
+    }
+
+    public bool DongHoaDonPhu(int maHoaDonPhu, SqliteConnection conn, SqliteTransaction trans)
+    {
+        string sql = "UPDATE HOA_DON SET TrangThai = 'DaGopBan' WHERE MaHoaDon = @MaHoaDonPhu";
+        using var cmd = new SqliteCommand(sql, conn, trans);
+        cmd.Parameters.AddWithValue("@MaHoaDonPhu", maHoaDonPhu);
+        return cmd.ExecuteNonQuery() > 0;
     }
 
     public bool ChuyenMonSangHoaDonChinh(int maHoaDonPhu, int maHoaDonChinh, SqliteConnection conn, SqliteTransaction trans)
     {
-        string sqlChuyenMon = "UPDATE CHI_TIET_HOA_DON SET MaHoaDon = @MaHoaDonChinh WHERE MaHoaDon = @MaHoaDonPhu";
-        using (var cmdChuyen = new SqliteCommand(sqlChuyenMon, conn, trans))
-        {
-            cmdChuyen.Parameters.AddWithValue("@MaHoaDonChinh", maHoaDonChinh);
-            cmdChuyen.Parameters.AddWithValue("@MaHoaDonPhu", maHoaDonPhu);
-            cmdChuyen.ExecuteNonQuery();
-        }
-
-        string sqlCapNhatTien = @"UPDATE HOA_DON 
-                                  SET TongTien = (SELECT COALESCE(SUM(ThanhTien), 0) FROM CHI_TIET_HOA_DON WHERE MaHoaDon = @MaHoaDonChinh),
-                                      ThanhTien = (SELECT COALESCE(SUM(ThanhTien), 0) FROM CHI_TIET_HOA_DON WHERE MaHoaDon = @MaHoaDonChinh) - TienGiam
-                                  WHERE MaHoaDon = @MaHoaDonChinh";
-        using (var cmdTien = new SqliteCommand(sqlCapNhatTien, conn, trans))
-        {
-            cmdTien.Parameters.AddWithValue("@MaHoaDonChinh", maHoaDonChinh);
-            cmdTien.ExecuteNonQuery();
-        }
-
-        string sqlDongHdPhu = "UPDATE HOA_DON SET TrangThai = 'DaGopBan' WHERE MaHoaDon = @MaHoaDonPhu";
-        using (var cmdDong = new SqliteCommand(sqlDongHdPhu, conn, trans))
-        {
-            cmdDong.Parameters.AddWithValue("@MaHoaDonPhu", maHoaDonPhu);
-            cmdDong.ExecuteNonQuery();
-        }
-
+        ChuyenChiTietMon(maHoaDonPhu, maHoaDonChinh, conn, trans);
+        CapNhatTongTienHoaDon(maHoaDonChinh, conn, trans);
+        DongHoaDonPhu(maHoaDonPhu, conn, trans);
         return true;
     }
 
@@ -149,6 +159,17 @@ public class GopBanDAO
         return cmd.ExecuteNonQuery() > 0;
     }
 
+    public bool KiemTraCoBanDaGop(List<int> dsMaBan, SqliteConnection conn)
+    {
+        if (dsMaBan == null || dsMaBan.Count == 0) return false;
+
+        string danhSachId = string.Join(",", dsMaBan);
+        string sqlCheckGop = $"SELECT COUNT(1) FROM BAN WHERE TrangThai = 'GopBan' AND MaBan IN ({danhSachId})";
+        using var cmdCheck = new SqliteCommand(sqlCheckGop, conn);
+        long soBanDaGop = Convert.ToInt64(cmdCheck.ExecuteScalar() ?? 0);
+        return soBanDaGop > 0;
+    }
+
     public bool ThucHienGopBan(List<int> dsMaBan, int maNhanVien, string tenNhom, string ghiChu, out string thongBaoLoi)
     {
         thongBaoLoi = string.Empty;
@@ -162,6 +183,13 @@ public class GopBanDAO
         try
         {
             using var conn = DBConnect.GetConnection();
+
+            if (KiemTraCoBanDaGop(dsMaBan, conn))
+            {
+                thongBaoLoi = "Có bàn trong danh sách chọn đã được gộp trước đó. Không thể gộp đè!";
+                return false;
+            }
+
             using var trans = conn.BeginTransaction();
 
             var banVaHoaDon = LayHoaDonChuaThanhToanCuaCacBan(dsMaBan, conn, trans);
