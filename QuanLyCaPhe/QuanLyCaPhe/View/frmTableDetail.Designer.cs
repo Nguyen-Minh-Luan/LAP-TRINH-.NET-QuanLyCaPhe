@@ -44,6 +44,7 @@ partial class frmTableDetail
         pnlBill = new System.Windows.Forms.Panel();
         btnQuayLai = new System.Windows.Forms.Button();
         btnThanhToan = new System.Windows.Forms.Button();
+        btnHuyDatBan = new System.Windows.Forms.Button();
         btnDatBan = new System.Windows.Forms.Button();
         lblTongTien = new System.Windows.Forms.Label();
         lblTongTienTitle = new System.Windows.Forms.Label();
@@ -203,6 +204,7 @@ partial class frmTableDetail
         pnlBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         pnlBill.Controls.Add(btnQuayLai);
         pnlBill.Controls.Add(btnThanhToan);
+        pnlBill.Controls.Add(btnHuyDatBan);
         pnlBill.Controls.Add(btnDatBan);
         pnlBill.Controls.Add(lblTongTien);
         pnlBill.Controls.Add(lblTongTienTitle);
@@ -225,12 +227,12 @@ partial class frmTableDetail
         btnQuayLai.Cursor = System.Windows.Forms.Cursors.Hand;
         btnQuayLai.FlatAppearance.BorderSize = 0;
         btnQuayLai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        btnQuayLai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+        btnQuayLai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
         btnQuayLai.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
-        btnQuayLai.Location = new System.Drawing.Point(288, 412);
+        btnQuayLai.Location = new System.Drawing.Point(322, 412);
         btnQuayLai.Name = "btnQuayLai";
-        btnQuayLai.Size = new System.Drawing.Size(128, 42);
-        btnQuayLai.TabIndex = 12;
+        btnQuayLai.Size = new System.Drawing.Size(96, 42);
+        btnQuayLai.TabIndex = 13;
         btnQuayLai.Text = "Quay lại";
         btnQuayLai.UseVisualStyleBackColor = false;
         // 
@@ -240,15 +242,30 @@ partial class frmTableDetail
         btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
         btnThanhToan.FlatAppearance.BorderSize = 0;
         btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        btnThanhToan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+        btnThanhToan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
         btnThanhToan.ForeColor = System.Drawing.Color.White;
-        btnThanhToan.Location = new System.Drawing.Point(150, 412);
+        btnThanhToan.Location = new System.Drawing.Point(218, 412);
         btnThanhToan.Name = "btnThanhToan";
-        btnThanhToan.Size = new System.Drawing.Size(128, 42);
-        btnThanhToan.TabIndex = 11;
+        btnThanhToan.Size = new System.Drawing.Size(96, 42);
+        btnThanhToan.TabIndex = 12;
         btnThanhToan.Text = "Thanh toán";
         btnThanhToan.UseVisualStyleBackColor = false;
         btnThanhToan.Click += btnThanhToan_Click;
+        // 
+        // btnHuyDatBan
+        // 
+        btnHuyDatBan.BackColor = System.Drawing.Color.FromArgb(175, 50, 45);
+        btnHuyDatBan.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnHuyDatBan.FlatAppearance.BorderSize = 0;
+        btnHuyDatBan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        btnHuyDatBan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+        btnHuyDatBan.ForeColor = System.Drawing.Color.White;
+        btnHuyDatBan.Location = new System.Drawing.Point(114, 412);
+        btnHuyDatBan.Name = "btnHuyDatBan";
+        btnHuyDatBan.Size = new System.Drawing.Size(96, 42);
+        btnHuyDatBan.TabIndex = 11;
+        btnHuyDatBan.Text = "Hủy bàn";
+        btnHuyDatBan.UseVisualStyleBackColor = false;
         // 
         // btnDatBan
         // 
@@ -256,13 +273,13 @@ partial class frmTableDetail
         btnDatBan.Cursor = System.Windows.Forms.Cursors.Hand;
         btnDatBan.FlatAppearance.BorderSize = 0;
         btnDatBan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        btnDatBan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+        btnDatBan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
         btnDatBan.ForeColor = System.Drawing.Color.White;
-        btnDatBan.Location = new System.Drawing.Point(12, 412);
+        btnDatBan.Location = new System.Drawing.Point(10, 412);
         btnDatBan.Name = "btnDatBan";
-        btnDatBan.Size = new System.Drawing.Size(128, 42);
+        btnDatBan.Size = new System.Drawing.Size(96, 42);
         btnDatBan.TabIndex = 10;
-        btnDatBan.Text = "Lưu / Đặt món";
+        btnDatBan.Text = "Lưu món";
         btnDatBan.UseVisualStyleBackColor = false;
         // 
         // lblTongTien
@@ -472,6 +489,7 @@ partial class frmTableDetail
     private System.Windows.Forms.Label lblTongTienTitle;
     public System.Windows.Forms.Label lblTongTien;
     public System.Windows.Forms.Button btnDatBan;
+    public System.Windows.Forms.Button btnHuyDatBan;
     public System.Windows.Forms.Button btnThanhToan;
     public System.Windows.Forms.Button btnQuayLai;
 }
