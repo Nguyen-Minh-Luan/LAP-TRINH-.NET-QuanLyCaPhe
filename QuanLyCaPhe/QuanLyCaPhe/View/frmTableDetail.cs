@@ -26,6 +26,7 @@ public partial class frmTableDetail : Form
         InitializeComponent();
         btnQuayLai.Click += btnQuayLai_Click;
         btnDatBan.Click += btnDatBan_Click;
+        btnHuyDatBan.Click += btnHuyDatBan_Click;
         Load += frmTableDetail_Load;
 
         btnTangSL.Click += btnTangSL_Click;
@@ -70,8 +71,9 @@ public partial class frmTableDetail : Form
             // 1. Không được thanh toán
             btnThanhToan.Visible = false;
 
-            // 2. Không được đặt bàn / lưu hoá đơn
+            // 2. Không được đặt bàn / lưu hoá đơn / hủy đặt bàn
             btnDatBan.Visible = false;
+            btnHuyDatBan.Visible = false;
 
             // 3. Không được chỉnh sửa số lượng hay xoá món
             btnTangSL.Visible = false;
@@ -331,7 +333,23 @@ public partial class frmTableDetail : Form
 
             if (dgvChiTietHoaDon.Rows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn ít nhất một món ăn trước khi lưu hóa đơn!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (hoaDonHienTai != null)
+                {
+                    DialogResult hoiHuy = MessageBox.Show(
+                        "Hóa đơn hiện tại không còn món nào. Bạn có muốn hủy đặt bàn này để đưa bàn về trạng thái Trống không?",
+                        "Xác nhận",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (hoiHuy == DialogResult.Yes)
+                    {
+                        ThucHienHuyDatBan();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn ít nhất một món ăn trước khi lưu hóa đơn!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 return;
             }
 
@@ -407,6 +425,65 @@ public partial class frmTableDetail : Form
         catch (Exception ex)
         {
             MessageBox.Show($"Lỗi khi lưu hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+    private void btnHuyDatBan_Click(object? sender, EventArgs e)
+    {
+        if (nhanVienHienTai != null && nhanVienHienTai.VaiTro.Trim().Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
+        {
+            MessageBox.Show("Nhân viên pha chế không có quyền hủy đặt bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        if (banHienTai == null) return;
+
+        if (hoaDonHienTai == null && (banHienTai.TrangThai == "Trong" || banHienTai.TrangThai == "Trống"))
+        {
+            MessageBox.Show("Bàn này hiện đang trống, không có hóa đơn để hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+
+        DialogResult xacNhan = MessageBox.Show(
+            $"Bạn có chắc chắn muốn hủy đặt bàn [{banHienTai.TenBan}] không?\nToàn bộ thông tin món chưa thanh toán sẽ bị hủy và bàn sẽ trở về trạng thái Trống.",
+            "Xác nhận hủy đặt bàn",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+        if (xacNhan == DialogResult.Yes)
+        {
+            ThucHienHuyDatBan();
+        }
+    }
+
+    private void ThucHienHuyDatBan()
+    {
+        try
+        {
+            if (banHienTai == null) return;
+
+            if (hoaDonHienTai != null)
+            {
+                // Giải phóng các bàn liên kết với hóa đơn này về Trống
+                banDao.GiaiPhongCacBanTheoHoaDon(hoaDonHienTai.MaHoaDon);
+                // Xóa chi tiết hóa đơn
+                chiTietDao.XoaChiTietTheoHoaDon(hoaDonHienTai.MaHoaDon);
+                // Xóa hóa đơn chưa thanh toán
+                hoaDonDao.XoaHoaDon(hoaDonHienTai.MaHoaDon);
+            }
+
+            // Đảm bảo bàn hiện tại chuyển về trạng thái Trống
+            banDao.CapNhatTrangThai(banHienTai.MaBan, "Trong");
+            banHienTai.TrangThai = "Trong";
+            banHienTai.TenNhom = null;
+
+            MessageBox.Show($"Đã hủy đặt bàn [{banHienTai.TenBan}] thành công. Bàn đã trở về trạng thái Trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Lỗi khi hủy đặt bàn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
