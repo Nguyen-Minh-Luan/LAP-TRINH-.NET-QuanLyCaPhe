@@ -23,6 +23,9 @@ public partial class frmThanhToan : Form
     private readonly ThanhToanDAO thanhToanDao = new();
     private readonly GiamGiaDAO giamGiaDao = new();
     private readonly BanDAO banDao = new();
+    private readonly ChiTietHoaDonDAO chiTietDao = new();
+    private readonly MonAnDAO monAnDao = new();
+    private readonly NhanVienDAO nhanVienDao = new();
 
     public frmThanhToan()
     {
@@ -41,7 +44,7 @@ public partial class frmThanhToan : Form
         lblTenBan.Text = tenBan.ToUpper();
         lblMaHoaDon.Text = maHoaDon;
         lblThuNgan.Text = thuNgan;
-        lblGioVao.Text = DateTime.Now.AddHours(-1).ToString("HH:mm");
+        lblGioVao.Text = DateTime.Now.ToString("HH:mm");
 
         this.tongTienMon = tongTienMon;
 
@@ -49,23 +52,98 @@ public partial class frmThanhToan : Form
         {
             LoadDanhSachMon(danhSachMon);
         }
-        else
-        {
-            LoadDuLieuMauMacDinh();
-        }
     }
 
     private void frmThanhToan_Load(object? sender, EventArgs e)
     {
         tabHinhThuc.SelectedTab = tabTienMat;
 
-        if (dgvChiTietHoaDon.Rows.Count == 0 && tongTienMon == 0)
+        if (maHoaDonId > 0)
+        {
+            LoadThongTinHoaDonTuDatabase();
+        }
+        else if (dgvChiTietHoaDon.Rows.Count == 0 && tongTienMon == 0)
         {
             LoadDuLieuMauMacDinh();
+            TinhToanTien();
+        }
+        else
+        {
+            TinhToanTien();
         }
 
-        TinhToanTien();
         HienThiAnhQR();
+    }
+
+    public void LoadThongTinHoaDonTuDatabase()
+    {
+        try
+        {
+            if (maHoaDonId <= 0) return;
+
+            HoaDon? hd = hoaDonDao.LayHoaDonTheoMa(maHoaDonId);
+            if (hd == null) return;
+
+            lblMaHoaDon.Text = $"HD-{hd.MaHoaDon:D5}";
+            lblGioVao.Text = hd.NgayTao.ToString("HH:mm");
+
+            // Tải thông tin thu ngân từ CSDL
+            if (hd.MaNhanVien > 0)
+            {
+                var dsNv = nhanVienDao.LayDanhSachNhanVien();
+                var nv = dsNv.Find(n => n.MaNhanVien == hd.MaNhanVien);
+                if (nv != null && !string.IsNullOrWhiteSpace(nv.HoTen))
+                {
+                    lblThuNgan.Text = nv.HoTen;
+                }
+            }
+
+            // Tải thông tin bàn từ CSDL
+            if (maBanId > 0)
+            {
+                Ban? ban = banDao.LayBanTheoMa(maBanId);
+                if (ban != null)
+                {
+                    string tenBanHienThi = (ban.TrangThai == "GopBan" && !string.IsNullOrWhiteSpace(ban.TenNhom))
+                        ? $"{ban.TenBan} ({ban.TenNhom})"
+                        : ban.TenBan;
+                    lblTenBan.Text = tenBanHienThi.ToUpper();
+                }
+            }
+
+            // Tải danh sách chi tiết món từ bảng CHI_TIET_HOA_DON trong CSDL
+            List<ChiTietHoaDon> dsChiTiet = chiTietDao.LayDanhSachChiTietTheoHoaDon(maHoaDonId);
+            dgvChiTietHoaDon.Rows.Clear();
+            int stt = 1;
+            int tongSoLuong = 0;
+            decimal tongTien = 0;
+
+            foreach (ChiTietHoaDon ct in dsChiTiet)
+            {
+                MonAn? mon = monAnDao.LayMonAnTheoMa(ct.MaMon);
+                string tenMon = mon != null ? mon.TenMon : $"Món #{ct.MaMon}";
+
+                dgvChiTietHoaDon.Rows.Add(
+                    stt++,
+                    tenMon,
+                    ct.SoLuong,
+                    ct.DonGia.ToString("N0", CultureInfo.InvariantCulture),
+                    ct.ThanhTien.ToString("N0", CultureInfo.InvariantCulture)
+                );
+
+                tongSoLuong += ct.SoLuong;
+                tongTien += ct.ThanhTien;
+            }
+
+            lblTongSoMon.Text = $"Tổng số lượng món: {tongSoLuong} ly/phần";
+            tongTienMon = tongTien;
+
+            TinhToanTien();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Lỗi tải dữ liệu hóa đơn từ CSDL: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     private void LoadDuLieuMauMacDinh()
@@ -163,11 +241,29 @@ public partial class frmThanhToan : Form
         TinhToanTien();
     }
 
+    private void txtTienKhachDua_KeyPress(object? sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+        {
+            e.Handled = true;
+        }
+    }
+
     private void txtTienKhachDua_TextChanged(object? sender, EventArgs e)
     {
         string raw = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
+        if (raw.StartsWith("-"))
+        {
+            raw = raw.Replace("-", "");
+        }
+
         if (long.TryParse(raw, out long val))
         {
+            if (val < 0)
+            {
+                val = 0;
+            }
+
             int selectionStart = txtTienKhachDua.SelectionStart;
             int oldLength = txtTienKhachDua.Text.Length;
 
@@ -194,7 +290,12 @@ public partial class frmThanhToan : Form
         if (tabHinhThuc.SelectedTab == tabTienMat)
         {
             string raw = txtTienKhachDua.Text.Replace(".", "").Replace(",", "").Trim();
-            decimal.TryParse(raw, out decimal tienKhachDua);
+            if (!decimal.TryParse(raw, out decimal tienKhachDua) || tienKhachDua < 0)
+            {
+                MessageBox.Show("Tiền khách đưa không được là số âm hoặc không hợp lệ!", "Cảnh báo thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTienKhachDua.Focus();
+                return;
+            }
 
             if (tienKhachDua < tongCanThu)
             {

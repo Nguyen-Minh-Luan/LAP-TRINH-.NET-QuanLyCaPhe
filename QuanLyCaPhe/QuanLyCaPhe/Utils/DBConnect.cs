@@ -4,8 +4,8 @@ namespace QuanLyCaPhe.Utils;
 
 public class DBConnect
 {
-    private static readonly string DbPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Database\QuanLyCaPhe.db"));
-    private static readonly string ConnectionString = $"Data Source={DbPath};";
+    private static readonly string DbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Database", "QuanLyCaPhe.db");
+    private static readonly string ConnectionString = $"Data Source={DbPath};Foreign Keys=True;";
     
     static DBConnect()
     {
