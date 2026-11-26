@@ -87,7 +87,6 @@ public partial class frmThanhToan : Form
             lblMaHoaDon.Text = $"HD-{hd.MaHoaDon:D5}";
             lblGioVao.Text = hd.NgayTao.ToString("HH:mm");
 
-            // Tải thông tin thu ngân từ CSDL
             if (hd.MaNhanVien > 0)
             {
                 var dsNv = nhanVienDao.LayDanhSachNhanVien();
@@ -98,7 +97,6 @@ public partial class frmThanhToan : Form
                 }
             }
 
-            // Tải thông tin bàn từ CSDL
             if (maBanId > 0)
             {
                 Ban? ban = banDao.LayBanTheoMa(maBanId);
@@ -111,7 +109,6 @@ public partial class frmThanhToan : Form
                 }
             }
 
-            // Tải danh sách chi tiết món từ bảng CHI_TIET_HOA_DON trong CSDL
             List<ChiTietHoaDon> dsChiTiet = chiTietDao.LayDanhSachChiTietTheoHoaDon(maHoaDonId);
             dgvChiTietHoaDon.Rows.Clear();
             int stt = 1;

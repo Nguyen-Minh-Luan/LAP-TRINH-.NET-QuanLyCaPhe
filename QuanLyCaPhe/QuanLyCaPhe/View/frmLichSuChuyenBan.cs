@@ -10,7 +10,7 @@ namespace QuanLyCaPhe.View;
 public partial class frmLichSuChuyenBan : Form
 {
     private LichSuChuyenBanDAO lichSuDao = new LichSuChuyenBanDAO();
-    private List<LichSuChuyenBanItem> _danhSachGoc = new();
+    private List<LichSuChuyenBanItem> danhSachGoc = new();
 
     public frmLichSuChuyenBan()
     {
@@ -21,7 +21,7 @@ public partial class frmLichSuChuyenBan : Form
     {
         KhoiTaoBoLoc();
         LoadDuLieuLichSu();
-        HienThiDanhSach(_danhSachGoc);
+        HienThiDanhSach(danhSachGoc);
     }
 
     private void KhoiTaoBoLoc()
@@ -35,7 +35,7 @@ public partial class frmLichSuChuyenBan : Form
         var dsTuDb = lichSuDao.LayDanhSachLichSu();
         if (dsTuDb != null && dsTuDb.Count > 0)
         {
-            _danhSachGoc = dsTuDb.Select(item => new LichSuChuyenBanItem
+            danhSachGoc = dsTuDb.Select(item => new LichSuChuyenBanItem
             {
                 MaChuyen = $"CB-{item.MaLichSu:D5}",
                 BanNguon = !string.IsNullOrEmpty(item.TenBanNguon) ? item.TenBanNguon : $"Bàn #{item.MaBanNguon}",
@@ -55,7 +55,7 @@ public partial class frmLichSuChuyenBan : Form
 
     private void KhoiTaoDuLieuMau()
     {
-        _danhSachGoc = new List<LichSuChuyenBanItem>
+        danhSachGoc = new List<LichSuChuyenBanItem>
         {
             new LichSuChuyenBanItem
             {
@@ -151,7 +151,7 @@ public partial class frmLichSuChuyenBan : Form
 
         string tuKhoa = txtTimKiem.Text.Trim().ToLower();
 
-        var ketQua = _danhSachGoc.Where(item =>
+        var ketQua = danhSachGoc.Where(item =>
         {
             if (item.ThoiGian < tuNgay || item.ThoiGian > denNgay)
                 return false;
@@ -181,7 +181,7 @@ public partial class frmLichSuChuyenBan : Form
         txtTimKiem.Clear();
 
         LoadDuLieuLichSu();
-        HienThiDanhSach(_danhSachGoc);
+        HienThiDanhSach(danhSachGoc);
     }
 
     private void btnXemChiTiet_Click(object sender, EventArgs e)

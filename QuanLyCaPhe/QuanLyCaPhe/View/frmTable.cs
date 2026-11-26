@@ -33,7 +33,6 @@ public partial class frmTable : Form
     {
         if (nhanVienHienTai != null && nhanVienHienTai.VaiTro.Trim().Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
         {
-            // Pha chế chỉ xem sơ đồ bàn, không chuyển bàn hay gộp bàn
             button2.Visible = false;
             button3.Visible = false;
         }
@@ -119,12 +118,9 @@ public partial class frmTable : Form
         
     }
 
-    private void button1_Click(object? sender, EventArgs e)
+    private void btnQuayLai_Click(object? sender, EventArgs e)
     {
-    }
-
-    private void nướcUốngToolStripMenuItem_Click(object? sender, EventArgs e)
-    {
+        this.Close();
     }
 
     private void button2_Click(object sender, EventArgs e)

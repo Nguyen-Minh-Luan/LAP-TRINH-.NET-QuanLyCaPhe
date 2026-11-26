@@ -1,15 +1,15 @@
-﻿using QuanLyCaPhe.Dao;
+using QuanLyCaPhe.Dao;
 using QuanLyCaPhe.Model;
 
 namespace QuanLyCaPhe.View;
 
 public partial class popupQuenMK : Form
 {
-    private NhanVien _nv;
+    private NhanVien nhanVien;
     public popupQuenMK(NhanVien nv)
     {
         InitializeComponent();
-        _nv = nv;
+        nhanVien = nv;
         btnHuy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
     }
 

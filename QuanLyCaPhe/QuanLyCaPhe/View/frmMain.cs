@@ -8,35 +8,32 @@ namespace QuanLyCaPhe.View;
 public partial class frmMain : Form
 {
     private PhanCongDAO phanCongDao = new PhanCongDAO();
-    private NhanVien _nv;
+    private NhanVien nhanVien;
     public frmMain(NhanVien nv)
     {
         InitializeComponent();
-        _nv = nv;
-        lblMaNV.Text = _nv.MaNhanVien.ToString();
-        lblTenNV.Text = _nv.HoTen;
-        lblVaiTro.Text = _nv.VaiTro;
-        phanCongDao.loadThongTinCaTruc(_nv.MaNhanVien, lblThoiGianTruc, lblTenCa);
+        nhanVien = nv;
+        lblMaNV.Text = nhanVien.MaNhanVien.ToString();
+        lblTenNV.Text = nhanVien.HoTen;
+        lblVaiTro.Text = nhanVien.VaiTro;
+        phanCongDao.loadThongTinCaTruc(nhanVien.MaNhanVien, lblThoiGianTruc, lblTenCa);
         PhanQuyenTheoVaiTro();
     }
 
     private void PhanQuyenTheoVaiTro()
     {
-        string vaiTro = _nv.VaiTro?.Trim() ?? "";
+        string vaiTro = nhanVien.VaiTro?.Trim() ?? "";
 
-        // 1. Quản lý: Có đầy đủ tất cả quyền truy cập
         if (vaiTro.Equals("Quản lý", StringComparison.OrdinalIgnoreCase))
         {
             return;
         }
 
-        // 2. Các vai trò không phải Quản lý thì không vào menu Quản trị, Phân công ca làm, Thống kê
         MenuStripQuanLy.Visible = false;
         MenuStripCaLam.Visible = false;
         MenuStripThongKe.Visible = false;
         btnTKDoanhThu.Visible = false;
 
-        // 3. Phân quyền chi tiết cho Pha chế (chỉ dùng Sơ đồ bàn để xem món cần chế biến)
         if (vaiTro.Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
         {
             mnuLichSuHoaDon.Visible = false;
@@ -58,7 +55,7 @@ public partial class frmMain : Form
     }
     private void mnuSoDoBan_Click(object sender, EventArgs e)
     {
-        MoForm(new frmTable(_nv));
+        MoForm(new frmTable(nhanVien));
     }
     private void mnuLichSuHD_Click(object sender, EventArgs e)
     {
@@ -105,7 +102,7 @@ public partial class frmMain : Form
     }
     private void mnuTTCaNhan_Click(object sender, EventArgs e)
     {
-        frmThongTinCaNhan frmTTCN = new frmThongTinCaNhan(_nv);
+        frmThongTinCaNhan frmTTCN = new frmThongTinCaNhan(nhanVien);
         MoForm(frmTTCN);
     }
     private void frmMain_Load(object sender, EventArgs e)

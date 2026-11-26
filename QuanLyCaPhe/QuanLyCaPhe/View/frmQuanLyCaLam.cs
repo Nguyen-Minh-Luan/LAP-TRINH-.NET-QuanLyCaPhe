@@ -10,8 +10,8 @@ namespace QuanLyCaPhe.View;
 
 public partial class frmQuanLyCaLam : Form
 {
-    private readonly CaLamDAO _caLamDAO = new();
-    private int _maCaDangChon = 0;
+    private readonly CaLamDAO caLamDao = new();
+    private int maCaDangChon = 0;
 
     public frmQuanLyCaLam()
     {
@@ -29,8 +29,8 @@ public partial class frmQuanLyCaLam : Form
         try
         {
             List<CaLam> danhSach = string.IsNullOrWhiteSpace(tuKhoa)
-                ? _caLamDAO.LayDanhSachCaLam()
-                : _caLamDAO.TimKiemCaLam(tuKhoa);
+                ? caLamDao.LayDanhSachCaLam()
+                : caLamDao.TimKiemCaLam(tuKhoa);
 
             dgvCaLam.Rows.Clear();
             int stt = 1;
@@ -64,7 +64,7 @@ public partial class frmQuanLyCaLam : Form
 
         if (dgvCaLam.Rows[e.RowIndex].Tag is CaLam item)
         {
-            _maCaDangChon = item.MaCa;
+            maCaDangChon = item.MaCa;
             txtMaCa.Text = item.MaCa.ToString();
             txtMaCa.ReadOnly = true;
             txtTenCa.Text = item.TenCa;
@@ -90,7 +90,7 @@ public partial class frmQuanLyCaLam : Form
                 GioKetThuc = new TimeSpan(dtpGioKetThuc.Value.Hour, dtpGioKetThuc.Value.Minute, 0)
             };
 
-            if (_caLamDAO.ThemCaLam(caMoi))
+            if (caLamDao.ThemCaLam(caMoi))
             {
                 MessageBox.Show("Thêm ca làm việc mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TaiDanhSachCaLam(txtTimKiem.Text);
@@ -105,25 +105,25 @@ public partial class frmQuanLyCaLam : Form
 
     private void btnSua_Click(object sender, EventArgs e)
     {
-        if (_maCaDangChon <= 0)
+        if (maCaDangChon <= 0)
         {
             MessageBox.Show("Vui lòng chọn ca làm việc từ danh sách để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
-        if (!KiemTraDuLieu(maCaBoQua: _maCaDangChon))
+        if (!KiemTraDuLieu(maCaBoQua: maCaDangChon))
             return;
         try
         {
             var caCapNhat = new CaLam
             {
-                MaCa = _maCaDangChon,
+                MaCa = maCaDangChon,
                 TenCa = txtTenCa.Text.Trim(),
                 GioBatDau = new TimeSpan(dtpGioBatDau.Value.Hour, dtpGioBatDau.Value.Minute, 0),
                 GioKetThuc = new TimeSpan(dtpGioKetThuc.Value.Hour, dtpGioKetThuc.Value.Minute, 0)
             };
 
-            if (_caLamDAO.CapNhatCaLam(caCapNhat))
+            if (caLamDao.CapNhatCaLam(caCapNhat))
             {
                 MessageBox.Show("Cập nhật ca làm việc thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TaiDanhSachCaLam(txtTimKiem.Text);
@@ -138,14 +138,14 @@ public partial class frmQuanLyCaLam : Form
 
     private void btnXoa_Click(object sender, EventArgs e)
     {
-        if (_maCaDangChon <= 0)
+        if (maCaDangChon <= 0)
         {
             MessageBox.Show("Vui lòng chọn ca làm việc cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
         var dialogResult = MessageBox.Show(
-            $"Bạn có chắc chắn muốn xóa ca làm '{txtTenCa.Text}' (Mã: {_maCaDangChon}) không?",
+            $"Bạn có chắc chắn muốn xóa ca làm '{txtTenCa.Text}' (Mã: {maCaDangChon}) không?",
             "Xác nhận xóa",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question
@@ -155,7 +155,7 @@ public partial class frmQuanLyCaLam : Form
         {
             try
             {
-                if (_caLamDAO.XoaCaLam(_maCaDangChon))
+                if (caLamDao.XoaCaLam(maCaDangChon))
                 {
                     MessageBox.Show("Đã xóa ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TaiDanhSachCaLam(txtTimKiem.Text);
@@ -176,7 +176,7 @@ public partial class frmQuanLyCaLam : Form
 
     private void LamMoiForm()
     {
-        _maCaDangChon = 0;
+        maCaDangChon = 0;
         txtMaCa.ReadOnly = true;
         txtMaCa.Clear();
         txtTenCa.Clear();
@@ -234,7 +234,7 @@ public partial class frmQuanLyCaLam : Form
             return false;
         }
 
-        if (_caLamDAO.KiemTraTrungTenCa(tenCa, maCaBoQua))
+        if (caLamDao.KiemTraTrungTenCa(tenCa, maCaBoQua))
         {
             MessageBox.Show("Ca đã tồn tại!", "Trùng tên ca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtTenCa.Focus();

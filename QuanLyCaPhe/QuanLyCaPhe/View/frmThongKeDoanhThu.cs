@@ -9,10 +9,10 @@ using QuanLyCaPhe.Dao;
 namespace QuanLyCaPhe.View;
 
 public partial class frmThongKeDoanhThu : Form {
-    private readonly ThongKeDAO _thongKeDAO = new();
-    private readonly decimal[] _doanhThu12Thang = new decimal[12];
-    private readonly int[] _soHoaDon12Thang = new int[12];
-    private int _thangDangChon = -1;
+    private readonly ThongKeDAO thongKeDao = new();
+    private readonly decimal[] doanhThu12Thang = new decimal[12];
+    private readonly int[] soHoaDon12Thang = new int[12];
+    private int thangDangChon = -1;
 
     public frmThongKeDoanhThu() {
         InitializeComponent();
@@ -21,7 +21,7 @@ public partial class frmThongKeDoanhThu : Form {
     }
 
     private void frmThongKeDoanhThu_Load(object? sender, EventArgs e) {
-        var dsNam = _thongKeDAO.LayDanhSachNam();
+        var dsNam = thongKeDao.LayDanhSachNam();
         cbNam.DataSource = dsNam;
         if (cbNam.Items.Count > 0) {
             cbNam.SelectedIndex = 0;
@@ -32,22 +32,22 @@ public partial class frmThongKeDoanhThu : Form {
         if (cbNam.SelectedItem == null) return;
         if (!int.TryParse(cbNam.SelectedItem.ToString(), out int nam)) return;
 
-        _thangDangChon = -1;
+        thangDangChon = -1;
         TaiDuLieuDoanhThu(nam);
         TaiDuLieuMonBanChay(nam);
     }
 
     private void TaiDuLieuDoanhThu(int nam) {
         try {
-            Array.Clear(_doanhThu12Thang, 0, _doanhThu12Thang.Length);
-            Array.Clear(_soHoaDon12Thang, 0, _soHoaDon12Thang.Length);
+            Array.Clear(doanhThu12Thang, 0, doanhThu12Thang.Length);
+            Array.Clear(soHoaDon12Thang, 0, soHoaDon12Thang.Length);
 
-            DataTable dt = _thongKeDAO.ThongKeDoanhThuTheoNam(nam);
+            DataTable dt = thongKeDao.ThongKeDoanhThuTheoNam(nam);
             foreach (DataRow row in dt.Rows) {
                 int thang = Convert.ToInt32(row["Thang"]);
                 if (thang >= 1 && thang <= 12) {
-                    _soHoaDon12Thang[thang - 1] = Convert.ToInt32(row["SoHoaDon"]);
-                    _doanhThu12Thang[thang - 1] = Convert.ToDecimal(row["DoanhThu"]);
+                    soHoaDon12Thang[thang - 1] = Convert.ToInt32(row["SoHoaDon"]);
+                    doanhThu12Thang[thang - 1] = Convert.ToDecimal(row["DoanhThu"]);
                 }
             }
 
@@ -57,8 +57,8 @@ public partial class frmThongKeDoanhThu : Form {
 
             for (int i = 0; i < 12; i++) {
                 int thang = i + 1;
-                int soHD = _soHoaDon12Thang[i];
-                decimal doanhThu = _doanhThu12Thang[i];
+                int soHD = soHoaDon12Thang[i];
+                decimal doanhThu = doanhThu12Thang[i];
 
                 tongHoaDonNam += soHD;
                 tongDoanhThuNam += doanhThu;
@@ -85,7 +85,7 @@ public partial class frmThongKeDoanhThu : Form {
 
     private void TaiDuLieuMonBanChay(int nam) {
         try {
-            DataTable dt = _thongKeDAO.ThongKeMonBanChay(nam);
+            DataTable dt = thongKeDao.ThongKeMonBanChay(nam);
             dgvMonBanChay.Rows.Clear();
 
             int stt = 1;
@@ -108,7 +108,7 @@ public partial class frmThongKeDoanhThu : Form {
     private void dgvDoanhThu_CellClick(object sender, DataGridViewCellEventArgs e) {
         if (e.RowIndex < 0 || e.RowIndex >= 12) return;
 
-        _thangDangChon = e.RowIndex + 1;
+        thangDangChon = e.RowIndex + 1;
         panelChartContainer.Invalidate();
     }
 
@@ -133,7 +133,7 @@ public partial class frmThongKeDoanhThu : Form {
         int chartHeight = h - marginTop - marginBottom;
         if (chartWidth <= 20 || chartHeight <= 20) return;
 
-        decimal maxVal = _doanhThu12Thang.Max();
+        decimal maxVal = doanhThu12Thang.Max();
         if (maxVal <= 0) maxVal = 1_000_000;
 
         double magnitude = Math.Pow(10, Math.Floor(Math.Log10((double)maxVal)));
@@ -163,12 +163,12 @@ public partial class frmThongKeDoanhThu : Form {
         float barWidth = Math.Min(36f, slotWidth * 0.6f);
 
         for (int i = 0; i < 12; i++) {
-            decimal val = _doanhThu12Thang[i];
+            decimal val = doanhThu12Thang[i];
             float barHeight = (float)(val / niceMax) * chartHeight;
             float x = marginLeft + i * slotWidth + (slotWidth - barWidth) / 2;
             float y = marginTop + chartHeight - barHeight;
 
-            bool isSelected = (_thangDangChon == i + 1);
+            bool isSelected = (thangDangChon == i + 1);
             Color barColor = isSelected
                 ? Color.FromArgb(211, 84, 0)
                 : Color.FromArgb(41, 128, 185);

@@ -27,7 +27,6 @@ namespace QuanLyCaPhe
                 string extension = relativePart.Substring(lastDotIndex);
                 string targetPath = Path.Combine(baseDir, folderAndName + extension);
 
-                // Không ghi đè nếu file đã tồn tại để giữ nguyên dữ liệu hóa đơn/bàn đã lưu
                 if (File.Exists(targetPath)) continue;
 
                 string? targetDir = Path.GetDirectoryName(targetPath);

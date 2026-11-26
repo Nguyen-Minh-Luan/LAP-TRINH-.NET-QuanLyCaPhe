@@ -32,15 +32,10 @@ partial class frmTable
         flpTang2 = new System.Windows.Forms.FlowLayoutPanel();
         tabPage3 = new System.Windows.Forms.TabPage();
         flpSanThuong = new System.Windows.Forms.FlowLayoutPanel();
-        menuStrip1 = new System.Windows.Forms.MenuStrip();
-        quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        nướcUốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        lịchSửHoáĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         button2 = new System.Windows.Forms.Button();
         button3 = new System.Windows.Forms.Button();
         btnLamMoi = new System.Windows.Forms.Button();
+        btnQuayLai = new System.Windows.Forms.Button();
         groupBox1 = new System.Windows.Forms.GroupBox();
         panel3 = new System.Windows.Forms.Panel();
         label3 = new System.Windows.Forms.Label();
@@ -52,7 +47,6 @@ partial class frmTable
         tabPage1.SuspendLayout();
         tabPage2.SuspendLayout();
         tabPage3.SuspendLayout();
-        menuStrip1.SuspendLayout();
         groupBox1.SuspendLayout();
         SuspendLayout();
         // 
@@ -133,47 +127,6 @@ partial class frmTable
         flpSanThuong.Size = new System.Drawing.Size(628, 365);
         flpSanThuong.TabIndex = 0;
         // 
-        // menuStrip1
-        // 
-        menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { quảnLýToolStripMenuItem, profileToolStripMenuItem });
-        menuStrip1.Location = new System.Drawing.Point(0, 0);
-        menuStrip1.Name = "menuStrip1";
-        menuStrip1.Size = new System.Drawing.Size(800, 24);
-        menuStrip1.TabIndex = 1;
-        menuStrip1.Text = "menuStrip1";
-        // 
-        // quảnLýToolStripMenuItem
-        // 
-        quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { nướcUốngToolStripMenuItem, lịchSửHoáĐơnToolStripMenuItem, thốngKêDoanhThuToolStripMenuItem });
-        quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-        quảnLýToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-        quảnLýToolStripMenuItem.Text = "Quản Lý";
-        // 
-        // nướcUốngToolStripMenuItem
-        // 
-        nướcUốngToolStripMenuItem.Name = "nướcUốngToolStripMenuItem";
-        nướcUốngToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-        nướcUốngToolStripMenuItem.Text = "Thức uống & món ăn";
-        nướcUốngToolStripMenuItem.Click += nướcUốngToolStripMenuItem_Click;
-        // 
-        // lịchSửHoáĐơnToolStripMenuItem
-        // 
-        lịchSửHoáĐơnToolStripMenuItem.Name = "lịchSửHoáĐơnToolStripMenuItem";
-        lịchSửHoáĐơnToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-        lịchSửHoáĐơnToolStripMenuItem.Text = "Lịch sử hoá đơn";
-        // 
-        // thốngKêDoanhThuToolStripMenuItem
-        // 
-        thốngKêDoanhThuToolStripMenuItem.Name = "thốngKêDoanhThuToolStripMenuItem";
-        thốngKêDoanhThuToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-        thốngKêDoanhThuToolStripMenuItem.Text = "Thống kê doanh thu";
-        // 
-        // profileToolStripMenuItem
-        // 
-        profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-        profileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-        profileToolStripMenuItem.Text = "Profile";
-        // 
         // button2
         // 
         button2.BackColor = System.Drawing.Color.FromArgb(139, 54, 48);
@@ -221,6 +174,22 @@ partial class frmTable
         btnLamMoi.Text = "🔄 Làm mới";
         btnLamMoi.UseVisualStyleBackColor = false;
         btnLamMoi.Click += btnLamMoi_Click;
+        // 
+        // btnQuayLai
+        // 
+        btnQuayLai.BackColor = System.Drawing.Color.FromArgb(232, 224, 214);
+        btnQuayLai.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnQuayLai.FlatAppearance.BorderSize = 0;
+        btnQuayLai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        btnQuayLai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        btnQuayLai.ForeColor = System.Drawing.Color.FromArgb(110, 85, 70);
+        btnQuayLai.Location = new System.Drawing.Point(667, 307);
+        btnQuayLai.Name = "btnQuayLai";
+        btnQuayLai.Size = new System.Drawing.Size(121, 35);
+        btnQuayLai.TabIndex = 7;
+        btnQuayLai.Text = "⬅ Quay lại";
+        btnQuayLai.UseVisualStyleBackColor = false;
+        btnQuayLai.Click += btnQuayLai_Click;
         // 
         // groupBox1
         // 
@@ -300,13 +269,12 @@ partial class frmTable
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(btnQuayLai);
         Controls.Add(btnLamMoi);
         Controls.Add(groupBox1);
         Controls.Add(button3);
         Controls.Add(button2);
         Controls.Add(tabControl1);
-        Controls.Add(menuStrip1);
-        MainMenuStrip = menuStrip1;
         StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "Sơ đồ bàn";
         Load += frmTable_Load;
@@ -314,11 +282,8 @@ partial class frmTable
         tabPage1.ResumeLayout(false);
         tabPage2.ResumeLayout(false);
         tabPage3.ResumeLayout(false);
-        menuStrip1.ResumeLayout(false);
-        menuStrip1.PerformLayout();
         groupBox1.ResumeLayout(false);
         ResumeLayout(false);
-        PerformLayout();
     }
 
     private System.Windows.Forms.ImageList imgListBan;
@@ -329,15 +294,10 @@ partial class frmTable
     private System.Windows.Forms.TabPage tabPage2;
     private System.Windows.Forms.TabPage tabPage3;
     private System.Windows.Forms.TabControl tabControl1;
-    private System.Windows.Forms.MenuStrip menuStrip1;
-    private System.Windows.Forms.ToolStripMenuItem quảnLýToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem nướcUốngToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem lịchSửHoáĐơnToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem thốngKêDoanhThuToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
     private System.Windows.Forms.Button button2;
     private System.Windows.Forms.Button button3;
     private System.Windows.Forms.Button btnLamMoi;
+    private System.Windows.Forms.Button btnQuayLai;
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;

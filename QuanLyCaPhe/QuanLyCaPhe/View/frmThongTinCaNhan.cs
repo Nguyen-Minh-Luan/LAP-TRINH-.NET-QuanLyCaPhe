@@ -7,13 +7,13 @@ namespace QuanLyCaPhe;
 
 public partial class frmThongTinCaNhan : Form
 {
-    private NhanVien _nv;
+    private NhanVien nhanVien;
     private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
     public frmThongTinCaNhan(NhanVien nv)
     {
         InitializeComponent();
-        _nv = nv;
+        nhanVien = nv;
         lblDateToday.Text = DateToday();
         timer.Interval = 1000;
         timer.Tick += (s, e) =>
@@ -22,10 +22,10 @@ public partial class frmThongTinCaNhan : Form
 
         };
         timer.Start();
-        lblStatus.Text = _nv.TrangThai;
-        txtTenDN.Text = _nv.TenDangNhap;
-        txtHoTenNV.Text = _nv.HoTen;
-        txtSDT.Text = _nv.SoDienThoai;
+        lblStatus.Text = nhanVien.TrangThai;
+        txtTenDN.Text = nhanVien.TenDangNhap;
+        txtHoTenNV.Text = nhanVien.HoTen;
+        txtSDT.Text = nhanVien.SoDienThoai;
         loadData_DGVCaLam();
     }
 
@@ -51,7 +51,7 @@ public partial class frmThongTinCaNhan : Form
         startdate.DataPropertyName = "GioBatDau";
         enddate.DataPropertyName = "GioKetThuc";
         
-        DGVCaLam.DataSource = caLamDAO.getCaLam(_nv.MaNhanVien);
+        DGVCaLam.DataSource = caLamDAO.getCaLam(nhanVien.MaNhanVien);
     }
 
     private void btnCapNhatNV_Click(object sender, EventArgs e)
@@ -78,8 +78,7 @@ public partial class frmThongTinCaNhan : Form
 
             NhanVienDAO nvDAO = new NhanVienDAO();
 
-            // Kiểm tra xem tên đăng nhập mới có bị trùng với tài khoản khác không
-            if (nvDAO.KiemTraTrungTenDangNhap(tenDangNhapMoi, _nv.MaNhanVien))
+            if (nvDAO.KiemTraTrungTenDangNhap(tenDangNhapMoi, nhanVien.MaNhanVien))
             {
                 MessageBox.Show("Tên đăng nhập này đã được sử dụng bởi tài khoản khác. Vui lòng chọn tên đăng nhập khác!", "Trùng tên đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTenDN.Focus();
@@ -89,23 +88,21 @@ public partial class frmThongTinCaNhan : Form
             DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật thông tin mới?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // Tạo đối tượng tạm để cập nhật CSDL
                 NhanVien nvCapNhat = new NhanVien
                 {
-                    MaNhanVien = _nv.MaNhanVien,
+                    MaNhanVien = nhanVien.MaNhanVien,
                     HoTen = hoTenMoi,
                     SoDienThoai = soDienThoaiMoi,
                     TenDangNhap = tenDangNhapMoi,
-                    VaiTro = _nv.VaiTro,
-                    TrangThai = _nv.TrangThai
+                    VaiTro = nhanVien.VaiTro,
+                    TrangThai = nhanVien.TrangThai
                 };
 
-                if (nvDAO.CapNhatNV(_nv.MaNhanVien, nvCapNhat))
+                if (nvDAO.CapNhatNV(nhanVien.MaNhanVien, nvCapNhat))
                 {
-                    // Cập nhật thành công mới đồng bộ lại đối tượng _nv trong phiên đăng nhập
-                    _nv.HoTen = hoTenMoi;
-                    _nv.SoDienThoai = soDienThoaiMoi;
-                    _nv.TenDangNhap = tenDangNhapMoi;
+                    nhanVien.HoTen = hoTenMoi;
+                    nhanVien.SoDienThoai = soDienThoaiMoi;
+                    nhanVien.TenDangNhap = tenDangNhapMoi;
 
                     MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -135,7 +132,7 @@ public partial class frmThongTinCaNhan : Form
             return false;
         }
 
-        if (!BCrypt.Net.BCrypt.Verify(oldTextPassword, _nv.MatKhau))
+        if (!BCrypt.Net.BCrypt.Verify(oldTextPassword, nhanVien.MatKhau))
         {
             MessageBox.Show("Mật khẩu hiện tại không chính xác!",
                 "Lỗi mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);       
@@ -163,9 +160,9 @@ public partial class frmThongTinCaNhan : Form
             DialogResult result = MessageBox.Show("Bạn có xác nhận cập nhật mật khẩu mới?", "Xác nhận", MessageBoxButtons.YesNo,  MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                if (nvDAO.capNhatMKNV(_nv.MaNhanVien, newPassword))
+                if (nvDAO.capNhatMKNV(nhanVien.MaNhanVien, newPassword))
                 {
-                    _nv.MatKhau = newPassword;
+                    nhanVien.MatKhau = newPassword;
                     MessageBox.Show("Đổi mật khẩu thành công!", "Thành công", MessageBoxButtons.OK ,MessageBoxIcon.Information);
                     txtMKHienTai.Clear();
                     txtMKMoi.Clear();
