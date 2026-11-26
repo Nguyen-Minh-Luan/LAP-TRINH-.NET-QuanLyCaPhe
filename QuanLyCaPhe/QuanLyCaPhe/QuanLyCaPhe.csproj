@@ -8,6 +8,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Configurations>Debug;Release;System.Windows.Forms.DataVisualization</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,7 +34,7 @@
         <SubType>Form</SubType>
       </Compile>
       <Compile Update="View\frmQuanLyCaLam.cs">
-      <SubType>Form</SubType>
+        <SubType>Form</SubType>
       </Compile>
       <Compile Update="View\popupChuyenBan.cs">
         <SubType>Form</SubType>
@@ -57,7 +58,7 @@
         <SubType>Form</SubType>
       </Compile>
       <Compile Update="View\frmThemMon.cs">
-      <SubType>Form</SubType>
+        <SubType>Form</SubType>
       </Compile>
       <Compile Update="View\popupQuenMK.cs">
         <SubType>Form</SubType>
@@ -71,12 +72,8 @@
 
     <ItemGroup>
       <None Remove="Database\QuanLyCaPhe.db" />
-      <Content Include="Database\QuanLyCaPhe.db">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Include="Resources\**">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+      <EmbeddedResource Include="Database\QuanLyCaPhe.db" />
+      <EmbeddedResource Include="Resources\**" />
     </ItemGroup>
 
 </Project>

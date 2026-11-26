@@ -20,6 +20,7 @@ public partial class frmTableDetail : Form
     private Ban? banHienTai;
     private HoaDon? hoaDonHienTai;
     private NhanVien? nhanVienHienTai;
+    private bool coThayDoiChuaLuu = false;
 
     public frmTableDetail()
     {
@@ -119,6 +120,7 @@ public partial class frmTableDetail : Form
                 lblThongTinBan.Text = "Giờ vào: --:--   |   Mã HĐ: --   |   Trạng thái: Trống";
             }
 
+            coThayDoiChuaLuu = false;
             CapNhatTongTien();
         }
         catch (Exception ex)
@@ -270,6 +272,8 @@ public partial class frmTableDetail : Form
 
     private void ThemMonVaoHoaDon(MonAn mon, int soLuong)
     {
+        coThayDoiChuaLuu = true;
+
         foreach (DataGridViewRow row in dgvChiTietHoaDon.Rows)
         {
             if (row.Tag != null)
@@ -312,7 +316,16 @@ public partial class frmTableDetail : Form
         }
 
         lblTongTien.Text = $"{tongTien:N0} VNĐ";
-        lblTongSoMon.Text = $"Tổng số món: {dgvChiTietHoaDon.Rows.Count} món ({tongSoLuong} phần)";
+        if (coThayDoiChuaLuu)
+        {
+            lblTongSoMon.Text = $"Tổng số món: {dgvChiTietHoaDon.Rows.Count} món ({tongSoLuong} phần) - ⚠️ CHƯA LƯU";
+            lblTongSoMon.ForeColor = Color.Red;
+        }
+        else
+        {
+            lblTongSoMon.Text = $"Tổng số món: {dgvChiTietHoaDon.Rows.Count} món ({tongSoLuong} phần)";
+            lblTongSoMon.ForeColor = Color.FromArgb(40, 40, 40);
+        }
     }
 
     private void btnDatBan_Click(object? sender, EventArgs e)
@@ -419,6 +432,8 @@ public partial class frmTableDetail : Form
                 }
             }
 
+            coThayDoiChuaLuu = false;
+            CapNhatTongTien();
             lblThongTinBan.Text = $"Giờ vào: {hoaDonHienTai.NgayTao:HH:mm}   |   Mã HĐ: #{hoaDonHienTai.MaHoaDon}   |   Trạng thái: Có khách";
             MessageBox.Show("Lưu hóa đơn và đặt món vào cơ sở dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -495,6 +510,7 @@ public partial class frmTableDetail : Form
             int sl = Convert.ToInt32(dgvChiTietHoaDon.CurrentRow.Cells["colSoLuong"].Value) + 1;
             dgvChiTietHoaDon.CurrentRow.Cells["colSoLuong"].Value = sl;
             dgvChiTietHoaDon.CurrentRow.Cells["colThanhTien"].Value = sl * mon.DonGia;
+            coThayDoiChuaLuu = true;
             CapNhatTongTien();
         }
     }
@@ -514,6 +530,7 @@ public partial class frmTableDetail : Form
                 dgvChiTietHoaDon.CurrentRow.Cells["colSoLuong"].Value = sl;
                 dgvChiTietHoaDon.CurrentRow.Cells["colThanhTien"].Value = sl * mon.DonGia;
             }
+            coThayDoiChuaLuu = true;
             CapNhatTongTien();
         }
     }
@@ -523,6 +540,7 @@ public partial class frmTableDetail : Form
         if (dgvChiTietHoaDon.CurrentRow != null)
         {
             dgvChiTietHoaDon.Rows.Remove(dgvChiTietHoaDon.CurrentRow);
+            coThayDoiChuaLuu = true;
             CapNhatTongTien();
         }
     }
@@ -548,21 +566,15 @@ public partial class frmTableDetail : Form
                 return;
             }
 
-            List<ChiTietMonItem> dsItem = new List<ChiTietMonItem>();
-            int stt = 1;
-            foreach (DataGridViewRow row in dgvChiTietHoaDon.Rows)
+            if (coThayDoiChuaLuu)
             {
-                string tenMon = row.Cells["colTenMon"].Value?.ToString() ?? "";
-                int soLuong = Convert.ToInt32(row.Cells["colSoLuong"].Value);
-                decimal donGia = Convert.ToDecimal(row.Cells["colDonGia"].Value);
-
-                dsItem.Add(new ChiTietMonItem
-                {
-                    STT = stt++,
-                    TenMon = tenMon,
-                    SoLuong = soLuong,
-                    DonGia = donGia
-                });
+                MessageBox.Show(
+                    "Danh sách món ăn đã có sự thay đổi (thêm/bớt món hoặc chỉnh số lượng) nhưng chưa được lưu vào cơ sở dữ liệu!\n\n" +
+                    "Vui lòng bấm nút 'Lưu / Đặt món' để cập nhật hóa đơn mới nhất trước khi thanh toán.",
+                    "Cảnh báo chưa lưu thay đổi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
             }
 
             string tenBan = banHienTai != null
@@ -573,7 +585,7 @@ public partial class frmTableDetail : Form
             int maBan = banHienTai != null ? banHienTai.MaBan : 0;
             int maNv = hoaDonHienTai.MaNhanVien;
 
-            frmThanhToan thanhToanForm = new frmThanhToan(hoaDonHienTai.MaHoaDon, maBan, tenBan, maHdStr, "Thu ngân", tongTien, dsItem, maNv);
+            frmThanhToan thanhToanForm = new frmThanhToan(hoaDonHienTai.MaHoaDon, maBan, tenBan, maHdStr, "Thu ngân", tongTien, null, maNv);
             if (thanhToanForm.ShowDialog() == DialogResult.OK)
             {
                 hoaDonHienTai = null;
@@ -593,6 +605,19 @@ public partial class frmTableDetail : Form
 
     private void btnQuayLai_Click(object? sender, EventArgs e)
     {
+        if (coThayDoiChuaLuu)
+        {
+            DialogResult hoi = MessageBox.Show(
+                "Bạn có thay đổi món ăn chưa được lưu vào cơ sở dữ liệu.\nBạn có chắc chắn muốn quay lại mà không lưu thay đổi?",
+                "Xác nhận thoát",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (hoi != DialogResult.Yes)
+            {
+                return;
+            }
+        }
         this.Close();
     }
 

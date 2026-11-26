@@ -364,6 +364,7 @@ partial class frmThanhToan
         txtTienKhachDua.Text = "0";
         txtTienKhachDua.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         txtTienKhachDua.TextChanged += txtTienKhachDua_TextChanged;
+        txtTienKhachDua.KeyPress += txtTienKhachDua_KeyPress;
         // 
         // lblTienKhachDuaTitle
         // 
