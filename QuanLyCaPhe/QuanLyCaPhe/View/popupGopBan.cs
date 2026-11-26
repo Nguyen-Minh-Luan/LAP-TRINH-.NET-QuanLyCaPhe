@@ -67,7 +67,6 @@ public partial class popupGopBan : Form
         try
         {
             clbDanhSachBan.Items.Clear();
-            // Chỉ lấy các bàn chưa bị gộp để tránh gộp đè
             var dsBan = banDao.LayDanhSachBanTheoKhuVuc(maKhuVuc)
                               .Where(b => b.TrangThai != "GopBan")
                               .ToList();
@@ -109,7 +108,6 @@ public partial class popupGopBan : Form
                 return;
             }
 
-            // Kiểm tra chặn nếu có bàn nào đã ở trạng thái gộp
             var banDaGop = dsBanDuocChon.FirstOrDefault(b => b.TrangThai == "GopBan");
             if (banDaGop != null)
             {
@@ -123,7 +121,6 @@ public partial class popupGopBan : Form
                 tenNhom = "Gộp: " + string.Join(" + ", dsBanDuocChon.Select(b => b.TenBan));
             }
 
-            // Kiểm tra tên nhóm đã có trong cơ sở dữ liệu chưa
             if (gopBanDao.KiemTraTrungTenNhom(tenNhom))
             {
                 MessageBox.Show("Tên nhóm bàn này đã tồn tại trong hệ thống, vui lòng đổi tên khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

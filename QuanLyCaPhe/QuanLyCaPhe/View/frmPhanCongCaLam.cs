@@ -9,10 +9,10 @@ namespace QuanLyCaPhe.View;
 
 public partial class frmPhanCongCaLam : Form
 {
-    private readonly PhanCongDAO _phanCongDAO = new();
-    private readonly NhanVienDAO _nhanVienDAO = new();
-    private readonly CaLamDAO _caLamDAO = new();
-    private int _maPhanCongDangChon = 0;
+    private readonly PhanCongDAO phanCongDao = new();
+    private readonly NhanVienDAO nhanVienDao = new();
+    private readonly CaLamDAO caLamDao = new();
+    private int maPhanCongDangChon = 0;
     public frmPhanCongCaLam()
     {
         InitializeComponent();
@@ -27,13 +27,13 @@ public partial class frmPhanCongCaLam : Form
     {
         try
         {
-            var dsNhanVien = _nhanVienDAO.LayDanhSachNhanVien()
+            var dsNhanVien = nhanVienDao.LayDanhSachNhanVien()
                 .Where(nv => nv.TrangThai == "Đang làm việc")
                 .ToList();
             cbNhanVien.DataSource = dsNhanVien;
             cbNhanVien.DisplayMember = "HoTen";
             cbNhanVien.ValueMember = "MaNhanVien";
-            var dsCaLam = _caLamDAO.LayDanhSachCaLam()
+            var dsCaLam = caLamDao.LayDanhSachCaLam()
                 .Select(c => new
                 {
                     c.MaCa,
@@ -57,7 +57,7 @@ public partial class frmPhanCongCaLam : Form
     {
         try
         {
-            DataTable dt = _phanCongDAO.LayDanhSachPhanCong(tuKhoa);
+            DataTable dt = phanCongDao.LayDanhSachPhanCong(tuKhoa);
             dgvPhanCong.Rows.Clear();
             int stt = 1;
             foreach (DataRow row in dt.Rows)
@@ -91,7 +91,7 @@ public partial class frmPhanCongCaLam : Form
     private void dgvPhanCong_CellClick(object? sender, DataGridViewCellEventArgs e){
         if (e.RowIndex < 0 || e.RowIndex >= dgvPhanCong.Rows.Count) return;
         if (dgvPhanCong.Rows[e.RowIndex].Tag is PhanCong pc){
-            _maPhanCongDangChon = pc.MaPhanCong;
+            maPhanCongDangChon = pc.MaPhanCong;
             dtpNgayLam.Value = pc.NgayLam;
             cbNhanVien.SelectedValue = pc.MaNhanVien;
             cbCaLam.SelectedValue = pc.MaCa;
@@ -112,7 +112,7 @@ public partial class frmPhanCongCaLam : Form
                 NgayLam = dtpNgayLam.Value.Date
             };
 
-            if (_phanCongDAO.ThemPhanCong(pcMoi)) {
+            if (phanCongDao.ThemPhanCong(pcMoi)) {
                 MessageBox.Show("Phân công ca làm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TaiDanhSachPhanCong(txtTimKiem.Text);
                 LamMoiForm();
@@ -124,19 +124,19 @@ public partial class frmPhanCongCaLam : Form
     }
 
     private void btnSuaLich_Click(object? sender, EventArgs e) {
-        if (_maPhanCongDangChon <= 0) {
+        if (maPhanCongDangChon <= 0) {
             MessageBox.Show("Vui lòng chọn lịch trực cần cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        if (!KiemTraHopLe(maPhanCongBoQua: _maPhanCongDangChon)) return;
+        if (!KiemTraHopLe(maPhanCongBoQua: maPhanCongDangChon)) return;
         try {
             var pcCapNhat = new PhanCong {
-                MaPhanCong = _maPhanCongDangChon,
+                MaPhanCong = maPhanCongDangChon,
                 MaNhanVien = Convert.ToInt32(cbNhanVien.SelectedValue),
                 MaCa = Convert.ToInt32(cbCaLam.SelectedValue),
                 NgayLam = dtpNgayLam.Value.Date
             };
-            if (_phanCongDAO.CapNhatPhanCong(pcCapNhat)) {
+            if (phanCongDao.CapNhatPhanCong(pcCapNhat)) {
                 MessageBox.Show("Cập nhật lịch trực thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TaiDanhSachPhanCong(txtTimKiem.Text);
                 LamMoiForm(); }
@@ -145,7 +145,7 @@ public partial class frmPhanCongCaLam : Form
             MessageBox.Show($"Lỗi khi cập nhật lịch trực: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); }
     }
     private void btnXoaLich_Click(object? sender, EventArgs e) {
-        if (_maPhanCongDangChon <= 0) {
+        if (maPhanCongDangChon <= 0) {
             MessageBox.Show("Vui lòng chọn lịch trực cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return; }
         var confirm = MessageBox.Show(
@@ -155,7 +155,7 @@ public partial class frmPhanCongCaLam : Form
             MessageBoxIcon.Question);
         if (confirm == DialogResult.Yes) {
             try {
-                if (_phanCongDAO.XoaPhanCong(_maPhanCongDangChon)) {
+                if (phanCongDao.XoaPhanCong(maPhanCongDangChon)) {
                     MessageBox.Show("Đã xóa lịch phân công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TaiDanhSachPhanCong(txtTimKiem.Text);
                     LamMoiForm(); }
@@ -169,7 +169,7 @@ public partial class frmPhanCongCaLam : Form
         LamMoiForm();
     }
     private void LamMoiForm() {
-        _maPhanCongDangChon = 0;
+        maPhanCongDangChon = 0;
         dtpNgayLam.Value = DateTime.Today;
         if (cbNhanVien.Items.Count > 0) cbNhanVien.SelectedIndex = 0;
         if (cbCaLam.Items.Count > 0) cbCaLam.SelectedIndex = 0;
@@ -214,7 +214,7 @@ public partial class frmPhanCongCaLam : Form
         int maNV = Convert.ToInt32(cbNhanVien.SelectedValue);
         int maCa = Convert.ToInt32(cbCaLam.SelectedValue);
         DateTime ngayLam = dtpNgayLam.Value.Date;
-        if (_phanCongDAO.KiemTraTrungLich(maNV, maCa, ngayLam, maPhanCongBoQua)) {
+        if (phanCongDao.KiemTraTrungLich(maNV, maCa, ngayLam, maPhanCongBoQua)) {
             MessageBox.Show("Nhân viên này đã được phân công vào ca này trong ngày đã chọn!", "Trùng lịch trực", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false; }
         return true;

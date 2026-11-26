@@ -68,20 +68,15 @@ public partial class frmTableDetail : Form
         string vaiTro = nhanVienHienTai.VaiTro?.Trim() ?? "";
         if (vaiTro.Equals("Pha chế", StringComparison.OrdinalIgnoreCase))
         {
-            // Pha chế chỉ được xem hoá đơn:
-            // 1. Không được thanh toán
             btnThanhToan.Visible = false;
 
-            // 2. Không được đặt bàn / lưu hoá đơn / hủy đặt bàn
             btnDatBan.Visible = false;
             btnHuyDatBan.Visible = false;
 
-            // 3. Không được chỉnh sửa số lượng hay xoá món
             btnTangSL.Visible = false;
             btnGiamSL.Visible = false;
             btnXoaMon.Visible = false;
 
-            // 4. Khóa khu vực chọn món & ghi chú
             pnlMenu.Enabled = false;
             txtGhiChuMon.ReadOnly = true;
         }
@@ -479,15 +474,11 @@ public partial class frmTableDetail : Form
 
             if (hoaDonHienTai != null)
             {
-                // Giải phóng các bàn liên kết với hóa đơn này về Trống
                 banDao.GiaiPhongCacBanTheoHoaDon(hoaDonHienTai.MaHoaDon);
-                // Xóa chi tiết hóa đơn
                 chiTietDao.XoaChiTietTheoHoaDon(hoaDonHienTai.MaHoaDon);
-                // Xóa hóa đơn chưa thanh toán
                 hoaDonDao.XoaHoaDon(hoaDonHienTai.MaHoaDon);
             }
 
-            // Đảm bảo bàn hiện tại chuyển về trạng thái Trống
             banDao.CapNhatTrangThai(banHienTai.MaBan, "Trong");
             banHienTai.TrangThai = "Trong";
             banHienTai.TenNhom = null;

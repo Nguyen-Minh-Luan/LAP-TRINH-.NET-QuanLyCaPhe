@@ -9,9 +9,9 @@ using QuanLyCaPhe.Model;
 namespace QuanLyCaPhe.View;
 
 public partial class frmThongKeMonBanChay : Form {
-    private readonly ThongKeDAO _thongKeDAO = new();
-    private readonly DanhMucDAO _danhMucDAO = new();
-    private bool _dangTaiCombo = false;
+    private readonly ThongKeDAO thongKeDao = new();
+    private readonly DanhMucDAO danhMucDao = new();
+    private bool dangTaiCombo = false;
     public frmThongKeMonBanChay() {
         InitializeComponent();
     }
@@ -22,11 +22,11 @@ public partial class frmThongKeMonBanChay : Form {
     }
     private void TaiDanhSachDanhMuc() {
         try {
-            _dangTaiCombo = true;
+            dangTaiCombo = true;
             var dsDanhMuc = new List<DanhMuc> {
                 new DanhMuc { MaDanhMuc = 0, TenDanhMuc = "-- Tất cả danh mục --" }
             };
-            dsDanhMuc.AddRange(_danhMucDAO.LayDanhSachDanhMuc());
+            dsDanhMuc.AddRange(danhMucDao.LayDanhSachDanhMuc());
 
             cbDanhMuc.DataSource = dsDanhMuc;
             cbDanhMuc.DisplayMember = "TenDanhMuc";
@@ -37,7 +37,7 @@ public partial class frmThongKeMonBanChay : Form {
             MessageBox.Show($"Lỗi tải danh mục: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally {
-            _dangTaiCombo = false;
+            dangTaiCombo = false;
         }
     }
     private void ThietLapMacDinh() {
@@ -61,7 +61,7 @@ public partial class frmThongKeMonBanChay : Form {
         }
 
         try {
-            DataTable dt = _thongKeDAO.ThongKeTopMonBanChay(tuNgay, denNgay, maDanhMuc);
+            DataTable dt = thongKeDao.ThongKeTopMonBanChay(tuNgay, denNgay, maDanhMuc);
             dgvMonBanChay.Rows.Clear();
 
             int hang = 1;
@@ -106,7 +106,7 @@ public partial class frmThongKeMonBanChay : Form {
         }
     }
     private void cbDanhMuc_SelectedIndexChanged(object sender, EventArgs e) {
-        if (_dangTaiCombo) return;
+        if (dangTaiCombo) return;
         ThucHienThongKe();
     }
 
@@ -114,9 +114,9 @@ public partial class frmThongKeMonBanChay : Form {
         ThucHienThongKe();
     }
     private void btnLamMoi_Click(object sender, EventArgs e) {
-        _dangTaiCombo = true;
+        dangTaiCombo = true;
         ThietLapMacDinh();
-        _dangTaiCombo = false;
+        dangTaiCombo = false;
         ThucHienThongKe();
     }
     private void dgvMonBanChay_CellClick(object sender, DataGridViewCellEventArgs e) { }

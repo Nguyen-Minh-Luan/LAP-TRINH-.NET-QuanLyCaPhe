@@ -10,8 +10,8 @@ namespace QuanLyCaPhe.View
 {
     public partial class frmQuanLyNhanVien : Form
     {
-        private readonly NhanVienDAO _nhanVienDAO = new NhanVienDAO();
-        private List<NhanVien> _danhSachHienTai = new List<NhanVien>();
+        private readonly NhanVienDAO nhanVienDao = new NhanVienDAO();
+        private List<NhanVien> danhSachHienTai = new List<NhanVien>();
 
         public frmQuanLyNhanVien()
         {
@@ -28,8 +28,8 @@ namespace QuanLyCaPhe.View
         {
             try
             {
-                _danhSachHienTai = _nhanVienDAO.LayDanhSachNhanVien();
-                HienThiLenGrid(_danhSachHienTai);
+                danhSachHienTai = nhanVienDao.LayDanhSachNhanVien();
+                HienThiLenGrid(danhSachHienTai);
             }
             catch (Exception ex)
             {
@@ -43,8 +43,8 @@ namespace QuanLyCaPhe.View
             {
                 string kw = txtTimKiem.Text;
                 string vaiTro = cboLocVaiTro.SelectedItem?.ToString() ?? "Tất cả";
-                _danhSachHienTai = _nhanVienDAO.TimKiemNhanVien(kw, vaiTro);
-                HienThiLenGrid(_danhSachHienTai);
+                danhSachHienTai = nhanVienDao.TimKiemNhanVien(kw, vaiTro);
+                HienThiLenGrid(danhSachHienTai);
             }
             catch (Exception ex)
             {
@@ -88,9 +88,9 @@ namespace QuanLyCaPhe.View
 
         private void dgvNhanVien_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.RowIndex >= _danhSachHienTai.Count) return;
+            if (e.RowIndex < 0 || e.RowIndex >= danhSachHienTai.Count) return;
 
-            var nv = _danhSachHienTai[e.RowIndex];
+            var nv = danhSachHienTai[e.RowIndex];
             txtMaNV.Text = nv.MaNhanVien.ToString();
             txtHoTen.Text = nv.HoTen;
             txtTenDangNhap.Text = nv.TenDangNhap;
@@ -132,7 +132,7 @@ namespace QuanLyCaPhe.View
             }
 
             int currentId = string.IsNullOrEmpty(txtMaNV.Text) ? 0 : int.Parse(txtMaNV.Text);
-            if (_nhanVienDAO.KiemTraTrungTenDangNhap(txtTenDangNhap.Text, currentId))
+            if (nhanVienDao.KiemTraTrungTenDangNhap(txtTenDangNhap.Text, currentId))
             {
                 errorMessage = "Tên đăng nhập này đã tồn tại trong hệ thống.";
                 txtTenDangNhap.Focus();
@@ -177,7 +177,7 @@ namespace QuanLyCaPhe.View
                     TrangThai = cboTrangThai.SelectedItem?.ToString() ?? "Đang làm việc"
                 };
 
-                if (_nhanVienDAO.ThemNhanVien(nv))
+                if (nhanVienDao.ThemNhanVien(nv))
                 {
                     MessageBox.Show("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachNhanVien();
@@ -217,7 +217,7 @@ namespace QuanLyCaPhe.View
                     TrangThai = cboTrangThai.SelectedItem?.ToString() ?? "Đang làm việc"
                 };
 
-                if (_nhanVienDAO.CapNhatNV(maNV, nv))
+                if (nhanVienDao.CapNhatNV(maNV, nv))
                 {
                     MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachNhanVien();
@@ -245,7 +245,7 @@ namespace QuanLyCaPhe.View
 
             try
             {
-                if (_nhanVienDAO.XoaNhanVien(maNV))
+                if (nhanVienDao.XoaNhanVien(maNV))
                 {
                     MessageBox.Show("Đã xóa nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachNhanVien();
@@ -278,7 +278,7 @@ namespace QuanLyCaPhe.View
             try
             {
                 int maNV = int.Parse(txtMaNV.Text);
-                if (_nhanVienDAO.capNhatMKNV(maNV, matKhauMoi))
+                if (nhanVienDao.capNhatMKNV(maNV, matKhauMoi))
                 {
                     MessageBox.Show("Đặt lại mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
