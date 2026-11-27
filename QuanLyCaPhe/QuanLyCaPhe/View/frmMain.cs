@@ -9,6 +9,7 @@ public partial class frmMain : Form
 {
     private PhanCongDAO phanCongDao = new PhanCongDAO();
     private NhanVien nhanVien;
+
     public frmMain(NhanVien nv)
     {
         InitializeComponent();
@@ -42,6 +43,7 @@ public partial class frmMain : Form
             btnLSChuyenBan.Visible = false;
         }
     }
+
     private void MoForm(Form frm)
     {
         try
@@ -53,38 +55,47 @@ public partial class frmMain : Form
             MessageBox.Show("Đã có lỗi xảy ra vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
+
     private void mnuSoDoBan_Click(object sender, EventArgs e)
     {
         MoForm(new frmTable(nhanVien));
     }
+
     private void mnuLichSuHD_Click(object sender, EventArgs e)
     {
         MoForm(new frmLichSuHoaDon());
     }
+
     private void mnuLichSuCB_Click(object sender, EventArgs e)
     {
         MoForm(new frmLichSuChuyenBan());
     }
+
     private void mnuQLMA_Click(object sender, EventArgs e)
     {
         MoForm(new frmQuanLyMonAn());
     }
+
     private void mnuQLDM_Click(object sender, EventArgs e)
     {
         MoForm(new frmQuanLyDanhMuc());
     }
+
     private void mnuQLKhuVuc_Click(object sender, EventArgs e)
     {
         MoForm(new frmQuanLyKhuVucVaBan());
     }
+
     private void mnuPCCaLam_Click(object sender, EventArgs e)
     {
         MoForm(new frmPhanCongCaLam());
     }
+
     private void mnuTKDoanhThu_Click(object sender, EventArgs e)
     {
         MoForm(new frmThongKeDoanhThu());
     }
+
     private void mnuMonBanChay_Click(object sender, EventArgs e)
     {
         MoForm(new frmThongKeMonBanChay());
@@ -93,23 +104,23 @@ public partial class frmMain : Form
     private void mnuQuanLyCaLam_Click(object sender, EventArgs e)
     {
         MoForm(new frmQuanLyCaLam());
-
     }
+
     private void mnuQuanLyNV_Click(object sender, EventArgs e)
     {
         MoForm(new frmQuanLyNhanVien());
-
     }
+
     private void mnuTTCaNhan_Click(object sender, EventArgs e)
     {
         frmThongTinCaNhan frmTTCN = new frmThongTinCaNhan(nhanVien);
         MoForm(frmTTCN);
     }
+
     private void frmMain_Load(object sender, EventArgs e)
     {
         CanChinhBoCuc();
     }
-    
 
     private void frmMain_Resize(object sender, EventArgs e)
     {
@@ -132,6 +143,7 @@ public partial class frmMain : Form
             this.Close();
         }
     }
+
     private void CanChinhBoCuc()
     {
         if (WindowState == FormWindowState.Minimized) return;
@@ -152,7 +164,7 @@ public partial class frmMain : Form
 
         label3.SetBounds(16, panel2.Bottom + 8, panel1.Width - 32, 66);
         int thongTinTop = label3.Bottom + 8;
-        int thongTinCao = Math.Max(150, panel1.Height - thongTinTop - 16);
+        int thongTinCao = 180;
         int thongTinRong = panel1.Width - 48;
         tableLayoutPanel1.SetBounds((panel1.Width - thongTinRong) / 2,
             thongTinTop, thongTinRong, thongTinCao);
